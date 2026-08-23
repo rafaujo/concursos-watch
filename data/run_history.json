@@ -38,5 +38,15 @@
     "processed": 0,
     "failures": 0,
     "relevant_new": 0
+  },
+  {
+    "run_at": "2026-08-23T18:25:40-03:00",
+    "discovered": 215,
+    "known": 215,
+    "new": 0,
+    "changed_listings": 0,
+    "processed": 0,
+    "failures": 0,
+    "relevant_new": 0
   }
 ]
