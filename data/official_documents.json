@@ -1306,5 +1306,747 @@
     "errors": [
       "http://twitter.com/intent/tweet?via=usponline&text=Concursos%20e%20licita%C3%A7%C3%B5es&url=https%3A%2F%2Fwww5.usp.br%2Finstitucional%2Fconcursos-e-licitacoes%2F: HTTPError: 520 Server Error: <none> for url: http://twitter.com/intent/tweet?via=usponline&text=Concursos%20e%20licita%C3%A7%C3%B5es&url=https%3A%2F%2Fwww5.usp.br%2Finstitucional%2Fconcursos-e-licitacoes%2F"
     ]
+  },
+  "https://www.pciconcursos.com.br/noticias/prefeitura-de-sao-lourenco-mg-abre-processo-seletivo-para-as-secretarias-de-educacao-e-desenvolvimento-social": {
+    "status": "AMBIGUOUS",
+    "checked_at": "2026-08-23T19:05:04-03:00",
+    "documents": [
+      {
+        "url": "https://www.saolourenco.mg.gov.br/",
+        "type": "HTML",
+        "content_hash": "9f3fbdccfcd8c8089b68fe4ca4ab29dd3adfa320071c5990f6f7e67517ee4c47",
+        "page_count": 1,
+        "extracted_chars": 1404,
+        "truncated": false,
+        "title": "São Lourenço",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://saolourenco.mg.gov.br/arquivos/diversos/Aptos_LAB_2021.pdf",
+        "type": "PDF",
+        "content_hash": "caa4ebc374a3ce4db3e91ee415e22e7409c8ebabdc7d5949983edee125af34ac",
+        "page_count": 2,
+        "extracted_chars": 3890,
+        "truncated": false,
+        "title": "Lista Aptos LAB 2021.xlsx",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://saolourenco.mg.gov.br/arquivos/diversos/Inabilitados_LAB_2021.pdf",
+        "type": "PDF",
+        "content_hash": "7a41539f0866a92b4ac8b5430d3045a121701d5304f2349d877e9c81acd0bbd5",
+        "page_count": 1,
+        "extracted_chars": 682,
+        "truncated": false,
+        "title": "Lista Inabilitados LAB 2021.xlsx",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://saolourenco.mg.gov.br/arquivos/diversos/declaracaopaar.pdf",
+        "type": "PDF",
+        "content_hash": "5921f67f2c1969b1ede2482401c91d3b2c8e646b3403e6573def129677851307",
+        "page_count": 1,
+        "extracted_chars": 976,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://saolourenco.mg.gov.br/arquivos/diversos/paar.pdf",
+        "type": "PDF",
+        "content_hash": "6f2ca2482ec925a38eb61bd5953fa6b91873d55d4f1f1acd42834295c27fc417",
+        "page_count": 4,
+        "extracted_chars": 4877,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
+      }
+    ],
+    "reader_version": 2,
+    "applicable": false,
+    "reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
+    "errors": []
+  },
+  "https://www.pciconcursos.com.br/noticias/ufu-mg-abre-processos-seletivos-para-professores-substitutos-e-visitantes": {
+    "status": "AMBIGUOUS",
+    "checked_at": "2026-08-23T19:05:04-03:00",
+    "documents": [
+      {
+        "url": "https://www.portalselecao.ufu.br/",
+        "type": "HTML",
+        "content_hash": "07e5f81c9f146e4f790e38911bdf670df234dc2c2421a347cff6298f58893e26",
+        "page_count": 1,
+        "extracted_chars": 0,
+        "truncated": false,
+        "title": null,
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://ufu.br/",
+        "type": "HTML",
+        "content_hash": "9d8717edc9c601c3a8fdcfe82bdaf1cf9277469c725d81ae0f0ca528651ff517",
+        "page_count": 1,
+        "extracted_chars": 8520,
+        "truncated": false,
+        "title": "Início | Universidade Federal de Uberlândia",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://comunica.ufu.br/noticias/2026/08/ufu-lanca-edital-para-selecao-de-bolsistas-de-extensao-na-diretoria-de-cultura-e",
+        "type": "HTML",
+        "content_hash": "f71507fa6680cb5fca270c1df25a0ee2773fa6575ede9c7dc47524f0c58e207b",
+        "page_count": 1,
+        "extracted_chars": 6811,
+        "truncated": false,
+        "title": "UFU lança edital para seleção de bolsistas de extensão na Diretoria de Cultura e no Coral | Comunica UFU",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://editais.ufu.br/node/6708",
+        "type": "HTML",
+        "content_hash": "a3eaa09986ef2d9d5bc3ff74de078b3ab229696aecf328cd91e2a717c42dcea2",
+        "page_count": 1,
+        "extracted_chars": 2458,
+        "truncated": false,
+        "title": "EDITAL 110_UFU_PROEXC_2026_Bolsistas de Extensão_Projeto de Apoio Institucional do(a) Bolsista de Extensão na DICULT | Portal de Editais e Concursos",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://ufu.br/concursos-e-processos-seletivos",
+        "type": "HTML",
+        "content_hash": "58bcc38f772acd6096dc4afc3fe7ecf2702dea244ec1d324b72d994796a85966",
+        "page_count": 1,
+        "extracted_chars": 796,
+        "truncated": false,
+        "title": "Concursos e Processos Seletivos | Universidade Federal de Uberlândia",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      }
+    ],
+    "reader_version": 2,
+    "applicable": false,
+    "reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
+    "errors": []
+  },
+  "https://www.pciconcursos.com.br/noticias/prefeitura-de-santos-sp-divulga-retificacoes-do-concurso-com-vagas-para-professores-adjuntos": {
+    "status": "AMBIGUOUS",
+    "checked_at": "2026-08-23T19:05:04-03:00",
+    "documents": [
+      {
+        "url": "https://www.santos.sp.gov.br/",
+        "type": "HTML",
+        "content_hash": "5e145dc45be87954b93e5e02be99681bb34b3b32bf3401c8fabf49c50e99d3a6",
+        "page_count": 1,
+        "extracted_chars": 9062,
+        "truncated": false,
+        "title": "Prefeitura de Santos |",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://egov.santos.sp.gov.br/dadosabertos/concursos",
+        "type": "HTML",
+        "content_hash": "0f9e33a79ebd4c4646464f0bce54158c1be9c425b3c86bb398a4e6dc1b879639",
+        "page_count": 1,
+        "extracted_chars": 13,
+        "truncated": false,
+        "title": "Dados Abertos",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      }
+    ],
+    "reader_version": 2,
+    "applicable": false,
+    "reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
+    "errors": [
+      "https://www.ibamsp-concursos.org.br/: HTTPError: 403 Client Error: Forbidden for url: https://www.ibamsp-concursos.org.br/"
+    ]
+  },
+  "https://www.pciconcursos.com.br/noticias/unesp-abre-vaga-para-professor-assistente-de-educacao-fisica-no-campus-de-rio-claro-sp": {
+    "status": "AMBIGUOUS",
+    "checked_at": "2026-08-23T19:05:04-03:00",
+    "documents": [
+      {
+        "url": "https://www2.unesp.br/",
+        "type": "HTML",
+        "content_hash": "4a109f139fae88fe8931f975a165021cd89af0b3c5353af52bdb3aec81493fd6",
+        "page_count": 1,
+        "extracted_chars": 8215,
+        "truncated": false,
+        "title": "Unesp - Universidade Estadual Paulista - Portal",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www2.unesp.br/portal",
+        "type": "HTML",
+        "content_hash": "a2aa8f8b3d840642b803e719b5d56710561bffb427be5c59e853876872f3539e",
+        "page_count": 1,
+        "extracted_chars": 805,
+        "truncated": false,
+        "title": "Unesp - Universidade Estadual Paulista - Portal",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://jornal.unesp.br/2026/08/20/a-resolucao-no-19-26-e-a-politica-de-reserva-de-vagas-para-pessoas-pretas-pardas-e-indigenas-nos-concursos-publicos-para-ingresso-na-carreira-docente-na-unesp/",
+        "type": "HTML",
+        "content_hash": "fe456a20a3e63232929416612dd173f8be025812107fee75bb51127c9f9b64ed",
+        "page_count": 1,
+        "extracted_chars": 15114,
+        "truncated": false,
+        "title": "Jornal da Unesp | A Resolução nº 19/26 e a política de reserva de vagas para pessoas pretas, pardas e indígenas: um avanço nos concursos públicos para ingresso na carreira docente na Unesp",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www.threads.com/login?next=https%3A%2F%2Fwww.threads.com%2Fintent%2Fpost%3Ftext%3Dhttps%253A%252F%252Fjornal.unesp.br%252F2026%252F08%252F20%252Fa-resolucao-no-19-26-e-a-politica-de-reserva-de-vagas-para-pessoas-pretas-pardas-e-indigenas-nos-concursos-publicos-para-ingresso-na-carreira-docente-na-unesp%252F%26__coig_login%3D1",
+        "type": "HTML",
+        "content_hash": "09034e68c404d1e9b6bd23fee9b25d24ccd3710310c389de49927169e5c69353",
+        "page_count": 1,
+        "extracted_chars": 16,
+        "truncated": false,
+        "title": "Threads • Entrar",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      }
+    ],
+    "reader_version": 2,
+    "applicable": false,
+    "reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
+    "errors": [
+      "https://inscricoes.unesp.br/: SSLError: HTTPSConnectionPool(host='inscricoes.unesp.br', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))"
+    ]
+  },
+  "https://www.pciconcursos.com.br/noticias/unesp-abre-concurso-publico-para-professor-assistente-de-odontologia-em-sao-jose-dos-campos-sp": {
+    "status": "AMBIGUOUS",
+    "checked_at": "2026-08-23T19:05:04-03:00",
+    "documents": [
+      {
+        "url": "https://www2.unesp.br/",
+        "type": "HTML",
+        "content_hash": "4a109f139fae88fe8931f975a165021cd89af0b3c5353af52bdb3aec81493fd6",
+        "page_count": 1,
+        "extracted_chars": 8215,
+        "truncated": false,
+        "title": "Unesp - Universidade Estadual Paulista - Portal",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www2.unesp.br/portal",
+        "type": "HTML",
+        "content_hash": "d9ffda4539856e9d85af75603e034e3c0d630ed3969e5abeb2d340bc6679b613",
+        "page_count": 1,
+        "extracted_chars": 805,
+        "truncated": false,
+        "title": "Unesp - Universidade Estadual Paulista - Portal",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://jornal.unesp.br/2026/08/20/a-resolucao-no-19-26-e-a-politica-de-reserva-de-vagas-para-pessoas-pretas-pardas-e-indigenas-nos-concursos-publicos-para-ingresso-na-carreira-docente-na-unesp/",
+        "type": "HTML",
+        "content_hash": "fe456a20a3e63232929416612dd173f8be025812107fee75bb51127c9f9b64ed",
+        "page_count": 1,
+        "extracted_chars": 15114,
+        "truncated": false,
+        "title": "Jornal da Unesp | A Resolução nº 19/26 e a política de reserva de vagas para pessoas pretas, pardas e indígenas: um avanço nos concursos públicos para ingresso na carreira docente na Unesp",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www.threads.com/login?next=https%3A%2F%2Fwww.threads.com%2Fintent%2Fpost%3Ftext%3Dhttps%253A%252F%252Fjornal.unesp.br%252F2026%252F08%252F20%252Fa-resolucao-no-19-26-e-a-politica-de-reserva-de-vagas-para-pessoas-pretas-pardas-e-indigenas-nos-concursos-publicos-para-ingresso-na-carreira-docente-na-unesp%252F%26__coig_login%3D1",
+        "type": "HTML",
+        "content_hash": "82ac9a1d78580dd6877f3714c230beeb47db6cce8888842263dd661dafa43846",
+        "page_count": 1,
+        "extracted_chars": 16,
+        "truncated": false,
+        "title": "Threads • Entrar",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      }
+    ],
+    "reader_version": 2,
+    "applicable": false,
+    "reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
+    "errors": [
+      "https://inscricoes.unesp.br/: SSLError: HTTPSConnectionPool(host='inscricoes.unesp.br', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))"
+    ]
+  },
+  "https://www.pciconcursos.com.br/noticias/unesp-abre-concurso-para-professor-assistente-em-zootecnia-no-campus-de-botucatu-sp": {
+    "status": "AMBIGUOUS",
+    "checked_at": "2026-08-23T19:05:04-03:00",
+    "documents": [
+      {
+        "url": "https://www2.unesp.br/",
+        "type": "HTML",
+        "content_hash": "4a109f139fae88fe8931f975a165021cd89af0b3c5353af52bdb3aec81493fd6",
+        "page_count": 1,
+        "extracted_chars": 8215,
+        "truncated": false,
+        "title": "Unesp - Universidade Estadual Paulista - Portal",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www2.unesp.br/portal",
+        "type": "HTML",
+        "content_hash": "b3615b280a12c4a7d49827918af34a637f24c046f3ea15e8f654386f9b478579",
+        "page_count": 1,
+        "extracted_chars": 805,
+        "truncated": false,
+        "title": "Unesp - Universidade Estadual Paulista - Portal",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://jornal.unesp.br/2026/08/20/a-resolucao-no-19-26-e-a-politica-de-reserva-de-vagas-para-pessoas-pretas-pardas-e-indigenas-nos-concursos-publicos-para-ingresso-na-carreira-docente-na-unesp/",
+        "type": "HTML",
+        "content_hash": "fe456a20a3e63232929416612dd173f8be025812107fee75bb51127c9f9b64ed",
+        "page_count": 1,
+        "extracted_chars": 15114,
+        "truncated": false,
+        "title": "Jornal da Unesp | A Resolução nº 19/26 e a política de reserva de vagas para pessoas pretas, pardas e indígenas: um avanço nos concursos públicos para ingresso na carreira docente na Unesp",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www.threads.com/login?next=https%3A%2F%2Fwww.threads.com%2Fintent%2Fpost%3Ftext%3Dhttps%253A%252F%252Fjornal.unesp.br%252F2026%252F08%252F20%252Fa-resolucao-no-19-26-e-a-politica-de-reserva-de-vagas-para-pessoas-pretas-pardas-e-indigenas-nos-concursos-publicos-para-ingresso-na-carreira-docente-na-unesp%252F%26__coig_login%3D1",
+        "type": "HTML",
+        "content_hash": "bac7b8f8026fee6f1afe0bba66bfe61070db1ad05db757cfea21e095d23f2547",
+        "page_count": 1,
+        "extracted_chars": 16,
+        "truncated": false,
+        "title": "Threads • Entrar",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      }
+    ],
+    "reader_version": 2,
+    "applicable": false,
+    "reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
+    "errors": [
+      "https://inscricoes.unesp.br/: SSLError: HTTPSConnectionPool(host='inscricoes.unesp.br', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))"
+    ]
+  },
+  "https://www.pciconcursos.com.br/noticias/unemat-abre-processo-seletivo-para-professores-na-area-de-direito-em-brasnorte": {
+    "status": "AMBIGUOUS",
+    "checked_at": "2026-08-23T19:05:04-03:00",
+    "documents": [
+      {
+        "url": "https://unemat.br/",
+        "type": "HTML",
+        "content_hash": "705032a5d9b17cdb31f12d9c932aad03bf449115a87a14338c17dd9f69a687df",
+        "page_count": 1,
+        "extracted_chars": 4090,
+        "truncated": false,
+        "title": "UNEMAT - Universidade do Estado de Mato Grosso | 45 anos de história",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://unemat.br/editais/19-6-2026-edital-n-013-2026-facet-col-afd-unemat",
+        "type": "HTML",
+        "content_hash": "9c886865b553a92d2d0e2cf84635dd6ce6a1f94875fe8969febd06a3157f53fc",
+        "page_count": 1,
+        "extracted_chars": 1734,
+        "truncated": false,
+        "title": "UNEMAT - Universidade do Estado de Mato Grosso | 45 anos de história",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://cms.unemat.br/storage/documentos/documento-arquivo/F0FJcDKQfjq61xNo8muVLOw9fRm7FJTBz88rM6tI.pdf",
+        "type": "PDF",
+        "content_hash": "9c50a4345060a8a2ce34af1cb90e5357d72b00ed2f71bf8929a9afd5f3cb4cfd",
+        "page_count": 38,
+        "extracted_chars": 93208,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "AMBIGUOUS",
+        "relevant": true,
+        "relevance_reason": "Documento docente associado ao anúncio por: alem, aula, cobrir, deslocamento, diarias.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://cms.unemat.br/storage/documentos/documento-arquivo/FE85qrjVxKrYqrAQU4W1YJIC0wY0zfIJIrlHiMt2.pdf",
+        "type": "PDF",
+        "content_hash": "dbd6c1eb44e5803a45e3fd27bd0c9c694f4c99e108888b4577f4c9d9d6073dd5",
+        "page_count": 3,
+        "extracted_chars": 4152,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "AMBIGUOUS",
+        "relevant": true,
+        "relevance_reason": "Documento docente associado ao anúncio por: hora, passagens, unemat.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://cms.unemat.br/storage/documentos/documento-arquivo/r4rrLaft3V7QyM7cGopwTYtCVczbE6olJGP0PMAg.pdf",
+        "type": "PDF",
+        "content_hash": "3b00f89fd8a8a27c1e088331f8ca040431b43b27324fafe25b05d2721b8886d8",
+        "page_count": 3,
+        "extracted_chars": 5536,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "AMBIGUOUS",
+        "relevant": true,
+        "relevance_reason": "Documento docente associado ao anúncio por: direito, hora, passagens, unemat.",
+        "opportunities_count": 0
+      }
+    ],
+    "reader_version": 2,
+    "applicable": false,
+    "reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
+    "errors": []
+  },
+  "https://www.pciconcursos.com.br/noticias/prefeitura-de-sao-joao-del-rei-e-damae-mg-abrem-concursos-com-salarios-de-ate-6469": {
+    "status": "AMBIGUOUS",
+    "checked_at": "2026-08-23T19:05:04-03:00",
+    "documents": [
+      {
+        "url": "https://www.ibgpconcursos.com.br/",
+        "type": "HTML",
+        "content_hash": "23ede1f6156d5af8c4acb05e5ac142b37e6e99a5c3905cc710e79fd3cdb84626",
+        "page_count": 1,
+        "extracted_chars": 167,
+        "truncated": false,
+        "title": "IBGP CONCURSOS",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www.ibgpconcursos.com.br/login.jsp",
+        "type": "HTML",
+        "content_hash": "8ae50190d5429e86ca029f6d4cfa713f0123b14d6b6253ef66a9547cbd7fb9b4",
+        "page_count": 1,
+        "extracted_chars": 263,
+        "truncated": false,
+        "title": "IBGP CONCURSOS",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www.ibgpconcursos.com.br/novo_cadastro.jsp",
+        "type": "HTML",
+        "content_hash": "195493eed16c9a7f3c95975be5b45b26def1133a59f1738f1e7fe7b92b40d3d1",
+        "page_count": 1,
+        "extracted_chars": 432,
+        "truncated": false,
+        "title": "Cadastro Candidato",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www.ibgpconcursos.com.br/recuperar-senha",
+        "type": "HTML",
+        "content_hash": "e9e9f3f846ca3f4272c5ffe7cd4452e699ac3a00cbc8da0aec55f90e75f04a00",
+        "page_count": 1,
+        "extracted_chars": 282,
+        "truncated": false,
+        "title": "Recuperar senha",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www.ibgpconcursos.com.br/index.jsp",
+        "type": "HTML",
+        "content_hash": "23ede1f6156d5af8c4acb05e5ac142b37e6e99a5c3905cc710e79fd3cdb84626",
+        "page_count": 1,
+        "extracted_chars": 167,
+        "truncated": false,
+        "title": "IBGP CONCURSOS",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      }
+    ],
+    "reader_version": 2,
+    "applicable": false,
+    "reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
+    "errors": []
+  },
+  "https://www.pciconcursos.com.br/noticias/unicamp-sp-abre-concurso-para-professor-titular-na-area-de-desenvolvimento-economico": {
+    "status": "AMBIGUOUS",
+    "checked_at": "2026-08-23T19:05:04-03:00",
+    "documents": [
+      {
+        "url": "https://www.unicamp.br/",
+        "type": "HTML",
+        "content_hash": "9fb80aa18cd5ccf6a665594a6fb09174a5028b356c4df9a8ba52a246938d7540",
+        "page_count": 1,
+        "extracted_chars": 3979,
+        "truncated": false,
+        "title": "Portal Unicamp",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www.unicamp.br/wp-content/uploads/sites/32/2026/08/Jornal_da_Unicamp_edicao748_260812.pdf",
+        "type": "PDF",
+        "content_hash": "d9fe811bfd1e7358092746140071f5cc3904d4ec06a7d2af42ad5f2787813679",
+        "page_count": 12,
+        "extracted_chars": 82559,
+        "truncated": false,
+        "title": "JU25_ED748_260812_TEXTOS.indd",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://jornal.unicamp.br/agenda/2026/08/20/seminario-debate-politica-de-formacao-de-professores/",
+        "type": "HTML",
+        "content_hash": "4b00d10f1c3a77239c6e47df174b79c2bfd586270d5845dd1f3a446fc12831cb",
+        "page_count": 1,
+        "extracted_chars": 2890,
+        "truncated": false,
+        "title": "Seminário debate 'Política de Formação de Professores’ - Eventos - Jornal da Unicamp",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www.ea2.unicamp.br/seminario-politica-de-formacao-de-professores-em-debate/",
+        "type": "HTML",
+        "content_hash": "0eb825b05b9d0027ed8d28a9d2b5f92202c650ec665049ad47f67ba8f32e99b9",
+        "page_count": 1,
+        "extracted_chars": 2844,
+        "truncated": false,
+        "title": "Seminário: Política de Formação de Professores em Debate – EA2",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      }
+    ],
+    "reader_version": 2,
+    "applicable": false,
+    "reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
+    "errors": [
+      "http://cpvunicamp.com.br/: HTTPError: 502 Server Error: Bad Gateway for url: http://cpvunicamp.com.br/"
+    ]
+  },
+  "https://www.pciconcursos.com.br/noticias/ufmg-abre-concurso-publico-para-professor-de-magisterio-superior-na-area-de-antropologia-do-desenvolvimento": {
+    "status": "AMBIGUOUS",
+    "checked_at": "2026-08-23T19:05:04-03:00",
+    "documents": [
+      {
+        "url": "https://www.ufmg.br",
+        "type": "HTML",
+        "content_hash": "f9a0e77b0263c973b4fcb105fb00d95c66a53b453b219d2b005eea0a092b4519",
+        "page_count": 1,
+        "extracted_chars": 5972,
+        "truncated": false,
+        "title": "Universidade Federal de Minas Gerais – Liderança regional e nacional em ensino superior gratuito, extensão, cultura, pesquisa científica e geração de patentes em todas as áreas do conhecimento",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www.ufmg.br/ia/wp-content/uploads/2026/08/Guia-de-Inteligencia-Artificial_Principios-e-diretrizes-para-o-uso-responsavel-na-UFMG.pdf",
+        "type": "PDF",
+        "content_hash": "e1f96d343a11647259fe1c4da2941b728a5795971082a2ab41b3f6cfe871d464",
+        "page_count": 33,
+        "extracted_chars": 70931,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://www.ufmg.br/comunicacao/noticias/formas-de-ingresso/seriado-ufmg-2026-recebe-617-mil-inscricoes/",
+        "type": "HTML",
+        "content_hash": "9e8cf95afedfdc73672b8782beedcbd064998c0e64c84576664084b8be14f744",
+        "page_count": 1,
+        "extracted_chars": 10644,
+        "truncated": false,
+        "title": "Seriado UFMG 2026 recebe 61,7 mil inscrições – Universidade Federal de Minas Gerais",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www.ufmg.br/?s=&tag=processo-seletivo-seriado",
+        "type": "HTML",
+        "content_hash": "96e5d5dc82378595c52792ea1a57bc3d63b63413548beffc23b3311445cdafe8",
+        "page_count": 1,
+        "extracted_chars": 1679,
+        "truncated": false,
+        "title": "Resultados da pesquisa por “” – Universidade Federal de Minas Gerais",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www.ufmg.br/comunicacao/noticias/institucional/definidas-datas-e-obras-literarias-e-artisticas-do-seriado-ufmg-2026/",
+        "type": "HTML",
+        "content_hash": "34c3cd2721a57eb362fa4ec29840a36ce97fa3434f9f129d29068e8486333092",
+        "page_count": 1,
+        "extracted_chars": 14646,
+        "truncated": false,
+        "title": "Definidas datas e obras literárias e artísticas do Seriado UFMG 2026 – Universidade Federal de Minas Gerais",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      }
+    ],
+    "reader_version": 2,
+    "applicable": false,
+    "reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
+    "errors": []
+  },
+  "https://www.pciconcursos.com.br/noticias/uesc-ba-publica-edital-de-processo-seletivo-para-professor-visitante-em-engenharia-civil-e-ambiental": {
+    "status": "AMBIGUOUS",
+    "checked_at": "2026-08-23T19:05:04-03:00",
+    "documents": [
+      {
+        "url": "https://www.uesc.br/",
+        "type": "HTML",
+        "content_hash": "dd762763bedc80f7cdd19d69d0b6d58a256003374659f110dd82411db2420b74",
+        "page_count": 1,
+        "extracted_chars": 5049,
+        "truncated": false,
+        "title": "Uesc - Universidade Estadual de Santa Cruz",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www.uesc.br/ppgecm/index.php?item=conteudo_alunos_especiais.php",
+        "type": "HTML",
+        "content_hash": "9c12bac40fe92541d0de86069c29b041188fe8cccba9781415a0f54d6f37eb71",
+        "page_count": 1,
+        "extracted_chars": 2061,
+        "truncated": false,
+        "title": "Uesc - Universidade Estadual de Santa Cruz",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www.uesc.br/ppgecm/2025/inform-sobre-matricula-alun-esp2025.pdf",
+        "type": "PDF",
+        "content_hash": "cb260c0c78a00f2e3e6b6cf0d63aef0cf4e06265a17e12f6a70dc75ada922105",
+        "page_count": 1,
+        "extracted_chars": 1388,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://www.uesc.br/ppgecm/2025/informacoes-matricula-aluno-especial20252.pdf",
+        "type": "PDF",
+        "content_hash": "e5444ea78c66bfa7dde41824b3e16e231e74c0449735ded0321018dba9d32168",
+        "page_count": 4,
+        "extracted_chars": 4372,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://www.uesc.br/ppgecm/2026/Disciplinas-2026-2.pdf",
+        "type": "PDF",
+        "content_hash": "f0198c67259dc38495cb6349580afe8c918f03f01946c81e6c214ab05118cac6",
+        "page_count": 3,
+        "extracted_chars": 2879,
+        "truncated": false,
+        "title": "Disciplinas 2026.2 (atualizado em 25.05.2026) (1).docx",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
+      }
+    ],
+    "reader_version": 2,
+    "applicable": false,
+    "reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
+    "errors": []
+  },
+  "https://www.pciconcursos.com.br/noticias/utfpr-abre-vaga-para-professor-substituto-de-fisica-geral-em-toledo": {
+    "status": "AMBIGUOUS",
+    "checked_at": "2026-08-23T19:05:04-03:00",
+    "documents": [
+      {
+        "url": "https://www.utfpr.edu.br/",
+        "type": "HTML",
+        "content_hash": "19c8f580c464f32dfbfcc9e4285fd6dacc4b4ba7a0fa2825152b42c28bdf10de",
+        "page_count": 1,
+        "extracted_chars": 3537,
+        "truncated": false,
+        "title": "Universidade Tecnológica Federal do Paraná — UTFPR",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www.utfpr.edu.br/editais/concursos",
+        "type": "HTML",
+        "content_hash": "b85daae9cd357d7e9c47a8c367681c92809303cad80056c101d32527974e16f3",
+        "page_count": 1,
+        "extracted_chars": 2089,
+        "truncated": false,
+        "title": "Concursos",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      }
+    ],
+    "reader_version": 2,
+    "applicable": false,
+    "reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
+    "errors": []
   }
 }
