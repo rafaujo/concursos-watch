@@ -1,0 +1,42 @@
+[
+  {
+    "run_at": "2026-08-23T17:36:31-03:00",
+    "discovered": 215,
+    "known": 0,
+    "new": 215,
+    "changed_listings": 0,
+    "processed": 3,
+    "failures": 0,
+    "relevant_new": 1
+  },
+  {
+    "run_at": "2026-08-23T17:37:43-03:00",
+    "discovered": 215,
+    "known": 215,
+    "new": 0,
+    "changed_listings": 0,
+    "processed": 71,
+    "failures": 0,
+    "relevant_new": 16
+  },
+  {
+    "run_at": "2026-08-23T17:40:25-03:00",
+    "discovered": 215,
+    "known": 215,
+    "new": 0,
+    "changed_listings": 0,
+    "processed": 0,
+    "failures": 0,
+    "relevant_new": 0
+  },
+  {
+    "run_at": "2026-08-23T17:40:31-03:00",
+    "discovered": 215,
+    "known": 215,
+    "new": 0,
+    "changed_listings": 0,
+    "processed": 0,
+    "failures": 0,
+    "relevant_new": 0
+  }
+]
