@@ -11,8 +11,10 @@ from typing import Any
 from zoneinfo import ZoneInfo
 
 import config
-from src.classifier import RuleBasedAnalyzer
+from src.classifier import RuleBasedAnalyzer, visual_category
 from src.monitoring import compute_status, detect_changes, iso_now, should_recheck
+from src.official import OfficialDocumentReader, should_check_official
+from src.parser import extract_requirement_sentences, normalize_text
 from src.pci import PCIConcursosSource, is_potential_listing
 from src.report import generate_report
 from src.storage import RepositoryState
@@ -20,6 +22,18 @@ from src.storage import RepositoryState
 
 LOGGER = logging.getLogger("concursos_watch")
 TZ = ZoneInfo("America/Sao_Paulo")
+
+
+def _restore_pci_requirements(vacancy: dict[str, Any]) -> None:
+    """Keep parent cards free from requirements combined across official sub-vacancies."""
+    pci_requirements = extract_requirement_sentences(str(vacancy.get("raw_text") or ""))
+    mapping = {
+        "graduation_requirement_raw": "graduation_requirement",
+        "masters_requirement_raw": "masters_requirement",
+        "doctorate_requirement_raw": "doctorate_requirement",
+    }
+    for field, parsed_field in mapping.items():
+        vacancy[field] = vacancy.get(f"pci_{field}", pci_requirements.get(parsed_field))
 
 
 def _merge_vacancy(
@@ -43,10 +57,139 @@ def _merge_vacancy(
     return merged, merged["changes"]
 
 
-def run(max_fetch: int | None = None, delay: float | None = None) -> int:
+def _apply_official_result(
+    vacancy: dict[str, Any], result: dict[str, Any], analyzer: RuleBasedAnalyzer,
+    now: datetime,
+) -> bool:
+    """Attach audit metadata and reclassify only from scoped official evidence."""
+    previous_eligibility = vacancy.get("formal_eligibility")
+    vacancy["official_check_status"] = result.get("status")
+    vacancy["official_checked_at"] = result.get("checked_at")
+    vacancy["official_check_reason"] = result.get("reason")
+    vacancy["official_documents"] = result.get("documents", [])
+    vacancy["official_document_url"] = result.get("document_url")
+    vacancy["official_document_type"] = result.get("document_type")
+    vacancy["official_content_hash"] = result.get("content_hash")
+    vacancy["official_evidence_confidence"] = result.get("confidence")
+    vacancy["official_requirement_evidence"] = result.get("evidence", [])
+    vacancy["official_errors"] = result.get("errors", [])
+
+    if result.get("opportunities"):
+        _restore_pci_requirements(vacancy)
+        analyzed_opportunities = []
+        for opportunity in result["opportunities"]:
+            child = {
+                **vacancy,
+                **opportunity,
+                "title": f"{vacancy.get('position') or 'Professor'} - {opportunity['area']}",
+                "description": opportunity["area"],
+                "raw_text": opportunity.get("requirement_text") or "",
+                "official_evidence_text": opportunity.get("requirement_text") or "",
+            }
+            child.update(analyzer.analyze(child, config.PROFILE))
+            analyzed_opportunities.append({
+                **opportunity,
+                "formal_eligibility": child["formal_eligibility"],
+                "formal_reason": child["formal_reason"],
+                "thematic_score": child["thematic_score"],
+                "thematic_reason": child["thematic_reason"],
+                "visual_category": child["visual_category"],
+                "official_document_url": result.get("document_url"),
+            })
+        vacancy["official_opportunities"] = analyzed_opportunities
+        relevant = [item for item in analyzed_opportunities if item["thematic_score"] > 0]
+        if relevant:
+            best_score = max(item["thematic_score"] for item in relevant)
+            eligibility = next(
+                status for status in ("YES", "UNCERTAIN", "UNKNOWN", "NO")
+                if any(item["formal_eligibility"] == status for item in relevant)
+            )
+            counts = {
+                status: sum(item["formal_eligibility"] == status for item in relevant)
+                for status in ("YES", "UNCERTAIN", "UNKNOWN", "NO")
+            }
+            vacancy["formal_eligibility"] = eligibility
+            vacancy["formal_reason"] = (
+                f"Edital multiárea lido: {len(relevant)} sub-vaga(s) tematicamente relevante(s) "
+                f"(YES {counts['YES']}, UNCERTAIN {counts['UNCERTAIN']}, "
+                f"UNKNOWN {counts['UNKNOWN']}, NO {counts['NO']}). Consulte o bloco específico."
+            )
+            vacancy["thematic_score"] = best_score
+            areas = ", ".join(item["area"] for item in sorted(
+                relevant, key=lambda item: -item["thematic_score"]
+            )[:4])
+            vacancy["thematic_reason"] = f"Maior aderência entre as sub-vagas oficiais. Áreas: {areas}."
+            vacancy["visual_category"] = visual_category(eligibility, best_score)
+            vacancy["requirements_source"] = "OFFICIAL_PDF_MULTI"
+            vacancy["official_evidence_text"] = " ".join(
+                f"{item['area']} {item.get('requirement_text') or ''}" for item in relevant
+            )
+            changed = eligibility != previous_eligibility
+            if changed:
+                vacancy["updated_at"] = now.date().isoformat()
+                change = (
+                    "elegibilidade revista pelas sub-vagas do edital: "
+                    f"{previous_eligibility} → {eligibility}"
+                )
+                vacancy["changes"] = list(dict.fromkeys([*(vacancy.get("changes") or []), change]))
+                history = list(vacancy.get("change_history") or [])
+                history.append({"date": iso_now(now), "changes": [change]})
+                vacancy["change_history"] = history[-20:]
+                vacancy["status"] = compute_status(vacancy, now.date(), is_updated=True)
+            return changed
+
+    if not result.get("applicable"):
+        _restore_pci_requirements(vacancy)
+        vacancy["requirements_source"] = "PCI_SUMMARY"
+        vacancy.pop("official_evidence_text", None)
+        vacancy.update(analyzer.analyze(vacancy, config.PROFILE))
+        restored = vacancy.get("formal_eligibility") != previous_eligibility
+        if restored:
+            vacancy["updated_at"] = now.date().isoformat()
+            change = f"elegibilidade restaurada após descartar documento não correspondente: {previous_eligibility} → {vacancy['formal_eligibility']}"
+            vacancy["changes"] = list(dict.fromkeys([*(vacancy.get("changes") or []), change]))
+            vacancy["status"] = compute_status(vacancy, now.date(), is_updated=True)
+        return restored
+    requirements = result.get("requirements") or {}
+    pci_requirements = extract_requirement_sentences(str(vacancy.get("raw_text") or ""))
+    parsed_mapping = {
+        "graduation_requirement_raw": "graduation_requirement",
+        "masters_requirement_raw": "masters_requirement",
+        "doctorate_requirement_raw": "doctorate_requirement",
+    }
+    for field, value in requirements.items():
+        pci_field = f"pci_{field}"
+        if pci_field not in vacancy:
+            vacancy[pci_field] = pci_requirements.get(parsed_mapping[field])
+        vacancy[field] = value
+    vacancy["requirements_source"] = f"OFFICIAL_{result.get('document_type', 'DOCUMENT')}"
+    vacancy["official_evidence_text"] = " ".join(
+        str(item.get("text") or "") for item in result.get("evidence", [])
+    )
+    vacancy.update(analyzer.analyze(vacancy, config.PROFILE))
+    changed = vacancy.get("formal_eligibility") != previous_eligibility
+    if changed:
+        vacancy["updated_at"] = now.date().isoformat()
+        change = f"elegibilidade revista pelo edital: {previous_eligibility} → {vacancy['formal_eligibility']}"
+        vacancy["changes"] = list(dict.fromkeys([*(vacancy.get("changes") or []), change]))
+        history = list(vacancy.get("change_history") or [])
+        history.append({"date": iso_now(now), "changes": [change]})
+        vacancy["change_history"] = history[-20:]
+        vacancy["status"] = compute_status(vacancy, now.date(), is_updated=True)
+    return changed
+
+
+def run(
+    max_fetch: int | None = None,
+    delay: float | None = None,
+    max_official: int | None = None,
+    skip_official: bool = False,
+    force_official: bool = False,
+    official_match: str | None = None,
+) -> int:
     now = datetime.now(TZ)
     state = RepositoryState(config.DATA_DIR)
-    vacancies, seen, run_history = state.load()
+    vacancies, seen, run_history, official_cache = state.load()
     by_url = {vacancy["source_url"]: vacancy for vacancy in vacancies}
     source = PCIConcursosSource(delay=delay)
     analyzer = RuleBasedAnalyzer()
@@ -133,20 +276,76 @@ def run(max_fetch: int | None = None, delay: float | None = None) -> int:
         if vacancy["source_url"] in seen:
             seen[vacancy["source_url"]]["status"] = vacancy["status"]
 
+    official_processed = official_read = official_reclassified = official_failures = 0
+    if config.OFFICIAL_CHECK_ENABLED and not skip_official:
+        reader = OfficialDocumentReader(source.session)
+        official_candidates = [
+            vacancy for vacancy in by_url.values()
+            if vacancy.get("status") != "CLOSED"
+            and (force_official or (
+                vacancy.get("formal_eligibility") in ("UNKNOWN", "UNCERTAIN")
+                or str(vacancy.get("requirements_source") or "").startswith("OFFICIAL_")
+            ))
+            and (vacancy.get("official_url") or vacancy.get("institution_url"))
+            and (
+                force_official
+                or should_check_official(official_cache.get(vacancy["source_url"]), now.date())
+            )
+        ]
+        official_candidates.sort(key=lambda vacancy: (
+            -int(vacancy.get("thematic_score") or 0),
+            int(vacancy.get("geographic_priority") or 4),
+            vacancy.get("registration_end") or "9999-12-31",
+        ))
+        if official_match:
+            needle = normalize_text(official_match)
+            official_candidates = [
+                vacancy for vacancy in official_candidates
+                if needle in normalize_text(
+                    f"{vacancy.get('institution', '')} {vacancy.get('title', '')}"
+                )
+            ]
+        limit = config.OFFICIAL_MAX_VACANCIES_PER_RUN if max_official is None else max_official
+        official_candidates = official_candidates[:limit]
+        print(f"\nOfficial documents queue: {len(official_candidates)}")
+        for index, vacancy in enumerate(official_candidates, start=1):
+            print(f"Reading official source {index}/{len(official_candidates)}: {vacancy['institution']}")
+            try:
+                result = reader.read(vacancy, now)
+                official_cache[vacancy["source_url"]] = result
+                official_processed += 1
+                official_read += result.get("status") in ("READ", "READ_MULTI")
+                official_failures += result.get("status") in ("ERROR", "BLOCKED")
+                official_reclassified += _apply_official_result(vacancy, result, analyzer, now)
+                print(
+                    f"Official status: {result.get('status')} | "
+                    f"Evidence: {result.get('confidence', 'NONE')} | "
+                    f"Eligibility: {vacancy.get('formal_eligibility')}"
+                )
+            except Exception as exc:
+                official_failures += 1
+                LOGGER.warning("Falha inesperada na etapa oficial de %s: %s", vacancy["source_url"], exc, exc_info=True)
+
     vacancy_list = sorted(by_url.values(), key=lambda item: item.get("first_seen", ""), reverse=True)
     run_record = {
         "run_at": iso_now(now), "discovered": len(discovered), "known": known_at_start,
         "new": new_at_start, "changed_listings": changed_listing, "processed": processed,
         "failures": failures, "relevant_new": relevant_new,
+        "official_processed": official_processed, "official_read": official_read,
+        "official_reclassified": official_reclassified, "official_failures": official_failures,
     }
     run_history.append(run_record)
-    state.save(vacancy_list, seen, run_history)
+    state.save(vacancy_list, seen, run_history, official_cache)
     generate_report(vacancy_list, config.DOCS_DIR / "index.html", now)
 
     print(f"\nRelevant new vacancies: {relevant_new}")
     print(f"Uncertain: {uncertain}")
     print(f"Rejected: {rejected}")
     print(f"Individual failures: {failures}")
+    print(f"Official sources processed: {official_processed}")
+    print(f"Official documents read: {official_read}")
+    print(f"Reclassified from official evidence: {official_reclassified}")
+    print(f"Official read failures/blocks: {official_failures}")
     print("\nPage generated: docs/index.html")
     return 0
 
@@ -155,6 +354,10 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Atualiza o radar Concursos Watch")
     parser.add_argument("--max-fetch", type=int, help="Limite de páginas individuais (diagnóstico local)")
     parser.add_argument("--delay", type=float, help="Intervalo entre requisições em segundos")
+    parser.add_argument("--max-official", type=int, help="Limite de vagas na etapa de edital oficial")
+    parser.add_argument("--skip-official", action="store_true", help="Não consultar fontes oficiais nesta execução")
+    parser.add_argument("--force-official", action="store_true", help="Ignorar cache e revisar fontes oficiais")
+    parser.add_argument("--official-match", help="Filtrar diagnóstico oficial por instituição ou título")
     parser.add_argument("--verbose", action="store_true")
     args = parser.parse_args()
     logging.basicConfig(
@@ -162,7 +365,14 @@ def main() -> int:
         format="%(asctime)s %(levelname)s %(name)s: %(message)s",
     )
     try:
-        return run(max_fetch=args.max_fetch, delay=args.delay)
+        return run(
+            max_fetch=args.max_fetch,
+            delay=args.delay,
+            max_official=args.max_official,
+            skip_official=args.skip_official,
+            force_official=args.force_official,
+            official_match=args.official_match,
+        )
     except Exception as exc:
         LOGGER.error("Execução abortada: %s", exc, exc_info=args.verbose)
         return 1

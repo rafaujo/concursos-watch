@@ -59,8 +59,10 @@ def _sort_key(vacancy: dict[str, Any]) -> tuple[Any, ...]:
 
 def _card(v: dict[str, Any]) -> str:
     links = [f'<a class="button" href="{_escape(v.get("source_url"))}" target="_blank" rel="noopener">Ver no PCI</a>']
-    if v.get("official_url"):
-        links.append(f'<a class="button secondary" href="{_escape(v["official_url"])}" target="_blank" rel="noopener">Edital / inscrições</a>')
+    official_target = v.get("official_document_url") or v.get("official_url")
+    if official_target:
+        official_label = "Abrir edital oficial" if v.get("official_document_url") else "Fonte oficial / inscrições"
+        links.append(f'<a class="button secondary" href="{_escape(official_target)}" target="_blank" rel="noopener">{official_label}</a>')
     if v.get("institution_url"):
         links.append(f'<a class="button secondary" href="{_escape(v["institution_url"])}" target="_blank" rel="noopener">Site da instituição</a>')
     search = " ".join(str(v.get(key) or "") for key in ("title", "institution", "area", "state", "city")).lower()
@@ -79,12 +81,51 @@ def _card(v: dict[str, Any]) -> str:
         ("Doutorado exigido", v.get("doctorate_requirement_raw") or v.get("doctorate_requirement")),
     )
     req_html = "".join(f"<p><strong>{_escape(label)}:</strong> {_escape(value)}</p>" for label, value in requirements)
+    official_status = v.get("official_check_status") or "NÃO CONSULTADO"
+    evidence_items = []
+    for item in (v.get("official_requirement_evidence") or [])[:3]:
+        page = item.get("page")
+        page_label = f"Página {page}: " if page else ""
+        evidence_items.append(
+            f'<li><strong>{_escape(page_label, "")}</strong>{_escape(str(item.get("text") or "")[:600])}</li>'
+        )
+    evidence_html = f'<ul class="evidence">{"".join(evidence_items)}</ul>' if evidence_items else ""
+    opportunity_items = []
+    relevant_official = [
+        item for item in (v.get("official_opportunities") or [])
+        if int(item.get("thematic_score") or 0) > 0
+    ]
+    relevant_official.sort(key=lambda item: -int(item.get("thematic_score") or 0))
+    if v.get("official_check_status") == "READ_MULTI" and v.get("official_opportunities"):
+        req_html = (
+            '<p class="multi-area-note">O anúncio do PCI não individualiza os requisitos. '
+            'Use os blocos do edital abaixo, analisados separadamente.</p>'
+        )
+    for item in relevant_official[:8]:
+        requirement = item.get("requirement_text") or "Requisito não extraído"
+        opportunity_items.append(
+            f'<li><div><strong>{_escape(item.get("area"))}</strong>'
+            f'<span class="opportunity-metrics">Aderência {int(item.get("thematic_score") or 0)}/100 · '
+            f'{_escape(item.get("formal_eligibility"), "UNKNOWN")} · página {_escape(item.get("page"), "?")}</span></div>'
+            f'<p>{_escape(requirement)}</p></li>'
+        )
+    opportunities_html = (
+        f'<div class="official-opportunities"><h4>Sub-vagas relevantes encontradas no edital</h4>'
+        f'<ol>{"".join(opportunity_items)}</ol></div>'
+        if opportunity_items else ""
+    )
+    official_html = (
+        f'<div class="official-audit"><p><strong>Leitura do edital:</strong> {_escape(official_status)}'
+        f' · Fonte dos requisitos: {_escape(v.get("requirements_source"), "Resumo do PCI")}</p>'
+        f'<p>{_escape(v.get("official_check_reason"), "Fonte oficial ainda não consultada.")}</p>'
+        f'{opportunities_html}{evidence_html}</div>'
+    )
     return f'''<article class="vacancy-card eligibility-{_escape(v.get("formal_eligibility", "UNKNOWN")).lower()}" data-state="{_escape(v.get("state"), '')}" data-institution="{_escape(v.get("institution"), '')}" data-eligibility="{_escape(v.get("formal_eligibility", "UNKNOWN"))}" data-score="{int(v.get("thematic_score") or 0)}" data-open="{str(is_open).lower()}" data-new="{str(is_new).lower()}" data-search="{_escape(search, '')}">
       <header><span class="status">{_escape(v.get("visual_category"), "⚪ Informação insuficiente")}</span><span class="state">{_escape(v.get("state"), "BR")}</span></header>
       <h3>{_escape(v.get("institution"))}</h3><p class="title">{_escape(v.get("title"))}</p>
       <div class="metrics"><div><span>{int(v.get("thematic_score") or 0)}</span>/100<small>Aderência temática</small></div><div><span>{_escape(v.get("formal_eligibility", "UNKNOWN"))}</span><small>{_escape(ELIGIBILITY_LABELS.get(v.get("formal_eligibility"), "Informação insuficiente"))}</small></div></div>
       <p class="reason"><strong>Por quê:</strong> {_escape(v.get("formal_reason"))} {_escape(v.get("thematic_reason"), '')}</p>
-      <dl>{detail_html}</dl><details><summary>Requisitos encontrados</summary>{req_html}</details>
+      <dl>{detail_html}</dl><details><summary>Requisitos e evidências</summary>{req_html}{official_html}</details>
       <div class="actions">{''.join(links)}</div>
     </article>'''
 
@@ -96,6 +137,7 @@ def generate_report(vacancies: list[dict[str, Any]], output_path: Path, generate
     visible.sort(key=_sort_key)
     open_count = sum(v.get("status") != "CLOSED" for v in visible)
     new_count = sum(v.get("status") == "NEW" for v in visible)
+    official_read_count = sum(v.get("official_check_status") in ("READ", "READ_MULTI") for v in visible)
     states = sorted({v.get("state") for v in visible if v.get("state")})
     institutions = sorted({v.get("institution") for v in visible if v.get("institution")})
     assigned: set[str] = set()
@@ -128,7 +170,7 @@ def generate_report(vacancies: list[dict[str, Any]], output_path: Path, generate
 <link rel="stylesheet" href="assets/style.css"></head><body data-profile="{profile_json}">
 <header class="hero"><div class="hero-inner"><p class="eyebrow">CONCURSOS WATCH</p><h1>Radar de Concursos Acadêmicos</h1><p class="intro">Triagem diária de oportunidades docentes públicas compatíveis com Administração e Ciências Ambientais.</p>
 <div class="summary"><div><strong>{generated_at.strftime('%d/%m/%Y %H:%M')}</strong><span>Última atualização (BRT)</span></div><div><strong>{open_count}</strong><span>Vagas abertas relevantes</span></div><div><strong>{new_count}</strong><span>Novas hoje</span></div><div><strong>PCI</strong><span>Fonte monitorada</span></div></div></div></header>
-<main><aside class="notice"><strong>Triagem, não decisão jurídica.</strong> “Elegível” não substitui a leitura do edital oficial nem a decisão da instituição sobre equivalência de títulos.</aside>
+<main><aside class="notice"><strong>Triagem, não decisão jurídica.</strong> “Elegível” não substitui a decisão da instituição sobre equivalência de títulos. <span class="official-count">Editais oficiais lidos com evidência aplicável: {official_read_count}.</span></aside>
 <section class="filters" aria-label="Filtros"><label>Buscar<input id="search" type="search" placeholder="Área, cidade, instituição…"></label><label>Estado<select id="state"><option value="">Todos</option>{options_state}</select></label><label>Instituição<select id="institution"><option value="">Todas</option>{options_inst}</select></label><label>Elegibilidade<select id="eligibility"><option value="">Todas</option><option>YES</option><option>UNCERTAIN</option><option>UNKNOWN</option><option>NO</option></select></label><label>Aderência mínima<input id="score" type="range" min="0" max="100" value="0"><output id="score-value">0</output></label><label class="check"><input id="open-only" type="checkbox" checked> Somente abertas</label><label class="check"><input id="new-only" type="checkbox"> Somente novas</label><button id="clear" type="button">Limpar filtros</button></section>
 <div class="results-heading"><h2>Oportunidades monitoradas</h2><span id="result-count">{len(visible)} resultado(s)</span></div><div id="cards" class="groups">{sections}</div>
 </main><footer>Gerado automaticamente · Fonte de descoberta: <a href="{config.PCI_LISTING_URL}">PCI Concursos</a> · Consulte sempre o edital oficial.</footer><script src="assets/app.js"></script></body></html>'''

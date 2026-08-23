@@ -140,7 +140,10 @@ class RuleBasedAnalyzer(VacancyAnalyzer):
         )
         thematic_input = " ".join(
             str(vacancy.get(key) or "")
-            for key in ("title", "description", "position", "area", "subarea", "raw_text")
+            for key in (
+                "title", "description", "position", "area", "subarea", "raw_text",
+                "official_evidence_text",
+            )
         )
         score, thematic_reason = thematic_score(thematic_input)
         return {

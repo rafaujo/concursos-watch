@@ -42,6 +42,7 @@ jobs:
           python -m json.tool data/vacancies.json > /dev/null
           python -m json.tool data/seen.json > /dev/null
           python -m json.tool data/run_history.json > /dev/null
+          python -m json.tool data/official_documents.json > /dev/null
           test -s docs/index.html
           grep -q '<meta name="viewport"' docs/index.html
 

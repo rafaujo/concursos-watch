@@ -26,6 +26,8 @@ main { padding:28px 0 70px; }.notice { padding:14px 18px; margin-bottom:20px; ba
 .reason { padding:12px; background:#f3efe4; border-radius:8px; font-size:.88rem; }
 dl { display:grid; grid-template-columns:1fr 1fr; gap:10px 16px; }dl div { min-width:0; }dt { color:var(--muted); font-size:.72rem; font-weight:750; text-transform:uppercase; }dd { margin:1px 0; overflow-wrap:anywhere; }
 details { margin:14px 0; padding:9px 0; border-block:1px solid var(--line); }summary { cursor:pointer; font-weight:700; }details p { font-size:.86rem; }
+.official-count { display:block; margin-top:4px; }.official-audit { margin-top:12px; padding:10px 12px; background:#edf3ef; border-left:3px solid var(--green2); border-radius:6px; }.official-audit p { margin:4px 0; }.evidence { margin:8px 0 0; padding-left:20px; }.evidence li { margin:6px 0; font-size:.82rem; }
+.official-opportunities { margin-top:12px; }.official-opportunities h4 { margin:0 0 6px; font-size:.9rem; }.official-opportunities ol { margin:0; padding-left:22px; }.official-opportunities li { margin:9px 0; }.official-opportunities li p { color:var(--muted); font-size:.78rem; }.opportunity-metrics { display:block; color:var(--green); font-size:.75rem; font-weight:750; }
 .actions { display:flex; flex-wrap:wrap; gap:8px; }.button { padding:9px 12px; color:white; background:var(--green); border-radius:7px; font-size:.85rem; font-weight:750; text-decoration:none; }.button.secondary { color:var(--green); background:#e2eee8; }
 .empty { grid-column:1/-1; padding:50px 24px; text-align:center; background:var(--surface); border:1px dashed #aab2ad; border-radius:12px; }
 footer { padding:28px 16px; color:#dce8e2; background:var(--ink); text-align:center; font-size:.84rem; }footer a { color:#f4cd70; }

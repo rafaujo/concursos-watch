@@ -1,6 +1,6 @@
 # Concursos Watch
 
-Radar pessoal, automático e auditável de concursos públicos e processos seletivos para docentes. O projeto descobre oportunidades no PCI Concursos, lê anúncios individuais, mantém histórico versionado, classifica elegibilidade formal separadamente da aderência temática e publica um site responsivo no GitHub Pages.
+Radar pessoal, automático e auditável de concursos públicos e processos seletivos para docentes. O projeto descobre oportunidades no PCI Concursos, lê anúncios e editais oficiais, mantém histórico versionado, classifica elegibilidade formal separadamente da aderência temática e publica um site responsivo no GitHub Pages.
 
 > **Aviso importante**
 > O sistema é uma ferramenta de triagem. A classificação “elegível” não substitui a leitura do edital oficial nem uma decisão da banca ou da instituição sobre equivalência de títulos e áreas. O PCI é fonte de descoberta, não a fonte jurídica definitiva.
@@ -13,6 +13,8 @@ Radar pessoal, automático e auditável de concursos públicos e processos selet
 - processamento de páginas novas, alteradas ou que precisam de revisão — sem baixar tudo novamente todos os dias;
 - `first_seen`, `last_seen`, `last_checked`, hashes de listagem e conteúdo e histórico resumido de mudanças;
 - datas brasileiras e fechamento automático; `CLOSING_SOON` significa prazo nos próximos 7 dias;
+- leitura limitada e segura de páginas e PDFs oficiais, com evidência e página de origem;
+- separação das áreas de editais multiárea antes da classificação;
 - classificação formal `YES`, `NO`, `UNCERTAIN` ou `UNKNOWN` com justificativa;
 - pontuação temática transparente de 0 a 100, configurável;
 - prioridade geográfica sem excluir nenhum estado;
@@ -41,11 +43,14 @@ PCI /professores
 seen.json ── URL nova, hash alterado ou revisão vencida?
       │ sim
       ▼
-página individual ── parser ── RuleBasedAnalyzer
-      │                         ├─ elegibilidade formal
-      │                         └─ aderência temática
+página individual ── parser ── fonte oficial ── PDF/HTML
+      │                                  │ áreas + evidências por página
+      │                                  ▼
+      └────────────────────────── RuleBasedAnalyzer
+                                         ├─ elegibilidade formal
+                                         └─ aderência temática
       ▼
-vacancies.json + run_history.json
+vacancies.json + official_documents.json + run_history.json
       │
       ▼
 docs/index.html ── GitHub Pages
@@ -65,6 +70,7 @@ monitor.py                 orquestra uma execução
 config.py                  perfil, pesos, thresholds e política de rede
 src/pci.py                 cliente e parser da listagem PCI
 src/parser.py              detalhe, requisitos, texto e datas
+src/official.py            descoberta e leitura segura de editais HTML/PDF
 src/classifier.py          regras formais e temáticas
 src/storage.py             JSON atômico e validado
 src/monitoring.py          status, rechecagem e mudanças
@@ -72,6 +78,7 @@ src/report.py              gerador do site
 data/vacancies.json        vagas analisadas, inclusive encerradas
 data/seen.json             índice leve de tudo que já foi descoberto
 data/run_history.json      métricas das últimas 365 execuções
+data/official_documents.json cache e auditoria das leituras oficiais
 docs/                      site publicado
 tests/                     testes e fixtures representativas do PCI
 .github/workflows/daily.yml automação e publicação
@@ -97,6 +104,12 @@ python monitor.py --max-fetch 3 --delay 0.25
 
 Itens que ficaram na fila porque `--max-fetch` foi usado continuam com `processed: false` e serão analisados na execução seguinte. Para logs de diagnóstico, acrescente `--verbose`.
 
+A etapa oficial revisa uma quantidade limitada por execução e mantém cache. Para diagnosticar uma instituição específica sem baixar páginas do PCI:
+
+```bash
+python monitor.py --max-fetch 0 --force-official --official-match UEM --max-official 1
+```
+
 ## Estado, rechecagem e mudanças
 
 `seen.json` não é apenas uma lista de URLs. Cada item registra hash da listagem, primeira/última aparição, última consulta detalhada, estado e eventual erro. Uma página é consultada quando:
@@ -117,7 +130,9 @@ A elegibilidade formal e a aderência temática são calculadas de maneira indep
 
 Os pesos ficam em `THEMATIC_WEIGHTS`, e os destaques em `STRONG_YES_SCORE` e `STRONG_UNCERTAIN_SCORE`, todos em `config.py`. As frases originais encontradas para graduação, mestrado e doutorado são preservadas em campos `*_requirement_raw`.
 
-`UNKNOWN` significa que o anúncio não ofereceu evidência suficiente. `UNCERTAIN` significa que há uma expressão ambígua — por exemplo “áreas afins” ou uma referência à Área de Avaliação Interdisciplinar — que requer interpretação humana.
+`UNKNOWN` significa que o anúncio ou o bloco correspondente do edital não ofereceu evidência suficiente. Ele pode permanecer mesmo após o PDF ter sido lido. `UNCERTAIN` significa que há uma expressão ambígua — por exemplo “áreas afins” ou uma referência à Área de Avaliação Interdisciplinar — que requer interpretação humana.
+
+Em editais multiárea, cada área é analisada como uma sub-vaga. Requisitos de Agronomia, Engenharia e Educação, por exemplo, nunca são concatenados para decidir um único resultado. O card mostra somente as sub-vagas com aderência ao perfil e liga cada evidência à página do edital.
 
 ## GitHub Actions e Pages
 
@@ -126,7 +141,7 @@ O workflow tem somente os gatilhos `schedule` e `workflow_dispatch`; commits do 
 1. instala dependências;
 2. executa o monitor;
 3. roda todos os testes;
-4. valida os três JSON e o HTML;
+4. valida os quatro JSON e o HTML;
 5. empacota o site;
 6. commita `data/` e `docs/` apenas se mudaram;
 7. publica o artefato no GitHub Pages.
@@ -161,10 +176,10 @@ Implemente `VacancyAnalyzer.analyze(vacancy, profile)`. Uma estratégia segura �
 
 ## Limitações conhecidas
 
-- Resumos do PCI podem omitir requisitos que existem apenas no PDF oficial.
+- Nem toda instituição fornece um link direto ou um PDF textual; nesses casos o resultado continua auditavelmente `UNKNOWN`/`UNCERTAIN`.
 - PDFs protegidos por verificação humana não são contornados; o crawler não tenta burlar CAPTCHA ou bloqueios.
 - Extração por regras não interpreta todas as construções jurídicas possíveis.
-- Um anúncio com várias vagas heterogêneas pode ser representado inicialmente como um único registro.
+- Tabelas de editais com estrutura inédita podem exigir uma nova regra de segmentação; o sistema evita agregar requisitos quando não consegue delimitá-los com segurança.
 - O link externo encontrado pode apontar para inscrições, e não diretamente para o PDF do edital.
 - GitHub pode atrasar schedules em momentos de alta carga; o minuto 17 reduz a disputa no início da hora.
 - Em repositórios públicos sem atividade, o GitHub pode desativar schedules após período prolongado; uma execução manual os reativa conforme as políticas da plataforma.

@@ -20,10 +20,10 @@ def test_status_and_change_detection():
 
 def test_atomic_json_state_roundtrip(tmp_path):
     store = RepositoryState(tmp_path / "data")
-    values = ([{"id": "abc"}], {"url": {"processed": True}}, [{"run_at": "now"}])
+    values = ([{"id": "abc"}], {"url": {"processed": True}}, [{"run_at": "now"}], {"url": {"status": "READ"}})
     store.save(*values)
     assert store.load() == values
-    for path in (store.vacancies_path, store.seen_path, store.history_path):
+    for path in (store.vacancies_path, store.seen_path, store.history_path, store.official_documents_path):
         json.loads(path.read_text(encoding="utf-8"))
 
 
@@ -36,6 +36,10 @@ def test_report_is_responsive_and_escapes_content(tmp_path):
         "thematic_reason": "Alta aderência", "geographic_priority": 2, "status": "NEW",
         "first_seen": "2026-08-23", "registration_end": "2026-09-15",
         "visual_category": "🔥 Forte oportunidade",
+        "official_check_status": "READ", "requirements_source": "OFFICIAL_PDF",
+        "official_check_reason": "Requisito associado à área.",
+        "official_document_url": "https://example.test/edital.pdf",
+        "official_requirement_evidence": [{"page": 7, "text": "Graduação em Administração."}],
     }
     generate_report([vacancy], output, datetime(2026, 8, 23, 8, 17, tzinfo=ZoneInfo("America/Sao_Paulo")))
     page = output.read_text(encoding="utf-8")
@@ -43,3 +47,28 @@ def test_report_is_responsive_and_escapes_content(tmp_path):
     assert "UFPR &lt;Campus&gt;" in page
     assert "Somente abertas" in page
     assert "Triagem, não decisão jurídica" in page
+    assert "Página 7" in page
+    assert "Abrir edital oficial" in page
+
+
+def test_multi_area_report_does_not_repeat_parent_requirements(tmp_path):
+    output = tmp_path / "docs" / "index.html"
+    vacancy = {
+        "source_url": "https://example.test/vaga", "institution": "UEM", "state": "PR",
+        "title": "Professor colaborador", "area": "Não identificada", "status": "OPEN",
+        "formal_eligibility": "UNKNOWN", "formal_reason": "Edital multiárea lido.",
+        "thematic_score": 25, "thematic_reason": "Uma área relevante.",
+        "visual_category": "⚪ Informação insuficiente", "first_seen": "2026-08-23",
+        "graduation_requirement_raw": "RESUMO GENÉRICO DO PAI",
+        "official_check_status": "READ_MULTI", "requirements_source": "OFFICIAL_PDF_MULTI",
+        "official_opportunities": [{
+            "area": "Engenharia da Sustentabilidade", "thematic_score": 25,
+            "formal_eligibility": "UNKNOWN", "page": 14,
+            "requirement_text": "Graduação em Engenharia de Produção.",
+        }],
+    }
+    generate_report([vacancy], output, datetime(2026, 8, 23, 8, 17, tzinfo=ZoneInfo("America/Sao_Paulo")))
+    page = output.read_text(encoding="utf-8")
+    assert "RESUMO GENÉRICO DO PAI" not in page
+    assert "Use os blocos do edital abaixo" in page
+    assert "Engenharia da Sustentabilidade" in page

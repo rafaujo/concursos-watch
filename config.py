@@ -20,6 +20,20 @@ REQUEST_RETRIES = 2
 RECHECK_OPEN_AFTER_DAYS = 14
 RECHECK_CLOSING_WITHIN_DAYS = 10
 
+# Official-document stage. The crawler follows only a small, scored set of
+# links found on institution/organizer pages and never bypasses CAPTCHA.
+OFFICIAL_CHECK_ENABLED = True
+OFFICIAL_READER_VERSION = 2
+OFFICIAL_MAX_VACANCIES_PER_RUN = 12
+OFFICIAL_MAX_LINKS_PER_VACANCY = 5
+OFFICIAL_MAX_DEPTH = 2
+OFFICIAL_MAX_DOCUMENT_BYTES = 20 * 1024 * 1024
+OFFICIAL_MAX_PDF_PAGES = 400
+OFFICIAL_MAX_EXTRACTED_CHARS = 2_000_000
+OFFICIAL_RECHECK_AFTER_DAYS = 14
+OFFICIAL_RETRY_AFTER_DAYS = 2
+OFFICIAL_REQUEST_DELAY_SECONDS = 0.75
+
 CLOSING_SOON_DAYS = 7
 CLOSED_VISIBLE_DAYS = 30
 STRONG_YES_SCORE = 60
@@ -92,6 +106,11 @@ HIGHER_EDUCATION_HINTS = (
 CHEAP_REJECT_HINTS = (
     "educacao infantil", "ensino infantil", "ensino fundamental",
     "professor de educacao basica", "peb i", "peb ii", "creche",
+)
+
+OFFICIAL_LINK_HINTS = (
+    "edital", "concurso", "processo seletivo", "selecao", "professor",
+    "docente", "magisterio", "retificacao", "prorrogacao", "resultado",
 )
 
 GEOGRAPHIC_PRIORITIES = {

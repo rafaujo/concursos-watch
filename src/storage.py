@@ -47,21 +47,30 @@ class RepositoryState:
         self.vacancies_path = data_dir / "vacancies.json"
         self.seen_path = data_dir / "seen.json"
         self.history_path = data_dir / "run_history.json"
+        self.official_documents_path = data_dir / "official_documents.json"
 
-    def load(self) -> tuple[list[dict[str, Any]], dict[str, Any], list[dict[str, Any]]]:
+    def load(self) -> tuple[list[dict[str, Any]], dict[str, Any], list[dict[str, Any]], dict[str, Any]]:
         vacancies = load_json(self.vacancies_path, [])
         seen = load_json(self.seen_path, {})
         history = load_json(self.history_path, [])
-        if not isinstance(vacancies, list) or not isinstance(seen, dict) or not isinstance(history, list):
+        official_documents = load_json(self.official_documents_path, {})
+        if (
+            not isinstance(vacancies, list)
+            or not isinstance(seen, dict)
+            or not isinstance(history, list)
+            or not isinstance(official_documents, dict)
+        ):
             raise JSONStoreError("Estrutura inesperada nos arquivos de estado")
-        return vacancies, seen, history
+        return vacancies, seen, history, official_documents
 
     def save(
         self,
         vacancies: list[dict[str, Any]],
         seen: dict[str, Any],
         history: list[dict[str, Any]],
+        official_documents: dict[str, Any],
     ) -> None:
         atomic_write_json(self.vacancies_path, vacancies)
         atomic_write_json(self.seen_path, seen)
         atomic_write_json(self.history_path, history[-365:])
+        atomic_write_json(self.official_documents_path, official_documents)
