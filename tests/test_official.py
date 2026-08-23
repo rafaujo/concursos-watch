@@ -130,5 +130,6 @@ def test_official_cache_ttl_depends_on_status():
     current = {"reader_version": 2}
     assert not should_check_official({**current, "checked_at": "2026-08-20", "status": "READ"}, today)
     assert should_check_official({**current, "checked_at": "2026-08-01", "status": "READ"}, today)
+    assert should_check_official({**current, "checked_at": "2026-08-20", "status": "AMBIGUOUS"}, today)
     assert should_check_official({**current, "checked_at": "2026-08-20", "status": "ERROR"}, today)
     assert should_check_official({"reader_version": 1, "checked_at": "2026-08-20", "status": "READ"}, today)

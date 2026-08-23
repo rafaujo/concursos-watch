@@ -104,7 +104,7 @@ python monitor.py --max-fetch 3 --delay 0.25
 
 Itens que ficaram na fila porque `--max-fetch` foi usado continuam com `processed: false` e serão analisados na execução seguinte. Para logs de diagnóstico, acrescente `--verbose`.
 
-A etapa oficial revisa uma quantidade limitada por execução e mantém cache. Para diagnosticar uma instituição específica sem baixar páginas do PCI:
+A etapa oficial revisa uma quantidade limitada por execução e mantém cache. Leituras conclusivas são renovadas em 14 dias; fontes ambíguas ou indisponíveis voltam à fila em 2 dias. Para diagnosticar uma instituição específica sem baixar páginas do PCI:
 
 ```bash
 python monitor.py --max-fetch 0 --force-official --official-match UEM --max-official 1

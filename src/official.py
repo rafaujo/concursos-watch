@@ -350,7 +350,7 @@ def should_check_official(cache_entry: Mapping[str, Any] | None, today: date) ->
     status = cache_entry.get("status")
     threshold = (
         config.OFFICIAL_RECHECK_AFTER_DAYS
-        if status in ("READ", "READ_MULTI", "AMBIGUOUS", "NO_TEXT")
+        if status in ("READ", "READ_MULTI")
         else config.OFFICIAL_RETRY_AFTER_DAYS
     )
     return age >= threshold

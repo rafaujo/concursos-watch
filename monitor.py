@@ -282,6 +282,7 @@ def run(
         official_candidates = [
             vacancy for vacancy in by_url.values()
             if vacancy.get("status") != "CLOSED"
+            and int(vacancy.get("thematic_score") or 0) > 0
             and (force_official or (
                 vacancy.get("formal_eligibility") in ("UNKNOWN", "UNCERTAIN")
                 or str(vacancy.get("requirements_source") or "").startswith("OFFICIAL_")
