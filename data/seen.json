@@ -5,7 +5,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Diadema - SP divulga concursos públicos com salários de até R$ 4.512,75",
     "registration_end": "2026-08-27",
     "listing_fingerprint": "01bfeaaf6e7dc6bbd2f7696e76358db106226db2542458ba49157f45596f54b9"
@@ -16,7 +16,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Limeira - SP publica edital de processo seletivo para professores substitutos",
     "registration_end": "2026-08-24",
     "listing_fingerprint": "76d3c180763f4e656b6324421666dd7d4f1e35023f93b251c6fcbd394cf558b2"
@@ -27,7 +27,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Limeira - SP publica editais de concursos com vagas em diversas áreas",
     "registration_end": "2026-08-31",
     "listing_fingerprint": "f79689b5ce343c2d924bfbd78b83a4829b6102a48cc1edbe34acf4e5fd44588f"
@@ -38,7 +38,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Paulínia - SP prorroga inscrições de processo seletivo com salários de até R$ 7.350,75",
     "registration_end": "2026-08-26",
     "listing_fingerprint": "8da68cd1d38c4a3d0576248f88d2ced1b9b8d1c3d545308d6267d70ce8087603"
@@ -49,13 +49,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "USP abre vaga em concurso público para Professor Titular na Escola de Enfermagem",
     "registration_end": "2026-09-18",
     "listing_fingerprint": "69475aceecadb5a6a68990f04a0367b7ecb7bcfac3c464994cb5c21f235442e9",
     "last_checked": "2026-08-23T17:36:31-03:00",
     "content_hash": "7122ee820646dee7ab9077f47200cc0cf6366b1a6a2e7fc23e810bfa3e861e05",
-    "status": "NEW"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/fundhas-sp-abre-processo-seletivo-com-vagas-para-professores-substitutos": {
     "id": "c22d18f46cd1e3fe77ad",
@@ -63,13 +63,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "FUNDHAS - SP abre processo seletivo com vagas para professores substitutos",
     "registration_end": "2026-09-11",
     "listing_fingerprint": "ae531b9a55312ac120163f1e4228f07790ea823519aa0e387106c0c0e191f54b",
     "last_checked": "2026-08-23T17:36:31-03:00",
     "content_hash": "3b469dce69a015fda1040ecf5ecb0e706307c515114ecaeb4ac0203d41b957c6",
-    "status": "NEW"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/prefeitura-de-serra-negra-sp-abre-concurso-publico-com-salarios-de-ate-5571": {
     "id": "627742676bab98d5eb3d",
@@ -77,7 +77,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Serra Negra - SP abre concurso público com salários de até R$ 5.571,20",
     "registration_end": "2026-09-18",
     "listing_fingerprint": "d1e3b1400880d97e899ac672bc293c978182f76143a10457e5a804c08051242a"
@@ -88,7 +88,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Paranapanema - SP abre concurso público com vagas imediatas e cadastro de reserva",
     "registration_end": "2026-09-14",
     "listing_fingerprint": "2146569ef233d899f7a67dab08d45eff81fb51a868c822d061aa64f0764ae4d5"
@@ -99,7 +99,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura da Estância Turística de Piraju - SP retifica edital de concurso público",
     "registration_end": "2026-08-30",
     "listing_fingerprint": "662b2c4dea90c455cf4890cbaab47cd4cb4ff6b289e6bdeb7eeb103a8692425a"
@@ -110,7 +110,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Alto Alegre - SP abre processo seletivo para Professor de Artes",
     "registration_end": "2026-09-07",
     "listing_fingerprint": "1b9b0fe04c4b53044ae6acf687756ce329bb44c149af36bb238c119d1e3e5a75"
@@ -121,10 +121,10 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Andradina - SP abre concurso público para profissionais da educação",
     "registration_end": "2026-09-23",
-    "listing_fingerprint": "dc9ab9fe011d824bdb5cd055cd3b075180e1bfbeabe8fbdc3e83ed5e69a3e0bd"
+    "listing_fingerprint": "71b2a791c3cfe060b802fda6a1accba3305e70d0345bfcece6f0c46a249c8873"
   },
   "https://www.pciconcursos.com.br/noticias/prefeitura-de-auriflama-sp-abre-concurso-publico-com-vagas-para-diversos-cargos": {
     "id": "663969d2f022587c8dc8",
@@ -132,7 +132,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Auriflama - SP abre concurso público com vagas para diversos cargos",
     "registration_end": "2026-09-01",
     "listing_fingerprint": "91356a901268558eaa2b1bd20802d425bfa806b419314a4fd0e9b0127c9c44f2"
@@ -143,7 +143,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Bariri - SP publica retificações do concurso com salários de até R$ 19.593,52",
     "registration_end": "2026-09-14",
     "listing_fingerprint": "64bd836d3b6ce4bf4110165816b75775bab7e9afd603cf827ecd0a0f91991534"
@@ -154,7 +154,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Bauru - SP abre concursos com vagas para merendeira, médico e professor de arte",
     "registration_end": "2026-08-13",
     "listing_fingerprint": "17783b475de5a56cd1a73d29ae01086b6915eb4988d372133b475923ff958073"
@@ -165,7 +165,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Cajamar - SP retifica concurso público para professores",
     "registration_end": "2026-09-07",
     "listing_fingerprint": "19149c0e4a5666475a7ec988a56d5ee45428e41133658d2957740e166e2139a9"
@@ -176,7 +176,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Guarantã - SP abre concurso público para diversos níveis de escolaridade",
     "registration_end": "2026-09-02",
     "listing_fingerprint": "ac81e9338ee77b7dfd94a300d9273e379b980e5a0abe70c2a084d7480b4e749f"
@@ -187,7 +187,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Guararema - SP abre concurso público com salários de até R$ 16.825,52",
     "registration_end": "2026-08-27",
     "listing_fingerprint": "ea5c72556bdfbf804643448eff6b27f9aa5bf83037fd2fdda0e08c39b9317aa1"
@@ -198,7 +198,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Itaju - SP abre seleção para Professor de Educação Especial",
     "registration_end": "2026-08-27",
     "listing_fingerprint": "fae34883782f86343c1188864143b45dbc993b86b69c1ce3c81512ecb7e0763d"
@@ -209,7 +209,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Mogi Mirim - SP abre concursos e processo seletivo com vagas para diversas áreas",
     "registration_end": "2026-09-10",
     "listing_fingerprint": "286e7d92a1ddf625e37d4e4d8109fed0976a5c80bb680b56aa2e109d0db591a1"
@@ -231,7 +231,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Ribeirão Bonito - SP abre processo seletivo para a educação",
     "registration_end": "2026-08-31",
     "listing_fingerprint": "fbde4839fac7c98623fcb55d2df32c905bb198dc66cbf1d17fba1486b88ea822"
@@ -242,13 +242,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Santos - SP divulga retificações do concurso com vagas para professores adjuntos",
     "registration_end": "2026-09-10",
     "listing_fingerprint": "24747adc1b62e0c55aec91c6747b782dd072062adb18f83dce44851e069c0c04",
     "last_checked": "2026-08-23T17:36:31-03:00",
     "content_hash": "f1867ce79b5d7ebacc7509fb1b8411715ee00a00ab143d4e482d7f69e590ddfe",
-    "status": "NEW"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/prefeitura-de-sao-joao-da-boa-vista-sp-abre-concursos-publicos-para-cadastro-de-reserva": {
     "id": "eaa5bc5fe561485cb1a7",
@@ -256,7 +256,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de São João da Boa Vista - SP abre concursos públicos para cadastro de reserva",
     "registration_end": "2026-08-25",
     "listing_fingerprint": "9420d8d27d79c2bc58b1f9d3064bf80aa529ce4aeeef0c7f8683b82068471e21"
@@ -267,7 +267,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de São Pedro do Turvo - SP abre concurso público com salários de até R$ 4.957,20",
     "registration_end": "2026-09-14",
     "listing_fingerprint": "44bf3a3abc1b953ad9f260f7913ee37b2a0286e909a25f23fadc6ebcc0762652"
@@ -278,7 +278,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Taubaté - SP retifica concursos públicos com vagas para diversas áreas",
     "registration_end": "2026-08-09",
     "listing_fingerprint": "5807a0d553f1f294d21d495ed6a9f34b1ef73faf40e21b8fe2465b7e1c863ab5"
@@ -289,7 +289,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Ubarana - SP abre seleção com vagas imediatas e cadastro de reserva",
     "registration_end": "2026-08-24",
     "listing_fingerprint": "bcd7d38b50ef3f138542b6a0efca68d3b6c6a24ea341eaa96a8fd4a397ea0882"
@@ -300,10 +300,10 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Vargem Grande do Sul - SP abre processo seletivo para educadores e professores",
     "registration_end": "2026-09-10",
-    "listing_fingerprint": "d7ebc83aff300093a1991a232d4210f7b5b389c80ee64aa799aa439d66eba52d"
+    "listing_fingerprint": "4c20f48f0a5e25b9040d343615088ecbeec1fc81b396f97814f3a09c91ce57b4"
   },
   "https://www.pciconcursos.com.br/noticias/ufscar-sp-abre-concurso-publico-com-diversas-vagas-para-professor-de-magisterio-superior": {
     "id": "b07f6e430405fd231ddb",
@@ -311,13 +311,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UFSCar - SP abre concurso público com diversas vagas para professor de magistério superior",
     "registration_end": "2026-09-11",
     "listing_fingerprint": "abdaf11f196b04c6685564f4271eb90d2e88fe6a3e06d1bf54190c44fb0071c2",
     "last_checked": "2026-08-23T17:37:43-03:00",
     "content_hash": "279f50f1b43a8a320e2c6a7479319caaa31ecec9dcb0b66fe9c1101d0efa03cd",
-    "status": "NEW"
+    "status": "CLOSING_SOON"
   },
   "https://www.pciconcursos.com.br/noticias/unesp-abre-concurso-para-professor-substituto-na-area-de-tecnologia-de-alimentos-em-sao-jose-do-rio-preto": {
     "id": "60bd3841f078a07a41de",
@@ -325,13 +325,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UNESP abre concurso para professor substituto na área de Tecnologia de Alimentos em São José do Rio Preto",
     "registration_end": "2026-08-24",
     "listing_fingerprint": "05a2c44dc3944223f400b3cec37f00723affb0dc4c63c6926c81573c439402dc",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "content_hash": "27112e3683e3bd3f4e03a61478262da4d5cb0acde90eeb85565fb0dc1b43bd4b",
-    "status": "NEW"
+    "status": "CLOSING_SOON"
   },
   "https://www.pciconcursos.com.br/noticias/unesp-abre-concurso-para-professor-substituto-na-area-de-ciencias-sociais-aplicadas-em-rosana-sp": {
     "id": "88cbe11a720b8727d990",
@@ -339,13 +339,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UNESP abre concurso para professor substituto na área de Ciências Sociais Aplicadas em Rosana - SP",
     "registration_end": "2026-08-24",
     "listing_fingerprint": "96d3ee4566747cc81b9de721724243226979bc24b4d02e97efc5bc29c4c9e87f",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "content_hash": "cd24b3ec95a39a6e757b7a7ce5c67c7145ea3749d44180e6223033ad3136ea1c",
-    "status": "NEW"
+    "status": "CLOSING_SOON"
   },
   "https://www.pciconcursos.com.br/noticias/unesp-abre-concurso-para-professor-substituto-de-cirurgia-e-ortopedia-em-botucatu-sp": {
     "id": "aed15850f11f78846050",
@@ -353,13 +353,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UNESP abre concurso para professor substituto de Cirurgia e Ortopedia em Botucatu - SP",
     "registration_end": "2026-08-31",
     "listing_fingerprint": "f3f8bdb1e7f290fb7c74a4e53073509c637bcde7f2b02438dff643f644650436",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "content_hash": "38d1dff0ba3a97b493d0360f1e8988edd0530b95d60069daa36e6b17b0605685",
-    "status": "NEW"
+    "status": "CLOSING_SOON"
   },
   "https://www.pciconcursos.com.br/noticias/unesp-sp-abre-concurso-publico-para-professor-substituto-de-direito-publico-em-franca": {
     "id": "d50b5a4952fedcecf903",
@@ -367,13 +367,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UNESP - SP abre concurso público para professor substituto de Direito Público em Franca",
     "registration_end": "2026-08-31",
     "listing_fingerprint": "cd5fd06ee210f49e2fc246c15405f4f3629d1c46a19608794cbb78bccc929b44",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "content_hash": "f27018ebc4b3160d0a6a452914f15c25e0430e1cc592a147875c02b41c436fe0",
-    "status": "NEW"
+    "status": "CLOSING_SOON"
   },
   "https://www.pciconcursos.com.br/noticias/unesp-sp-abre-concurso-para-professor-substituto-na-faculdade-de-engenharia-em-bauru": {
     "id": "d8d3d073f9753e294f7d",
@@ -381,13 +381,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UNESP - SP abre concurso para professor substituto na Faculdade de Engenharia em Bauru",
     "registration_end": "2026-08-31",
     "listing_fingerprint": "81937f7e8a75cdafdf7e710339375d8669432f36cf106ae96ff5865b603af50e",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "content_hash": "02c6477887c2fc5a905403343f37db3f2da16efa6baa02115e682db451c63dd0",
-    "status": "NEW"
+    "status": "CLOSING_SOON"
   },
   "https://www.pciconcursos.com.br/noticias/unesp-abre-concurso-publico-para-professor-substituto-de-letras-classicas-em-araraquara-sp": {
     "id": "87d434e46574d01900bf",
@@ -395,13 +395,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UNESP abre concurso público para professor substituto de Letras Clássicas em Araraquara - SP",
     "registration_end": "2026-08-31",
     "listing_fingerprint": "ff44c2ccb0e8e086d6b7c3672aea11c4b0f76aa281fbb7a7be4a46bf48a5d452",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "content_hash": "5a5274ba49a7fad90ed1db7aac2d428d05f9113eef19620173e049ad75f1152f",
-    "status": "NEW"
+    "status": "CLOSING_SOON"
   },
   "https://www.pciconcursos.com.br/noticias/unesp-abre-vaga-para-professor-titular-no-departamento-de-cartografia-em-presidente-prudente-sp": {
     "id": "241169212aa9537c641e",
@@ -409,13 +409,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UNESP abre vaga para professor titular no Departamento de Cartografia em Presidente Prudente - SP",
     "registration_end": "2026-08-31",
     "listing_fingerprint": "904870b41727bcf94a4c35dd77a529279376e818ccaf462d482cd4888dfc63d2",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "content_hash": "451aa6c13e1f18bc06654efddb668be691dc6eac341cfe50a966e8fb4fe9ddf0",
-    "status": "NEW"
+    "status": "CLOSING_SOON"
   },
   "https://www.pciconcursos.com.br/noticias/unesp-abre-vagas-para-professor-titular-no-campus-de-bauru-sp": {
     "id": "0b1e47d419d4ec8a6033",
@@ -423,13 +423,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UNESP abre vagas para professor titular no campus de Bauru - SP",
     "registration_end": "2026-09-03",
     "listing_fingerprint": "16dcb11e34882ef1a324ba910960f2fe63b41415afcd6fc9afef1c3deda4d9b6",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "content_hash": "d17a97f50e31187f36e92cae55a0a9f08ac52daf58bf16621e1a8800dc48b570",
-    "status": "NEW"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/unesp-abre-concurso-para-professor-titular-na-faculdade-de-ciencias-farmaceuticas-em-araraquara-sp": {
     "id": "9c1b002af16cee9519c7",
@@ -437,13 +437,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UNESP abre concurso para professor titular na Faculdade de Ciências Farmacêuticas em Araraquara - SP",
     "registration_end": "2026-09-02",
     "listing_fingerprint": "4348d117e811914944758ab5c3052600fcfcf8f46966b3564667f3896b2e2cbf",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "content_hash": "577a8d249e8f6d4b0ffd0f45553dfd6212a6ee377ca4b9d86bf9556da362e3ad",
-    "status": "NEW"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/unesp-abre-concurso-para-professor-titular-em-sao-jose-dos-campos-sp": {
     "id": "00c2f8535c1a435365be",
@@ -451,13 +451,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UNESP abre concurso para professor titular em São José dos Campos - SP",
     "registration_end": "2026-09-30",
     "listing_fingerprint": "5784f56821c8b4b70fc79f2af8d4205bf68dbc3ff2318329ef376df42be3dc6f",
     "last_checked": "2026-08-23T17:37:43-03:00",
     "content_hash": "f63326a6e763d3414285097a29bf22cfd6f80e1711a32aca4b8df9f90aa31e80",
-    "status": "NEW"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/unesp-abre-concurso-publico-para-professor-titular-no-campus-de-assis-sp": {
     "id": "8c697676585ee9ab3f5c",
@@ -465,7 +465,7 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UNESP abre concurso público para Professor Titular no campus de Assis - SP",
     "registration_end": "2026-10-01",
     "listing_fingerprint": "0df82859abf5ba76fbd27c8424833675c726e10593dacbde180fc348d2d5082d",
@@ -479,13 +479,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UNESP abre concurso público para Professor Assistente de Odontologia em São José dos Campos - SP",
     "registration_end": "2026-09-29",
     "listing_fingerprint": "0d1561e5fbee12298f7e46eb07df738cf483b4988e487f2c70219630d8eb8a4a",
     "last_checked": "2026-08-23T17:37:43-03:00",
     "content_hash": "12823ab0858ee5c41838a4c927091323a5133188b07689e19ea840940b9b4fcb",
-    "status": "NEW"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/unesp-abre-concurso-para-professor-assistente-em-zootecnia-no-campus-de-botucatu-sp": {
     "id": "e0ae6671d63b514c11df",
@@ -493,13 +493,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UNESP abre concurso para Professor Assistente em Zootecnia no Campus de Botucatu - SP",
     "registration_end": "2026-09-29",
     "listing_fingerprint": "8a10506ec2cd85423231a2db68e8443c3eeae5484917b4d4733c98aeeb59fd0d",
     "last_checked": "2026-08-23T17:37:43-03:00",
     "content_hash": "1ecb9a36591f9b3df6f82d0dd914fd645785d2fe48ff8a0d86659a2db6ecf536",
-    "status": "NEW"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/unesp-abre-vaga-para-professor-titular-na-faculdade-de-medicina-de-botucatu-sp": {
     "id": "8f98a1acf9f6c38b0f36",
@@ -507,13 +507,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UNESP abre vaga para professor titular na Faculdade de Medicina de Botucatu - SP",
     "registration_end": "2026-08-28",
     "listing_fingerprint": "67acd9612c2c48ef97d8984f4a48118ce165b778b97a2fb56edd110b4c835535",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "content_hash": "6e987e89e8a69497634e6e9b448606bfb20d8381259cca21d481336229200bda",
-    "status": "NEW"
+    "status": "CLOSING_SOON"
   },
   "https://www.pciconcursos.com.br/noticias/unesp-sp-abre-concurso-para-professor-titular-na-area-de-cosmologia": {
     "id": "b037239be41db15c28dd",
@@ -521,13 +521,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UNESP - SP abre concurso para Professor Titular na área de Cosmologia",
     "registration_end": "2026-09-11",
     "listing_fingerprint": "60b34a32a0e52fb8d8b250e6d0a8346b53216ad69ecafe2a74c9514e4bb017e9",
     "last_checked": "2026-08-23T17:37:43-03:00",
     "content_hash": "3b761ac429674168c1674f7656478c5691b826b2e1b279674e53a716ac9544e3",
-    "status": "NEW"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/unesp-abre-vaga-para-professor-assistente-de-educacao-fisica-no-campus-de-rio-claro-sp": {
     "id": "adaa80e8594c98678ca7",
@@ -535,13 +535,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UNESP abre vaga para Professor Assistente de Educação Física no Campus de Rio Claro - SP",
     "registration_end": "2026-09-21",
     "listing_fingerprint": "67e5baeb6889a4f788f174e7023c9dc3aa5b0157aa987dec810124eebaa17dee",
     "last_checked": "2026-08-23T17:37:43-03:00",
     "content_hash": "11418e5b0c7d4d26526ae6f14c510b0bc6b043202d34759fe91485ef431d6bc7",
-    "status": "NEW"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/unesp-abre-concursos-publicos-para-professores-substitutos-no-campus-de-franca-sp": {
     "id": "404b9250314b61aa7b49",
@@ -549,13 +549,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UNESP abre concursos públicos para professores substitutos no campus de Franca - SP",
     "registration_end": "2026-08-31",
     "listing_fingerprint": "0e2a92d2bd6ca713051e397544a20c0a6e82dce15ba593ac04da732c97374afd",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "content_hash": "7b5e7de505b9ab68dc02ca557dd49eee6d8e3007be887cd906b7b642e97efb04",
-    "status": "NEW"
+    "status": "CLOSING_SOON"
   },
   "https://www.pciconcursos.com.br/noticias/unicamp-sp-abre-concurso-publico-para-professor-doutor-na-area-de-imunologia": {
     "id": "bb4fdff124ad8ad9c61d",
@@ -563,13 +563,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UNICAMP - SP abre concurso público para Professor Doutor na área de Imunologia",
     "registration_end": "2026-08-24",
     "listing_fingerprint": "8fc01bd759e753625c68ee08827ae4129b5c1694b23042b3654cdf13a99c2279",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "content_hash": "42d2fa82c4776dd9fc3716cc17999e7e871df66e5aff1034027fc86252e94dfc",
-    "status": "NEW"
+    "status": "CLOSING_SOON"
   },
   "https://www.pciconcursos.com.br/noticias/unicamp-sp-abre-concurso-publico-para-o-cargo-de-professor-doutor-no-instituto-de-biologia": {
     "id": "0be03b57541fae4c3064",
@@ -577,13 +577,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UNICAMP - SP abre concurso público para o cargo de Professor Doutor no Instituto de Biologia",
     "registration_end": "2026-08-24",
     "listing_fingerprint": "caaab9b37f13922bf84749ff17ebb19866e4efe6008daacf51bbef061d181134",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "content_hash": "24cd17bb898d0be451185d5ca8dfd2da9ab4de0423b49b21406844719c5cd8cd",
-    "status": "NEW"
+    "status": "CLOSING_SOON"
   },
   "https://www.pciconcursos.com.br/noticias/unicamp-sp-abre-concurso-publico-para-professor-doutor-na-area-de-fisiologia": {
     "id": "970fb305e1ca82b29350",
@@ -591,13 +591,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UNICAMP - SP abre concurso público para Professor Doutor na área de Fisiologia",
     "registration_end": "2026-08-24",
     "listing_fingerprint": "a25c87421011cd988903016238aa10c6f71b0ea75758727da0869351e1f0e3c4",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "content_hash": "6ab9bc2347bb5dbef4da42a5b1fc795efa7af9530dae21e46bf9c83490dd5361",
-    "status": "NEW"
+    "status": "CLOSING_SOON"
   },
   "https://www.pciconcursos.com.br/noticias/unicamp-sp-abre-concurso-publico-com-vaga-para-professor-doutor-em-geologia": {
     "id": "cd03fba956780d80336b",
@@ -605,13 +605,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UNICAMP - SP abre concurso público com vaga para Professor Doutor em Geologia",
     "registration_end": "2026-09-04",
     "listing_fingerprint": "87a1c52d5ee3dd95d34deee71841944c303b3c043d3afb87a837c2e6305f59f6",
     "last_checked": "2026-08-23T17:37:43-03:00",
     "content_hash": "4669542ebfa7874ca2fae74d6f8ed94f0efa3956d5df1ab4793372263b297e2c",
-    "status": "NEW"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/unicamp-sp-abre-concurso-para-professor-doutor-na-faculdade-de-engenharia-mecanica": {
     "id": "06b258e38d9ffaa04414",
@@ -619,7 +619,7 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UNICAMP - SP abre concurso para Professor Doutor na Faculdade de Engenharia Mecânica",
     "registration_end": "2026-10-01",
     "listing_fingerprint": "4cef81c82899c8d49f9eb0136fa7fa7cc47f3c8dfbb59bd8f0d14b2e2532b7c2",
@@ -633,13 +633,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UNICAMP - SP abre concurso público para Professor Doutor na área de Projeto Mecânico",
     "registration_end": "2026-10-14",
     "listing_fingerprint": "3c3ec285e3476ce7db1721d1f5677461eda373fed0ef2aa236fd1669cb5a66c5",
     "last_checked": "2026-08-23T17:37:43-03:00",
     "content_hash": "f41151b3ef5e69afbc43ae4fabb0a5924248c53129f2f1afe9ae9142a6323eea",
-    "status": "NEW"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/unicamp-sp-abre-concurso-publico-para-o-cargo-de-professor-doutor-no-instituto-de-quimica": {
     "id": "e0ac1755a4c07af5a671",
@@ -647,7 +647,7 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UNICAMP - SP abre concurso público para o cargo de professor doutor no Instituto de Química",
     "registration_end": "2026-09-01",
     "listing_fingerprint": "e581a833039a30f855b05a93805d373ac4706d108c6419a457e766a7ce01d17b",
@@ -661,13 +661,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UNICAMP - SP abre concurso público para Professor Doutor no Instituto de Matemática, Estatística e Computação Científica",
     "registration_end": "2026-09-16",
     "listing_fingerprint": "a3205c688a85feb1ff860041b25dc05c86b00597d3056d84f2cf356fbdc04fd3",
     "last_checked": "2026-08-23T17:37:43-03:00",
     "content_hash": "c3ff4f7d5680bd97790a422246dbfe5a882eae308a8cb2cb2b8de3a534561f8c",
-    "status": "NEW"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/unicamp-sp-abre-concurso-para-professor-doutor-em-educacao-fisica-e-sociedade": {
     "id": "e2ce7196f96b0db9fb83",
@@ -675,13 +675,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UNICAMP - SP abre concurso para Professor Doutor em Educação Física e Sociedade",
     "registration_end": "2026-09-10",
     "listing_fingerprint": "a8bd3f2c635fedad6c82d77884038489f9af8a6f026d5bb34b108f1cd3872dd1",
     "last_checked": "2026-08-23T17:37:43-03:00",
     "content_hash": "6d5add29633da54d733baa97f862766a4c14e3fc2b1440179d35004ec2d524ab",
-    "status": "NEW"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/unicamp-sp-abre-concurso-para-professor-titular-na-area-de-desenvolvimento-economico": {
     "id": "563e8e09853ce86eb5da",
@@ -689,13 +689,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UNICAMP - SP abre concurso para Professor Titular na área de Desenvolvimento Econômico",
     "registration_end": "2026-09-20",
     "listing_fingerprint": "c85fa26363719c2a0b0bf517aaec2a4b6c05b744a47375011b259b5ad317d780",
     "last_checked": "2026-08-23T17:37:43-03:00",
     "content_hash": "954ead56c39a49e5096f621e7c0bb8742531e939dfa2f0b11f2a8e774c11c081",
-    "status": "NEW"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/usp-abre-concurso-para-professor-doutor-no-departamento-de-musica-de-ribeirao-preto-sp": {
     "id": "2c432b73b31fb387ebfd",
@@ -703,13 +703,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "USP abre concurso para Professor Doutor no Departamento de Música de Ribeirão Preto - SP",
     "registration_end": "2026-09-08",
     "listing_fingerprint": "eb418a509926661462da32750aa22e18ab3d3a5f321cd954432bb7ed607dd8a6",
     "last_checked": "2026-08-23T17:37:43-03:00",
     "content_hash": "60ea7588960a0902a9279a22e871214a8f7dce39d65f410aa5283f877e134a82",
-    "status": "NEW"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/usp-abre-concursos-publicos-para-professores-titulares-em-diversas-areas-de-atuacao": {
     "id": "b140523bb0b816a78c6e",
@@ -717,13 +717,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "USP abre concursos públicos para professores titulares em diversas áreas de atuação",
     "registration_end": "2026-12-14",
     "listing_fingerprint": "a18b6b280fa17f232b862648fd793e66d32b38be28f82f6fe229d108545a6c29",
     "last_checked": "2026-08-23T17:37:43-03:00",
     "content_hash": "1da30428841ac7a0745dc9b8dfd61480722aced2de04ad2a744aa86ca3af3f68",
-    "status": "NEW"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/usp-abre-concurso-publico-para-o-cargo-de-professor-doutor-no-departamento-de-ciencia-da-computacao": {
     "id": "a10eeadc5b4a64a86ce5",
@@ -731,13 +731,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "USP abre concurso público para o cargo de Professor Doutor no Departamento de Ciência da Computação",
     "registration_end": "2026-09-30",
     "listing_fingerprint": "37bf5c0f841ae6d1ee1273df3f07f7f17f945e183f70714e1aa9a260ce8e7700",
     "last_checked": "2026-08-23T17:37:43-03:00",
     "content_hash": "800d51f7f2289798dff65b2bc11e02fa44b0966c50ea6ec8106b9a46e07be984",
-    "status": "NEW"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/usp-abre-concursos-para-o-cargo-de-professor-doutor-na-escola-de-engenharia-de-lorena": {
     "id": "d82807fe6471ae5db018",
@@ -745,13 +745,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "USP abre concursos para o cargo de Professor Doutor na Escola de Engenharia de Lorena",
     "registration_end": "2026-08-31",
     "listing_fingerprint": "e99bd9a85316ae00ee12e95a19b2691029ec2ea66aef86a8659710844b91c713",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "content_hash": "271ed5dd15ea9dc2b0e2699936a86f0a16052b69d94310030c39aea155436bd6",
-    "status": "NEW"
+    "status": "CLOSING_SOON"
   },
   "https://www.pciconcursos.com.br/noticias/usp-abre-concurso-publico-para-o-cargo-de-professor-doutor-no-instituto-de-fisica": {
     "id": "1bd405b83aef586118fc",
@@ -759,7 +759,7 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "USP abre concurso público para o cargo de Professor Doutor no Instituto de Física",
     "registration_end": "2026-10-01",
     "listing_fingerprint": "ba16d526e75a5525fb2a5346fb3e411e5d7989f631571e2acd52cc483af07d6c",
@@ -773,13 +773,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "USP abre concurso público para o cargo de Professor Titular no Instituto de Relações Internacionais",
     "registration_end": "2027-01-15",
     "listing_fingerprint": "5d12c2b012105fdee166a2e4f90c6341989136dea9fcc805514623b4a731e73f",
     "last_checked": "2026-08-23T17:37:43-03:00",
     "content_hash": "00e5a4110bc76b4281e5493c98e6d063000ca524f81bcb343b3f92e932cd1e7b",
-    "status": "NEW"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/usp-sp-abre-concurso-publico-para-professor-doutor-na-area-de-esporte-paralimpico": {
     "id": "9edb641c548eb447fc2a",
@@ -787,13 +787,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "USP - SP abre concurso público para professor doutor na área de Esporte Paralímpico",
     "registration_end": "2026-10-02",
     "listing_fingerprint": "ff9e6884a67afc714a51f066122c74514db4fa09ccdaaf7d128534249ad31c25",
     "last_checked": "2026-08-23T17:37:43-03:00",
     "content_hash": "4ec3a81ecd00fe912af4495da2b80ab2c38b3f8625773f65a397f6ff1e54c123",
-    "status": "NEW"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/usp-sp-abre-concurso-publico-para-o-cargo-de-professor-titular-na-area-de-sistemas-de-computacao": {
     "id": "29ecc6c7cbf458f93046",
@@ -801,13 +801,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "USP - SP abre concurso público para o cargo de Professor Titular na área de Sistemas de Computação",
     "registration_end": "2027-01-08",
     "listing_fingerprint": "f8816e766d83027b06e037c53806883fdfff64ca60a6f57d0ee67bf45ad0ae16",
     "last_checked": "2026-08-23T17:37:43-03:00",
     "content_hash": "4b713d95dee52040537b5d584ae68b2be63777dc02e19a9d955127e97983d9c6",
-    "status": "NEW"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/usp-abre-concursos-para-professores-doutores-na-faculdade-de-medicina": {
     "id": "e1a91eb827180552fc92",
@@ -815,13 +815,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "USP abre concursos para professores doutores na Faculdade de Medicina",
     "registration_end": "2026-09-30",
     "listing_fingerprint": "f350e1f9c7d1373a72ac4c80e525b1e5c5f5ca5dace51946b85c1cf25bdeb08c",
     "last_checked": "2026-08-23T17:37:43-03:00",
     "content_hash": "9304bb62cd246705b76819d58d2d5abe4558fcf4190cbbcb4146b43143b49c32",
-    "status": "NEW"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/usp-abre-concursos-publicos-para-o-cargo-de-professor-doutor-na-faculdade-de-medicina": {
     "id": "cf3055580de417a3dd0c",
@@ -829,13 +829,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "USP abre concursos públicos para o cargo de Professor Doutor na Faculdade de Medicina",
     "registration_end": "2026-10-02",
     "listing_fingerprint": "2c87a8f6a9faa54f62199cd30ef560aa03e71e80724b389c45ad9589feae00fc",
     "last_checked": "2026-08-23T17:37:43-03:00",
     "content_hash": "ef39a653f5ccd617d62bb9a3719707a8779c7a39f52bd56224e74f0dcbcfea45",
-    "status": "NEW"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/usp-abre-concurso-publico-para-professor-titular-nas-areas-de-lepidoptera-e-diptera": {
     "id": "52864ff3e446055ebdc3",
@@ -843,13 +843,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "USP abre concurso público para Professor Titular nas áreas de Lepidoptera e Diptera",
     "registration_end": "2027-02-06",
     "listing_fingerprint": "bd9a4045c870341991953c5f677b6cc744ca6db4f8038b38284269596e3207ee",
     "last_checked": "2026-08-23T17:37:43-03:00",
     "content_hash": "bb376cf9cae7d54a44d6bd25e4619ddc1bfe7a28efa6bd0242c185489dc5c9b4",
-    "status": "NEW"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/usp-abre-concurso-para-professor-doutor-na-faculdade-de-educacao": {
     "id": "8819986aa3fe25796f2a",
@@ -857,13 +857,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "USP abre concurso para Professor Doutor na Faculdade de Educação",
     "registration_end": "2026-10-13",
     "listing_fingerprint": "4ec66b99e036021bce4597ae586f0d998d91a60654d2edd780c43b1c0aeb0c13",
     "last_checked": "2026-08-23T17:37:43-03:00",
     "content_hash": "c01e3166aeede6b5f5c2dddd4c8b71f1e4e58d069caa6873a52385c425c8ea64",
-    "status": "NEW"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/usp-abre-concurso-publico-para-professor-doutor-na-faculdade-de-direito-de-ribeirao-preto": {
     "id": "8882cde9cbe9b44ac139",
@@ -871,13 +871,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "USP abre concurso público para professor doutor na Faculdade de Direito de Ribeirão Preto",
     "registration_end": "2026-09-15",
     "listing_fingerprint": "7648edf71e6a2ff138d6a2502cbc56c6b6bb782c97219a0e03582d0093c00ad8",
     "last_checked": "2026-08-23T17:37:43-03:00",
     "content_hash": "0e052131a68f086aeb54daaab130bf5d8328983b075fb0c633a55a6d9b9b84e9",
-    "status": "NEW"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/prefeitura-de-guapimirim-rj-abre-concurso-publico-com-vagas-para-professores": {
     "id": "2fa4b8bb07bc1ea4a1d8",
@@ -885,7 +885,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Guapimirim - RJ abre concurso público com vagas para professores",
     "registration_end": "2026-09-10",
     "listing_fingerprint": "5624090e48e813d17e0d9ce434ed5f2627daa214e8a41eab60c04b9f1e32f304"
@@ -896,7 +896,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Comando do 1º Distrito Naval da Marinha - RJ abre Processo Seletivo para Oficiais de 3ª Classe",
     "registration_end": "2026-09-08",
     "listing_fingerprint": "369251f01b976cec93f148800440cef1ddf118fd3e4eae15ad441a6683272914"
@@ -907,7 +907,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Engenheiro Paulo de Frontin - RJ abre concurso com salários de até R$ 4.277,48",
     "registration_end": "2026-09-17",
     "listing_fingerprint": "80f66b3c42e78c647c2a24fb9b42af4053e3bec7feaed700f0b6e671d278bae9"
@@ -918,13 +918,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UERJ abre concurso com vagas para professor adjunto na área de enfermagem",
-    "registration_end": "2026-09-02",
+    "registration_end": "2026-10-19",
     "listing_fingerprint": "143d71c2534ab82400c6a34bf3cdb25e37cfb48ab126891b2576be986e58b019",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "content_hash": "46e583a9052af7218828acccf31d6af899fb03b15877318a5197565a75e81f7c",
-    "status": "NEW"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/uerj-abre-vaga-para-professor-adjunto-na-area-de-enfermagem-de-saude-publica": {
     "id": "aaed78a537d0b59e067d",
@@ -932,13 +932,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UERJ abre vaga para professor adjunto na área de enfermagem de saúde pública",
     "registration_end": "2026-09-02",
     "listing_fingerprint": "319cb529420f5ce7ba6a7251a62a87d77b3fe440c98f58005ab7b1c5af37fee2",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "content_hash": "bbdc6007db662b0df99c151cebb29ae89ad8c5bf350fa69acc6d3c741d85d69b",
-    "status": "NEW"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/uerj-publica-edital-de-concurso-para-o-cargo-de-professor-adjunto-na-area-de-ensino-de-geografia": {
     "id": "79f01a00b668434a22e8",
@@ -946,13 +946,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UERJ publica edital de concurso para o cargo de Professor Adjunto na área de Ensino de Geografia",
     "registration_end": "2026-09-24",
-    "listing_fingerprint": "059532908651d437c81ff1523b96dd85dfbe13fa9279ae1c7d1eb8fd4afd576b",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "listing_fingerprint": "c8fcec8f8ecde5ca1e5698560b558fb8fd2b2a51ae56dd382b6e836b9c7b4e79",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "content_hash": "96488b7761e05a0036fb965f58b085dd43a833d0be868f0b0ab22a3a5096ee6c",
-    "status": "NEW"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/uerj-abre-vaga-em-concurso-publico-para-professor-adjunto-na-faculdade-de-engenharia": {
     "id": "256681b07662b2092fa4",
@@ -960,13 +960,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UERJ abre vaga em concurso público para professor adjunto na Faculdade de Engenharia",
     "registration_end": "2026-09-03",
     "listing_fingerprint": "eae12a86aca4b965e4cea0e8153b288aa9fbc9edd4fbff0f6294d84533b46546",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "content_hash": "142d6159d6a0eadc9f8226824d3a141cbee8ad310757f9a8d19a14ee4e19ca51",
-    "status": "NEW"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/uerj-concurso-publico-abre-vaga-para-professor-adjunto-de-pneumologia-e-tisiologia": {
     "id": "8aad8050483872e76b59",
@@ -974,13 +974,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UERJ: Concurso público abre vaga para professor adjunto de pneumologia e tisiologia",
     "registration_end": "2026-08-25",
     "listing_fingerprint": "06a68d957a47a4e36cb1d9e9c0b16d29da66ad8e60f3da476495a5bd7a33e335",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "content_hash": "d02946c13823b4feb3f4bdbb643f1a78db1ece87611e2f5bde48e963f4afdc36",
-    "status": "NEW"
+    "status": "CLOSING_SOON"
   },
   "https://www.pciconcursos.com.br/noticias/uerj-abre-concurso-publico-para-professor-adjunto-de-ciencia-da-computacao": {
     "id": "3d3db56a92866e9051ed",
@@ -988,13 +988,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UERJ abre concurso público para professor adjunto de Ciência da Computação",
     "registration_end": "2027-01-31",
     "listing_fingerprint": "beb0453a55efd178891f6cf6e1eeed5a457bc6c7443b2c722462673d73e90219",
     "last_checked": "2026-08-23T17:37:43-03:00",
     "content_hash": "d9712b7a0579f50625a112e5641303ce645ad34f5ae841f9da8941fa23254107",
-    "status": "NEW"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/prefeitura-de-paracatu-mg-publica-edital-retificado-de-concurso-publico": {
     "id": "9233ba1ac9bf1d7f5ffb",
@@ -1002,7 +1002,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Paracatu - MG publica edital retificado de concurso público",
     "registration_end": "2026-09-03",
     "listing_fingerprint": "11ea4ee492d48182bee83f73afb411964243bbb2dca3998693052e77808b50ae"
@@ -1013,7 +1013,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "FUMEP de Sete Lagoas - MG abre concurso público para diversos níveis de escolaridade",
     "registration_end": "2026-11-18",
     "listing_fingerprint": "0e7f36a26dd85a99fd5dbc3a29f084f33c04baf831c89fab64c07cad17e7afda"
@@ -1024,7 +1024,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura e Câmara de Tombos - MG abrem concurso público com diversas vagas e cadastro de reserva",
     "registration_end": "2026-09-03",
     "listing_fingerprint": "fd233ca023eb496e794e352af779499c0f6d38ea77a79a3e632764e948952fcd"
@@ -1035,7 +1035,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Água Comprida - MG abre concurso com salários de até R$ 10.788,38",
     "registration_end": "2026-08-27",
     "listing_fingerprint": "db66b5354950fe17106504d33679a2777661eed5a18d147935f1f8d47c0810aa"
@@ -1046,7 +1046,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Bom Jardim de Minas - MG reabre inscrições para Agente Comunitário de Saúde",
     "registration_end": "2026-08-25",
     "listing_fingerprint": "81e1093593a8ac2a2d33d0dac6292b77925fd4e7d3e7877255bb172baadb7d64"
@@ -1057,7 +1057,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Campanário - MG publica edital de concurso público com diversas vagas",
     "registration_end": "2026-10-02",
     "listing_fingerprint": "463cdf0341fa1c1e9fd17e55bcd31b239cd31e0d116a3bac1ff6ef024b65ba37"
@@ -1068,7 +1068,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Capitólio - MG abre vaga para professor de educação básica A",
     "registration_end": "2026-08-24",
     "listing_fingerprint": "8b5fb980d86cb8d7d8ceef63ff4cb946a1dd0c8ff5c424413e44cd157a874f06"
@@ -1079,7 +1079,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Cláudio - MG abre concurso público para cargos de nível superior na educação",
     "registration_end": "2027-01-04",
     "listing_fingerprint": "ebc6170beece19caec65908c116853369075b64253639510f825b02c681e7c7a"
@@ -1090,7 +1090,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Conceição da Barra de Minas - MG retifica edital de concurso público com salários de até R$ 16.016,13",
     "registration_end": "2026-09-18",
     "listing_fingerprint": "aab6b32e41aeef4b0fd18239d43773e9cf1f7c5d13fcca308b53abc44afee721"
@@ -1101,7 +1101,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Conceição do Mato Dentro - MG abre concurso público com salários de até R$ 21.138,26",
     "registration_end": "2026-11-06",
     "listing_fingerprint": "e91d7bc4e22b546213b84e8a65041c4f944e9bb198234bb4a1d3c8e982838272"
@@ -1112,7 +1112,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Delfinópolis - MG abre concurso e processo seletivo com diversas vagas",
     "registration_end": "2026-09-03",
     "listing_fingerprint": "c612dcb319169dbca0c33a2651e0f78f880f2bd4fd73d19ce06aca30eb6cfad6"
@@ -1123,7 +1123,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Delfinópolis - MG abre editais de concurso e processo seletivo",
     "registration_end": "2026-09-03",
     "listing_fingerprint": "bf3114987968be90a1936279c4dc8a5d58e90c72341931a6aace0d2a62f90e65"
@@ -1134,7 +1134,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Dores do Indaiá - MG abre concurso público com salários de até R$ 18.702,17",
     "registration_end": "2026-10-02",
     "listing_fingerprint": "b215f7265c0331e01f3649c31b7990621231b66f288486a54d2a1b06042f7dd6"
@@ -1145,7 +1145,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Faria Lemos - MG abre concurso público com remunerações de até R$ 16.803,20",
     "registration_end": "2026-09-04",
     "listing_fingerprint": "7fb904082f2f3cf71923035dd36bfaa09d7f28b33a12479cdb934d8828e51d88"
@@ -1156,7 +1156,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Ipaba - MG abre concurso público com salários de até R$ 5.275,34",
     "registration_end": "2026-10-08",
     "listing_fingerprint": "bb7f4df3a3667754f5208166dcfcaf498bcee9c11ee2dc61a32909db1b4156c8"
@@ -1167,7 +1167,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de João Monlevade - MG abre vagas para profissionais da educação",
     "registration_end": "2026-08-25",
     "listing_fingerprint": "2447c3ce321a076b885a90fe9728a86bc0e436e8f3acab58eac7f90cefe68e2d"
@@ -1178,7 +1178,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Nova União - MG abre concurso público com salários de até R$ 4.699,50",
     "registration_end": "2026-08-27",
     "listing_fingerprint": "56bf1f0b198f8a6d6fbc40f058fc2ad31dce7421435928b4430b1fde452a38d1"
@@ -1189,7 +1189,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Oliveira Fortes - MG abre concurso com salários de até R$ 10.331,93",
     "registration_end": "2026-09-29",
     "listing_fingerprint": "90313ac40c350467970f9057de6bb64f74d6151801424eded583718a33683670"
@@ -1200,7 +1200,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Paiva - MG abre concurso público com salários de até R$ 11.715,84",
     "registration_end": "2026-11-18",
     "listing_fingerprint": "b9505f31d2f0fc20874c1aa04655f5ab752dbea0db3c0f87c23b455c2227c61e"
@@ -1211,7 +1211,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Pedra Dourada - MG divulga retificações do concurso público e do processo seletivo",
     "registration_end": "2026-10-09",
     "listing_fingerprint": "e8281d1eaa4addcfbbfe99c10f90c9c87896862136e4e6bcc5f233181fcfcbb3"
@@ -1222,7 +1222,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Pedro Teixeira - MG publica edital de concurso público com salários de até R$ 5.494,76",
     "registration_end": "2026-10-30",
     "listing_fingerprint": "cc9c0aac22ee039d516b9d66d981f4092a8410475ecd9f1e617e80c83061314c"
@@ -1233,7 +1233,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Piracema - MG abre concurso e processo seletivo com diversas vagas",
     "registration_end": "2026-11-18",
     "listing_fingerprint": "b6ac66d22e4c6486eb53a7e1ad85fd2cfad5a3a3e7f6bbde28a7dc0bf3b2fc17"
@@ -1244,7 +1244,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Ponte Nova - MG abre processo seletivo para profissionais da educação básica",
     "registration_end": "2026-12-29",
     "listing_fingerprint": "ec3396d6e23c4d5d0f845700c453dda0916a2597b2ec2b53e351d1f31f4ea757"
@@ -1255,7 +1255,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Rochedo de Minas - MG abre vagas para Professor de Matemática e Psicólogo",
     "registration_end": "2026-08-24",
     "listing_fingerprint": "a6c43c84b6c1968407a35882b89b069ae5326b5c999feb84cb62f410fd720c05"
@@ -1266,7 +1266,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Santana de Pirapama - MG abre concurso com salários de até R$ 6.221,41",
     "registration_end": "2026-11-10",
     "listing_fingerprint": "28b460150616d2b64e0ef99323385c39c20c433353ddf675bceb7614c0b76859"
@@ -1277,7 +1277,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de São Félix de Minas - MG abre concurso público com salários de até R$ 12 mil",
     "registration_end": "2026-09-02",
     "listing_fingerprint": "5edc90340e4eb742a3fb2256b01d2221bd6364b0f8347894307e19009536ff10"
@@ -1288,13 +1288,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de São João del-Rei e DAMAE - MG abrem concursos com salários de até R$ 6.469,28",
     "registration_end": "2026-11-12",
     "listing_fingerprint": "34013fc412927d863c2b2e6ff48f065fcd924bdc92a16ba3147532c51c985c7c",
     "last_checked": "2026-08-23T17:37:43-03:00",
     "content_hash": "c427c25835f7be442d179cbea6810c24ae15fadaa1ea506bbe4bb8f09e8ac914",
-    "status": "NEW"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/prefeitura-de-sao-lourenco-mg-abre-processo-seletivo-para-as-secretarias-de-educacao-e-desenvolvimento-social": {
     "id": "572b7f159f139f75bd07",
@@ -1302,13 +1302,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de São Lourenço - MG abre processo seletivo para as secretarias de educação e desenvolvimento social",
     "registration_end": "2026-08-28",
-    "listing_fingerprint": "95000609579fb8984a95007af2fff3734368698a21c711dc831fa0eaf8936ba6",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "listing_fingerprint": "148e99d50af613ca77c0cb4f8225980b1118a931fbd84cd8a378088c884d789d",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "content_hash": "9e03303065e537adec102bdded4e259d800f2441e3a4fe0a4512a21270645b33",
-    "status": "NEW"
+    "status": "CLOSING_SOON"
   },
   "https://www.pciconcursos.com.br/noticias/prefeitura-de-sao-vicente-de-minas-mg-abre-concurso-publico-com-salarios-de-ate-15142": {
     "id": "88b96c0d5f7485ca6427",
@@ -1316,7 +1316,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de São Vicente de Minas - MG abre concurso público com salários de até R$ 15.142,28",
     "registration_end": "2026-11-05",
     "listing_fingerprint": "75a30c5bba682f09331ab1df16f173a35c5a2d4b0d69266c64982c972233f37a"
@@ -1327,7 +1327,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Secretaria Municipal de Educação de Belo Horizonte - MG abre concurso para Professor Municipal",
     "registration_end": "2027-01-19",
     "listing_fingerprint": "5972e36ccd1e2eb8bcabeb6c231425e9d886c4795e906400cab40fab178f9463"
@@ -1338,13 +1338,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UFMG abre concursos públicos com três vagas para professores",
     "registration_end": "2026-09-14",
     "listing_fingerprint": "7fb62bf5b6de72ad8be7a061b035c0b3e2de041af4531838df8ab922df548d8a",
     "last_checked": "2026-08-23T17:37:43-03:00",
     "content_hash": "e498525e32b318f289a88770e544239fde1504935aa9f4ec750d37867d8b9576",
-    "status": "NEW"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/ufmg-abre-concursos-publicos-para-professores-do-magisterio-superior": {
     "id": "636a224f051eb92c4ef0",
@@ -1352,13 +1352,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UFMG abre concursos públicos para professores do magistério superior",
     "registration_end": "2026-08-31",
     "listing_fingerprint": "7307113756fed14a85c6cd8f5f7db2d338ab3ef9521bf9576d7edab27ecc833c",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "content_hash": "e4ad4d218ef8cfc49e6064dd25959202c2d6c9a59a98446e007545327583c6ca",
-    "status": "NEW"
+    "status": "CLOSING_SOON"
   },
   "https://www.pciconcursos.com.br/noticias/ufmg-abre-concurso-publico-para-professor-de-magisterio-superior-na-area-de-antropologia-do-desenvolvimento": {
     "id": "87c0f5b416b4ab1aeee3",
@@ -1366,13 +1366,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UFMG abre concurso público para professor de magistério superior na área de Antropologia do Desenvolvimento",
     "registration_end": "2026-10-14",
     "listing_fingerprint": "e992c0ad9123b01194755288a8cdaaa4a016aab613b07dceed5e0eb7aadd5fcd",
     "last_checked": "2026-08-23T17:37:43-03:00",
     "content_hash": "c403c3b7ff1dd2c18df0b23e2c5f56ab52674b40865b22d2206ee2051eaee4ea",
-    "status": "NEW"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/ufmg-mg-abre-concurso-publico-para-professor-no-departamento-de-clinica-medica": {
     "id": "5bd587ee5c8ad727bd78",
@@ -1380,13 +1380,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UFMG - MG abre concurso público para professor no Departamento de Clínica Médica",
     "registration_end": "2026-09-02",
     "listing_fingerprint": "39c007551097064c2ee7ee91d27c6432aa543c707d64899f85e809b69f7a934f",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "content_hash": "c2e229975ce2fcb90cd135ff25a2e48e02779e13f06d5beecc422d965ed6eca5",
-    "status": "NEW"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/ufmg-mg-abre-concurso-para-cargo-de-professor-na-area-de-citologia": {
     "id": "1d79f1c57ef65df3a4df",
@@ -1394,13 +1394,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UFMG - MG abre concurso para cargo de professor na área de Citologia",
     "registration_end": "2026-10-20",
     "listing_fingerprint": "fab87d92728c07f6106926d57ce4c21550063ae2ba8aa0812ba666e4875f6d2c",
     "last_checked": "2026-08-23T17:37:43-03:00",
     "content_hash": "f621f7d83a00adab6096a3931738f4b5659d7f17631120c2cdae4fad59fd1713",
-    "status": "NEW"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/ufu-mg-abre-processos-seletivos-para-professores-substitutos-e-visitantes": {
     "id": "4bae00de31581db319ce",
@@ -1408,13 +1408,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UFU - MG abre processos seletivos para professores substitutos e visitantes",
-    "registration_end": "2026-09-03",
+    "registration_end": "2026-08-27",
     "listing_fingerprint": "8b579a20c16ab663214b5b99647f10d1196cb8875d564cc91465fdac76dfb45c",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "content_hash": "7fa0b1b54e01378c978b631bd728f89930a7f562153bacb1a04df0298454683a",
-    "status": "NEW"
+    "status": "CLOSING_SOON"
   },
   "https://www.pciconcursos.com.br/noticias/unifei-mg-abre-concurso-para-professores-com-salarios-de-13753": {
     "id": "5b7c83dce5f3e1815ed4",
@@ -1422,13 +1422,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UNIFEI - MG abre concurso para professores com salários de R$ 13.753,69",
     "registration_end": "2026-09-20",
     "listing_fingerprint": "257e4131ef9fe5c21af66d52b6adfc20503d860cb6d9eba747e14d6e60375910",
     "last_checked": "2026-08-23T17:37:43-03:00",
     "content_hash": "1e3ca0b4dfe9c5786806610dcc01e35689e21c42deae899256835ae37a0b74fe",
-    "status": "NEW"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/unimontes-mg-publica-edital-de-concurso-publico-para-professores-de-educacao-superior": {
     "id": "9df4cfdb95f2775b56df",
@@ -1436,13 +1436,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Unimontes - MG publica edital de concurso público para professores de educação superior",
     "registration_end": "2026-09-24",
-    "listing_fingerprint": "351d1710751505f51ed95eb43d4c36a04fcf18a16c9c1fbcfb991cab89a7f75b",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "listing_fingerprint": "ee2a17ea4bd047521e0f0f8c7d0a85dc3c9e6fc3c8f2e75812e181bb5861a56e",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "content_hash": "cda4e011abf7d3e69c3cb081659e16b9e853f480d01e67e84f7cdaaa6d524e5b",
-    "status": "NEW"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/unimontes-mg-abre-concurso-publico-para-professores-na-area-de-educacao-fisica": {
     "id": "2d00691bd27266429a7b",
@@ -1450,13 +1450,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Unimontes - MG abre concurso público para professores na área de educação física",
     "registration_end": "2026-10-28",
     "listing_fingerprint": "01f55e4c10914b139f053718e447324b99f62cc205a2ee868ed7f5d1372eb7de",
     "last_checked": "2026-08-23T17:37:43-03:00",
     "content_hash": "8d6ee551809cbd3cad488d9687e0e79abcc9def657d2d6e891aac3955ec42da6",
-    "status": "NEW"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/prefeitura-de-santa-teresa-es-abre-selecao-para-assistente-social-e-professor-de-educacao-fisica": {
     "id": "c047c01df2b5f4cd61a1",
@@ -1464,10 +1464,10 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Santa Teresa - ES abre seleção para Assistente Social e Professor de Educação Física",
     "registration_end": "2026-08-30",
-    "listing_fingerprint": "49d54855252fafe9a4fd552548353c34a6fa6092b5607fcea8b40e92a446f36a"
+    "listing_fingerprint": "a123b1d0b279431d61b694cf792bbea13728e23afee102cbeeccda7939dfa8cd"
   },
   "https://www.pciconcursos.com.br/noticias/sedu-es-abre-processo-seletivo-para-professores-da-educacao-profissional-tecnica": {
     "id": "8907b57fde93558c1790",
@@ -1475,7 +1475,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "SEDU - ES abre processo seletivo para professores da educação profissional técnica",
     "registration_end": "2026-08-26",
     "listing_fingerprint": "b765b31e1a8575357888eecd4b2a9afb130f9df0d9cfcf257830a3dcc78ceadd"
@@ -1486,7 +1486,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Marialva - PR abre concurso público com salários de até R$ 6.768,66",
     "registration_end": "2026-09-03",
     "listing_fingerprint": "3739e2b7aaf08f46f65cdbd1e1a11b93d3aed15d8ea3de2356fd3f564d3399db"
@@ -1497,7 +1497,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Apucarana - PR retifica os editais de processos seletivos com salários de até R$ 11.957,61",
     "registration_end": "2026-09-01",
     "listing_fingerprint": "a6eec64ca3ebd21bb3f9a6dac848417c85933f9d9af05d1b0b40914bf38e5849"
@@ -1508,7 +1508,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Balsa Nova - PR abre processo seletivo com vagas para professores",
     "registration_end": "2026-09-03",
     "listing_fingerprint": "aab0386e3e7be2804af562a5cdb0ada36250520d61530d9777459b50e410c37c"
@@ -1519,7 +1519,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Cianorte - PR abre concurso público com salários de até R$ 13.692,14",
     "registration_end": "2026-08-25",
     "listing_fingerprint": "8b576e79f2b2b2a3fb0d495cc2d3c8670bbbff422c403c2f135fdab64333f1d3"
@@ -1530,7 +1530,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Contenda - PR retifica edital de concurso público com salários de até R$ 5.219,68",
     "registration_end": "2026-08-31",
     "listing_fingerprint": "409b976417342bef7c5ed8d6b289e5f5dbadaff739ea52d26e01999376a94c5d"
@@ -1541,7 +1541,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Coronel Vivida - PR retifica edital de concurso público com salários de até R$ 21.525,56",
     "registration_end": "2026-10-08",
     "listing_fingerprint": "666c02f2ab9f8a3bbeeff2b55b7b5c84595928cedbc73947f84c934212fb4a02"
@@ -1552,7 +1552,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Matinhos - PR publica edital de concurso público com salários de até R$ 20.330,16",
     "registration_end": "2026-08-27",
     "listing_fingerprint": "6d21f334739b09b2af7e54e12905bd6fe1ac258cd07c8fffe0ba978bbc098700"
@@ -1563,7 +1563,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Perobal - PR abre concursos para diversos cargos e cadastro de reserva",
     "registration_end": "2026-09-10",
     "listing_fingerprint": "26cba30f05ac55ea5e283457dfd185668bc1de742a3d5fe78026cba9447912ce"
@@ -1574,7 +1574,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Quatro Pontes - PR abre concurso público com salários de até R$ 15.970,05",
     "registration_end": "2026-09-08",
     "listing_fingerprint": "0e3b3fcef7eefa442f84d643ee740affa070e8ce860436ff81b401b8034c4d2c"
@@ -1585,7 +1585,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Quitandinha - PR lança concurso público com salários de até R$ 12.111,16",
     "registration_end": "2026-09-01",
     "listing_fingerprint": "8192a129902f68d2019b7bf7f8e4a696cfce46acb3c50909029f458ee307985f"
@@ -1596,7 +1596,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Rancho Alegre D'Oeste - PR retifica edital de concurso público com salários de até R$ 14.322,64",
     "registration_end": "2026-08-27",
     "listing_fingerprint": "079894c47ee29df32a82cc356cb3d55d39930977673e77da046bef248e1ef392"
@@ -1607,7 +1607,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Tapejara - PR abre concurso público com vagas para professores",
     "registration_end": "2026-09-08",
     "listing_fingerprint": "f953ae55e5ddd6e47ca762a58c3cb73499bd63695d782724939ceebad74699b5"
@@ -1618,7 +1618,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "SEED - PR publica edital retificado de processo seletivo para Professores e Pedagogos",
     "registration_end": "2026-08-24",
     "listing_fingerprint": "a6aa5500deaa414ccf260bebcba596bdfef155e300c22fc2e57fa74dfbbc83ec"
@@ -1629,13 +1629,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UEL - PR abre processo seletivo para professores temporários com diversas áreas de atuação",
     "registration_end": "2026-08-28",
     "listing_fingerprint": "fa9fea92a1b63162978e981f1441d64d6a70f2db33e4869748603791e5bb09c5",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "content_hash": "ebd285a6790a6496f838c243cbe9ca61dd713b692cbab9c540b4f3059a44d116",
-    "status": "UPDATED"
+    "status": "CLOSING_SOON"
   },
   "https://www.pciconcursos.com.br/noticias/uem-pr-abre-processo-seletivo-com-vagas-para-professores-colaboradores": {
     "id": "40724a689027c926c3a9",
@@ -1643,13 +1643,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UEM - PR abre processo seletivo com vagas para professores colaboradores",
     "registration_end": "2026-09-16",
     "listing_fingerprint": "cc49c658512952fc1572eda41839929481a415255bddf6bf16e1dcd9921a61b8",
     "last_checked": "2026-08-23T17:37:43-03:00",
     "content_hash": "0d639fadd9c2d1c41a8932d0060155e5f5fd58c0cb0927bbf91dd77c5520ee28",
-    "status": "UPDATED"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/unila-pr-abre-concurso-publico-para-o-cargo-de-professor-do-magisterio-superior": {
     "id": "d409eb7b3c3572d44ae6",
@@ -1657,13 +1657,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UNILA - PR abre concurso público para o cargo de Professor do Magistério Superior",
     "registration_end": "2026-09-13",
     "listing_fingerprint": "00aa0930862c0304e6880106ef594f646e6ce35c049c522ef315e7ed9b22d66a",
     "last_checked": "2026-08-23T17:37:43-03:00",
     "content_hash": "e5facf140fedb673aa30d42c7b6d3295eadd60b083c27bfd6b5f925de65baf6f",
-    "status": "NEW"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/unila-pr-abre-processo-seletivo-para-professor-substituto-de-matematica": {
     "id": "4033d72ec6b6c22ac437",
@@ -1671,13 +1671,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UNILA - PR abre processo seletivo para professor substituto de matemática",
     "registration_end": "2026-09-22",
-    "listing_fingerprint": "bebd43da4fb01b1a0cb68692d3afeff5aa8765e3320165d7c8bb8e93e7f69e9d",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "listing_fingerprint": "9c58e76338b5fdf702e4b8e877a723b0a6390515fcbd1e0cfd77852ae0b4e53b",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "content_hash": "64218ec92d44dc7940e0b131f3c8252b769943b366483eaece5dc586c45801c2",
-    "status": "NEW"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/unioeste-pr-retifica-processo-seletivo-para-professores-de-ensino-superior": {
     "id": "8ace6f53f283317f2aff",
@@ -1685,13 +1685,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UNIOESTE - PR retifica processo seletivo para professores de ensino superior",
     "registration_end": "2026-09-21",
     "listing_fingerprint": "2e60499f417bbc31a86d15ea751a54670ba4e10a65930d19e1a4ee559a897c5b",
     "last_checked": "2026-08-23T17:37:43-03:00",
     "content_hash": "5ad884e9e662dc40c503c2c8e3a2a9403621739d90d87a50d87ee06623a6d2d7",
-    "status": "NEW"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/utfpr-abre-vaga-para-professor-substituto-de-fisica-geral-em-toledo": {
     "id": "38d308ef800c963314f1",
@@ -1699,13 +1699,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UTFPR abre vaga para professor substituto de Física Geral em Toledo",
     "registration_end": "2026-09-07",
     "listing_fingerprint": "7ac24bab163b14ed14b6ff9e3e15b7d0d14f7eab883f6755aa0ceb9d2b5bd75a",
     "last_checked": "2026-08-23T17:37:43-03:00",
     "content_hash": "6fa730231cf8ee129c5de8f1e1f433431e0707d6624adc6aef21f0682da1ee34",
-    "status": "NEW"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/prefeitura-de-canela-rs-abre-concurso-com-remuneracao-de-ate-5130": {
     "id": "e7aa4a05c5c6070f11ba",
@@ -1713,7 +1713,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Canela - RS abre concurso com remuneração de até R$ 5.130,63",
     "registration_end": "2026-08-21",
     "listing_fingerprint": "a35028e9eb77b1f97564e1afeb1bb6104e711bd76795e2f4004362e4aa63b4a0"
@@ -1724,7 +1724,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Estrela - RS abre concurso público com salários de até R$ 8.058,13",
     "registration_end": "2026-09-18",
     "listing_fingerprint": "d1a92eafdb21b06031a139464efba5929c7ab831c64a7eb69e21b40b2f07763e"
@@ -1735,7 +1735,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Município de Igrejinha - RS abre processo seletivo para Professor de Artes",
     "registration_end": "2026-09-04",
     "listing_fingerprint": "662994730e651beb7b20b94debd36e31182cf3c4a794a251a20c9b52dc369710"
@@ -1746,7 +1746,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Porto Mauá - RS abre processo seletivo para Professores",
     "registration_end": "2026-08-25",
     "listing_fingerprint": "0cf7d5f20fc67aa39cdd575ef3e99cf1272c1145ea9292043f771fd6aff0948e"
@@ -1757,7 +1757,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Relvado - RS abre concurso para diversos cargos com salários de até R$ 8.297,67",
     "registration_end": "2026-09-13",
     "listing_fingerprint": "87a1bea1c03cab98d568a8c936c92f4919bee06d73485827ecd6929ad7916fcb"
@@ -1768,10 +1768,10 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de São Francisco de Paula - RS abre processo seletivo para diversos cargos",
     "registration_end": "2026-09-04",
-    "listing_fingerprint": "6dae30782be95096ef8212a1afbe93b6a87dcbeb39b01912f87c779e315d9887"
+    "listing_fingerprint": "a47f09f2d4f6898292edaab9d2d9e1a70689249ac4bc8815a2f84c06e967ce23"
   },
   "https://www.pciconcursos.com.br/noticias/prefeitura-de-silveira-martins-rs-retifica-concurso-publico-e-mantem-processo-seletivo-inalterado": {
     "id": "d582b6dcc9dae2edd58d",
@@ -1790,7 +1790,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Tapera - RS abre vagas para concurso público e processo seletivo",
     "registration_end": "2026-09-04",
     "listing_fingerprint": "27316bff7a94b07b3b0ae70d24917bc4d69fb7696fd27fb78fe9791c92226040"
@@ -1801,7 +1801,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura e Câmara de Redentora - RS abrem editais de concurso e processo seletivo",
     "registration_end": "2026-09-11",
     "listing_fingerprint": "954e6da844de6574f0c50eff0cb35731d16996af44a7e5b4843c7cfb0afc17ef"
@@ -1812,13 +1812,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UFRGS - RS abre concurso com 20 vagas para Professor do Magistério Superior",
     "registration_end": "2026-09-09",
     "listing_fingerprint": "68d5a57dcd205b68d176ce103eff4cbffd891956156cb43f10837d0f4b3c53db",
     "last_checked": "2026-08-23T17:37:43-03:00",
     "content_hash": "25652b717d50c11238575e59ce4acc13e8cc89099b8eac9fca49cb1e9b4cc5d0",
-    "status": "NEW"
+    "status": "OPEN"
   },
   "https://www.pciconcursos.com.br/noticias/fundacao-inoversasul-sc-abre-concurso-publico-com-vagas-imediatas-e-cadastro-de-reserva": {
     "id": "a7bcf508cdc7838a22a9",
@@ -1826,7 +1826,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Fundação InoversaSul - SC abre concurso público com vagas imediatas e cadastro de reserva",
     "registration_end": "2026-09-15",
     "listing_fingerprint": "643d4bfd62252c3b3fcf73c054fe4d3d2d902f6b004a5ec18706dd8c1fac02ad"
@@ -1837,7 +1837,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Belmonte - SC publica editais de concurso e processo seletivo com diversas vagas",
     "registration_end": "2026-08-24",
     "listing_fingerprint": "cadf0020b464fb951447cb89028d02ee83f4e400602c353e31bedc7e0494ea53"
@@ -1848,7 +1848,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Calmon - SC abre concurso público com salários de até R$ 7.314,30",
     "registration_end": "2026-09-14",
     "listing_fingerprint": "de9e087d5b3cafff81c38870e2329b4dea19a41bdd93cd4ad16c9c1ecdc59211"
@@ -1859,7 +1859,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Chapecó - SC publica edital de processo seletivo para professores",
     "registration_end": "2026-09-08",
     "listing_fingerprint": "e30f950e6d86b414ceb7244c9d5f0e89c7a350de5f17f8d53e01b513e0ae3b87"
@@ -1870,7 +1870,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Cunha Porã - SC abre concurso público e processo seletivo com salários de até R$ 22.504,80",
     "registration_end": "2026-08-24",
     "listing_fingerprint": "d101c9348f25794183a76e560d172f8ff8d424003ca4407aa978f7ad0a993db7"
@@ -1881,7 +1881,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Frei Rogério - SC abre processo seletivo com salários de até R$ 36.619,86",
     "registration_end": "2026-09-13",
     "listing_fingerprint": "c64237deb086a8f14e689d207de425f826eea8c976ecbc5fa3c488950a6a81e6"
@@ -1892,7 +1892,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Guaraciaba - SC abre processos seletivos para formação de cadastro de reserva",
     "registration_end": "2026-09-08",
     "listing_fingerprint": "cda312d0ca61d7746cfb87589b8faa078242fc9a53f32311aa751507fec87e9d"
@@ -1903,7 +1903,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Jaraguá do Sul - SC abre seleção para profissionais na área da educação",
     "registration_end": "2026-09-08",
     "listing_fingerprint": "86630b1b35a57bcb884da39268f1ae1ec0ce333e8bb4a7f3bc62fb908156218d"
@@ -1914,7 +1914,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Lindoia do Sul - SC abre processo seletivo para cadastro de reserva de professores",
     "registration_end": "2026-08-27",
     "listing_fingerprint": "cfda3044d7db4d40cfc3f00d2531a29fe641a5c8f9127960c7dd25a4b2e6757a"
@@ -1925,10 +1925,10 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Maravilha - SC abre seleções com salários de até R$ 25.094,13",
     "registration_end": "2026-09-21",
-    "listing_fingerprint": "cc566db770d4d897d91a99f0edbc5e3f1a37274514df0e75f7f7de06ad38fa6b"
+    "listing_fingerprint": "e3dea655d3a626e943859fa0693c73ea4acbbde9ac13fe22cac502357063e10c"
   },
   "https://www.pciconcursos.com.br/noticias/prefeitura-de-massaranduba-sc-abre-processo-seletivo-para-professores": {
     "id": "1ec4a4e5741de3c7e5cb",
@@ -1936,7 +1936,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Massaranduba - SC abre processo seletivo para professores",
     "registration_end": "2026-09-11",
     "listing_fingerprint": "c5659400af609bfa6a19fc4ca6cf0bde57dd636a64f52dabe54e95207a78051e"
@@ -1947,7 +1947,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Mondaí - SC abre editais para concursos e processo seletivo com diversas vagas",
     "registration_end": "2026-09-11",
     "listing_fingerprint": "f25d121a2499b9335023586d519249377f28122607c684a7b3dbff018f0008f7"
@@ -1958,7 +1958,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Nova Erechim - SC lança concurso público com salários de até R$ 27.465,70",
     "registration_end": "2026-09-10",
     "listing_fingerprint": "dde37231d37f31505e4330bc832e83214be0d03a03a3e459b7cec2ea71bea3ce"
@@ -1969,7 +1969,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Otacílio Costa - SC abre seleção para a área da Educação",
     "registration_end": "2026-09-26",
     "listing_fingerprint": "9573d5788b02ba3b193573b0e96ba01d41aae1f2f0a804ba2bfb558108ce032e"
@@ -1980,7 +1980,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Paraíso - SC abre concurso público com salários de até R$ 15.126,65",
     "registration_end": "2026-09-09",
     "listing_fingerprint": "b61e0cbdfba84d6c6dfc884d3b103dc3eabab87d372bb83785ef1a8fde6e0c2c"
@@ -1991,7 +1991,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Piratuba - SC divulga retificação de processo seletivo",
     "registration_end": "2026-08-31",
     "listing_fingerprint": "a62096c6809ceaadd4e6fd4d6332360c74f50be0f02569a939def3f8c14cb92a"
@@ -2002,7 +2002,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Salto Veloso - SC abre concurso público com salários de até R$ 9.151,71",
     "registration_end": "2026-08-28",
     "listing_fingerprint": "48e3e22f3d4c0edf8dcaf57d5b93cc27d4998c167c70de37fa28550ea07da589"
@@ -2013,7 +2013,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Santa Helena - SC abre editais de concurso público e processo seletivo para diversos cargos",
     "registration_end": "2026-09-03",
     "listing_fingerprint": "f54a1559a0850e1eeebcc798338e7463152fb8b97daf0993391886f53734a2f5"
@@ -2024,7 +2024,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de São Pedro de Alcântara - SC abre concurso com salários de até R$ 6.460,50",
     "registration_end": "2026-09-13",
     "listing_fingerprint": "ecb88a779f4b1510131d1b1fee56b865c0f8b67127026ae5d033c6b71098f487"
@@ -2035,7 +2035,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Tangará - SC publica edital de processo seletivo para diversos cargos",
     "registration_end": "2026-09-14",
     "listing_fingerprint": "ef855972d8b9ba422a09c5dc1c192f20887fa1e90e2ae2ed8df2c0a69020a9b9"
@@ -2046,7 +2046,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Cristalina - GO retifica edital de concurso público para a Secretaria de Educação",
     "registration_end": "2026-09-10",
     "listing_fingerprint": "7b78ff9801636d565a68ac677587579e04482fff92be185d45b6539ade214b5b"
@@ -2057,7 +2057,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Fundo Municipal de Educação de Anicuns - GO abre processo seletivo para diversos cargos",
     "registration_end": "2026-09-04",
     "listing_fingerprint": "dc06c313bc7983c67f0445f4be598ee34962721fe247ff2d3d1a69b30ebd0987"
@@ -2068,7 +2068,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Carmo do Rio Verde - GO abre concurso público com vagas para professores",
     "registration_end": "2026-10-26",
     "listing_fingerprint": "96dcd5381c66410c41e565f29439df646877c2252082fb14e3e384ed9ad86a19"
@@ -2079,10 +2079,10 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Goiás - GO abre seleção com vagas para professores",
     "registration_end": "2026-08-25",
-    "listing_fingerprint": "d5820912ac8d8afed9c8ae2652587bb79a16dc82302d668e6cf2252f5aad3e2a"
+    "listing_fingerprint": "f8367da46b09057456c4494d7be45518b85c4190b2674327f587aa43e0a58a89"
   },
   "https://www.pciconcursos.com.br/noticias/prefeitura-de-heitorai-go-abre-concurso-publico-com-vagas-para-diversas-areas": {
     "id": "dccfd69fac4fb3b3434a",
@@ -2090,7 +2090,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Heitoraí - GO abre concurso público com vagas para diversas áreas",
     "registration_end": "2026-10-20",
     "listing_fingerprint": "8dee5fbae6efea799244aaedc4fd2d13a62c4784a7340e4993ccf8ff85213620"
@@ -2101,7 +2101,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Hidrolina - GO abre concurso com vagas imediatas e cadastro de reserva",
     "registration_end": "2026-10-20",
     "listing_fingerprint": "abadc557822e717b69ebdfb2cd0f57d11d438866ac04339dcf9beef20bc76338"
@@ -2112,7 +2112,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Petrolina de Goiás - GO abre concurso público com salários de até R$ 11.919,01",
     "registration_end": "2026-10-12",
     "listing_fingerprint": "279779043570a3fe9b57be1b9b7785ae56ecce98d804760c2577a4d3800be6b3"
@@ -2123,7 +2123,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Piranhas - GO retifica edital de concurso público para professores",
     "registration_end": "2026-08-24",
     "listing_fingerprint": "e92a20c3378cfd1f32df7490cf15868eb08310493cede9c971276c1fa7ca72fb"
@@ -2134,7 +2134,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de São Miguel do Araguaia - GO retifica edital de concurso público",
     "registration_end": "2026-09-09",
     "listing_fingerprint": "e19815b60bf9ec014c6948c5b13e3f7ff7aa504b420d3eedf338827ef439254d"
@@ -2145,7 +2145,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Trombas - GO abre concurso público com salários de até R$ 5.130,63",
     "registration_end": "2026-09-01",
     "listing_fingerprint": "944b24e1759be80e97deb02e3d2374939f1bc0683d7969cbf775f2cd0d0bc867"
@@ -2156,7 +2156,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Rio Verde de Mato Grosso - MS divulga retificação do concurso público com salários até R$ 9.526,98",
     "registration_end": "2026-09-07",
     "listing_fingerprint": "2e6bffa0f0152574eca52db5b1fac17530848e3fa903ba830436119d2260c781"
@@ -2167,13 +2167,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UEMS abre processo seletivo para Docente de Ciências Biológicas em Campo Grande",
     "registration_end": "2026-08-26",
     "listing_fingerprint": "1e66c627e034184fb637a5fb008eb63aa985bcf1794ce2e0dd7ae6931b95fa2c",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "content_hash": "44d7ef7c34c1549cf312b4b389157ffcc56da3d27d23533fe097b4ff8140361a",
-    "status": "NEW"
+    "status": "CLOSING_SOON"
   },
   "https://www.pciconcursos.com.br/noticias/prefeitura-de-primavera-do-leste-mt-retifica-edital-de-concurso-publico": {
     "id": "832e23f627b3d2f3d692",
@@ -2181,7 +2181,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Primavera do Leste - MT retifica edital de concurso público",
     "registration_end": "2026-08-30",
     "listing_fingerprint": "785512e5a760541a5a62814e49345baccb77bc3ba252b06171bdbfdcf9af3bff"
@@ -2192,7 +2192,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Chapada dos Guimarães - MT divulga retificação de concurso público",
     "registration_end": "2026-09-10",
     "listing_fingerprint": "adccba0a018fb2f4179acb31d025393bc1c8a32e4b7e9c465d12f21cc8b65b8f"
@@ -2203,7 +2203,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Gaúcha do Norte - MT abre processos seletivos com vagas para diversas áreas",
     "registration_end": "2026-08-28",
     "listing_fingerprint": "4b23ad20f2362faa626b05ea9e1f6569b20cfee51c33ae9deb8a429d3f74065e"
@@ -2214,7 +2214,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Sapezal - MT abre seleção para docentes em cursos técnicos",
     "registration_end": "2026-08-31",
     "listing_fingerprint": "9ec60c8d4fb08a5f4acb975a0e0ef8b6f92e1fd3bf29f99c98cafa9ed9e3e07a"
@@ -2225,13 +2225,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UNEMAT abre processo seletivo para professores na área de Direito em Brasnorte",
     "registration_end": "2026-08-24",
     "listing_fingerprint": "a58483b0a979c21f885fa56c64d9714a64186effef4f17102ee8f918af5331f1",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "content_hash": "c5359523ea06435e5844a87733a12d5091a4056a0391b99d2405a5366b86e00e",
-    "status": "NEW"
+    "status": "CLOSING_SOON"
   },
   "https://www.pciconcursos.com.br/noticias/prefeitura-de-abaetetuba-pa-divulga-nova-retificacao-de-concurso-publico": {
     "id": "39d8f96d5613203b821f",
@@ -2239,7 +2239,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Abaetetuba - PA divulga nova retificação de concurso público",
     "registration_end": "2026-09-13",
     "listing_fingerprint": "b6d90d0f25a427cafabb2d5e2325971383b39c614c41b3657a22aec1562cdd4c"
@@ -2250,7 +2250,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de São Felipe do Oeste - RO abre seleção para cargos de nível superior",
     "registration_end": "2026-08-30",
     "listing_fingerprint": "1bb3ff26fa9dcf104f7f6a3efec383872545915ffa8da665bf0cba3447d04423"
@@ -2261,7 +2261,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "SEDUC - TO abre processo seletivo para professores e tutores de polo",
     "registration_end": "2026-09-25",
     "listing_fingerprint": "b8da9aa36d7c6fb9b382ab59a0b1654b0e9f22600efad3db44acad7263513beb"
@@ -2272,7 +2272,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de São Sebastião - AL reabre concurso com remunerações de até R$ 5.000,00",
     "registration_end": "2026-09-08",
     "listing_fingerprint": "7b75c7e8cebaac6281a9636bc77b2db575c9688dae94f00adbe6a701dbb5fce9"
@@ -2283,7 +2283,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Conceição do Almeida - BA abre concurso público com vagas para diversos cargos",
     "registration_end": "2026-09-10",
     "listing_fingerprint": "d64e9af37be72fd857e79cc6324edff2d5243e5b33b4daeec2557146156544e3"
@@ -2294,7 +2294,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Jaborandi - BA abre concurso público com diversas vagas",
     "registration_end": "2026-09-04",
     "listing_fingerprint": "514c432c7f7a7d06400bf9ca065e34e29e93715ed7f5a03314667d8661920e3d"
@@ -2305,7 +2305,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Paulo Afonso - BA abre processo seletivo para professores",
     "registration_end": "2026-09-08",
     "listing_fingerprint": "c7e2748b356dbe10734a83fafa0c1d4a6943be62ed2fca108119c6701fb11275"
@@ -2316,13 +2316,13 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UESC - BA publica edital de processo seletivo para Professor Visitante em Engenharia Civil e Ambiental",
     "registration_end": "2026-08-31",
     "listing_fingerprint": "057223a114f966f643aa3ea0a29fff048a65da2bec12ed6018cfee35dfc3c2c7",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "content_hash": "d9dd10186d8178ad3fac04eae090c8ce98788648982b1887bfca4169337b3d95",
-    "status": "NEW"
+    "status": "CLOSING_SOON"
   },
   "https://www.pciconcursos.com.br/noticias/prefeitura-de-altaneira-ce-publica-edital-de-selecao-publica-com-vagas-imediatas-e-cadastro-de-reserva": {
     "id": "1d6488b040bec53a1e4c",
@@ -2330,7 +2330,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Altaneira - CE publica edital de seleção pública com vagas imediatas e cadastro de reserva",
     "registration_end": "2026-09-13",
     "listing_fingerprint": "7d687abd3acad357722c23dbef08b48752c3a4f4283fc4c22f1a2f6f5944b698"
@@ -2341,7 +2341,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Aracati - CE divulga retificação de concurso público para professores",
     "registration_end": "2026-08-27",
     "listing_fingerprint": "3bed51d45b357bf96af64bc0ed0bd02ee6a5de3229ca6dc33dffa88311d2c106"
@@ -2352,7 +2352,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Beberibe - CE abre processo seletivo para cadastro de reserva",
     "registration_end": "2026-09-10",
     "listing_fingerprint": "c5db78ae11e456bc7fbd0448678f859c5aae9996ea4cfc7518bd34fb8607ca61"
@@ -2363,7 +2363,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Groaíras - CE publica editais de concurso com vagas para diversos cargos",
     "registration_end": "2026-09-09",
     "listing_fingerprint": "9b02ee045cbdf714439c7f0b5f9c6b75235e9a0450a63868c2e294695c40031b"
@@ -2374,7 +2374,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Marco - CE prorroga inscrições de concurso público com salários de até R$ 12.308,33",
     "registration_end": "2026-08-24",
     "listing_fingerprint": "5dc9f1fd5b90166a3c6f2e05a13238a9933c9d7eb6aaea6e6637f0ef0dd7d827"
@@ -2385,7 +2385,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "SEDUC e SEPLAG - CE abrem concurso público com vagas para professores",
     "registration_end": "2026-10-15",
     "listing_fingerprint": "e7c1a7374bf2167750a568f56d1310c06864bb120e56f1d6e30546e8dee21113"
@@ -2396,7 +2396,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Itinga do Maranhão - MA abre processo seletivo para professores",
     "registration_end": "2027-01-15",
     "listing_fingerprint": "dfc44be78b308afa180fcb86ba0676a9d524b2815d799702b378100bfd860915"
@@ -2418,7 +2418,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Cruz do Espírito Santo - PB abre concurso público com vagas para diversas áreas",
     "registration_end": "2026-09-16",
     "listing_fingerprint": "ef0154b425e0666d15599df8f6edc0fc3a76463136079e895e7158e952f514c8"
@@ -2429,7 +2429,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Cuité de Mamanguape - PB retifica concurso público com salários de até R$ 11.975,00",
     "registration_end": "2026-09-13",
     "listing_fingerprint": "e0e488977f4b404b28be155bb94e14bbf3f2819ee40f2e7c481694af51799dde"
@@ -2440,7 +2440,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Guarabira - PB abre concurso público com vagas imediatas e cadastro de reserva",
     "registration_end": "2026-09-20",
     "listing_fingerprint": "1b9980ee501c494eb5e36a8878f7e9976b23fc2e2f9a6911e0b42a58468eeb76"
@@ -2451,7 +2451,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Pirpirituba - PB abre concurso público com salários de até R$ 6.000,00",
     "registration_end": "2026-09-07",
     "listing_fingerprint": "10dc243d42b703e01c0df0e3ab6a6d68cbf3eb3b1866ef1974ad730c28736537"
@@ -2462,7 +2462,7 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "AEDAI - PE abre concurso público para o cargo de Professor Titular do Ensino Superior",
     "registration_end": "2026-09-03",
     "listing_fingerprint": "604058ce4c997da7dea9b34d9424162664953d065faca59d504fb9bd3b395a62",
@@ -2476,7 +2476,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Alagoinha - PE abre concurso público com vagas para diversos cargos",
     "registration_end": "2026-08-24",
     "listing_fingerprint": "c20038a968866a687afb02a1ba9248f01d73f1856e0eacffe9124cf2fe2152d5"
@@ -2487,7 +2487,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Exu - PE abre concurso público com salários de até R$ 15.180,00",
     "registration_end": "2026-08-31",
     "listing_fingerprint": "9da274b0b991181dc9bd237c144d5315c77cf159505be3f867c42ed73b64d36e"
@@ -2498,7 +2498,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Secretaria de Educação de Pernambuco - PE abre vagas para professores de Libras e Braillistas",
     "registration_end": "2026-09-04",
     "listing_fingerprint": "6ebb2ee31d373eea8c73584faa3de4b8f83c04b07b3c11027e92f5e9a0b4c6b6"
@@ -2509,7 +2509,7 @@
     "first_seen": "2026-08-23",
     "processed": true,
     "potential": true,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "UFPE abre concurso para docente na área de Eletromagnetismo/Fotônica",
     "registration_end": "2026-10-17",
     "listing_fingerprint": "08df20f4c4ea880170c63cae17f281f1caa8d01437db6ec40f66eb7a80ebfc68",
@@ -2537,7 +2537,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Cajueiro da Praia - PI reabre inscrições para concursos públicos",
     "registration_end": "2026-08-30",
     "listing_fingerprint": "41d633d97826e5d6756f094ad59b515848998c60dc22d179c53ae7c298f65823"
@@ -2548,7 +2548,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Joaquim Pires - PI retifica editais de concursos públicos",
     "registration_end": "2026-08-31",
     "listing_fingerprint": "0d78351ce5ef7db6e37121c33e2e038643eae1d78ee0eca34f982790f73dc783"
@@ -2559,7 +2559,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de União - PI publica edital de seleção com salários de até R$ 6.120,83",
     "registration_end": "2026-09-11",
     "listing_fingerprint": "7adad8eee71f9240efb0bbbf9bfbdde2d651e0451179531c640beadf543e0332"
@@ -2570,7 +2570,7 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Lagoa de Pedras - RN retifica edital do concurso com vagas para diversos níveis de escolaridade",
     "registration_end": "2026-08-31",
     "listing_fingerprint": "cbd12b258b79b2e9a41a7e871b04755e372508cd29bc38776b995bebe5a9272d"
@@ -2581,9 +2581,9 @@
     "first_seen": "2026-08-23",
     "processed": false,
     "potential": false,
-    "last_seen": "2026-08-23",
+    "last_seen": "2026-08-24",
     "title": "Prefeitura de Equador - RN abre concurso público com salários de até R$ 4.875,71",
     "registration_end": "2026-09-17",
-    "listing_fingerprint": "a8ace254eacc7d706669bef226b721ba42fdd4d4dfc577118f6e631bea4677cc"
+    "listing_fingerprint": "6e80f305a2ecd853161a055d84cf77139733c55df4c459353ccd25a2385d3d00"
   }
 }

@@ -42,7 +42,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "OPEN"
   },
   {
     "id": "c22d18f46cd1e3fe77ad",
@@ -87,7 +87,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "OPEN"
   },
   {
     "id": "cb0178ff73c20b67c1d5",
@@ -132,7 +132,7 @@
     "thematic_reason": "Aderência parcial devido a: Administracao.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW",
+    "status": "OPEN",
     "official_check_status": "AMBIGUOUS",
     "official_checked_at": "2026-08-23T19:05:04-03:00",
     "official_check_reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
@@ -215,7 +215,7 @@
     "thematic_reason": "Alta devido a: Sustentabilidade, Empreendedorismo, Inovacao, Gestao.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW",
+    "status": "CLOSING_SOON",
     "official_check_status": "AMBIGUOUS",
     "official_checked_at": "2026-08-23T19:00:15-03:00",
     "official_check_reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
@@ -325,8 +325,8 @@
     "other_requirements": null,
     "content_hash": "27112e3683e3bd3f4e03a61478262da4d5cb0acde90eeb85565fb0dc1b43bd4b",
     "first_seen": "2026-08-23",
-    "last_seen": "2026-08-23",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_seen": "2026-08-24",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "changes": [],
     "formal_eligibility": "UNKNOWN",
     "formal_reason": "A graduação foi mencionada, mas a área não pôde ser comparada com segurança: Exigem-se graduação e título de doutor.",
@@ -334,7 +334,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "CLOSING_SOON"
   },
   {
     "id": "88cbe11a720b8727d990",
@@ -370,8 +370,8 @@
     "other_requirements": null,
     "content_hash": "cd24b3ec95a39a6e757b7a7ce5c67c7145ea3749d44180e6223033ad3136ea1c",
     "first_seen": "2026-08-23",
-    "last_seen": "2026-08-23",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_seen": "2026-08-24",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "changes": [],
     "formal_eligibility": "UNKNOWN",
     "formal_reason": "A graduação foi mencionada, mas a área não pôde ser comparada com segurança: Exigem-se graduação e título de mestre.",
@@ -379,7 +379,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "CLOSING_SOON"
   },
   {
     "id": "aed15850f11f78846050",
@@ -415,8 +415,8 @@
     "other_requirements": null,
     "content_hash": "38d1dff0ba3a97b493d0360f1e8988edd0530b95d60069daa36e6b17b0605685",
     "first_seen": "2026-08-23",
-    "last_seen": "2026-08-23",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_seen": "2026-08-24",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "changes": [],
     "formal_eligibility": "UNKNOWN",
     "formal_reason": "A graduação foi mencionada, mas a área não pôde ser comparada com segurança: Exigem-se graduação e título de doutor.",
@@ -424,7 +424,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "CLOSING_SOON"
   },
   {
     "id": "d50b5a4952fedcecf903",
@@ -460,8 +460,8 @@
     "other_requirements": null,
     "content_hash": "f27018ebc4b3160d0a6a452914f15c25e0430e1cc592a147875c02b41c436fe0",
     "first_seen": "2026-08-23",
-    "last_seen": "2026-08-23",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_seen": "2026-08-24",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "changes": [],
     "formal_eligibility": "UNKNOWN",
     "formal_reason": "A graduação foi mencionada, mas a área não pôde ser comparada com segurança: Exigem-se graduação e título de mestre.",
@@ -469,7 +469,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "CLOSING_SOON"
   },
   {
     "id": "d8d3d073f9753e294f7d",
@@ -505,8 +505,8 @@
     "other_requirements": null,
     "content_hash": "02c6477887c2fc5a905403343f37db3f2da16efa6baa02115e682db451c63dd0",
     "first_seen": "2026-08-23",
-    "last_seen": "2026-08-23",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_seen": "2026-08-24",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "changes": [],
     "formal_eligibility": "UNKNOWN",
     "formal_reason": "A graduação foi mencionada, mas a área não pôde ser comparada com segurança: Exigem-se graduação e título de mestre.",
@@ -514,7 +514,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "CLOSING_SOON"
   },
   {
     "id": "87d434e46574d01900bf",
@@ -550,8 +550,8 @@
     "other_requirements": null,
     "content_hash": "5a5274ba49a7fad90ed1db7aac2d428d05f9113eef19620173e049ad75f1152f",
     "first_seen": "2026-08-23",
-    "last_seen": "2026-08-23",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_seen": "2026-08-24",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "changes": [],
     "formal_eligibility": "UNKNOWN",
     "formal_reason": "A graduação foi mencionada, mas a área não pôde ser comparada com segurança: Exigem-se graduação e título de mestre.",
@@ -559,7 +559,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "CLOSING_SOON"
   },
   {
     "id": "241169212aa9537c641e",
@@ -595,8 +595,8 @@
     "other_requirements": null,
     "content_hash": "451aa6c13e1f18bc06654efddb668be691dc6eac341cfe50a966e8fb4fe9ddf0",
     "first_seen": "2026-08-23",
-    "last_seen": "2026-08-23",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_seen": "2026-08-24",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "changes": [],
     "formal_eligibility": "UNKNOWN",
     "formal_reason": "O anúncio não informa requisitos de formação suficientes; consulte o edital oficial.",
@@ -604,7 +604,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "CLOSING_SOON"
   },
   {
     "id": "0b1e47d419d4ec8a6033",
@@ -640,8 +640,8 @@
     "other_requirements": null,
     "content_hash": "d17a97f50e31187f36e92cae55a0a9f08ac52daf58bf16621e1a8800dc48b570",
     "first_seen": "2026-08-23",
-    "last_seen": "2026-08-23",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_seen": "2026-08-24",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "changes": [],
     "formal_eligibility": "UNKNOWN",
     "formal_reason": "O anúncio não informa requisitos de formação suficientes; consulte o edital oficial.",
@@ -649,7 +649,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "OPEN"
   },
   {
     "id": "9c1b002af16cee9519c7",
@@ -685,8 +685,8 @@
     "other_requirements": null,
     "content_hash": "577a8d249e8f6d4b0ffd0f45553dfd6212a6ee377ca4b9d86bf9556da362e3ad",
     "first_seen": "2026-08-23",
-    "last_seen": "2026-08-23",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_seen": "2026-08-24",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "changes": [],
     "formal_eligibility": "UNKNOWN",
     "formal_reason": "O anúncio não informa requisitos de formação suficientes; consulte o edital oficial.",
@@ -694,7 +694,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "OPEN"
   },
   {
     "id": "00c2f8535c1a435365be",
@@ -739,7 +739,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "OPEN"
   },
   {
     "id": "8c697676585ee9ab3f5c",
@@ -829,7 +829,7 @@
     "thematic_reason": "Aderência parcial devido a: Administracao.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW",
+    "status": "OPEN",
     "official_check_status": "AMBIGUOUS",
     "official_checked_at": "2026-08-23T19:05:04-03:00",
     "official_check_reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
@@ -936,7 +936,7 @@
     "thematic_reason": "Aderência parcial devido a: Administracao.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW",
+    "status": "OPEN",
     "official_check_status": "AMBIGUOUS",
     "official_checked_at": "2026-08-23T19:05:04-03:00",
     "official_check_reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
@@ -1034,8 +1034,8 @@
     "other_requirements": null,
     "content_hash": "6e987e89e8a69497634e6e9b448606bfb20d8381259cca21d481336229200bda",
     "first_seen": "2026-08-23",
-    "last_seen": "2026-08-23",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_seen": "2026-08-24",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "changes": [],
     "formal_eligibility": "UNKNOWN",
     "formal_reason": "O anúncio não informa requisitos de formação suficientes; consulte o edital oficial.",
@@ -1043,7 +1043,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "CLOSING_SOON"
   },
   {
     "id": "b037239be41db15c28dd",
@@ -1088,7 +1088,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "OPEN"
   },
   {
     "id": "adaa80e8594c98678ca7",
@@ -1133,7 +1133,7 @@
     "thematic_reason": "Aderência parcial devido a: Administracao.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW",
+    "status": "OPEN",
     "official_check_status": "AMBIGUOUS",
     "official_checked_at": "2026-08-23T19:05:04-03:00",
     "official_check_reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
@@ -1231,8 +1231,8 @@
     "other_requirements": null,
     "content_hash": "7b5e7de505b9ab68dc02ca557dd49eee6d8e3007be887cd906b7b642e97efb04",
     "first_seen": "2026-08-23",
-    "last_seen": "2026-08-23",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_seen": "2026-08-24",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "changes": [],
     "formal_eligibility": "UNKNOWN",
     "formal_reason": "Os requisitos textuais são insuficientes para uma conclusão formal; consulte o edital oficial.",
@@ -1240,7 +1240,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "CLOSING_SOON"
   },
   {
     "id": "bb4fdff124ad8ad9c61d",
@@ -1276,8 +1276,8 @@
     "other_requirements": null,
     "content_hash": "42d2fa82c4776dd9fc3716cc17999e7e871df66e5aff1034027fc86252e94dfc",
     "first_seen": "2026-08-23",
-    "last_seen": "2026-08-23",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_seen": "2026-08-24",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "changes": [],
     "formal_eligibility": "UNKNOWN",
     "formal_reason": "Os requisitos textuais são insuficientes para uma conclusão formal; consulte o edital oficial.",
@@ -1285,7 +1285,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "CLOSING_SOON"
   },
   {
     "id": "0be03b57541fae4c3064",
@@ -1321,8 +1321,8 @@
     "other_requirements": null,
     "content_hash": "24cd17bb898d0be451185d5ca8dfd2da9ab4de0423b49b21406844719c5cd8cd",
     "first_seen": "2026-08-23",
-    "last_seen": "2026-08-23",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_seen": "2026-08-24",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "changes": [],
     "formal_eligibility": "UNKNOWN",
     "formal_reason": "Os requisitos textuais são insuficientes para uma conclusão formal; consulte o edital oficial.",
@@ -1330,7 +1330,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "CLOSING_SOON"
   },
   {
     "id": "970fb305e1ca82b29350",
@@ -1366,8 +1366,8 @@
     "other_requirements": null,
     "content_hash": "6ab9bc2347bb5dbef4da42a5b1fc795efa7af9530dae21e46bf9c83490dd5361",
     "first_seen": "2026-08-23",
-    "last_seen": "2026-08-23",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_seen": "2026-08-24",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "changes": [],
     "formal_eligibility": "UNKNOWN",
     "formal_reason": "Os requisitos textuais são insuficientes para uma conclusão formal; consulte o edital oficial.",
@@ -1375,7 +1375,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "CLOSING_SOON"
   },
   {
     "id": "cd03fba956780d80336b",
@@ -1420,7 +1420,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "OPEN"
   },
   {
     "id": "06b258e38d9ffaa04414",
@@ -1510,7 +1510,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "OPEN"
   },
   {
     "id": "e0ac1755a4c07af5a671",
@@ -1600,7 +1600,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "OPEN"
   },
   {
     "id": "e2ce7196f96b0db9fb83",
@@ -1645,7 +1645,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "OPEN"
   },
   {
     "id": "563e8e09853ce86eb5da",
@@ -1690,7 +1690,7 @@
     "thematic_reason": "Aderência parcial devido a: Desenvolvimento.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW",
+    "status": "OPEN",
     "official_check_status": "AMBIGUOUS",
     "official_checked_at": "2026-08-23T19:05:04-03:00",
     "official_check_reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
@@ -1798,7 +1798,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "OPEN"
   },
   {
     "id": "b140523bb0b816a78c6e",
@@ -1843,7 +1843,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "OPEN"
   },
   {
     "id": "a10eeadc5b4a64a86ce5",
@@ -1888,7 +1888,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "OPEN"
   },
   {
     "id": "d82807fe6471ae5db018",
@@ -1924,8 +1924,8 @@
     "other_requirements": null,
     "content_hash": "271ed5dd15ea9dc2b0e2699936a86f0a16052b69d94310030c39aea155436bd6",
     "first_seen": "2026-08-23",
-    "last_seen": "2026-08-23",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_seen": "2026-08-24",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "changes": [],
     "formal_eligibility": "UNKNOWN",
     "formal_reason": "Os requisitos textuais são insuficientes para uma conclusão formal; consulte o edital oficial.",
@@ -1933,7 +1933,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "CLOSING_SOON"
   },
   {
     "id": "1bd405b83aef586118fc",
@@ -2023,7 +2023,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "OPEN"
   },
   {
     "id": "9edb641c548eb447fc2a",
@@ -2068,7 +2068,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "OPEN"
   },
   {
     "id": "29ecc6c7cbf458f93046",
@@ -2113,7 +2113,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "OPEN"
   },
   {
     "id": "e1a91eb827180552fc92",
@@ -2158,7 +2158,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "OPEN"
   },
   {
     "id": "cf3055580de417a3dd0c",
@@ -2203,7 +2203,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "OPEN"
   },
   {
     "id": "52864ff3e446055ebdc3",
@@ -2248,7 +2248,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "OPEN"
   },
   {
     "id": "8819986aa3fe25796f2a",
@@ -2293,7 +2293,7 @@
     "thematic_reason": "Aderência parcial devido a: Politicas Publicas, Administracao.",
     "geographic_priority": 4,
     "visual_category": "🔴 Formalmente incompatível",
-    "status": "NEW",
+    "status": "OPEN",
     "official_check_status": "AMBIGUOUS",
     "official_checked_at": "2026-08-23T19:00:15-03:00",
     "official_check_reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
@@ -2400,7 +2400,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "OPEN"
   },
   {
     "id": "9b365d4ad09c38f4144c",
@@ -2436,8 +2436,8 @@
     "other_requirements": null,
     "content_hash": "46e583a9052af7218828acccf31d6af899fb03b15877318a5197565a75e81f7c",
     "first_seen": "2026-08-23",
-    "last_seen": "2026-08-23",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_seen": "2026-08-24",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "changes": [],
     "formal_eligibility": "UNKNOWN",
     "formal_reason": "Os requisitos textuais são insuficientes para uma conclusão formal; consulte o edital oficial.",
@@ -2445,7 +2445,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "OPEN"
   },
   {
     "id": "aaed78a537d0b59e067d",
@@ -2481,8 +2481,8 @@
     "other_requirements": null,
     "content_hash": "bbdc6007db662b0df99c151cebb29ae89ad8c5bf350fa69acc6d3c741d85d69b",
     "first_seen": "2026-08-23",
-    "last_seen": "2026-08-23",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_seen": "2026-08-24",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "changes": [],
     "formal_eligibility": "UNKNOWN",
     "formal_reason": "Os requisitos textuais são insuficientes para uma conclusão formal; consulte o edital oficial.",
@@ -2490,7 +2490,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "OPEN"
   },
   {
     "id": "79f01a00b668434a22e8",
@@ -2503,7 +2503,7 @@
     "salary_text": "R$ 6.581,01 a R$ 329,05",
     "registration_end": "2026-09-24",
     "vacancies_count": 2,
-    "listing_fingerprint": "059532908651d437c81ff1523b96dd85dfbe13fa9279ae1c7d1eb8fd4afd576b",
+    "listing_fingerprint": "c8fcec8f8ecde5ca1e5698560b558fb8fd2b2a51ae56dd382b6e836b9c7b4e79",
     "description": "Oportunidade para profissionais com doutorado oferece remuneração base de R$ 6.581,01, podendo receber adicional de 65% em regime de dedicação exclusiva. A seleção inclui provas escritas, de aula e julgamento de títulos.",
     "raw_text": "A Universidade do Estado do Rio de Janeiro (UERJ) publicou um edital de concurso público para preencher 2 vagas de Professor Adjunto no Instituto de Geografia do Campus Cabo Frio, destinado a profissionais com título de doutorado. Segundo o edital, a oportunidade é para o cargo de: Professor Adjunto em Geografia/Ensino de Geografia (2 vagas) A jornada é de 40 horas semanais, com remuneração base de R$ 6.581,01. O regime pode ser de Tempo Integral com Dedicação Exclusiva, com adicional de 65% sobre o vencimento base, caso o docente opte por esse regime. As inscrições deverão ser realizadas exclusivamente pelo site prossim.uerj.br , das 0h do dia 24 de agosto de 2026 até às 23h59 do dia 24 de setembro de 2026. A taxa de inscrição é de R$ 329,05. Poderá haver isenção para candidatos em situação de hipossuficiência econômica que comprovem renda familiar bruta mensal de até três salários-mínimos, conforme critérios do edital. A seleção será composta por prova escrita, prova de aula e julgamento de títulos e trabalhos. A prova escrita está prevista para ocorrer no dia 26 de outubro de 2026, das 10h às 14h. Os aprovados serão contratados sob regime estatutário. O concurso terá validade de 2 anos, a contar da publicação da homologação do resultado final no Diário Oficial do Estado do Rio de Janeiro, podendo ser prorrogado por igual período. Mais informações podem ser obtidas no edital completo. Prepare-se com segurança e qualidade: conheça o Material Básico para Concursos . Dê o play e acompanhe esta notícia no formato podcast .",
     "institution_url": "https://www.uerj.br/",
@@ -2526,8 +2526,8 @@
     "other_requirements": null,
     "content_hash": "96488b7761e05a0036fb965f58b085dd43a833d0be868f0b0ab22a3a5096ee6c",
     "first_seen": "2026-08-23",
-    "last_seen": "2026-08-23",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_seen": "2026-08-24",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "changes": [],
     "formal_eligibility": "UNKNOWN",
     "formal_reason": "Os requisitos textuais são insuficientes para uma conclusão formal; consulte o edital oficial.",
@@ -2535,7 +2535,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "OPEN"
   },
   {
     "id": "256681b07662b2092fa4",
@@ -2555,7 +2555,7 @@
     "official_url": null,
     "campus": null,
     "city": null,
-    "area": "específica",
+    "area": "Engenharia Sanitária e do Meio Ambiente da Faculdade de Engenharia",
     "subarea": null,
     "employment_type": "Concurso público",
     "workload": "40 horas semanais",
@@ -2571,8 +2571,8 @@
     "other_requirements": null,
     "content_hash": "142d6159d6a0eadc9f8226824d3a141cbee8ad310757f9a8d19a14ee4e19ca51",
     "first_seen": "2026-08-23",
-    "last_seen": "2026-08-23",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_seen": "2026-08-24",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "changes": [],
     "formal_eligibility": "UNKNOWN",
     "formal_reason": "Os requisitos textuais são insuficientes para uma conclusão formal; consulte o edital oficial.",
@@ -2580,7 +2580,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "OPEN"
   },
   {
     "id": "8aad8050483872e76b59",
@@ -2616,8 +2616,8 @@
     "other_requirements": null,
     "content_hash": "d02946c13823b4feb3f4bdbb643f1a78db1ece87611e2f5bde48e963f4afdc36",
     "first_seen": "2026-08-23",
-    "last_seen": "2026-08-23",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_seen": "2026-08-24",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "changes": [],
     "formal_eligibility": "UNKNOWN",
     "formal_reason": "Os requisitos textuais são insuficientes para uma conclusão formal; consulte o edital oficial.",
@@ -2625,7 +2625,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "CLOSING_SOON"
   },
   {
     "id": "3d3db56a92866e9051ed",
@@ -2670,7 +2670,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "OPEN"
   },
   {
     "id": "398aff5d795096795a8f",
@@ -2715,7 +2715,7 @@
     "thematic_reason": "Aderência parcial devido a: Esg.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW",
+    "status": "OPEN",
     "official_check_status": "AMBIGUOUS",
     "official_checked_at": "2026-08-23T19:05:04-03:00",
     "official_check_reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
@@ -2800,7 +2800,7 @@
     "salary_text": "R$ 1.809,36 a R$ 1.867,57 a R$ 28,50 por hora-aula",
     "registration_end": "2026-08-28",
     "vacancies_count": 5,
-    "listing_fingerprint": "95000609579fb8984a95007af2fff3734368698a21c711dc831fa0eaf8936ba6",
+    "listing_fingerprint": "148e99d50af613ca77c0cb4f8225980b1118a931fbd84cd8a378088c884d789d",
     "description": "Oportunidades contemplam cargos de nível médio e superior com remuneração de até R$ 1.867,57 ou pagamento por hora-aula. A seleção envolve análise de títulos, tempo de serviço e avaliação psicológica para funções específicas.",
     "raw_text": "O município de São Lourenço , no Estado de Minas Gerais, divulgou o edital do Processo Seletivo Simplificado nº 004/2026 para a contratação temporária de profissionais de nível médio e superior nas Secretarias Municipais de Educação e de Desenvolvimento Social. Segundo o edital, as oportunidades são para os cargos de: Secretaria Municipal de Educação Auxiliar de Desenvolvimento Infantil I (5 vagas) Professor II - Espanhol (1 vaga) Profissional de Apoio Escolar - Educação Especial (5 vagas) Secretaria Municipal de Desenvolvimento Social Cuidador Residente (1 vaga) A carga horária varia de 24 a 40 horas semanais, conforme o cargo, exceto para Cuidador Residente, cuja escala é de 12x36 horas, podendo ser alterada para 40 horas semanais. A remuneração mensal vai de R$ 1.809,36 a R$ 1.867,57, exceto para Professor II - Espanhol, que receberá R$ 28,50 por hora-aula. As inscrições podem ser realizadas presencialmente entre os dias 24 e 28 de agosto de 2026, das 9h às 17h, na Secretaria Municipal de Educação, situada na Rua Aristotelina Bitencourt, 99, São Lourenço Velho, São Lourenço/MG. A seleção será composta por análise de títulos e tempo de serviço, em caráter classificatório e eliminatório. Para o cargo de Cuidador Residente, haverá também avaliação psicológica. O contrato será temporário até 31 de dezembro de 2026, podendo ser prorrogado, conforme necessidade da Administração. O regime de contratação será o Regime Geral da Previdência Social (RGPS). O processo seletivo terá validade até 31 de dezembro de 2026, podendo ser prorrogado para o ano subsequente. Mais informações podem ser obtidas no edital completo. Prefere ouvir? Escute o podcast exclusivo com mais informações.",
     "institution_url": "https://www.saolourenco.mg.gov.br/",
@@ -2823,8 +2823,8 @@
     "other_requirements": null,
     "content_hash": "9e03303065e537adec102bdded4e259d800f2441e3a4fe0a4512a21270645b33",
     "first_seen": "2026-08-23",
-    "last_seen": "2026-08-23",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_seen": "2026-08-24",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "changes": [],
     "formal_eligibility": "UNKNOWN",
     "formal_reason": "O anúncio não informa requisitos de formação suficientes; consulte o edital oficial.",
@@ -2832,7 +2832,7 @@
     "thematic_reason": "Aderência parcial devido a: Administracao, Desenvolvimento.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW",
+    "status": "CLOSING_SOON",
     "official_check_status": "AMBIGUOUS",
     "official_checked_at": "2026-08-23T19:05:04-03:00",
     "official_check_reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
@@ -2953,7 +2953,7 @@
     "thematic_reason": "Aderência parcial devido a: Administracao, Gestao.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW",
+    "status": "OPEN",
     "official_check_status": "AMBIGUOUS",
     "official_checked_at": "2026-08-23T18:51:08-03:00",
     "official_check_reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
@@ -3044,7 +3044,7 @@
     "official_url": null,
     "campus": null,
     "city": null,
-    "area": "atuação",
+    "area": "Não identificada",
     "subarea": null,
     "employment_type": "Concurso público",
     "workload": "40 horas semanais",
@@ -3060,8 +3060,8 @@
     "other_requirements": null,
     "content_hash": "e4ad4d218ef8cfc49e6064dd25959202c2d6c9a59a98446e007545327583c6ca",
     "first_seen": "2026-08-23",
-    "last_seen": "2026-08-23",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_seen": "2026-08-24",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "changes": [],
     "formal_eligibility": "UNKNOWN",
     "formal_reason": "A graduação foi mencionada, mas a área não pôde ser comparada com segurança: Os certames exigem formação superior com titulação específica, conforme a área de atuação.",
@@ -3069,7 +3069,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "CLOSING_SOON"
   },
   {
     "id": "87c0f5b416b4ab1aeee3",
@@ -3114,7 +3114,7 @@
     "thematic_reason": "Aderência parcial devido a: Desenvolvimento.",
     "geographic_priority": 4,
     "visual_category": "🟡 Elegibilidade incerta",
-    "status": "NEW",
+    "status": "OPEN",
     "official_check_status": "AMBIGUOUS",
     "official_checked_at": "2026-08-23T19:05:04-03:00",
     "official_check_reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
@@ -3223,8 +3223,8 @@
     "other_requirements": null,
     "content_hash": "c2e229975ce2fcb90cd135ff25a2e48e02779e13f06d5beecc422d965ed6eca5",
     "first_seen": "2026-08-23",
-    "last_seen": "2026-08-23",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_seen": "2026-08-24",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "changes": [],
     "formal_eligibility": "UNCERTAIN",
     "formal_reason": "A pós-graduação requerida usa uma área correlata ou a expressão 'áreas afins'; é necessária conferência humana.",
@@ -3232,7 +3232,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "🟡 Elegibilidade incerta",
-    "status": "NEW"
+    "status": "OPEN"
   },
   {
     "id": "1d79f1c57ef65df3a4df",
@@ -3277,7 +3277,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "🟡 Elegibilidade incerta",
-    "status": "NEW"
+    "status": "OPEN"
   },
   {
     "id": "4bae00de31581db319ce",
@@ -3313,8 +3313,8 @@
     "other_requirements": null,
     "content_hash": "7fa0b1b54e01378c978b631bd728f89930a7f562153bacb1a04df0298454683a",
     "first_seen": "2026-08-23",
-    "last_seen": "2026-08-23",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_seen": "2026-08-24",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "changes": [],
     "formal_eligibility": "UNKNOWN",
     "formal_reason": "O anúncio não informa requisitos de formação suficientes; consulte o edital oficial.",
@@ -3322,7 +3322,7 @@
     "thematic_reason": "Aderência parcial devido a: Administracao.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW",
+    "status": "CLOSING_SOON",
     "official_check_status": "AMBIGUOUS",
     "official_checked_at": "2026-08-23T19:05:04-03:00",
     "official_check_reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
@@ -3439,7 +3439,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "OPEN"
   },
   {
     "id": "9df4cfdb95f2775b56df",
@@ -3452,7 +3452,7 @@
     "salary_text": "R$ 3.316,79 a R$ 8.257,49 a R$ 100,00 a R$ 150,00 a R$ 200,00",
     "registration_end": "2026-09-24",
     "vacancies_count": 3,
-    "listing_fingerprint": "351d1710751505f51ed95eb43d4c36a04fcf18a16c9c1fbcfb991cab89a7f75b",
+    "listing_fingerprint": "ee2a17ea4bd047521e0f0f8c7d0a85dc3c9e6fc3c8f2e75812e181bb5861a56e",
     "description": "Oportunidades contemplam aas áreas de Economia e Multidisciplinar/Interdisciplinar com salários iniciais que chegam a R$ 8.257,49 para doutores. A seleção conta com etapas de prova de conhecimentos, didática e de títulos.",
     "raw_text": "A Universidade Estadual de Montes Claros (Unimontes) , no estado de Minas Gerais, publicou um edital de Concurso Público para preencher vagas e formar cadastro de reserva para professores de educação superior, com exigência de nível superior (especialização lato sensu, mestrado ou doutorado). Segundo o edital, as oportunidades são para os cargos de: Professor de Educação Superior - Ciências Sociais Aplicadas/Economia - Nível IV, Mestre (3 vagas) Professor de Educação Superior - Ciências Sociais Aplicadas/Economia - Nível VI, Doutor (2 vagas) Professor de Educação Superior - Multidisciplinar/Interdisciplinar - Nível VI, Doutor (2 vagas) Jornada semanal de 40 horas. A remuneração inicial varia de R$ 3.316,79 (especialista) a R$ 8.257,49 (doutor). As inscrições devem ser feitas pelo site inscricaoconcurso.unimontes.br , das 8h do dia 24 de agosto de 2026 às 23h59 do dia 24 de setembro de 2026. As taxas variam conforme o nível da vaga: R$ 100,00 (especialização), R$ 150,00 (mestrado) e R$ 200,00 (doutorado). O período para solicitar isenção é de 24 de agosto de 2026 a 2 de setembro de 2026, conforme os critérios do edital. O processo de seleção será composto por: prova de conhecimentos (eliminatória e classificatória) no dia 8 de novembro de 2026, prova didática (eliminatória e classificatória) e prova de títulos (classificatória). O regime de contratação é estatutário. O concurso terá validade de 1 ano, a contar da homologação do resultado final, podendo ser prorrogado uma vez por igual período, a critério da administração. Mais informações podem ser obtidas no edital completo. Para qualquer edital, comece com o Material Básico para Concursos . Acompanhe mais detalhes no nosso podcast .",
     "institution_url": "https://www.unimontes.br/",
@@ -3475,8 +3475,8 @@
     "other_requirements": null,
     "content_hash": "cda4e011abf7d3e69c3cb081659e16b9e853f480d01e67e84f7cdaaa6d524e5b",
     "first_seen": "2026-08-23",
-    "last_seen": "2026-08-23",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_seen": "2026-08-24",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "changes": [],
     "formal_eligibility": "UNCERTAIN",
     "formal_reason": "Ciências Ambientais pertence à Grande Área Multidisciplinar, não a Ciências Sociais Aplicadas; a aceitação depende da redação completa do edital.",
@@ -3484,7 +3484,7 @@
     "thematic_reason": "Aderência parcial devido a: Administracao, Multidisciplinar, Interdisciplinar.",
     "geographic_priority": 4,
     "visual_category": "🟡 Elegibilidade incerta",
-    "status": "NEW",
+    "status": "OPEN",
     "official_check_status": "AMBIGUOUS",
     "official_checked_at": "2026-08-23T19:00:15-03:00",
     "official_check_reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
@@ -3555,7 +3555,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "OPEN"
   },
   {
     "id": "2d94d6e9ec68d28870cd",
@@ -3591,19 +3591,16 @@
     "other_requirements": null,
     "content_hash": "ebd285a6790a6496f838c243cbe9ca61dd713b692cbab9c540b4f3059a44d116",
     "first_seen": "2026-08-23",
-    "last_seen": "2026-08-23",
-    "last_checked": "2026-08-23T17:37:43-03:00",
-    "changes": [
-      "elegibilidade revista pelo edital: UNKNOWN → NO",
-      "elegibilidade restaurada após descartar documento não correspondente: NO → UNKNOWN"
-    ],
+    "last_seen": "2026-08-24",
+    "last_checked": "2026-08-24T08:46:32-03:00",
+    "changes": [],
     "formal_eligibility": "UNKNOWN",
     "formal_reason": "Os requisitos textuais são insuficientes para uma conclusão formal; consulte o edital oficial.",
     "thematic_score": 47,
     "thematic_reason": "Aderência parcial devido a: Administracao, Planejamento, Gestao.",
     "geographic_priority": 2,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "UPDATED",
+    "status": "CLOSING_SOON",
     "official_check_status": "AMBIGUOUS",
     "official_checked_at": "2026-08-23T19:00:15-03:00",
     "official_check_reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
@@ -3683,7 +3680,7 @@
     "thematic_reason": "Maior aderência entre as sub-vagas oficiais. Áreas: (54) Engenharia da Sustentabilidade, (22) Fundamentos da Educação e Gestão da Educação, (43) Contabilidade Geral.",
     "geographic_priority": 2,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "UPDATED",
+    "status": "OPEN",
     "official_check_status": "READ_MULTI",
     "official_checked_at": "2026-08-23T19:04:53-03:00",
     "official_check_reason": "Edital multiárea lido; os blocos serão avaliados como sub-vagas independentes.",
@@ -5185,7 +5182,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 2,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "OPEN"
   },
   {
     "id": "4033d72ec6b6c22ac437",
@@ -5198,7 +5195,7 @@
     "salary_text": "R$ 8.058,29",
     "registration_end": "2026-09-22",
     "vacancies_count": 1,
-    "listing_fingerprint": "bebd43da4fb01b1a0cb68692d3afeff5aa8765e3320165d7c8bb8e93e7f69e9d",
+    "listing_fingerprint": "9c58e76338b5fdf702e4b8e877a723b0a6390515fcbd1e0cfd77852ae0b4e53b",
     "description": "A seleção para docentes com doutorado oferece remuneração de R$ 8.058,29 e auxílio-alimentação. O processo seletivo inclui prova didática por videoconferência e análise de títulos.",
     "raw_text": "A Universidade Federal da Integração Latino-Americana ( UNILA ), localizada em Foz do Iguaçu/PR, publicou um edital de Processo Seletivo Simplificado para a formação de cadastro de reserva no cargo de professor substituto, com exigência de doutorado. Segundo o edital, a oportunidade é para o cargo de: Professor Substituto de Matemática Pura ou Matemática Aplicada (1 vaga para cadastro de reserva de pessoas pretas e pardas) A jornada de trabalho é de 40 horas semanais. A remuneração para doutores será de R$ 8.058,29 acrescida de auxílio-alimentação, conforme a legislação vigente. As inscrições estarão abertas de 24 de agosto de 2026 a 22 de setembro de 2026, pelo site sig.unila.edu.br (Menu Concursos). Não haverá cobrança de taxa de inscrição. A seleção ocorrerá em duas etapas: prova didática via videoconferência, de caráter eliminatório e classificatório, e avaliação de títulos e currículo, de caráter classificatório. O processo seletivo terá validade de um ano, contado a partir da publicação do resultado final, podendo ser prorrogado por igual período. Mais informações podem ser obtidas no edital completo. Prefere ouvir? Escute o podcast exclusivo com mais informações.",
     "institution_url": "https://portal.unila.edu.br/",
@@ -5221,8 +5218,8 @@
     "other_requirements": null,
     "content_hash": "64218ec92d44dc7940e0b131f3c8252b769943b366483eaece5dc586c45801c2",
     "first_seen": "2026-08-23",
-    "last_seen": "2026-08-23",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_seen": "2026-08-24",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "changes": [],
     "formal_eligibility": "UNKNOWN",
     "formal_reason": "Os requisitos textuais são insuficientes para uma conclusão formal; consulte o edital oficial.",
@@ -5230,7 +5227,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 2,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "OPEN"
   },
   {
     "id": "8ace6f53f283317f2aff",
@@ -5275,7 +5272,7 @@
     "thematic_reason": "Aderência parcial devido a: Administracao, Desenvolvimento.",
     "geographic_priority": 2,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW",
+    "status": "OPEN",
     "official_check_status": "AMBIGUOUS",
     "official_checked_at": "2026-08-23T18:51:08-03:00",
     "official_check_reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
@@ -5391,7 +5388,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 2,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW",
+    "status": "OPEN",
     "official_check_status": "AMBIGUOUS",
     "official_checked_at": "2026-08-23T19:05:04-03:00",
     "official_check_reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
@@ -5472,7 +5469,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 3,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "OPEN"
   },
   {
     "id": "e0a5b86bca1eac4f9603",
@@ -5508,8 +5505,8 @@
     "other_requirements": null,
     "content_hash": "44d7ef7c34c1549cf312b4b389157ffcc56da3d27d23533fe097b4ff8140361a",
     "first_seen": "2026-08-23",
-    "last_seen": "2026-08-23",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_seen": "2026-08-24",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "changes": [],
     "formal_eligibility": "UNKNOWN",
     "formal_reason": "A graduação foi mencionada, mas a área não pôde ser comparada com segurança: O processo requer graduação em Ciências Biológicas (Licenciatura ou Bacharelado) e mestrado ou doutorado em Biologia Vegetal ou Botânica.",
@@ -5517,7 +5514,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW"
+    "status": "CLOSING_SOON"
   },
   {
     "id": "110a2e5c8b48e80a5e25",
@@ -5553,8 +5550,8 @@
     "other_requirements": null,
     "content_hash": "c5359523ea06435e5844a87733a12d5091a4056a0391b99d2405a5366b86e00e",
     "first_seen": "2026-08-23",
-    "last_seen": "2026-08-23",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_seen": "2026-08-24",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "changes": [],
     "formal_eligibility": "UNKNOWN",
     "formal_reason": "O anúncio não informa requisitos de formação suficientes; consulte o edital oficial.",
@@ -5562,7 +5559,7 @@
     "thematic_reason": "Aderência parcial devido a: Planejamento.",
     "geographic_priority": 4,
     "visual_category": "⚪ Informação insuficiente",
-    "status": "NEW",
+    "status": "CLOSING_SOON",
     "official_check_status": "AMBIGUOUS",
     "official_checked_at": "2026-08-23T19:05:04-03:00",
     "official_check_reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
@@ -5673,8 +5670,8 @@
     "other_requirements": null,
     "content_hash": "d9dd10186d8178ad3fac04eae090c8ce98788648982b1887bfca4169337b3d95",
     "first_seen": "2026-08-23",
-    "last_seen": "2026-08-23",
-    "last_checked": "2026-08-23T17:37:43-03:00",
+    "last_seen": "2026-08-24",
+    "last_checked": "2026-08-24T08:46:32-03:00",
     "changes": [],
     "formal_eligibility": "UNCERTAIN",
     "formal_reason": "A pós-graduação requerida usa uma área correlata ou a expressão 'áreas afins'; é necessária conferência humana.",
@@ -5682,7 +5679,7 @@
     "thematic_reason": "Nenhuma área temática prioritária foi identificada automaticamente.",
     "geographic_priority": 1,
     "visual_category": "🟡 Elegibilidade incerta",
-    "status": "NEW",
+    "status": "CLOSING_SOON",
     "official_check_status": "AMBIGUOUS",
     "official_checked_at": "2026-08-23T19:05:04-03:00",
     "official_check_reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
