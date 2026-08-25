@@ -1,7 +1,7 @@
 {
   "https://www.pciconcursos.com.br/noticias/ufscar-sp-abre-concurso-publico-com-diversas-vagas-para-professor-de-magisterio-superior": {
     "status": "AMBIGUOUS",
-    "checked_at": "2026-08-23T19:00:15-03:00",
+    "checked_at": "2026-08-25T08:47:02-03:00",
     "documents": [
       {
         "url": "https://concursos.ufscar.br/",
@@ -28,61 +28,73 @@
         "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
       },
       {
-        "url": "https://concursos.ufscar.br/requerimentos.php",
+        "url": "https://www.ufscar.br/",
         "type": "HTML",
-        "content_hash": "6f4394334990e0b731e193128811bf3c2480d62085ddc0c82fff6ee7b933c35d",
+        "content_hash": "5f7419b6d4c9ce424cdc7f5fd53c3f992cd004e10100439a4e0a410d91b4990b",
         "page_count": 1,
-        "extracted_chars": 924,
+        "extracted_chars": 3165,
         "truncated": false,
-        "title": "",
+        "title": "Universidade Federal de São Carlos — Universidade Federal de Sao Carlos",
         "evidence_status": "IRRELEVANT",
         "relevant": false,
         "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
       },
       {
-        "url": "https://concursos.ufscar.br/concursos/instrumento-particular-procuracao.pdf",
-        "type": "PDF",
-        "content_hash": "c9ac5898e6cefc2f7231493f28a968d368b7bbc6b832824ade8b7fbdcc1ccbee",
+        "url": "https://www.ufscar.br/busca-docente",
+        "type": "HTML",
+        "content_hash": "d266fae835f0ee939a5297fc54f91e905bc0eea55ccd6912d387d25162c9be5d",
         "page_count": 1,
-        "extracted_chars": 1481,
+        "extracted_chars": 4878,
         "truncated": false,
-        "title": "",
+        "title": "Busca Docente — Universidade Federal de Sao Carlos",
         "evidence_status": "IRRELEVANT",
         "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
-        "opportunities_count": 0
-      },
-      {
-        "url": "https://concursos.ufscar.br/concursos/recurso-prova-objetiva-ta.pdf",
-        "type": "PDF",
-        "content_hash": "97501b5499cbe326021cfec46c041fce8caab5eac2ad1a30c5bc49857f39f045",
-        "page_count": 1,
-        "extracted_chars": 2343,
-        "truncated": false,
-        "title": "",
-        "evidence_status": "IRRELEVANT",
-        "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
-        "opportunities_count": 0
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
       }
     ],
     "reader_version": 2,
     "applicable": false,
     "reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
-    "errors": []
+    "errors": [
+      "http://www.concursos.ufscar.br/: SSLError: HTTPSConnectionPool(host='www.concursos.ufscar.br', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, \"[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.concursos.ufscar.br'. (_ssl.c:1010)\")))"
+    ]
   },
   "https://www.pciconcursos.com.br/noticias/uel-pr-abre-processo-seletivo-para-professores-temporarios-com-diversas-areas-de-atuacao": {
     "status": "AMBIGUOUS",
-    "checked_at": "2026-08-23T19:00:15-03:00",
+    "checked_at": "2026-08-25T08:47:02-03:00",
     "documents": [
       {
         "url": "https://portal.uel.br/",
         "type": "HTML",
-        "content_hash": "f2219e2720cd910d0e86b927030da91286fd36f24a58a777788c08e0e13d1cdb",
+        "content_hash": "9445fa3d822dfd10ab160cbb0d894fe54729e0e5817487f355e384f4d0f46da9",
         "page_count": 1,
-        "extracted_chars": 8663,
+        "extracted_chars": 8793,
         "truncated": false,
         "title": "Universidade Estadual de Londrina -",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://operobal.uel.br/esporte/2026/08/24/torneio-beira-morto-de-futebol-suico-mobiliza-servidores-a-partir-desta-terca-feira-25/",
+        "type": "HTML",
+        "content_hash": "e05293b2bcc606af1c1c7235005ce85416fe6223653b2f0a82933edceef40a6a",
+        "page_count": 1,
+        "extracted_chars": 3219,
+        "truncated": false,
+        "title": "Torneio Beira Morto de Futebol Suíço mobiliza servidores a partir desta terça-feira (25) - O Perobal - UEL",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://operobal.uel.br/comunicado/",
+        "type": "HTML",
+        "content_hash": "c1945ae696e22247bacb38f2d50deb93fb8c3abfdb53011a815d95a532480d98",
+        "page_count": 1,
+        "extracted_chars": 1264,
+        "truncated": false,
+        "title": "Comunicado - O Perobal - UEL",
         "evidence_status": "IRRELEVANT",
         "relevant": false,
         "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
@@ -95,14 +107,14 @@
   },
   "https://www.pciconcursos.com.br/noticias/unimontes-mg-publica-edital-de-concurso-publico-para-professores-de-educacao-superior": {
     "status": "AMBIGUOUS",
-    "checked_at": "2026-08-23T19:00:15-03:00",
+    "checked_at": "2026-08-25T08:47:02-03:00",
     "documents": [
       {
         "url": "https://inscricaoconcurso.unimontes.br/login",
         "type": "HTML",
-        "content_hash": "69166f3f568376164bcc2d9a6fe90356b5e6b91bac35cb79466f5894e4e9896f",
+        "content_hash": "f3056c7be9ef8305c5909cc1fedb3c21a0a77d4e6956e6c96f9ad656e069a3e6",
         "page_count": 1,
-        "extracted_chars": 193,
+        "extracted_chars": 248,
         "truncated": false,
         "title": "Sistema de Inscrições do Concurso de Docentes",
         "evidence_status": "IRRELEVANT",
@@ -1109,14 +1121,14 @@
   },
   "https://www.pciconcursos.com.br/noticias/ufmg-abre-concursos-publicos-com-tres-vagas-para-professores": {
     "status": "AMBIGUOUS",
-    "checked_at": "2026-08-23T18:51:08-03:00",
+    "checked_at": "2026-08-25T08:47:02-03:00",
     "documents": [
       {
         "url": "https://www.ufmg.br",
         "type": "HTML",
-        "content_hash": "399726dfcd604e67b1ffdf53b4d52e6bfdd65dc6ae530af5485de3f924d6dc6e",
+        "content_hash": "7f17a49581915de37313f4c920cdaaa03159a169b16da75a994aca9b3410532f",
         "page_count": 1,
-        "extracted_chars": 6004,
+        "extracted_chars": 6226,
         "truncated": false,
         "title": "Universidade Federal de Minas Gerais – Liderança regional e nacional em ensino superior gratuito, extensão, cultura, pesquisa científica e geração de patentes em todas as áreas do conhecimento",
         "evidence_status": "IRRELEVANT",
@@ -1133,40 +1145,17 @@
         "title": "",
         "evidence_status": "IRRELEVANT",
         "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
-      },
-      {
-        "url": "https://www.ufmg.br/comunicacao/noticias/formas-de-ingresso/seriado-ufmg-2026-recebe-617-mil-inscricoes/",
-        "type": "HTML",
-        "content_hash": "9e8cf95afedfdc73672b8782beedcbd064998c0e64c84576664084b8be14f744",
-        "page_count": 1,
-        "extracted_chars": 10644,
-        "truncated": false,
-        "title": "Seriado UFMG 2026 recebe 61,7 mil inscrições – Universidade Federal de Minas Gerais",
-        "evidence_status": "IRRELEVANT",
-        "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
       },
       {
         "url": "https://www.ufmg.br/cursos/formas-de-ingresso/concursos-publicos/",
         "type": "HTML",
-        "content_hash": "89296e30f97f5087896594404a0692f9221454c428b1ee826603859c6bc01059",
+        "content_hash": "e56bed69df2b61f1cc48500ec01bff3fdad99754ffb7a9515a735fd6f1b2625a",
         "page_count": 1,
         "extracted_chars": 778,
         "truncated": false,
         "title": "Concursos Públicos – Universidade Federal de Minas Gerais",
-        "evidence_status": "IRRELEVANT",
-        "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
-      },
-      {
-        "url": "https://www.ufmg.br/comunicacao/noticias/evento-cultural/wander-melo-miranda-lanca-biografia-de-graciliano-ramos-neste-sabado-em-belo-horizonte/",
-        "type": "HTML",
-        "content_hash": "5bb3b81b7c74f114a25b331740ed3e0d6c0d0b573ecc614d841657a24daf38c5",
-        "page_count": 1,
-        "extracted_chars": 27149,
-        "truncated": false,
-        "title": "Wander Melo Miranda lança biografia de Graciliano Ramos neste sábado em Belo Horizonte – Universidade Federal de Minas Gerais",
         "evidence_status": "IRRELEVANT",
         "relevant": false,
         "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
@@ -1175,16 +1164,19 @@
     "reader_version": 2,
     "applicable": false,
     "reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
-    "errors": []
+    "errors": [
+      "https://www2.ufmg.br/concursos/Concursos/Professor-Adjunto: SSLError: HTTPSConnectionPool(host='www2.ufmg.br', port=443): Max retries exceeded with url: /concursos/Concursos/Professor-Adjunto (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))",
+      "https://www2.ufmg.br/concursos/Concursos/Professor-Assistente: SSLError: HTTPSConnectionPool(host='www2.ufmg.br', port=443): Max retries exceeded with url: /concursos/Concursos/Professor-Assistente (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))"
+    ]
   },
   "https://www.pciconcursos.com.br/noticias/unioeste-pr-retifica-processo-seletivo-para-professores-de-ensino-superior": {
     "status": "AMBIGUOUS",
-    "checked_at": "2026-08-23T18:51:08-03:00",
+    "checked_at": "2026-08-25T08:47:02-03:00",
     "documents": [
       {
         "url": "https://www.unioeste.br/portal/cogeps/concursos/docentes",
         "type": "HTML",
-        "content_hash": "818ae994a4c81dbeaa0992ac1fc087d7b731a52be28991d040aa0f91c4f39f42",
+        "content_hash": "f762492f3c9e127a737ac302f5366052bdc9b7c05ae6be9c6dc72e892f188d29",
         "page_count": 1,
         "extracted_chars": 4061,
         "truncated": false,
@@ -1309,7 +1301,7 @@
   },
   "https://www.pciconcursos.com.br/noticias/prefeitura-de-sao-lourenco-mg-abre-processo-seletivo-para-as-secretarias-de-educacao-e-desenvolvimento-social": {
     "status": "AMBIGUOUS",
-    "checked_at": "2026-08-23T19:05:04-03:00",
+    "checked_at": "2026-08-25T08:47:02-03:00",
     "documents": [
       {
         "url": "https://www.saolourenco.mg.gov.br/",
@@ -1383,7 +1375,7 @@
   },
   "https://www.pciconcursos.com.br/noticias/ufu-mg-abre-processos-seletivos-para-professores-substitutos-e-visitantes": {
     "status": "AMBIGUOUS",
-    "checked_at": "2026-08-23T19:05:04-03:00",
+    "checked_at": "2026-08-25T08:47:02-03:00",
     "documents": [
       {
         "url": "https://www.portalselecao.ufu.br/",
@@ -1400,9 +1392,9 @@
       {
         "url": "https://ufu.br/",
         "type": "HTML",
-        "content_hash": "9d8717edc9c601c3a8fdcfe82bdaf1cf9277469c725d81ae0f0ca528651ff517",
+        "content_hash": "c090d8345d9a3633b17fe7eef866649fb1e654108860d5c8ebf829a0849e6379",
         "page_count": 1,
-        "extracted_chars": 8520,
+        "extracted_chars": 8404,
         "truncated": false,
         "title": "Início | Universidade Federal de Uberlândia",
         "evidence_status": "IRRELEVANT",
@@ -1412,9 +1404,9 @@
       {
         "url": "https://comunica.ufu.br/noticias/2026/08/ufu-lanca-edital-para-selecao-de-bolsistas-de-extensao-na-diretoria-de-cultura-e",
         "type": "HTML",
-        "content_hash": "f71507fa6680cb5fca270c1df25a0ee2773fa6575ede9c7dc47524f0c58e207b",
+        "content_hash": "1f846af0f8b141b1a7dd1cc274194a696f13faca985e861f9b1988087a507da6",
         "page_count": 1,
-        "extracted_chars": 6811,
+        "extracted_chars": 6815,
         "truncated": false,
         "title": "UFU lança edital para seleção de bolsistas de extensão na Diretoria de Cultura e no Coral | Comunica UFU",
         "evidence_status": "IRRELEVANT",
@@ -1453,14 +1445,14 @@
   },
   "https://www.pciconcursos.com.br/noticias/prefeitura-de-santos-sp-divulga-retificacoes-do-concurso-com-vagas-para-professores-adjuntos": {
     "status": "AMBIGUOUS",
-    "checked_at": "2026-08-23T19:05:04-03:00",
+    "checked_at": "2026-08-25T08:47:02-03:00",
     "documents": [
       {
         "url": "https://www.santos.sp.gov.br/",
         "type": "HTML",
-        "content_hash": "5e145dc45be87954b93e5e02be99681bb34b3b32bf3401c8fabf49c50e99d3a6",
+        "content_hash": "342e96e598233e1505048e54f4ae627159d934d25c91aac979d8561f6da76ab6",
         "page_count": 1,
-        "extracted_chars": 9062,
+        "extracted_chars": 8779,
         "truncated": false,
         "title": "Prefeitura de Santos |",
         "evidence_status": "IRRELEVANT",
@@ -1470,7 +1462,7 @@
       {
         "url": "https://egov.santos.sp.gov.br/dadosabertos/concursos",
         "type": "HTML",
-        "content_hash": "0f9e33a79ebd4c4646464f0bce54158c1be9c425b3c86bb398a4e6dc1b879639",
+        "content_hash": "74d99c6aa77cbbbf60a28cccb24cfef030b065d00d8777b2484b61fe36b8c581",
         "page_count": 1,
         "extracted_chars": 13,
         "truncated": false,
@@ -1489,14 +1481,14 @@
   },
   "https://www.pciconcursos.com.br/noticias/unesp-abre-vaga-para-professor-assistente-de-educacao-fisica-no-campus-de-rio-claro-sp": {
     "status": "AMBIGUOUS",
-    "checked_at": "2026-08-23T19:05:04-03:00",
+    "checked_at": "2026-08-25T08:47:02-03:00",
     "documents": [
       {
         "url": "https://www2.unesp.br/",
         "type": "HTML",
-        "content_hash": "4a109f139fae88fe8931f975a165021cd89af0b3c5353af52bdb3aec81493fd6",
+        "content_hash": "ae0b30bf1cee487ea2c920f857587e5b55179e47c6ca0bc24b1d5f6a3fe07ad9",
         "page_count": 1,
-        "extracted_chars": 8215,
+        "extracted_chars": 8180,
         "truncated": false,
         "title": "Unesp - Universidade Estadual Paulista - Portal",
         "evidence_status": "IRRELEVANT",
@@ -1506,7 +1498,7 @@
       {
         "url": "https://www2.unesp.br/portal",
         "type": "HTML",
-        "content_hash": "a2aa8f8b3d840642b803e719b5d56710561bffb427be5c59e853876872f3539e",
+        "content_hash": "b65070930a93eafc246d325a498fe4c4cb2ab065751245ca97f7ece727ad347c",
         "page_count": 1,
         "extracted_chars": 805,
         "truncated": false,
@@ -1530,7 +1522,7 @@
       {
         "url": "https://www.threads.com/login?next=https%3A%2F%2Fwww.threads.com%2Fintent%2Fpost%3Ftext%3Dhttps%253A%252F%252Fjornal.unesp.br%252F2026%252F08%252F20%252Fa-resolucao-no-19-26-e-a-politica-de-reserva-de-vagas-para-pessoas-pretas-pardas-e-indigenas-nos-concursos-publicos-para-ingresso-na-carreira-docente-na-unesp%252F%26__coig_login%3D1",
         "type": "HTML",
-        "content_hash": "09034e68c404d1e9b6bd23fee9b25d24ccd3710310c389de49927169e5c69353",
+        "content_hash": "89eb4edd73d2914575bbacdccd1119f3d4bbda2767e606f09ed4a1ab97721fbf",
         "page_count": 1,
         "extracted_chars": 16,
         "truncated": false,
@@ -1549,14 +1541,14 @@
   },
   "https://www.pciconcursos.com.br/noticias/unesp-abre-concurso-publico-para-professor-assistente-de-odontologia-em-sao-jose-dos-campos-sp": {
     "status": "AMBIGUOUS",
-    "checked_at": "2026-08-23T19:05:04-03:00",
+    "checked_at": "2026-08-25T08:47:02-03:00",
     "documents": [
       {
         "url": "https://www2.unesp.br/",
         "type": "HTML",
-        "content_hash": "4a109f139fae88fe8931f975a165021cd89af0b3c5353af52bdb3aec81493fd6",
+        "content_hash": "ae0b30bf1cee487ea2c920f857587e5b55179e47c6ca0bc24b1d5f6a3fe07ad9",
         "page_count": 1,
-        "extracted_chars": 8215,
+        "extracted_chars": 8180,
         "truncated": false,
         "title": "Unesp - Universidade Estadual Paulista - Portal",
         "evidence_status": "IRRELEVANT",
@@ -1566,7 +1558,7 @@
       {
         "url": "https://www2.unesp.br/portal",
         "type": "HTML",
-        "content_hash": "d9ffda4539856e9d85af75603e034e3c0d630ed3969e5abeb2d340bc6679b613",
+        "content_hash": "c8c98615d542f16fe8c57679fdd6a84ea3af2394cfd4290b1e5fb801bb51bdb9",
         "page_count": 1,
         "extracted_chars": 805,
         "truncated": false,
@@ -1590,7 +1582,7 @@
       {
         "url": "https://www.threads.com/login?next=https%3A%2F%2Fwww.threads.com%2Fintent%2Fpost%3Ftext%3Dhttps%253A%252F%252Fjornal.unesp.br%252F2026%252F08%252F20%252Fa-resolucao-no-19-26-e-a-politica-de-reserva-de-vagas-para-pessoas-pretas-pardas-e-indigenas-nos-concursos-publicos-para-ingresso-na-carreira-docente-na-unesp%252F%26__coig_login%3D1",
         "type": "HTML",
-        "content_hash": "82ac9a1d78580dd6877f3714c230beeb47db6cce8888842263dd661dafa43846",
+        "content_hash": "6569062a9a7e1b7e6bdbd3611b9548d3f051038ccc373f755cc1843500eda269",
         "page_count": 1,
         "extracted_chars": 16,
         "truncated": false,
@@ -1609,14 +1601,14 @@
   },
   "https://www.pciconcursos.com.br/noticias/unesp-abre-concurso-para-professor-assistente-em-zootecnia-no-campus-de-botucatu-sp": {
     "status": "AMBIGUOUS",
-    "checked_at": "2026-08-23T19:05:04-03:00",
+    "checked_at": "2026-08-25T08:47:02-03:00",
     "documents": [
       {
         "url": "https://www2.unesp.br/",
         "type": "HTML",
-        "content_hash": "4a109f139fae88fe8931f975a165021cd89af0b3c5353af52bdb3aec81493fd6",
+        "content_hash": "ae0b30bf1cee487ea2c920f857587e5b55179e47c6ca0bc24b1d5f6a3fe07ad9",
         "page_count": 1,
-        "extracted_chars": 8215,
+        "extracted_chars": 8180,
         "truncated": false,
         "title": "Unesp - Universidade Estadual Paulista - Portal",
         "evidence_status": "IRRELEVANT",
@@ -1626,7 +1618,7 @@
       {
         "url": "https://www2.unesp.br/portal",
         "type": "HTML",
-        "content_hash": "b3615b280a12c4a7d49827918af34a637f24c046f3ea15e8f654386f9b478579",
+        "content_hash": "d5ac77b88b109e2b598370c23d15292efba46fbd2906710b074ff4e730971308",
         "page_count": 1,
         "extracted_chars": 805,
         "truncated": false,
@@ -1650,7 +1642,7 @@
       {
         "url": "https://www.threads.com/login?next=https%3A%2F%2Fwww.threads.com%2Fintent%2Fpost%3Ftext%3Dhttps%253A%252F%252Fjornal.unesp.br%252F2026%252F08%252F20%252Fa-resolucao-no-19-26-e-a-politica-de-reserva-de-vagas-para-pessoas-pretas-pardas-e-indigenas-nos-concursos-publicos-para-ingresso-na-carreira-docente-na-unesp%252F%26__coig_login%3D1",
         "type": "HTML",
-        "content_hash": "bac7b8f8026fee6f1afe0bba66bfe61070db1ad05db757cfea21e095d23f2547",
+        "content_hash": "9cb1f38d3efc4692de09d03c72c1126b6f4c7d5cbcea7db514d6a8ce89930a0d",
         "page_count": 1,
         "extracted_chars": 16,
         "truncated": false,
@@ -2047,6 +2039,111 @@
     "reader_version": 2,
     "applicable": false,
     "reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
+    "errors": []
+  },
+  "https://www.pciconcursos.com.br/noticias/ufsm-rs-abre-concurso-publico-com-vagas-para-professores-do-magisterio-superior": {
+    "status": "READ",
+    "checked_at": "2026-08-25T08:47:02-03:00",
+    "documents": [
+      {
+        "url": "https://www.ufsm.br/",
+        "type": "HTML",
+        "content_hash": "efebe7efb28194047305b87e5441b1cc45aa1e5a46c478a50b7220f2adfe4636",
+        "page_count": 1,
+        "extracted_chars": 10435,
+        "truncated": false,
+        "title": "UFSM – Universidade Federal de Santa Maria",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www.ufsm.br/2026/08/24/edital-de-concurso-publico-abre-nove-vagas-para-professores-na-ufsm",
+        "type": "HTML",
+        "content_hash": "5b8b1679ac9eae9a3379e37921820d1b40d1f0407c8dfbd1314de0c4d03b45b4",
+        "page_count": 1,
+        "extracted_chars": 4830,
+        "truncated": false,
+        "title": "Edital de concurso público abre nove vagas para professores na UFSM – UFSM",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www.ufsm.br/pro-reitorias/progep/editais/221-2026",
+        "type": "HTML",
+        "content_hash": "b273b946596c94746c3bfc4fc75734243f65e2360e4b496a30f3bcec331c78f2",
+        "page_count": 1,
+        "extracted_chars": 6984,
+        "truncated": false,
+        "title": "221/2026 – Concurso Público para Professor da Carreira do Magistério Superior – PROGEP",
+        "evidence_status": "HIGH",
+        "relevant": true,
+        "relevance_reason": "Documento docente associado ao anúncio por: dedicacao, escrita, exclusiva, magisterio, nivel."
+      },
+      {
+        "url": "https://www.ufsm.br/busca?q=&tags=concurso-publico",
+        "type": "HTML",
+        "content_hash": "adff888db048aef50de960ff2554a9090a3ac40f8fccc9c052f45a5002bc971b",
+        "page_count": 1,
+        "extracted_chars": 19573,
+        "truncated": false,
+        "title": "Busca – UFSM",
+        "evidence_status": "AMBIGUOUS",
+        "relevant": true,
+        "relevance_reason": "Documento docente associado ao anúncio por: magisterio, maria, missoes, oportunidade, palmeira."
+      },
+      {
+        "url": "https://www.ufsm.br/trabalhe-na-ufsm",
+        "type": "HTML",
+        "content_hash": "2b06a6e15b780ccaa7fb4ae03485f5ea06d4f023183751c70802efaf9c881938",
+        "page_count": 1,
+        "extracted_chars": 3913,
+        "truncated": false,
+        "title": "Trabalhe na UFSM – UFSM",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      }
+    ],
+    "reader_version": 2,
+    "document_url": "https://www.ufsm.br/pro-reitorias/progep/editais/221-2026",
+    "document_type": "HTML",
+    "content_hash": "b273b946596c94746c3bfc4fc75734243f65e2360e4b496a30f3bcec331c78f2",
+    "confidence": "HIGH",
+    "applicable": true,
+    "requirements": {
+      "doctorate_requirement_raw": "– Preencher e imprimir a Guia de Recolhimento da União (GRU); – Pagar a inscrição, via GRU, no Banco do Brasil, até o dia 24/09/2026 , no valor de: – Professor Assistente, Nível 1, com Doutorado (Dedicação Exclusiva): R$ 412,60 (quatrocentos e doze reais e sessenta centavos). – Professor Assistente, Nível 1, com Doutorado (40 horas semanais): – Professor Assistente, Nível 1, com Doutorado (Dedicação Exclusiva): R$ 412,60 (quatrocentos e doze reais e sessenta centavos). – Professor Assistente, Nível 1, com Doutorado (40 horas semanais): R$ 250,00 (duzentos e cinquenta reais). – Professor Assistente, Nível 1, com Especialização (40 horas semanais):"
+    },
+    "evidence": [
+      {
+        "page": 1,
+        "text": "– Preencher e imprimir a Guia de Recolhimento da União (GRU); – Pagar a inscrição, via GRU, no Banco do Brasil, até o dia 24/09/2026 , no valor de: – Professor Assistente, Nível 1, com Doutorado (Dedicação Exclusiva): R$ 412,60 (quatrocentos e doze reais e sessenta centavos). – Professor Assistente, Nível 1, com Doutorado (40 horas semanais):",
+        "kinds": [
+          "doctorate"
+        ],
+        "context_terms": [
+          "dedicacao",
+          "exclusiva",
+          "nivel"
+        ],
+        "context_score": 3
+      },
+      {
+        "page": 1,
+        "text": "– Professor Assistente, Nível 1, com Doutorado (Dedicação Exclusiva): R$ 412,60 (quatrocentos e doze reais e sessenta centavos). – Professor Assistente, Nível 1, com Doutorado (40 horas semanais): R$ 250,00 (duzentos e cinquenta reais). – Professor Assistente, Nível 1, com Especialização (40 horas semanais):",
+        "kinds": [
+          "doctorate"
+        ],
+        "context_terms": [
+          "dedicacao",
+          "exclusiva",
+          "nivel"
+        ],
+        "context_score": 3
+      }
+    ],
+    "reason": "Requisitos associados à área/cargo por termos de contexto.",
     "errors": []
   }
 }
