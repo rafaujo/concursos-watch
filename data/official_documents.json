@@ -1734,7 +1734,7 @@
   },
   "https://www.pciconcursos.com.br/noticias/prefeitura-de-sao-joao-del-rei-e-damae-mg-abrem-concursos-com-salarios-de-ate-6469": {
     "status": "AMBIGUOUS",
-    "checked_at": "2026-08-23T19:05:04-03:00",
+    "checked_at": "2026-08-26T08:47:59-03:00",
     "documents": [
       {
         "url": "https://www.ibgpconcursos.com.br/",
@@ -1804,14 +1804,14 @@
   },
   "https://www.pciconcursos.com.br/noticias/unicamp-sp-abre-concurso-para-professor-titular-na-area-de-desenvolvimento-economico": {
     "status": "AMBIGUOUS",
-    "checked_at": "2026-08-23T19:05:04-03:00",
+    "checked_at": "2026-08-26T08:47:59-03:00",
     "documents": [
       {
         "url": "https://www.unicamp.br/",
         "type": "HTML",
-        "content_hash": "9fb80aa18cd5ccf6a665594a6fb09174a5028b356c4df9a8ba52a246938d7540",
+        "content_hash": "95a67dd639cc2bc423c84cf56bf21051832d6de4cd523786e9b70e0e3daa9e97",
         "page_count": 1,
-        "extracted_chars": 3979,
+        "extracted_chars": 4179,
         "truncated": false,
         "title": "Portal Unicamp",
         "evidence_status": "IRRELEVANT",
@@ -1834,7 +1834,7 @@
       {
         "url": "https://jornal.unicamp.br/agenda/2026/08/20/seminario-debate-politica-de-formacao-de-professores/",
         "type": "HTML",
-        "content_hash": "4b00d10f1c3a77239c6e47df174b79c2bfd586270d5845dd1f3a446fc12831cb",
+        "content_hash": "bfdc3e91a9b2bf06a038242788bf5e7ce9a3242bf8001098c1eec78dc74e5e8e",
         "page_count": 1,
         "extracted_chars": 2890,
         "truncated": false,
@@ -1846,9 +1846,9 @@
       {
         "url": "https://www.ea2.unicamp.br/seminario-politica-de-formacao-de-professores-em-debate/",
         "type": "HTML",
-        "content_hash": "0eb825b05b9d0027ed8d28a9d2b5f92202c650ec665049ad47f67ba8f32e99b9",
+        "content_hash": "df1bc6fce3240928f628813a697255330e2f71cefe646caf031e9715b9668de0",
         "page_count": 1,
-        "extracted_chars": 2844,
+        "extracted_chars": 2898,
         "truncated": false,
         "title": "Seminário: Política de Formação de Professores em Debate – EA2",
         "evidence_status": "IRRELEVANT",
@@ -1865,14 +1865,14 @@
   },
   "https://www.pciconcursos.com.br/noticias/ufmg-abre-concurso-publico-para-professor-de-magisterio-superior-na-area-de-antropologia-do-desenvolvimento": {
     "status": "AMBIGUOUS",
-    "checked_at": "2026-08-23T19:05:04-03:00",
+    "checked_at": "2026-08-26T08:47:59-03:00",
     "documents": [
       {
         "url": "https://www.ufmg.br",
         "type": "HTML",
-        "content_hash": "f9a0e77b0263c973b4fcb105fb00d95c66a53b453b219d2b005eea0a092b4519",
+        "content_hash": "6c5214d3bed066fb617098e5183d90fccda39d8c4d15c53fc6516e1e5b95c269",
         "page_count": 1,
-        "extracted_chars": 5972,
+        "extracted_chars": 6010,
         "truncated": false,
         "title": "Universidade Federal de Minas Gerais – Liderança regional e nacional em ensino superior gratuito, extensão, cultura, pesquisa científica e geração de patentes em todas as áreas do conhecimento",
         "evidence_status": "IRRELEVANT",
@@ -1893,37 +1893,13 @@
         "opportunities_count": 0
       },
       {
-        "url": "https://www.ufmg.br/comunicacao/noticias/formas-de-ingresso/seriado-ufmg-2026-recebe-617-mil-inscricoes/",
+        "url": "https://www.ufmg.br/cursos/formas-de-ingresso/concursos-publicos/",
         "type": "HTML",
-        "content_hash": "9e8cf95afedfdc73672b8782beedcbd064998c0e64c84576664084b8be14f744",
+        "content_hash": "9e8b6ac5b746abeff58eccac4dd24dc595e71ad7c1513914addce8bcd58f6afe",
         "page_count": 1,
-        "extracted_chars": 10644,
+        "extracted_chars": 778,
         "truncated": false,
-        "title": "Seriado UFMG 2026 recebe 61,7 mil inscrições – Universidade Federal de Minas Gerais",
-        "evidence_status": "IRRELEVANT",
-        "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
-      },
-      {
-        "url": "https://www.ufmg.br/?s=&tag=processo-seletivo-seriado",
-        "type": "HTML",
-        "content_hash": "96e5d5dc82378595c52792ea1a57bc3d63b63413548beffc23b3311445cdafe8",
-        "page_count": 1,
-        "extracted_chars": 1679,
-        "truncated": false,
-        "title": "Resultados da pesquisa por “” – Universidade Federal de Minas Gerais",
-        "evidence_status": "IRRELEVANT",
-        "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
-      },
-      {
-        "url": "https://www.ufmg.br/comunicacao/noticias/institucional/definidas-datas-e-obras-literarias-e-artisticas-do-seriado-ufmg-2026/",
-        "type": "HTML",
-        "content_hash": "34c3cd2721a57eb362fa4ec29840a36ce97fa3434f9f129d29068e8486333092",
-        "page_count": 1,
-        "extracted_chars": 14646,
-        "truncated": false,
-        "title": "Definidas datas e obras literárias e artísticas do Seriado UFMG 2026 – Universidade Federal de Minas Gerais",
+        "title": "Concursos Públicos – Universidade Federal de Minas Gerais",
         "evidence_status": "IRRELEVANT",
         "relevant": false,
         "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
@@ -1932,7 +1908,10 @@
     "reader_version": 2,
     "applicable": false,
     "reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
-    "errors": []
+    "errors": [
+      "https://www2.ufmg.br/concursos/Concursos/Professor-Adjunto: SSLError: HTTPSConnectionPool(host='www2.ufmg.br', port=443): Max retries exceeded with url: /concursos/Concursos/Professor-Adjunto (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))",
+      "https://www2.ufmg.br/concursos/Concursos/Professor-Assistente: SSLError: HTTPSConnectionPool(host='www2.ufmg.br', port=443): Max retries exceeded with url: /concursos/Concursos/Professor-Assistente (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))"
+    ]
   },
   "https://www.pciconcursos.com.br/noticias/uesc-ba-publica-edital-de-processo-seletivo-para-professor-visitante-em-engenharia-civil-e-ambiental": {
     "status": "AMBIGUOUS",
