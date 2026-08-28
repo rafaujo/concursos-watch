@@ -1703,7 +1703,7 @@
   },
   "https://www.pciconcursos.com.br/noticias/prefeitura-de-sao-joao-del-rei-e-damae-mg-abrem-concursos-com-salarios-de-ate-6469": {
     "status": "AMBIGUOUS",
-    "checked_at": "2026-08-26T08:47:59-03:00",
+    "checked_at": "2026-08-28T18:26:37-03:00",
     "documents": [
       {
         "url": "https://www.ibgpconcursos.com.br/",
@@ -1773,14 +1773,14 @@
   },
   "https://www.pciconcursos.com.br/noticias/unicamp-sp-abre-concurso-para-professor-titular-na-area-de-desenvolvimento-economico": {
     "status": "AMBIGUOUS",
-    "checked_at": "2026-08-26T08:47:59-03:00",
+    "checked_at": "2026-08-28T18:26:37-03:00",
     "documents": [
       {
         "url": "https://www.unicamp.br/",
         "type": "HTML",
-        "content_hash": "95a67dd639cc2bc423c84cf56bf21051832d6de4cd523786e9b70e0e3daa9e97",
+        "content_hash": "da4d026a2b361bcc6552ff67cbf8eedf1a6646722589a3a34393c2466412f6e2",
         "page_count": 1,
-        "extracted_chars": 4179,
+        "extracted_chars": 4362,
         "truncated": false,
         "title": "Portal Unicamp",
         "evidence_status": "IRRELEVANT",
@@ -1801,25 +1801,38 @@
         "opportunities_count": 0
       },
       {
-        "url": "https://jornal.unicamp.br/agenda/2026/08/20/seminario-debate-politica-de-formacao-de-professores/",
+        "url": "https://www.funcamp.unicamp.br/cpv",
         "type": "HTML",
-        "content_hash": "bfdc3e91a9b2bf06a038242788bf5e7ce9a3242bf8001098c1eec78dc74e5e8e",
+        "content_hash": "134a89f27f6260c0c43cf1cf31c1d00135481d556d31adb7a773daebb4a42bdc",
         "page_count": 1,
-        "extracted_chars": 2890,
+        "extracted_chars": 4651,
         "truncated": false,
-        "title": "Seminário debate 'Política de Formação de Professores’ - Eventos - Jornal da Unicamp",
+        "title": "Casa do Professor Visitante - Home Page",
         "evidence_status": "IRRELEVANT",
         "relevant": false,
         "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
       },
       {
-        "url": "https://www.ea2.unicamp.br/seminario-politica-de-formacao-de-professores-em-debate/",
-        "type": "HTML",
-        "content_hash": "df1bc6fce3240928f628813a697255330e2f71cefe646caf031e9715b9668de0",
-        "page_count": 1,
-        "extracted_chars": 2898,
+        "url": "https://www.funcamp.unicamp.br/cpv/content/Arquivos/Manual_Hospede.pdf",
+        "type": "PDF",
+        "content_hash": "3fd7fdb5b2c0ea3242ec893a0e83e41989f30519faf5156124b92c2592bfb626",
+        "page_count": 22,
+        "extracted_chars": 22858,
         "truncated": false,
-        "title": "Seminário: Política de Formação de Professores em Debate – EA2",
+        "title": "VERSÃO 3 MANUAL DO HÓSPEDE",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://reservas.desbravador.com.br/hotel-app/casa-do-professor-visitante-cpv",
+        "type": "HTML",
+        "content_hash": "318d65f5c445f414c35e37a8c51d27409b308f56509d8a7ae351eda99c8acad3",
+        "page_count": 1,
+        "extracted_chars": 29,
+        "truncated": false,
+        "title": "Desbravador - Reservas Online",
         "evidence_status": "IRRELEVANT",
         "relevant": false,
         "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
@@ -1828,20 +1841,18 @@
     "reader_version": 2,
     "applicable": false,
     "reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
-    "errors": [
-      "http://cpvunicamp.com.br/: HTTPError: 502 Server Error: Bad Gateway for url: http://cpvunicamp.com.br/"
-    ]
+    "errors": []
   },
   "https://www.pciconcursos.com.br/noticias/ufmg-abre-concurso-publico-para-professor-de-magisterio-superior-na-area-de-antropologia-do-desenvolvimento": {
     "status": "AMBIGUOUS",
-    "checked_at": "2026-08-26T08:47:59-03:00",
+    "checked_at": "2026-08-28T18:26:37-03:00",
     "documents": [
       {
         "url": "https://www.ufmg.br",
         "type": "HTML",
-        "content_hash": "6c5214d3bed066fb617098e5183d90fccda39d8c4d15c53fc6516e1e5b95c269",
+        "content_hash": "111ac0c0b2f9b755c33003a017d1ef8f6325074a472574969f0b0fc46e224ac8",
         "page_count": 1,
-        "extracted_chars": 6010,
+        "extracted_chars": 5502,
         "truncated": false,
         "title": "Universidade Federal de Minas Gerais – Liderança regional e nacional em ensino superior gratuito, extensão, cultura, pesquisa científica e geração de patentes em todas as áreas do conhecimento",
         "evidence_status": "IRRELEVANT",
@@ -1864,7 +1875,7 @@
       {
         "url": "https://www.ufmg.br/cursos/formas-de-ingresso/concursos-publicos/",
         "type": "HTML",
-        "content_hash": "9e8b6ac5b746abeff58eccac4dd24dc595e71ad7c1513914addce8bcd58f6afe",
+        "content_hash": "6e68140bb09e87a0b385ec63d0ff09863391ec08e996f48d66d498e2362a9ef1",
         "page_count": 1,
         "extracted_chars": 778,
         "truncated": false,
@@ -2212,5 +2223,129 @@
     "applicable": false,
     "reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
     "errors": []
+  },
+  "https://www.pciconcursos.com.br/noticias/unesp-abre-concurso-para-professor-assistente-na-area-de-sistemas-de-computacao-em-sorocaba-sp": {
+    "status": "AMBIGUOUS",
+    "checked_at": "2026-08-28T18:26:37-03:00",
+    "documents": [
+      {
+        "url": "https://www2.unesp.br/",
+        "type": "HTML",
+        "content_hash": "5becc610351150d25e5ae6267888ed2a6106151d59de9c0f3080654b39dbd624",
+        "page_count": 1,
+        "extracted_chars": 8722,
+        "truncated": false,
+        "title": "Unesp - Universidade Estadual Paulista - Portal",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www2.unesp.br/Home/compilacao-legislacao-2020-27-08.pdf",
+        "type": "PDF",
+        "content_hash": "22ea40925cc0cbe6a18223bfa682544e82e8efb02a3471a3576e8794c03863cc",
+        "page_count": 79,
+        "extracted_chars": 169161,
+        "truncated": false,
+        "title": "INTRODUÇÃO",
+        "evidence_status": "AMBIGUOUS",
+        "relevant": true,
+        "relevance_reason": "Documento docente associado à área por: sistemas.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://www2.unesp.br/portal#!/noticias/v/id::43375/processo-seletivo-unificado-para-ingresso-na-pos-graduacao-da-unesp-abre-inscricoes-para-57-programas-com-ofertas-de-mestrado-ou-doutorado",
+        "type": "HTML",
+        "content_hash": "a8670469e67a732a28ed8c4e4b31f66b654e72b208d9e6a31d7118125b091e79",
+        "page_count": 1,
+        "extracted_chars": 805,
+        "truncated": false,
+        "title": "Unesp - Universidade Estadual Paulista - Portal",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://jornal.unesp.br/2026/08/26/danca-do-dragao-e-musica-erudita-composta-por-chineses-e-apresentada-por-brasileiros-sao-os-temas-da-nova-edicao-do-conexao-china/",
+        "type": "HTML",
+        "content_hash": "227a791dcc13e7be13d0c917340ad1cd80a298fd94da933d8de0531bc209f04e",
+        "page_count": 1,
+        "extracted_chars": 4225,
+        "truncated": false,
+        "title": "Jornal da Unesp | Dança do dragão e música erudita composta por chineses e apresentada por brasileiros são os temas da nova edição do Conexão China",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      }
+    ],
+    "reader_version": 2,
+    "applicable": false,
+    "reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
+    "errors": [
+      "https://inscricoes.unesp.br/: SSLError: HTTPSConnectionPool(host='inscricoes.unesp.br', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))"
+    ]
+  },
+  "https://www.pciconcursos.com.br/noticias/ufrn-abre-processo-seletivo-para-professores-do-magisterio-superior-e-ebtt": {
+    "status": "AMBIGUOUS",
+    "checked_at": "2026-08-28T18:26:37-03:00",
+    "documents": [
+      {
+        "url": "https://www.ufrn.br/",
+        "type": "HTML",
+        "content_hash": "28f78b4117cbf986de85ef8b86051dd7f7e133b78a44ee6101317664150a7d98",
+        "page_count": 1,
+        "extracted_chars": 2261,
+        "truncated": false,
+        "title": "Portal da UFRN",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://sig.ufrn.br/download/sigaa/public/calendario_universitario.pdf",
+        "type": "PDF",
+        "content_hash": "be195da04c1206c43650c5f66076d354550d0de13b497eb9942bc82e9ac415ab",
+        "page_count": 9,
+        "extracted_chars": 25939,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://www.ufrn.br/resources/documentos/cartadeservico/carta%20de%20servico%20-%20ufrn.pdf",
+        "type": "PDF",
+        "content_hash": "b3f176097d0312b1931276130b57ba96702642b2b0c9a2bffda114f142de22d4",
+        "page_count": 163,
+        "extracted_chars": 225388,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "AMBIGUOUS",
+        "relevant": true,
+        "relevance_reason": "Documento docente associado ao anúncio por: artes, como, direito, diversas, ebtt.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://www.ufrn.br/resources/documentos/planos/pls/pls_2024_2027.pdf",
+        "type": "PDF",
+        "content_hash": "3d0af4f06c66e87a66990561fac7795143b6d85bce78e9bbd7fb0e70ddfc1f3c",
+        "page_count": 46,
+        "extracted_chars": 57904,
+        "truncated": false,
+        "title": "PLS 2024 - 2027 (2_versão final).docx",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
+      }
+    ],
+    "reader_version": 2,
+    "applicable": false,
+    "reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
+    "errors": [
+      "https://docente.ufrn.br/: RetryError: HTTPSConnectionPool(host='docente.ufrn.br', port=443): Max retries exceeded with url: / (Caused by ResponseError('too many 504 error responses'))"
+    ]
   }
 }
