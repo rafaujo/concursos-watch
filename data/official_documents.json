@@ -94,13 +94,37 @@
     "errors": []
   },
   "https://www.pciconcursos.com.br/noticias/unimontes-mg-publica-edital-de-concurso-publico-para-professores-de-educacao-superior": {
-    "status": "AMBIGUOUS",
-    "checked_at": "2026-08-29T12:39:25-03:00",
+    "status": "BLOCKED",
+    "checked_at": "2026-08-29T14:26:00-03:00",
     "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/unimontes-mg-publica-edital-de-concurso-publico-para-professores-de-educacao-superior",
+        "type": "PCI_HTML",
+        "content_hash": "6b0f460550c8a92cc2418e44045699b6a9b6cdea5a93364346bde34f51fa14e7",
+        "page_count": 1,
+        "extracted_chars": 15539,
+        "truncated": false,
+        "title": "Unimontes - MG publica edital de concurso público para professores de educação superior",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      },
+      {
+        "url": "https://www.pciconcursos.com.br/apostilas/basico-para-concursos",
+        "type": "HTML",
+        "content_hash": "44e72a49da17dc74622a772eb0b96c992a6887106f5231e72f7a1d5a712f3723",
+        "page_count": 1,
+        "extracted_chars": 2664,
+        "truncated": false,
+        "title": "PCI Concursos - Apostilas",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
       {
         "url": "https://inscricaoconcurso.unimontes.br/login",
         "type": "HTML",
-        "content_hash": "f97e7c4a8cac038749646e17952c6889d17acf41c7340bee40518a0d4e214a77",
+        "content_hash": "ab64dccdc848b7358cbf14ec05d9afb2604e247e76dd7e11242215ffeabf7dd5",
         "page_count": 1,
         "extracted_chars": 248,
         "truncated": false,
@@ -110,24 +134,82 @@
         "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
       }
     ],
-    "reader_version": 2,
+    "reader_version": 3,
     "applicable": false,
-    "reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
+    "reason": "O PCI lista 1 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
     "errors": [
       "https://www.unimontes.br/: SSLError: HTTPSConnectionPool(host='unimontes.br', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))"
+    ],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL DE CONCURSO PÚBLICO Nº 02/2026",
+        "url": null,
+        "pci_link_id": "1701809",
+        "pci_news_code": "21ffd12c346bd9f0320275337875d00b",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
     ]
   },
   "https://www.pciconcursos.com.br/noticias/uem-pr-abre-processo-seletivo-com-vagas-para-professores-colaboradores": {
     "status": "READ_MULTI",
-    "checked_at": "2026-08-23T19:04:53-03:00",
-    "reader_version": 2,
+    "checked_at": "2026-08-29T14:26:00-03:00",
+    "reader_version": 3,
     "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/uem-pr-abre-processo-seletivo-com-vagas-para-professores-colaboradores",
+        "type": "PCI_HTML",
+        "content_hash": "069d2910e34ccc67a2c92a06b6d620d8a2e8ac3023c3fc63a57c8c35d61205ef",
+        "page_count": 1,
+        "extracted_chars": 11280,
+        "truncated": false,
+        "title": "UEM - PR abre processo seletivo com vagas para professores colaboradores",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      },
       {
         "url": "https://prh.uem.br/res",
         "type": "HTML",
-        "content_hash": "786669aa933d416842ab11f99c45079a51f39d46ff750b0fcd3fd0d4eae70d2e",
+        "content_hash": "fc1d6d831dd3909f0b97214137835628892d812decb0a18adb87ecc7bb62428e",
         "page_count": 1,
-        "extracted_chars": 556,
+        "extracted_chars": 669,
+        "truncated": false,
+        "title": "Início — Divisão de Recrutamento e Seleção",
+        "evidence_status": "NONE",
+        "relevant": true,
+        "relevance_reason": "Documento docente associado ao anúncio por: saude, selecao."
+      },
+      {
+        "url": "https://prh.uem.br/res/em-andamento-docentes/edital-356-2026-prh",
+        "type": "HTML",
+        "content_hash": "116d544c6b09ad82040808e86e7364927a91894a61ba5a29f07f6bb0b2daf78a",
+        "page_count": 1,
+        "extracted_chars": 857,
+        "truncated": false,
+        "title": "Edital nº 356/2026-PRH - Teste seletivo para contratação temporária de docentes - Departamento de Medicina — Divisão de Recrutamento e Seleção",
+        "evidence_status": "NONE",
+        "relevant": true,
+        "relevance_reason": "Documento docente associado ao anúncio por: saude, selecao."
+      },
+      {
+        "url": "https://prh.uem.br/res/em-andamento-docentes/edital-356-2026-prh/edital-356-2026-prh-abertura.pdf",
+        "type": "PDF",
+        "content_hash": "c2192ed4f73676849ee4ae8a476a9a3586e176f0791c51ba9ce1531cbebde2a9",
+        "page_count": 23,
+        "extracted_chars": 56923,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "AMBIGUOUS",
+        "relevant": true,
+        "relevance_reason": "Documento docente associado ao anúncio por: artes, como, direito, engenharia, professores.",
+        "opportunities_count": 11
+      },
+      {
+        "url": "https://prh.uem.br/res",
+        "type": "HTML",
+        "content_hash": "fc1d6d831dd3909f0b97214137835628892d812decb0a18adb87ecc7bb62428e",
+        "page_count": 1,
+        "extracted_chars": 669,
         "truncated": false,
         "title": "Início — Divisão de Recrutamento e Seleção",
         "evidence_status": "NONE",
@@ -137,9 +219,9 @@
       {
         "url": "https://prh.uem.br/res/em-andamento-docentes/edital-no-341-2026-prh-teste-seletivo-para-contratacao-temporaria-de-docentes",
         "type": "HTML",
-        "content_hash": "f20dd6a9d493c7f1a347b4f8381b507ba9d04049bfb4a97d3810df3974c57897",
+        "content_hash": "d557615ec286f6104267611abe58eaac227a5be9192125233b4f39370aa1e78f",
         "page_count": 1,
-        "extracted_chars": 1038,
+        "extracted_chars": 1444,
         "truncated": false,
         "title": "Edital nº 341/2026-PRH - Teste seletivo para contratação temporária de docentes — Divisão de Recrutamento e Seleção",
         "evidence_status": "NONE",
@@ -149,9 +231,9 @@
       {
         "url": "https://prh.uem.br/res/em-andamento-docentes/edital-no-341-2026-prh-teste-seletivo-para-contratacao-temporaria-de-docentes/edital-341-2026-prh-abertura.pdf",
         "type": "PDF",
-        "content_hash": "3519a56043f7f9896a8735fd65698dc7db8a2f2bc62c878eeee821a408e4b1ae",
-        "page_count": 86,
-        "extracted_chars": 183552,
+        "content_hash": "9c01fb68e914bb4c415cf89b6b928455d77c9e61c49a52989406003313285133",
+        "page_count": 88,
+        "extracted_chars": 186490,
         "truncated": false,
         "title": "",
         "evidence_status": "AMBIGUOUS",
@@ -160,34 +242,22 @@
         "opportunities_count": 76
       },
       {
-        "url": "https://meet.google.com/unsupported?meetingCode=skt-qstr-jzn&ref=https://meet.google.com/skt-qstr-jzn",
-        "type": "HTML",
-        "content_hash": "7c180b08f2d5bb111df255277880379993acedc4c60f4ec2e10e3e608286b7d9",
-        "page_count": 1,
-        "extracted_chars": 479,
-        "truncated": false,
-        "title": "Meet",
-        "evidence_status": "IRRELEVANT",
-        "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
-      },
-      {
-        "url": "https://prh.uem.br/res/em-andamento-docentes/edital-no-341-2026-prh-teste-seletivo-para-contratacao-temporaria-de-docentes/edital-357-2026-prh-resultado-sorteio.pdf",
+        "url": "https://prh.uem.br/res/em-andamento-docentes/edital-no-341-2026-prh-teste-seletivo-para-contratacao-temporaria-de-docentes/edital-362-2026-prh-retificacao.pdf",
         "type": "PDF",
-        "content_hash": "22d9b3c702c5c635daf29a989bd65ca9e36183bd81447b6107dc567dbcfe5f86",
-        "page_count": 2,
-        "extracted_chars": 2297,
+        "content_hash": "9eb382f4bffc32325a5445d401dd92a5bab10729f530becb31a038b0c3dc3a87",
+        "page_count": 1,
+        "extracted_chars": 1515,
         "truncated": false,
         "title": "",
         "evidence_status": "IRRELEVANT",
         "relevant": false,
-        "relevance_reason": "A vaga não tem área/número identificável e o documento não coincide com contexto suficiente.",
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
         "opportunities_count": 0
       }
     ],
     "document_url": "https://prh.uem.br/res/em-andamento-docentes/edital-no-341-2026-prh-teste-seletivo-para-contratacao-temporaria-de-docentes/edital-341-2026-prh-abertura.pdf",
     "document_type": "PDF",
-    "content_hash": "3519a56043f7f9896a8735fd65698dc7db8a2f2bc62c878eeee821a408e4b1ae",
+    "content_hash": "9c01fb68e914bb4c415cf89b6b928455d77c9e61c49a52989406003313285133",
     "confidence": "STRUCTURED",
     "applicable": false,
     "opportunities": [
@@ -221,7 +291,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Matemática, Física ou Engenharias",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": null,
-        "page": 2,
+        "page": 3,
         "reference": "DTD 00333-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Arenito",
@@ -281,7 +351,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação nas áreas de Ciências Biológicas ou da Saúde;",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": "e Doutorado em Fisiologia, Bioquímica, Biologia Celular, Biofísica, Farmacologia.",
-        "page": 3,
+        "page": 4,
         "reference": "DTD 00108-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Sede",
@@ -329,7 +399,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Matemática ou áreas afins;",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": null,
-        "page": 4,
+        "page": 5,
         "reference": "DTD 00006-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Sede",
@@ -377,7 +447,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em História;",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": "e Doutorado em História",
-        "page": 5,
+        "page": 6,
         "reference": "DTD 00258-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Ivaiporã",
@@ -425,7 +495,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Música;",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": null,
-        "page": 6,
+        "page": 7,
         "reference": "DTD 00009-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Sede",
@@ -433,11 +503,11 @@
       },
       {
         "area": "(21) Violino, Viola de Arco e Matérias Teóricas",
-        "requirement_text": "Bacharelado em Música – Habilitação em Instrumento: Violino ou Viola",
-        "graduation_requirement_raw": "Requisitos: Bacharelado em Música – Habilitação em Instrumento: Violino ou Viola",
+        "requirement_text": "Bacharelado em Música – Habilitação em Instrumento: Violino ou Viola Bacharelado em Música, com habilitação em violino ou viola; ou ⁠Graduação em Música, com pesquisa de pós graduação em performance ou ensino de Violino/Viola (Redação dada pelo Edital nº 363/2026-PRH)",
+        "graduation_requirement_raw": "Requisitos: Bacharelado em Música – Habilitação em Instrumento: Violino ou Viola Bacharelado em Música, com habilitação em violino ou viola; ou ⁠Graduação em Música, com pesquisa de pós graduação em performance ou ensino de Violino/Viola (Redação dada pelo Edital nº 363/2026-PRH)",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": null,
-        "page": 6,
+        "page": 7,
         "reference": "DTD 00316-2-0-20",
         "workload": "20 horas semanais",
         "campus": "Câmpus Sede",
@@ -457,11 +527,11 @@
       },
       {
         "area": "(23) Psicologia, Saúde e Processos Clínicos",
-        "requirement_text": "Graduação em Psicologia (Curso de Formação de Psicólogo); e Mestrado e/ou doutorando em Psicologia",
-        "graduation_requirement_raw": "Requisitos: Graduação em Psicologia (Curso de Formação de Psicólogo);",
-        "masters_requirement_raw": "e Mestrado e/ou doutorando em Psicologia",
-        "doctorate_requirement_raw": "e Mestrado e/ou doutorando em Psicologia",
-        "page": 7,
+        "requirement_text": "Graduação em Psicologia (Curso de Formação de Psicólogo); e Mestrado e/ou doutorando em Psicologia Graduação em Psicologia (Curso de Formação de Psicólogo) e mestrado em Psicologia (Redação dada pelo Edital nº 362/2026-PRH)",
+        "graduation_requirement_raw": "Requisitos: Graduação em Psicologia (Curso de Formação de Psicólogo); e Mestrado e/ou doutorando em Psicologia Graduação em Psicologia (Curso de Formação de Psicólogo) e mestrado em Psicologia (Redação dada pelo Edital nº 362/2026-PRH)",
+        "masters_requirement_raw": "e Mestrado e/ou doutorando em Psicologia Graduação em Psicologia (Curso de Formação de Psicólogo) e mestrado em Psicologia (Redação dada pelo Edital nº 362/2026-PRH)",
+        "doctorate_requirement_raw": null,
+        "page": 8,
         "reference": "DTD 00020-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Sede",
@@ -469,11 +539,11 @@
       },
       {
         "area": "(24) Psicologia do Trabalho",
-        "requirement_text": "Graduação em Psicologia (Curso de Formação de Psicólogo); e Mestrado em Psicologia ou áreas afins",
-        "graduation_requirement_raw": "Requisitos: Graduação em Psicologia (Curso de Formação de Psicólogo);",
-        "masters_requirement_raw": null,
+        "requirement_text": "Graduação em Psicologia (Curso de Formação de Psicólogo); e Mestrado em Psicologia ou áreas afins Graduação em Psicologia (Curso de Formação de Psicólogo) e mestrado em Psicologia (Redação dada pelo Edital nº 362/2026-PRH)",
+        "graduation_requirement_raw": "Requisitos: Graduação em Psicologia (Curso de Formação de Psicólogo); e Mestrado em Psicologia ou áreas afins Graduação em Psicologia (Curso de Formação de Psicólogo) e mestrado em Psicologia (Redação dada pelo Edital nº 362/2026-PRH)",
+        "masters_requirement_raw": "e Mestrado em Psicologia ou áreas afins Graduação em Psicologia (Curso de Formação de Psicólogo) e mestrado em Psicologia (Redação dada pelo Edital nº 362/2026-PRH)",
         "doctorate_requirement_raw": null,
-        "page": 7,
+        "page": 8,
         "reference": "DTD 00134-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Sede",
@@ -485,7 +555,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Artes Visuais ou em Artes Plásticas ou em Belas Artes ou Educação Artística ou Arte- Educação ou Desenho ou Pintura;",
         "masters_requirement_raw": "e Mestrado ou Doutorado (na área de Ciências Humanas, Letras e Artes)",
         "doctorate_requirement_raw": "e Mestrado ou Doutorado (na área de Ciências Humanas, Letras e Artes)",
-        "page": 7,
+        "page": 8,
         "reference": "DTD 00438-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Sede",
@@ -497,7 +567,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Pedagogia;",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": "e Doutorado ou créditos completos de doutorado em Educação",
-        "page": 8,
+        "page": 9,
         "reference": "DTD 00518-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Sede e Ivaiporã",
@@ -509,7 +579,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação na área de Ciências Biológicas ou Ciências da Saúde ou áreas afins e cursado a disciplina de Imunologia na graduação;",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": "Doutorado em Ciências Biológicas ou Ciências da Saúde ou áreas afins",
-        "page": 8,
+        "page": 9,
         "reference": "DTD 00579-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Sede",
@@ -517,11 +587,11 @@
       },
       {
         "area": "(28) Parasitologia",
-        "requirement_text": "Graduação em Farmácia ou Biomedicina; e Doutorado em Parasitologia",
-        "graduation_requirement_raw": "Requisitos: Graduação em Farmácia ou Biomedicina;",
+        "requirement_text": "Graduação em Farmácia ou Biomedicina; e Doutorado em Parasitologia Graduação em Farmácia ou Biomedicina ou Ciências Biológicas; Doutorado em Parasitologia (Redação dada pelo Edital nº 361/2026-PRH)",
+        "graduation_requirement_raw": "Requisitos: Graduação em Farmácia ou Biomedicina; e Doutorado em Parasitologia Graduação em Farmácia ou Biomedicina ou Ciências Biológicas;",
         "masters_requirement_raw": null,
-        "doctorate_requirement_raw": "e Doutorado em Parasitologia",
-        "page": 8,
+        "doctorate_requirement_raw": "e Doutorado em Parasitologia Graduação em Farmácia ou Biomedicina ou Ciências Biológicas; Doutorado em Parasitologia (Redação dada pelo Edital nº 361/2026-PRH)",
+        "page": 9,
         "reference": "DTD 00187-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Sede",
@@ -533,7 +603,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Farmácia ou Biomedicina;",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": "e Doutorado em Toxicologia ou áreas afins. Doutorado em áreas afins deverá comprovar que a tese foi na área de toxicologia",
-        "page": 8,
+        "page": 9,
         "reference": "DTD 00272-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Sede",
@@ -545,7 +615,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Educação Física;",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": null,
-        "page": 9,
+        "page": 10,
         "reference": "DTD 00542-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Ivaiporã",
@@ -557,7 +627,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Educação Física;",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": null,
-        "page": 9,
+        "page": 10,
         "reference": "DTD 00565-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Ivaiporã",
@@ -569,7 +639,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Educação Física, com doutorado concluído",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": "Requisitos: Graduação em Educação Física, com doutorado concluído",
-        "page": 9,
+        "page": 10,
         "reference": "DTD 00270-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Sede",
@@ -581,7 +651,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Educação Física, com doutorado concluído",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": "Requisitos: Graduação em Educação Física, com doutorado concluído",
-        "page": 9,
+        "page": 10,
         "reference": "DTD 00620-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Sede",
@@ -593,7 +663,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Educação Física, com doutorado concluído",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": "Requisitos: Graduação em Educação Física, com doutorado concluído",
-        "page": 9,
+        "page": 10,
         "reference": "DTD 00433-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Sede",
@@ -605,7 +675,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Educação Física, com doutorado concluído",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": "Requisitos: Graduação em Educação Física, com doutorado concluído",
-        "page": 10,
+        "page": 11,
         "reference": "DTD 00177-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Sede",
@@ -617,7 +687,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Educação Física, com doutorado concluído",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": "Requisitos: Graduação em Educação Física, com doutorado concluído",
-        "page": 10,
+        "page": 11,
         "reference": "DTD 00527-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Sede",
@@ -629,7 +699,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Educação Física, com doutorado concluído",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": "Requisitos: Graduação em Educação Física, com doutorado concluído",
-        "page": 10,
+        "page": 11,
         "reference": "DTD 00235-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Sede",
@@ -641,7 +711,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Odontologia;",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": "Doutorado em Endodontia e/ou áreas afins;",
-        "page": 10,
+        "page": 11,
         "reference": "DTD 00139-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Sede",
@@ -653,7 +723,7 @@
         "graduation_requirement_raw": null,
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": "Requisitos: Doutorado em área da Odontologia com área de concentração em Prótese Dentária ou Reabilitação Oral;",
-        "page": 10,
+        "page": 12,
         "reference": "DTD 00140-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Sede",
@@ -665,7 +735,7 @@
         "graduation_requirement_raw": null,
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": "Requisitos: Doutorado em Odontopediatria e Aperfeiçoamento em Ortodontia/Ortopedia ou Especialização ou Doutorado em Odontologia com Especialização em Odontopediatria e Aperfeiçoamento em Ortodontia/Ortopedia ou Especialização",
-        "page": 11,
+        "page": 12,
         "reference": "DTD 00230-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Sede",
@@ -677,7 +747,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Odontologia;",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": "e Doutorado em Saúde Coletiva ou Doutorado em Odontologia Preventiva e Social ou Doutorado em Odontologia, Doutorado em Odontologia Integrada ou Doutorado em Ciências Odontológicas desde que seja com área de concentração ou tese em Saúde Coletiva ou Doutorado em Ciências com Estágio Pós- Doutoral em Saúde Coletiva",
-        "page": 11,
+        "page": 12,
         "reference": "DTD 00005-2-0-20",
         "workload": "20 horas semanais",
         "campus": "Câmpus Sede",
@@ -689,7 +759,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Odontologia;",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": "e Doutorado em Saúde Coletiva ou Doutorado em Odontologia Preventiva e Social ou Doutorado em Odontologia, Doutorado em Odontologia Integrada ou Doutorado em Ciências Odontológicas desde que seja com área de concentração ou tese em Saúde Coletiva ou Doutorado em Ciências com Estágio Pós- Doutoral em Saúde Coletiva",
-        "page": 11,
+        "page": 13,
         "reference": "DTD 00560-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Sede",
@@ -701,7 +771,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Ciências Contábeis;",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": null,
-        "page": 12,
+        "page": 13,
         "reference": "DTD 00360-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Sede e Cianorte",
@@ -713,7 +783,7 @@
         "graduation_requirement_raw": null,
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": "Requisitos: Doutorado em Direito",
-        "page": 12,
+        "page": 13,
         "reference": "DTD 00405-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Sede",
@@ -725,7 +795,7 @@
         "graduation_requirement_raw": null,
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": "Requisitos: Doutorado em Direito",
-        "page": 12,
+        "page": 13,
         "reference": "DTD 00519-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Sede",
@@ -737,7 +807,7 @@
         "graduation_requirement_raw": null,
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": "Requisitos: Doutorado em Direito",
-        "page": 12,
+        "page": 14,
         "reference": "DTD 00432-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Sede",
@@ -749,7 +819,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Arquitetura e Urbanismo;",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": null,
-        "page": 13,
+        "page": 14,
         "reference": "DTD 00371-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Sede",
@@ -761,7 +831,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Arquitetura e Urbanismo;",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": null,
-        "page": 13,
+        "page": 14,
         "reference": "DTD 00213-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Sede",
@@ -773,7 +843,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Arquitetura e Urbanismo;",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": null,
-        "page": 13,
+        "page": 14,
         "reference": "DTD 00650-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Sede",
@@ -785,7 +855,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Design ou Graduação em Desenho Industrial ou Graduação em Design Gráfico;",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": null,
-        "page": 13,
+        "page": 15,
         "reference": "DTD 00365-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Cianorte",
@@ -797,7 +867,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Engenharia Civil;",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": null,
-        "page": 14,
+        "page": 15,
         "reference": "DTD 00308-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Sede",
@@ -809,7 +879,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Engenharia Civil ou Engenharia de Transportes ou Arquitetura;",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": null,
-        "page": 14,
+        "page": 15,
         "reference": "DTD 00355-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Sede",
@@ -821,7 +891,7 @@
         "graduation_requirement_raw": null,
         "masters_requirement_raw": "Requisitos: Mestrado em Engenharia Mecânica",
         "doctorate_requirement_raw": null,
-        "page": 14,
+        "page": 15,
         "reference": "DTD 00379-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Sede",
@@ -833,7 +903,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Engenharia de Produção;",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": null,
-        "page": 14,
+        "page": 16,
         "reference": "DTD 00178-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Sede",
@@ -845,7 +915,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Engenharia de Produção e Mestrado em Engenharias ou áreas afins; ou Graduação em Engenharias ou Ciências da Computação e Mestrado em Engenharia de Produção",
         "masters_requirement_raw": "Requisitos: Graduação em Engenharia de Produção e Mestrado em Engenharias ou áreas afins; ou Graduação em Engenharias ou Ciências da Computação e Mestrado em Engenharia de Produção",
         "doctorate_requirement_raw": null,
-        "page": 15,
+        "page": 16,
         "reference": "DTD 00406-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Sede",
@@ -857,7 +927,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Engenharia Têxtil",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": null,
-        "page": 15,
+        "page": 16,
         "reference": "DTD 00574-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Sede",
@@ -869,7 +939,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Engenharia de Produção",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": null,
-        "page": 15,
+        "page": 16,
         "reference": "DTD 00640-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Goioerê",
@@ -881,7 +951,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Ciência da Computação ou Informática ou áreas afins",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": null,
-        "page": 15,
+        "page": 17,
         "reference": "DTD 00113-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Sede",
@@ -893,7 +963,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Ciência da Computação ou Informática ou áreas afins",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": null,
-        "page": 16,
+        "page": 17,
         "reference": "DTD 00158-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Sede",
@@ -905,7 +975,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Engenharia Ambiental;",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": "e Doutorado",
-        "page": 16,
+        "page": 17,
         "reference": "DTD 00516-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Umuarama",
@@ -917,7 +987,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Engenharia Ambiental;",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": null,
-        "page": 16,
+        "page": 17,
         "reference": "DTD 00451-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Umuarama",
@@ -929,7 +999,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Matemática ou Engenharia;",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": "e Doutorado",
-        "page": 16,
+        "page": 17,
         "reference": "DTD 00416-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Umuarama",
@@ -941,7 +1011,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Engenharia, Tecnologia ou áreas afins;",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": null,
-        "page": 16,
+        "page": 18,
         "reference": "DTD 00651-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Umuarama",
@@ -953,7 +1023,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Física ou Engenharia;",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": "e Doutorado",
-        "page": 17,
+        "page": 18,
         "reference": "DTD 00176-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Umuarama",
@@ -961,11 +1031,11 @@
       },
       {
         "area": "(65) Geologia, Geomorfologia e Cartografia",
-        "requirement_text": "Graduação em Engenharia; e Doutorado",
-        "graduation_requirement_raw": "Requisitos: Graduação em Engenharia;",
+        "requirement_text": "Graduação em Engenharia; e Doutorado Graduação em Engenharia ou Geologia; e Doutorado (Redação dada pelo Edital nº 361/2026- PRH)",
+        "graduation_requirement_raw": "Requisitos: Graduação em Engenharia; e Doutorado Graduação em Engenharia ou Geologia;",
         "masters_requirement_raw": null,
-        "doctorate_requirement_raw": "e Doutorado",
-        "page": 17,
+        "doctorate_requirement_raw": "e Doutorado Graduação em Engenharia ou Geologia; e Doutorado (Redação dada pelo Edital nº 361/2026- PRH)",
+        "page": 18,
         "reference": "DTD 00065-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Umuarama",
@@ -977,7 +1047,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Engenharia, Tecnologia ou áreas afins;",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": null,
-        "page": 17,
+        "page": 18,
         "reference": "DTD 00472-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Umuarama",
@@ -989,7 +1059,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Arquitetura e Urbanismo;",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": null,
-        "page": 17,
+        "page": 18,
         "reference": "DTD 00645-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Umuarama",
@@ -1001,7 +1071,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Matemática;",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": null,
-        "page": 17,
+        "page": 19,
         "reference": "DTD 00061-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Umuarama",
@@ -1013,7 +1083,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Engenharia em Civil;",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": null,
-        "page": 18,
+        "page": 19,
         "reference": "DTD 00018-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Umuarama",
@@ -1025,7 +1095,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Engenharia de Alimentos ou Engenharia Química;",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": "e Doutorado",
-        "page": 18,
+        "page": 19,
         "reference": "DTD 00499-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Umuarama",
@@ -1037,7 +1107,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Gastronomia ou Tecnologia em Gastronomia;",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": null,
-        "page": 18,
+        "page": 19,
         "reference": "DTD 00641-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Umuarama",
@@ -1049,7 +1119,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Química (licenciatura ou bacharelado) ou Graduação em Química Industrial;",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": "e Doutorado",
-        "page": 18,
+        "page": 20,
         "reference": "DTD 00010-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Umuarama",
@@ -1061,7 +1131,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Química (licenciatura ou bacharelado) ou Graduação em Química Industrial;",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": null,
-        "page": 18,
+        "page": 20,
         "reference": "DTD 00023-2-0-20",
         "workload": "20 horas semanais",
         "campus": "Câmpus Umuarama",
@@ -1069,11 +1139,11 @@
       },
       {
         "area": "(74) Tecnologia em Alimentos",
-        "requirement_text": "Graduação em Engenharias ou Tecnologia em Alimentos; e Doutorado",
-        "graduation_requirement_raw": "Requisitos: Graduação em Engenharias ou Tecnologia em Alimentos;",
+        "requirement_text": "Graduação em Engenharias ou Tecnologia em Alimentos; e Doutorado Graduação em Engenharias ou Tecnologia em Alimentos ou Bacharelado em Agroindústria; e Doutorado (Redação dada pelo Edital nº 361/2026- PRH)",
+        "graduation_requirement_raw": "Requisitos: Graduação em Engenharias ou Tecnologia em Alimentos; e Doutorado Graduação em Engenharias ou Tecnologia em Alimentos ou Bacharelado em Agroindústria;",
         "masters_requirement_raw": null,
-        "doctorate_requirement_raw": "e Doutorado",
-        "page": 19,
+        "doctorate_requirement_raw": "e Doutorado Graduação em Engenharias ou Tecnologia em Alimentos ou Bacharelado em Agroindústria; e Doutorado (Redação dada pelo Edital nº 361/2026- PRH)",
+        "page": 20,
         "reference": "DTD 00394-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Umuarama",
@@ -1085,7 +1155,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Engenharia Civil",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": null,
-        "page": 19,
+        "page": 20,
         "reference": "DTD 00425-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Umuarama",
@@ -1097,7 +1167,7 @@
         "graduation_requirement_raw": "Requisitos: Graduação em Arquitetura e Urbanismo;",
         "masters_requirement_raw": null,
         "doctorate_requirement_raw": null,
-        "page": 19,
+        "page": 21,
         "reference": "DTD 00011-2-0-40",
         "workload": "40 horas semanais",
         "campus": "Câmpus Umuarama",
@@ -1105,12 +1175,45 @@
       }
     ],
     "reason": "Edital multiárea lido; os blocos serão avaliados como sub-vagas independentes.",
-    "errors": []
+    "errors": [],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL Nº 341/2026",
+        "url": null,
+        "pci_link_id": "1703931",
+        "pci_news_code": "e2b416ace1578a72c3f583b40026a763",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
+    ]
   },
   "https://www.pciconcursos.com.br/noticias/ufmg-abre-concursos-publicos-com-tres-vagas-para-professores": {
-    "status": "AMBIGUOUS",
-    "checked_at": "2026-08-29T12:39:25-03:00",
+    "status": "BLOCKED",
+    "checked_at": "2026-08-29T14:26:00-03:00",
     "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/ufmg-abre-concursos-publicos-com-tres-vagas-para-professores",
+        "type": "PCI_HTML",
+        "content_hash": "acd0462f489cbf0348ab525bf2b10317fda12f49726280054f49e8bd8cc9e775",
+        "page_count": 1,
+        "extracted_chars": 15330,
+        "truncated": false,
+        "title": "UFMG abre concursos públicos com três vagas para professores",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      },
+      {
+        "url": "https://www.pciconcursos.com.br/apostilas/basico-para-concursos",
+        "type": "HTML",
+        "content_hash": "44e72a49da17dc74622a772eb0b96c992a6887106f5231e72f7a1d5a712f3723",
+        "page_count": 1,
+        "extracted_chars": 2664,
+        "truncated": false,
+        "title": "PCI Concursos - Apostilas",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
       {
         "url": "https://www.ufmg.br",
         "type": "HTML",
@@ -1137,34 +1240,102 @@
         "opportunities_count": 0
       },
       {
-        "url": "https://www.ufmg.br/cursos/formas-de-ingresso/concursos-publicos/",
+        "url": "https://www.ufmg.br/comunicacao/noticias/institucional/inscricoes-de-trabalhos-seguem-abertas-ate-11-de-setembro/",
         "type": "HTML",
-        "content_hash": "431985da06cc16cbfebe78bd0cc8cd91c56163df54aaa2d34ef2c0a3d6407277",
+        "content_hash": "d75a5ea9daebad6a6a3358e01badde832ed6342af84e25a27a2baffed38f9629",
         "page_count": 1,
-        "extracted_chars": 778,
+        "extracted_chars": 8857,
         "truncated": false,
-        "title": "Concursos Públicos – Universidade Federal de Minas Gerais",
+        "title": "Inscrições de trabalhos seguem abertas até 11 de setembro – Universidade Federal de Minas Gerais",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://sistemas.ufmg.br/idp/login.jsp",
+        "type": "HTML",
+        "content_hash": "17dcf8bdd7b17ad00757fd07f775aab659e6afb34a1fbe55058552c0788e2a0c",
+        "page_count": 1,
+        "extracted_chars": 271,
+        "truncated": false,
+        "title": "SSO - minhaUFMG",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www.ufmg.br/comunicacao/noticias/institucional/lancados-editais-para-recomposicao-em-oito-orgaos-colegiados-da-administracao-central/",
+        "type": "HTML",
+        "content_hash": "f19b4a50cfeba8c371a6eb17a1ec60c563d6ca285b8773817f64ec7c6960ede5",
+        "page_count": 1,
+        "extracted_chars": 5132,
+        "truncated": false,
+        "title": "Lançados editais para recomposição em oito órgãos colegiados da Administração Central – Universidade Federal de Minas Gerais",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www.ufmg.br/comunicacao/noticias/evento-cultural/wander-melo-miranda-lanca-biografia-de-graciliano-ramos-neste-sabado-em-belo-horizonte/",
+        "type": "HTML",
+        "content_hash": "d250ed1abe39d8cecff17dd43d51813da82b90df1478f81caebdf096994ea4b1",
+        "page_count": 1,
+        "extracted_chars": 26907,
+        "truncated": false,
+        "title": "Wander Melo Miranda lança biografia de Graciliano Ramos neste sábado em Belo Horizonte – Universidade Federal de Minas Gerais",
         "evidence_status": "IRRELEVANT",
         "relevant": false,
         "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
       }
     ],
-    "reader_version": 2,
+    "reader_version": 3,
     "applicable": false,
-    "reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
-    "errors": [
-      "https://www2.ufmg.br/concursos/Concursos/Professor-Adjunto: SSLError: HTTPSConnectionPool(host='www2.ufmg.br', port=443): Max retries exceeded with url: /concursos/Concursos/Professor-Adjunto (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))",
-      "https://www2.ufmg.br/concursos/Concursos/Professor-Assistente: SSLError: HTTPSConnectionPool(host='www2.ufmg.br', port=443): Max retries exceeded with url: /concursos/Concursos/Professor-Assistente (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))"
+    "reason": "O PCI lista 3 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
+    "errors": [],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL Nº 1630",
+        "url": null,
+        "pci_link_id": "1702663",
+        "pci_news_code": "bb6a57398baa65d56934d0f030c85d0e",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "EDITAL Nº 1634",
+        "url": null,
+        "pci_link_id": "1702662",
+        "pci_news_code": "bb6a57398baa65d56934d0f030c85d0e",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "EDITAL Nº 1636",
+        "url": null,
+        "pci_link_id": "1702661",
+        "pci_news_code": "bb6a57398baa65d56934d0f030c85d0e",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
     ]
   },
   "https://www.pciconcursos.com.br/noticias/unioeste-pr-retifica-processo-seletivo-para-professores-de-ensino-superior": {
-    "status": "AMBIGUOUS",
-    "checked_at": "2026-08-29T12:39:25-03:00",
+    "status": "BLOCKED",
+    "checked_at": "2026-08-29T14:26:00-03:00",
     "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/unioeste-pr-retifica-processo-seletivo-para-professores-de-ensino-superior",
+        "type": "PCI_HTML",
+        "content_hash": "419d7aa7c2afd69b226f40d22cd922585e2ca11e2270ec2937c08a0cd5207e40",
+        "page_count": 1,
+        "extracted_chars": 15971,
+        "truncated": false,
+        "title": "UNIOESTE - PR retifica processo seletivo para professores de ensino superior",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      },
       {
         "url": "https://www.unioeste.br/portal/cogeps/concursos/docentes",
         "type": "HTML",
-        "content_hash": "39a6ff568e57911f20d8778c9d31e926021937c6ddfd631ec538b7086fa2a4f3",
+        "content_hash": "4c9bfc1b1088378b155ac41b3651f7e729d8f380f53cdedd121f9149e9d4b0f7",
         "page_count": 1,
         "extracted_chars": 4061,
         "truncated": false,
@@ -1220,12 +1391,66 @@
         "evidence_status": "IRRELEVANT",
         "relevant": false,
         "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://concursos.unioeste.br/concursos/publicacoes/UNIVERSIDADE+ESTADUAL+DO+OESTE+DO+PARAN%C3%81+-++UNIOESTE/148",
+        "type": "HTML",
+        "content_hash": "0db73e6cf17c5fc42ee6c27a1b33381b4f1b063fbd3c8219b4eec9814010df7c",
+        "page_count": 1,
+        "extracted_chars": 305,
+        "truncated": false,
+        "title": null,
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://concursos.unioeste.br/concursos/publicacoes/UNIVERSIDADE+ESTADUAL+DO+OESTE+DO+PARAN%C3%81+-++UNIOESTE/164",
+        "type": "HTML",
+        "content_hash": "0db73e6cf17c5fc42ee6c27a1b33381b4f1b063fbd3c8219b4eec9814010df7c",
+        "page_count": 1,
+        "extracted_chars": 305,
+        "truncated": false,
+        "title": null,
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
       }
     ],
-    "reader_version": 2,
+    "reader_version": 3,
     "applicable": false,
-    "reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
-    "errors": []
+    "reason": "O PCI lista 4 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
+    "errors": [],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL Nº 184/2026",
+        "url": null,
+        "pci_link_id": "1703811",
+        "pci_news_code": "6720a62529acf5f7305c04a884a05359",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "EDITAL 184 CRONOGRAMA",
+        "url": null,
+        "pci_link_id": "1703812",
+        "pci_news_code": "6720a62529acf5f7305c04a884a05359",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "EDITAL RETIFICADO Nº 184/2026",
+        "url": null,
+        "pci_link_id": "1704071",
+        "pci_news_code": "6720a62529acf5f7305c04a884a05359",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "RETIFICAÇÃO - REQUISITOS",
+        "url": null,
+        "pci_link_id": "1704072",
+        "pci_news_code": "6720a62529acf5f7305c04a884a05359",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
+    ]
   },
   "https://www.pciconcursos.com.br/noticias/usp-abre-concurso-para-professor-doutor-na-faculdade-de-educacao": {
     "status": "BLOCKED",
@@ -1466,9 +1691,21 @@
     ]
   },
   "https://www.pciconcursos.com.br/noticias/prefeitura-de-santos-sp-divulga-retificacoes-do-concurso-com-vagas-para-professores-adjuntos": {
-    "status": "AMBIGUOUS",
-    "checked_at": "2026-08-29T12:39:25-03:00",
+    "status": "BLOCKED",
+    "checked_at": "2026-08-29T14:26:00-03:00",
     "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/prefeitura-de-santos-sp-divulga-retificacoes-do-concurso-com-vagas-para-professores-adjuntos",
+        "type": "PCI_HTML",
+        "content_hash": "9c7bdd24bd2356ef1a1bac8e62939c188e2b34122ff45118fce77a3fac7677d6",
+        "page_count": 1,
+        "extracted_chars": 14743,
+        "truncated": false,
+        "title": "Prefeitura de Santos - SP divulga retificações do concurso com vagas para professores adjuntos",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      },
       {
         "url": "https://www.santos.sp.gov.br/",
         "type": "HTML",
@@ -1504,23 +1741,95 @@
         "evidence_status": "IRRELEVANT",
         "relevant": false,
         "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www.santos.sp.gov.br/?q=noticia/2a-semana-do-patrimonio-de-santos-abre-inscricoes-gratuitas-confira-a-programacao",
+        "type": "HTML",
+        "content_hash": "2c645c81f287796b345bcee61a780c72ac858625a4aaddd55797093d8df38875",
+        "page_count": 1,
+        "extracted_chars": 5701,
+        "truncated": false,
+        "title": "2ª Semana do Patrimônio de Santos abre inscrições gratuitas; confira a programação | Notícia | Prefeitura de Santos",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www.santos.sp.gov.br/static/files_www/conselhos/CONDEPASA/bens_tombados_24.10.25.pdf",
+        "type": "PDF",
+        "content_hash": "64ecab21f8ff443bae2d4db5433d208195905ab8e13e202ac9dae9dfc10a7e5f",
+        "page_count": 5,
+        "extracted_chars": 43508,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://docs.google.com/forms/d/e/1FAIpQLSfWdU-n_7w24bjXUv-45vqjPVN1mi1J9liWicExicWLfWe3aw/viewform?usp=send_form",
+        "type": "HTML",
+        "content_hash": "dc2d1e11f3e3604883209fc56c2b78e63d21c48e94e29aa809ba713fa868c2e8",
+        "page_count": 1,
+        "extracted_chars": 3012,
+        "truncated": false,
+        "title": "2º Semana do Patrimônio de Santos 2026",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
       }
     ],
-    "reader_version": 2,
+    "reader_version": 3,
     "applicable": false,
-    "reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
+    "reason": "O PCI lista 3 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
     "errors": [
       "https://www.ibamsp-concursos.org.br/: HTTPError: 403 Client Error: Forbidden for url: https://www.ibamsp-concursos.org.br/"
+    ],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL Nº 79/2026",
+        "url": null,
+        "pci_link_id": "1703343",
+        "pci_news_code": "b95198eda61c9bb49f578df1a3898f5e",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "RETIFICAÇÃO I",
+        "url": null,
+        "pci_link_id": "1704111",
+        "pci_news_code": "b95198eda61c9bb49f578df1a3898f5e",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "RETIFICAÇÃO II",
+        "url": null,
+        "pci_link_id": "1704112",
+        "pci_news_code": "b95198eda61c9bb49f578df1a3898f5e",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
     ]
   },
   "https://www.pciconcursos.com.br/noticias/unesp-abre-vaga-para-professor-assistente-de-educacao-fisica-no-campus-de-rio-claro-sp": {
-    "status": "AMBIGUOUS",
-    "checked_at": "2026-08-29T12:39:25-03:00",
+    "status": "BLOCKED",
+    "checked_at": "2026-08-29T14:26:00-03:00",
     "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/unesp-abre-vaga-para-professor-assistente-de-educacao-fisica-no-campus-de-rio-claro-sp",
+        "type": "PCI_HTML",
+        "content_hash": "e5b740564de05061b0429ce9089c85550e60a41bff62a8601d631834254e62dd",
+        "page_count": 1,
+        "extracted_chars": 13969,
+        "truncated": false,
+        "title": "UNESP abre vaga para Professor Assistente de Educação Física no Campus de Rio Claro - SP",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      },
       {
         "url": "https://www2.unesp.br/",
         "type": "HTML",
-        "content_hash": "84946bdc6e3d4048c959ee81e6c61c1bec12f9602fdfcc0d24124e63f1d8089c",
+        "content_hash": "228b3fadf2796400863957936b91379fd1abd9e4c55643d4afe1c224b0dc06d3",
         "page_count": 1,
         "extracted_chars": 7869,
         "truncated": false,
@@ -1532,7 +1841,7 @@
       {
         "url": "https://www2.unesp.br/portal#!/noticias/v/id::43375/processo-seletivo-unificado-para-ingresso-na-pos-graduacao-da-unesp-abre-inscricoes-para-57-programas-com-ofertas-de-mestrado-ou-doutorado",
         "type": "HTML",
-        "content_hash": "79244572bb95da967113511ebe09b86a6f2b0acf89dfbf43344b7420a06ee7ba",
+        "content_hash": "faccd3c268712c4102da3c52e39aebaa1ef6d88e4ca16706bba7b6d0d6bf1350",
         "page_count": 1,
         "extracted_chars": 805,
         "truncated": false,
@@ -1564,23 +1873,68 @@
         "evidence_status": "IRRELEVANT",
         "relevant": false,
         "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://unesp.br/portaldocentes/cursos-graduacao",
+        "type": "HTML",
+        "content_hash": "16c8b628d372541db40ef34204c7ade804cb52bf4abf4eb3b7589f5cca30ba87",
+        "page_count": 1,
+        "extracted_chars": 792,
+        "truncated": false,
+        "title": "Portal Docentes Unesp",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://unesp.br/portaldocentes/departamentos",
+        "type": "HTML",
+        "content_hash": "ecd0182c3fab364ddc74d46fdacb88a19da3e24cee33fa767f49525cdf7e0742",
+        "page_count": 1,
+        "extracted_chars": 968,
+        "truncated": false,
+        "title": "Portal Docentes Unesp",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
       }
     ],
-    "reader_version": 2,
+    "reader_version": 3,
     "applicable": false,
-    "reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
+    "reason": "O PCI lista 1 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
     "errors": [
       "https://inscricoes.unesp.br/: SSLError: HTTPSConnectionPool(host='inscricoes.unesp.br', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))"
+    ],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL Nº 091/2026",
+        "url": null,
+        "pci_link_id": "1703689",
+        "pci_news_code": "fc9e7901a2cbf4a7ca7e51ba1499620c",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
     ]
   },
   "https://www.pciconcursos.com.br/noticias/unesp-abre-concurso-publico-para-professor-assistente-de-odontologia-em-sao-jose-dos-campos-sp": {
-    "status": "AMBIGUOUS",
-    "checked_at": "2026-08-29T12:39:25-03:00",
+    "status": "BLOCKED",
+    "checked_at": "2026-08-29T14:26:00-03:00",
     "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/unesp-abre-concurso-publico-para-professor-assistente-de-odontologia-em-sao-jose-dos-campos-sp",
+        "type": "PCI_HTML",
+        "content_hash": "d79297376646652478f21830cc5fa8a49f3a6d808f6877f1ffcb914cc07180f3",
+        "page_count": 1,
+        "extracted_chars": 14055,
+        "truncated": false,
+        "title": "UNESP abre concurso público para Professor Assistente de Odontologia em São José dos Campos - SP",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      },
       {
         "url": "https://www2.unesp.br/",
         "type": "HTML",
-        "content_hash": "84946bdc6e3d4048c959ee81e6c61c1bec12f9602fdfcc0d24124e63f1d8089c",
+        "content_hash": "228b3fadf2796400863957936b91379fd1abd9e4c55643d4afe1c224b0dc06d3",
         "page_count": 1,
         "extracted_chars": 7869,
         "truncated": false,
@@ -1592,7 +1946,7 @@
       {
         "url": "https://www2.unesp.br/portal#!/noticias/v/id::43375/processo-seletivo-unificado-para-ingresso-na-pos-graduacao-da-unesp-abre-inscricoes-para-57-programas-com-ofertas-de-mestrado-ou-doutorado",
         "type": "HTML",
-        "content_hash": "6413ee64a4be13b964db65df0c8b20e917017d9323e8a78cd2d4b3d686706557",
+        "content_hash": "55042cf0588ef5d252ada95d66c6d5512ecfcad3d932e997590a076fa67b5a0b",
         "page_count": 1,
         "extracted_chars": 805,
         "truncated": false,
@@ -1625,23 +1979,68 @@
         "evidence_status": "IRRELEVANT",
         "relevant": false,
         "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://unesp.br/portaldocentes/",
+        "type": "HTML",
+        "content_hash": "59337bac15d0d821e474f25801b5d4392f267ab253537e99c990d8af926f5997",
+        "page_count": 1,
+        "extracted_chars": 435,
+        "truncated": false,
+        "title": "Portal Docentes Unesp",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://unesp.br/portaldocentes/cursos-graduacao",
+        "type": "HTML",
+        "content_hash": "16c8b628d372541db40ef34204c7ade804cb52bf4abf4eb3b7589f5cca30ba87",
+        "page_count": 1,
+        "extracted_chars": 792,
+        "truncated": false,
+        "title": "Portal Docentes Unesp",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
       }
     ],
-    "reader_version": 2,
+    "reader_version": 3,
     "applicable": false,
-    "reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
+    "reason": "O PCI lista 1 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
     "errors": [
       "https://inscricoes.unesp.br/: SSLError: HTTPSConnectionPool(host='inscricoes.unesp.br', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))"
+    ],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL Nº 163/2026",
+        "url": null,
+        "pci_link_id": "1704222",
+        "pci_news_code": "90e32d995114af963835d231d9fe674c",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
     ]
   },
   "https://www.pciconcursos.com.br/noticias/unesp-abre-concurso-para-professor-assistente-em-zootecnia-no-campus-de-botucatu-sp": {
-    "status": "AMBIGUOUS",
-    "checked_at": "2026-08-29T12:39:25-03:00",
+    "status": "BLOCKED",
+    "checked_at": "2026-08-29T14:26:00-03:00",
     "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/unesp-abre-concurso-para-professor-assistente-em-zootecnia-no-campus-de-botucatu-sp",
+        "type": "PCI_HTML",
+        "content_hash": "a19fe483f1ea0a6e7cb651e7f4b0ba1c2d6cc175059228134391d0f30eb3ed7c",
+        "page_count": 1,
+        "extracted_chars": 13968,
+        "truncated": false,
+        "title": "UNESP abre concurso para Professor Assistente em Zootecnia no Campus de Botucatu - SP",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      },
       {
         "url": "https://www2.unesp.br/",
         "type": "HTML",
-        "content_hash": "84946bdc6e3d4048c959ee81e6c61c1bec12f9602fdfcc0d24124e63f1d8089c",
+        "content_hash": "228b3fadf2796400863957936b91379fd1abd9e4c55643d4afe1c224b0dc06d3",
         "page_count": 1,
         "extracted_chars": 7869,
         "truncated": false,
@@ -1653,7 +2052,19 @@
       {
         "url": "https://www2.unesp.br/portal#!/noticias/v/id::43375/processo-seletivo-unificado-para-ingresso-na-pos-graduacao-da-unesp-abre-inscricoes-para-57-programas-com-ofertas-de-mestrado-ou-doutorado",
         "type": "HTML",
-        "content_hash": "42bb54e9605646e9773c6707ad7ae187dd420ff1c0a8338802c96464eac3cf5c",
+        "content_hash": "f6757f8db0d0e6bdf970dabc2d32eefbe7acc5c68f747adab34e6fff11c7d93d",
+        "page_count": 1,
+        "extracted_chars": 805,
+        "truncated": false,
+        "title": "Unesp - Universidade Estadual Paulista - Portal",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www2.unesp.br/portal",
+        "type": "HTML",
+        "content_hash": "7a497b8e3ab00bce00e051e630920fb8c52d854c92bc2eaa83d35bd11cf9a56c",
         "page_count": 1,
         "extracted_chars": 805,
         "truncated": false,
@@ -1686,13 +2097,34 @@
         "evidence_status": "IRRELEVANT",
         "relevant": false,
         "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://jornal.unesp.br/2026/08/28/a-odisseia-e-tema-do-prato-do-dia/",
+        "type": "HTML",
+        "content_hash": "728b7a67a3d6c5812bfe86193735935ec0a375de1adf4bbb17ed8f4edc8c9560",
+        "page_count": 1,
+        "extracted_chars": 8744,
+        "truncated": false,
+        "title": "Jornal da Unesp | A Odisseia é tema do Prato do Dia",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
       }
     ],
-    "reader_version": 2,
+    "reader_version": 3,
     "applicable": false,
-    "reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
+    "reason": "O PCI lista 1 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
     "errors": [
       "https://inscricoes.unesp.br/: SSLError: HTTPSConnectionPool(host='inscricoes.unesp.br', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))"
+    ],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL Nº 729/2026",
+        "url": null,
+        "pci_link_id": "1704223",
+        "pci_news_code": "8535bba04817e71566d4de004f1897c6",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
     ]
   },
   "https://www.pciconcursos.com.br/noticias/unemat-abre-processo-seletivo-para-professores-na-area-de-direito-em-brasnorte": {
@@ -1769,11 +2201,71 @@
     "errors": []
   },
   "https://www.pciconcursos.com.br/noticias/prefeitura-de-sao-joao-del-rei-e-damae-mg-abrem-concursos-com-salarios-de-ate-6469": {
-    "status": "AMBIGUOUS",
-    "checked_at": "2026-08-28T18:26:37-03:00",
+    "status": "BLOCKED",
+    "checked_at": "2026-08-29T14:26:00-03:00",
     "documents": [
       {
+        "url": "https://www.pciconcursos.com.br/noticias/prefeitura-de-sao-joao-del-rei-e-damae-mg-abrem-concursos-com-salarios-de-ate-6469",
+        "type": "PCI_HTML",
+        "content_hash": "5833d7cc9cce49ef697a0d12c246b2b1b5f7cd95d69de4dfa68a3cf1a1ab5ddc",
+        "page_count": 1,
+        "extracted_chars": 16362,
+        "truncated": false,
+        "title": "Prefeitura de São João del-Rei e DAMAE - MG abrem concursos com salários de até R$ 6.469,28",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      },
+      {
         "url": "https://www.ibgpconcursos.com.br/",
+        "type": "HTML",
+        "content_hash": "23ede1f6156d5af8c4acb05e5ac142b37e6e99a5c3905cc710e79fd3cdb84626",
+        "page_count": 1,
+        "extracted_chars": 167,
+        "truncated": false,
+        "title": "IBGP CONCURSOS",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www.ibgpconcursos.com.br/inscricoes_abertas.jsp",
+        "type": "HTML",
+        "content_hash": "1d5418f61677ec5d6f628f1803ee602766d790022fe5c74dbd87f32a27c9ce11",
+        "page_count": 1,
+        "extracted_chars": 154,
+        "truncated": false,
+        "title": "IBGP CONCURSOS",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www.ibgpconcursos.com.br/inscricoes_em_andamento.jsp",
+        "type": "HTML",
+        "content_hash": "2918522f4e1aeee73ff7a9eb6af6548f21c3487101665022a520c9a748396b34",
+        "page_count": 1,
+        "extracted_chars": 158,
+        "truncated": false,
+        "title": "IBGP CONCURSOS",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www.ibgpconcursos.com.br/inscricoes_encerradas.jsp",
+        "type": "HTML",
+        "content_hash": "3d38d12ac5f2ac08c3b4857b9955339aacb3a3d3f07c69c4bb424580dc573461",
+        "page_count": 1,
+        "extracted_chars": 300,
+        "truncated": false,
+        "title": "IBGP CONCURSOS",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://novo.ibgpconcursos.com.br:443/",
         "type": "HTML",
         "content_hash": "23ede1f6156d5af8c4acb05e5ac142b37e6e99a5c3905cc710e79fd3cdb84626",
         "page_count": 1,
@@ -1795,48 +2287,37 @@
         "evidence_status": "IRRELEVANT",
         "relevant": false,
         "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
-      },
-      {
-        "url": "https://www.ibgpconcursos.com.br/novo_cadastro.jsp",
-        "type": "HTML",
-        "content_hash": "195493eed16c9a7f3c95975be5b45b26def1133a59f1738f1e7fe7b92b40d3d1",
-        "page_count": 1,
-        "extracted_chars": 432,
-        "truncated": false,
-        "title": "Cadastro Candidato",
-        "evidence_status": "IRRELEVANT",
-        "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
-      },
-      {
-        "url": "https://www.ibgpconcursos.com.br/recuperar-senha",
-        "type": "HTML",
-        "content_hash": "e9e9f3f846ca3f4272c5ffe7cd4452e699ac3a00cbc8da0aec55f90e75f04a00",
-        "page_count": 1,
-        "extracted_chars": 282,
-        "truncated": false,
-        "title": "Recuperar senha",
-        "evidence_status": "IRRELEVANT",
-        "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
-      },
-      {
-        "url": "https://www.ibgpconcursos.com.br/index.jsp",
-        "type": "HTML",
-        "content_hash": "23ede1f6156d5af8c4acb05e5ac142b37e6e99a5c3905cc710e79fd3cdb84626",
-        "page_count": 1,
-        "extracted_chars": 167,
-        "truncated": false,
-        "title": "IBGP CONCURSOS",
-        "evidence_status": "IRRELEVANT",
-        "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
       }
     ],
-    "reader_version": 2,
+    "reader_version": 3,
     "applicable": false,
-    "reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
-    "errors": []
+    "reason": "O PCI lista 3 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
+    "errors": [
+      "https://www.ibgpconcursos.com.br/concursos.jsp: HTTPError: 404 Client Error:  for url: https://www.ibgpconcursos.com.br/concursos.jsp"
+    ],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL Nº 03/2026",
+        "url": null,
+        "pci_link_id": "1704013",
+        "pci_news_code": "ce6bbeed62fcca818657ab28acab3026",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "EDITAL Nº 04/2026",
+        "url": null,
+        "pci_link_id": "1704014",
+        "pci_news_code": "ce6bbeed62fcca818657ab28acab3026",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "EDITAL Nº 05/2026 - DAMAE",
+        "url": null,
+        "pci_link_id": "1704015",
+        "pci_news_code": "ce6bbeed62fcca818657ab28acab3026",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
+    ]
   },
   "https://www.pciconcursos.com.br/noticias/unicamp-sp-abre-concurso-para-professor-titular-na-area-de-desenvolvimento-economico": {
     "status": "AMBIGUOUS",
@@ -2068,120 +2549,73 @@
     "errors": []
   },
   "https://www.pciconcursos.com.br/noticias/ufsm-rs-abre-concurso-publico-com-vagas-para-professores-do-magisterio-superior": {
-    "status": "READ",
-    "checked_at": "2026-08-25T08:47:02-03:00",
+    "status": "BLOCKED",
+    "checked_at": "2026-08-29T14:26:00-03:00",
     "documents": [
       {
-        "url": "https://www.ufsm.br/",
-        "type": "HTML",
-        "content_hash": "efebe7efb28194047305b87e5441b1cc45aa1e5a46c478a50b7220f2adfe4636",
+        "url": "https://www.pciconcursos.com.br/noticias/ufsm-rs-abre-concurso-publico-com-vagas-para-professores-do-magisterio-superior",
+        "type": "PCI_HTML",
+        "content_hash": "4152da1e5f8fb57847c4976263c5e0a8e7a7ea4b50af157f2328cb72fae0ac83",
         "page_count": 1,
-        "extracted_chars": 10435,
+        "extracted_chars": 8620,
         "truncated": false,
-        "title": "UFSM – Universidade Federal de Santa Maria",
+        "title": "UFSM - RS abre concurso público com vagas para Professores do Magistério Superior",
         "evidence_status": "IRRELEVANT",
         "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
-      },
-      {
-        "url": "https://www.ufsm.br/2026/08/24/edital-de-concurso-publico-abre-nove-vagas-para-professores-na-ufsm",
-        "type": "HTML",
-        "content_hash": "5b8b1679ac9eae9a3379e37921820d1b40d1f0407c8dfbd1314de0c4d03b45b4",
-        "page_count": 1,
-        "extracted_chars": 4830,
-        "truncated": false,
-        "title": "Edital de concurso público abre nove vagas para professores na UFSM – UFSM",
-        "evidence_status": "IRRELEVANT",
-        "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
-      },
-      {
-        "url": "https://www.ufsm.br/pro-reitorias/progep/editais/221-2026",
-        "type": "HTML",
-        "content_hash": "b273b946596c94746c3bfc4fc75734243f65e2360e4b496a30f3bcec331c78f2",
-        "page_count": 1,
-        "extracted_chars": 6984,
-        "truncated": false,
-        "title": "221/2026 – Concurso Público para Professor da Carreira do Magistério Superior – PROGEP",
-        "evidence_status": "HIGH",
-        "relevant": true,
-        "relevance_reason": "Documento docente associado ao anúncio por: dedicacao, escrita, exclusiva, magisterio, nivel."
-      },
-      {
-        "url": "https://www.ufsm.br/busca?q=&tags=concurso-publico",
-        "type": "HTML",
-        "content_hash": "adff888db048aef50de960ff2554a9090a3ac40f8fccc9c052f45a5002bc971b",
-        "page_count": 1,
-        "extracted_chars": 19573,
-        "truncated": false,
-        "title": "Busca – UFSM",
-        "evidence_status": "AMBIGUOUS",
-        "relevant": true,
-        "relevance_reason": "Documento docente associado ao anúncio por: magisterio, maria, missoes, oportunidade, palmeira."
-      },
-      {
-        "url": "https://www.ufsm.br/trabalhe-na-ufsm",
-        "type": "HTML",
-        "content_hash": "2b06a6e15b780ccaa7fb4ae03485f5ea06d4f023183751c70802efaf9c881938",
-        "page_count": 1,
-        "extracted_chars": 3913,
-        "truncated": false,
-        "title": "Trabalhe na UFSM – UFSM",
-        "evidence_status": "IRRELEVANT",
-        "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
       }
     ],
-    "reader_version": 2,
-    "document_url": "https://www.ufsm.br/pro-reitorias/progep/editais/221-2026",
-    "document_type": "HTML",
-    "content_hash": "b273b946596c94746c3bfc4fc75734243f65e2360e4b496a30f3bcec331c78f2",
-    "confidence": "HIGH",
-    "applicable": true,
-    "requirements": {
-      "doctorate_requirement_raw": "– Preencher e imprimir a Guia de Recolhimento da União (GRU); – Pagar a inscrição, via GRU, no Banco do Brasil, até o dia 24/09/2026 , no valor de: – Professor Assistente, Nível 1, com Doutorado (Dedicação Exclusiva): R$ 412,60 (quatrocentos e doze reais e sessenta centavos). – Professor Assistente, Nível 1, com Doutorado (40 horas semanais): – Professor Assistente, Nível 1, com Doutorado (Dedicação Exclusiva): R$ 412,60 (quatrocentos e doze reais e sessenta centavos). – Professor Assistente, Nível 1, com Doutorado (40 horas semanais): R$ 250,00 (duzentos e cinquenta reais). – Professor Assistente, Nível 1, com Especialização (40 horas semanais):"
-    },
-    "evidence": [
-      {
-        "page": 1,
-        "text": "– Preencher e imprimir a Guia de Recolhimento da União (GRU); – Pagar a inscrição, via GRU, no Banco do Brasil, até o dia 24/09/2026 , no valor de: – Professor Assistente, Nível 1, com Doutorado (Dedicação Exclusiva): R$ 412,60 (quatrocentos e doze reais e sessenta centavos). – Professor Assistente, Nível 1, com Doutorado (40 horas semanais):",
-        "kinds": [
-          "doctorate"
-        ],
-        "context_terms": [
-          "dedicacao",
-          "exclusiva",
-          "nivel"
-        ],
-        "context_score": 3
-      },
-      {
-        "page": 1,
-        "text": "– Professor Assistente, Nível 1, com Doutorado (Dedicação Exclusiva): R$ 412,60 (quatrocentos e doze reais e sessenta centavos). – Professor Assistente, Nível 1, com Doutorado (40 horas semanais): R$ 250,00 (duzentos e cinquenta reais). – Professor Assistente, Nível 1, com Especialização (40 horas semanais):",
-        "kinds": [
-          "doctorate"
-        ],
-        "context_terms": [
-          "dedicacao",
-          "exclusiva",
-          "nivel"
-        ],
-        "context_score": 3
-      }
+    "reader_version": 3,
+    "applicable": false,
+    "reason": "O PCI lista 1 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
+    "errors": [
+      "https://www.ufsm.br/trabalhe-na-ufsm/: ConnectionError: HTTPSConnectionPool(host='www.ufsm.br', port=443): Max retries exceeded with url: /trabalhe-na-ufsm/ (Caused by NewConnectionError(\"HTTPSConnection(host='www.ufsm.br', port=443): Failed to establish a new connection: [Errno 101] Network is unreachable\"))",
+      "https://www.ufsm.br/: ConnectionError: HTTPSConnectionPool(host='www.ufsm.br', port=443): Max retries exceeded with url: / (Caused by NewConnectionError(\"HTTPSConnection(host='www.ufsm.br', port=443): Failed to establish a new connection: [Errno 101] Network is unreachable\"))"
     ],
-    "reason": "Requisitos associados à área/cargo por termos de contexto.",
-    "errors": []
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL Nº 221",
+        "url": null,
+        "pci_link_id": "1704256",
+        "pci_news_code": "1e4969b9bfd071cb7be72b1a7706aec2",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
+    ]
   },
   "https://www.pciconcursos.com.br/noticias/unila-pr-abre-processo-seletivo-para-professor-substituto-de-musica-e-tecnologia": {
     "status": "READ",
-    "checked_at": "2026-08-27T18:03:08-03:00",
+    "checked_at": "2026-08-29T14:26:00-03:00",
     "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/unila-pr-abre-processo-seletivo-para-professor-substituto-de-musica-e-tecnologia",
+        "type": "PCI_HTML",
+        "content_hash": "9ebf7885ba99b4360b799ed9f604e5ad75412d9ab01b31d9dbe7e51c618ddb4f",
+        "page_count": 1,
+        "extracted_chars": 7243,
+        "truncated": false,
+        "title": "UNILA - PR abre processo seletivo para professor substituto de Música e Tecnologia",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      },
+      {
+        "url": "https://sig.unila.edu.br/sigrh/public/home.jsf",
+        "type": "HTML",
+        "content_hash": "1fdc04d13bafd469e43f8b36496b927e6e1c95e3dc422ae9590b688cfb220410",
+        "page_count": 1,
+        "extracted_chars": 15475,
+        "truncated": false,
+        "title": "SIGRH - Sistema Integrado de Gestão de Recursos Humanos",
+        "evidence_status": "AMBIGUOUS",
+        "relevant": true,
+        "relevance_reason": "Documento docente associado à área por: musica, tecnologia."
+      },
       {
         "url": "https://portal.unila.edu.br/",
         "type": "HTML",
-        "content_hash": "a3f4bde26ed6fdd9034302bff150152e8638eca82a32f9e98fa07462fbe2dceb",
+        "content_hash": "10ec0fa0dfb9b9b01745e0fa371350b821eb40ecd78fbe7ad58b6c64789294ae",
         "page_count": 1,
-        "extracted_chars": 5700,
+        "extracted_chars": 5742,
         "truncated": false,
         "title": "Página Inicial UNILA — Universidade Federal da Integração Latino-Americana",
         "evidence_status": "IRRELEVANT",
@@ -2199,6 +2633,31 @@
         "evidence_status": "AMBIGUOUS",
         "relevant": true,
         "relevance_reason": "Documento docente associado à área por: musica, tecnologia."
+      },
+      {
+        "url": "https://portal.unila.edu.br/concursos/informes-concursos/processo-seletivo-simplificado-professor-a-substituto-area-artes-musica-subarea-musica-e-tecnologia",
+        "type": "HTML",
+        "content_hash": "96098deb6fbaa84ebe3d9fe2304df972bca8e89a48e43df7d20bb9060314f1bb",
+        "page_count": 1,
+        "extracted_chars": 2551,
+        "truncated": false,
+        "title": "Processo Seletivo Simplificado - Professor(a) Substituto - Área: Artes/Música; Subárea: Música e Tecnologia — Universidade Federal da Integração Latino-Americana",
+        "evidence_status": "HIGH",
+        "relevant": true,
+        "relevance_reason": "Documento docente associado à área por: musica, tecnologia."
+      },
+      {
+        "url": "https://portal.unila.edu.br/concursos/arquivos/TUTORIALSIGRH3.pdf",
+        "type": "PDF",
+        "content_hash": "b15b8ffc41814fdaa2151e54f76df90b93b7c607885c2f4b049f6bebc320d741",
+        "page_count": 8,
+        "extracted_chars": 1531,
+        "truncated": false,
+        "title": "TUTORIAL SIGRH",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
       },
       {
         "url": "https://portal.unila.edu.br/concursos/arquivos/ManualPSSdocenteparapublicar.pdf",
@@ -2225,21 +2684,9 @@
         "relevant": false,
         "relevance_reason": "O documento docente não menciona a área identificada no anúncio.",
         "opportunities_count": 0
-      },
-      {
-        "url": "https://portal.unila.edu.br/concursos/informes-concursos/processo-seletivo-simplificado-professor-a-substituto-area-artes-musica-subarea-musica-e-tecnologia",
-        "type": "HTML",
-        "content_hash": "96098deb6fbaa84ebe3d9fe2304df972bca8e89a48e43df7d20bb9060314f1bb",
-        "page_count": 1,
-        "extracted_chars": 2551,
-        "truncated": false,
-        "title": "Processo Seletivo Simplificado - Professor(a) Substituto - Área: Artes/Música; Subárea: Música e Tecnologia — Universidade Federal da Integração Latino-Americana",
-        "evidence_status": "HIGH",
-        "relevant": true,
-        "relevance_reason": "Documento docente associado à área por: musica, tecnologia."
       }
     ],
-    "reader_version": 2,
+    "reader_version": 3,
     "document_url": "https://portal.unila.edu.br/concursos/informes-concursos/processo-seletivo-simplificado-professor-a-substituto-area-artes-musica-subarea-musica-e-tecnologia",
     "document_type": "HTML",
     "content_hash": "96098deb6fbaa84ebe3d9fe2304df972bca8e89a48e43df7d20bb9060314f1bb",
@@ -2267,7 +2714,16 @@
       }
     ],
     "reason": "Requisitos associados à área/cargo por termos de contexto.",
-    "errors": []
+    "errors": [],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL Nº 223/2026",
+        "url": null,
+        "pci_link_id": "1704376",
+        "pci_news_code": "ba7beb3fb28ddaa412c15ef515d31646",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
+    ]
   },
   "https://www.pciconcursos.com.br/noticias/prefeitura-de-paraguacu-mg-abre-processo-seletivo-com-vagas-para-a-area-da-educacao": {
     "status": "AMBIGUOUS",
@@ -2292,15 +2748,51 @@
     "errors": []
   },
   "https://www.pciconcursos.com.br/noticias/unesp-abre-concurso-para-professor-assistente-na-area-de-sistemas-de-computacao-em-sorocaba-sp": {
-    "status": "AMBIGUOUS",
-    "checked_at": "2026-08-28T18:26:37-03:00",
+    "status": "BLOCKED",
+    "checked_at": "2026-08-29T14:26:00-03:00",
     "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/unesp-abre-concurso-para-professor-assistente-na-area-de-sistemas-de-computacao-em-sorocaba-sp",
+        "type": "PCI_HTML",
+        "content_hash": "e8d5ee6b22cb44521b3e10276362a7441024d2aea607f705aad8592dedd9ded5",
+        "page_count": 1,
+        "extracted_chars": 13878,
+        "truncated": false,
+        "title": "UNESP abre concurso para Professor Assistente na área de Sistemas de Computação em Sorocaba - SP",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      },
       {
         "url": "https://www2.unesp.br/",
         "type": "HTML",
-        "content_hash": "5becc610351150d25e5ae6267888ed2a6106151d59de9c0f3080654b39dbd624",
+        "content_hash": "228b3fadf2796400863957936b91379fd1abd9e4c55643d4afe1c224b0dc06d3",
         "page_count": 1,
-        "extracted_chars": 8722,
+        "extracted_chars": 7869,
+        "truncated": false,
+        "title": "Unesp - Universidade Estadual Paulista - Portal",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www2.unesp.br/portal#!/noticias/v/id::43375/processo-seletivo-unificado-para-ingresso-na-pos-graduacao-da-unesp-abre-inscricoes-para-57-programas-com-ofertas-de-mestrado-ou-doutorado",
+        "type": "HTML",
+        "content_hash": "f63856def76d23f48ed9f345eb910e5557ccc325db7a1907b3face76e1ed20a6",
+        "page_count": 1,
+        "extracted_chars": 805,
+        "truncated": false,
+        "title": "Unesp - Universidade Estadual Paulista - Portal",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www2.unesp.br/portal",
+        "type": "HTML",
+        "content_hash": "99d31f0c6537ecd0f2346924075f3eef4c0b1f3d6217256d84805e57b44ef46e",
+        "page_count": 1,
+        "extracted_chars": 805,
         "truncated": false,
         "title": "Unesp - Universidade Estadual Paulista - Portal",
         "evidence_status": "IRRELEVANT",
@@ -2321,35 +2813,51 @@
         "opportunities_count": 0
       },
       {
-        "url": "https://www2.unesp.br/portal#!/noticias/v/id::43375/processo-seletivo-unificado-para-ingresso-na-pos-graduacao-da-unesp-abre-inscricoes-para-57-programas-com-ofertas-de-mestrado-ou-doutorado",
+        "url": "https://jornal.unesp.br/2026/08/28/a-odisseia-e-tema-do-prato-do-dia/",
         "type": "HTML",
-        "content_hash": "a8670469e67a732a28ed8c4e4b31f66b654e72b208d9e6a31d7118125b091e79",
+        "content_hash": "728b7a67a3d6c5812bfe86193735935ec0a375de1adf4bbb17ed8f4edc8c9560",
         "page_count": 1,
-        "extracted_chars": 805,
+        "extracted_chars": 8744,
         "truncated": false,
-        "title": "Unesp - Universidade Estadual Paulista - Portal",
+        "title": "Jornal da Unesp | A Odisseia é tema do Prato do Dia",
         "evidence_status": "IRRELEVANT",
         "relevant": false,
         "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
       },
       {
-        "url": "https://jornal.unesp.br/2026/08/26/danca-do-dragao-e-musica-erudita-composta-por-chineses-e-apresentada-por-brasileiros-sao-os-temas-da-nova-edicao-do-conexao-china/",
+        "url": "https://unesp.br/portaldocentes/",
         "type": "HTML",
-        "content_hash": "227a791dcc13e7be13d0c917340ad1cd80a298fd94da933d8de0531bc209f04e",
+        "content_hash": "59337bac15d0d821e474f25801b5d4392f267ab253537e99c990d8af926f5997",
         "page_count": 1,
-        "extracted_chars": 4225,
+        "extracted_chars": 435,
         "truncated": false,
-        "title": "Jornal da Unesp | Dança do dragão e música erudita composta por chineses e apresentada por brasileiros são os temas da nova edição do Conexão China",
+        "title": "Portal Docentes Unesp",
         "evidence_status": "IRRELEVANT",
         "relevant": false,
         "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
       }
     ],
-    "reader_version": 2,
+    "reader_version": 3,
     "applicable": false,
-    "reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
+    "reason": "O PCI lista 2 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
     "errors": [
       "https://inscricoes.unesp.br/: SSLError: HTTPSConnectionPool(host='inscricoes.unesp.br', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))"
+    ],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL Nº 112/2026",
+        "url": null,
+        "pci_link_id": "1704473",
+        "pci_news_code": "7a74d142d03f4ad953ab5cc7a18115b0",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "EDITAL Nº 112/2026 - COMPLETO",
+        "url": null,
+        "pci_link_id": "1704481",
+        "pci_news_code": "7a74d142d03f4ad953ab5cc7a18115b0",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
     ]
   },
   "https://www.pciconcursos.com.br/noticias/ufrn-abre-processo-seletivo-para-professores-do-magisterio-superior-e-ebtt": {
