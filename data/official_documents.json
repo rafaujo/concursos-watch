@@ -95,12 +95,12 @@
   },
   "https://www.pciconcursos.com.br/noticias/unimontes-mg-publica-edital-de-concurso-publico-para-professores-de-educacao-superior": {
     "status": "AMBIGUOUS",
-    "checked_at": "2026-08-27T18:03:08-03:00",
+    "checked_at": "2026-08-29T12:39:25-03:00",
     "documents": [
       {
         "url": "https://inscricaoconcurso.unimontes.br/login",
         "type": "HTML",
-        "content_hash": "6fa996f9ea1ceeaf2120b477023b9d2131c4ee2706e0f87bf8314c5424297b84",
+        "content_hash": "f97e7c4a8cac038749646e17952c6889d17acf41c7340bee40518a0d4e214a77",
         "page_count": 1,
         "extracted_chars": 248,
         "truncated": false,
@@ -1109,14 +1109,14 @@
   },
   "https://www.pciconcursos.com.br/noticias/ufmg-abre-concursos-publicos-com-tres-vagas-para-professores": {
     "status": "AMBIGUOUS",
-    "checked_at": "2026-08-27T18:03:08-03:00",
+    "checked_at": "2026-08-29T12:39:25-03:00",
     "documents": [
       {
         "url": "https://www.ufmg.br",
         "type": "HTML",
-        "content_hash": "f6e9e05ef3bc5d611ff45011a46ad685797532fa3e2d689651b913d980f0e07a",
+        "content_hash": "560c748d2fe165ca54679dc5fcb0eea2a229e8c6f325d2806c412adb6f1c0550",
         "page_count": 1,
-        "extracted_chars": 5705,
+        "extracted_chars": 5518,
         "truncated": false,
         "title": "Universidade Federal de Minas Gerais – Liderança regional e nacional em ensino superior gratuito, extensão, cultura, pesquisa científica e geração de patentes em todas as áreas do conhecimento",
         "evidence_status": "IRRELEVANT",
@@ -1139,7 +1139,7 @@
       {
         "url": "https://www.ufmg.br/cursos/formas-de-ingresso/concursos-publicos/",
         "type": "HTML",
-        "content_hash": "5faf2c51b62b09be068c16f43a30ffdf1788bb4a53ca654b35e658f7fbb5be98",
+        "content_hash": "431985da06cc16cbfebe78bd0cc8cd91c56163df54aaa2d34ef2c0a3d6407277",
         "page_count": 1,
         "extracted_chars": 778,
         "truncated": false,
@@ -1159,12 +1159,12 @@
   },
   "https://www.pciconcursos.com.br/noticias/unioeste-pr-retifica-processo-seletivo-para-professores-de-ensino-superior": {
     "status": "AMBIGUOUS",
-    "checked_at": "2026-08-27T18:03:08-03:00",
+    "checked_at": "2026-08-29T12:39:25-03:00",
     "documents": [
       {
         "url": "https://www.unioeste.br/portal/cogeps/concursos/docentes",
         "type": "HTML",
-        "content_hash": "f91836a8f9c896696f5af92dfd6898dca017858b3c545fa33bc194dd123b3ba5",
+        "content_hash": "39a6ff568e57911f20d8778c9d31e926021937c6ddfd631ec538b7086fa2a4f3",
         "page_count": 1,
         "extracted_chars": 4061,
         "truncated": false,
@@ -1412,14 +1412,14 @@
   },
   "https://www.pciconcursos.com.br/noticias/prefeitura-de-santos-sp-divulga-retificacoes-do-concurso-com-vagas-para-professores-adjuntos": {
     "status": "AMBIGUOUS",
-    "checked_at": "2026-08-27T18:03:08-03:00",
+    "checked_at": "2026-08-29T12:39:25-03:00",
     "documents": [
       {
         "url": "https://www.santos.sp.gov.br/",
         "type": "HTML",
-        "content_hash": "7f8de350d38fa1abe957d19c14d04b6dd99ae8ee81c638fdeee60de2b3304698",
+        "content_hash": "688ed618fba1a61f21d2460d9d167256408b5300c3fd796ecb3527bf43fc8099",
         "page_count": 1,
-        "extracted_chars": 9451,
+        "extracted_chars": 9543,
         "truncated": false,
         "title": "Prefeitura de Santos |",
         "evidence_status": "IRRELEVANT",
@@ -1427,9 +1427,21 @@
         "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
       },
       {
+        "url": "https://www.santos.sp.gov.br/?q=noticia/prefeitura-de-santos-nomeia-41-aprovados-em-concurso-70-vao-reforcar-a-saude",
+        "type": "HTML",
+        "content_hash": "b77cf82ad9cd5843bb2ad73327aa417eff96cdda12ea780b8d28eb4b6f41df30",
+        "page_count": 1,
+        "extracted_chars": 3913,
+        "truncated": false,
+        "title": "Prefeitura de Santos nomeia 41 aprovados em concurso; 70% vão reforçar a Saúde | Notícia | Prefeitura de Santos",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
         "url": "https://egov.santos.sp.gov.br/dadosabertos/concursos",
         "type": "HTML",
-        "content_hash": "74d99c6aa77cbbbf60a28cccb24cfef030b065d00d8777b2484b61fe36b8c581",
+        "content_hash": "bd521d240087567dcc7479f1b8055558eb2d787c47b0064d5fb9d89cd330bd41",
         "page_count": 1,
         "extracted_chars": 13,
         "truncated": false,
@@ -1448,14 +1460,14 @@
   },
   "https://www.pciconcursos.com.br/noticias/unesp-abre-vaga-para-professor-assistente-de-educacao-fisica-no-campus-de-rio-claro-sp": {
     "status": "AMBIGUOUS",
-    "checked_at": "2026-08-27T18:03:08-03:00",
+    "checked_at": "2026-08-29T12:39:25-03:00",
     "documents": [
       {
         "url": "https://www2.unesp.br/",
         "type": "HTML",
-        "content_hash": "1c186669abf8b086e3dc77db8bb7af0a1d3bf1f7cfed014c9a69332512301d4f",
+        "content_hash": "84946bdc6e3d4048c959ee81e6c61c1bec12f9602fdfcc0d24124e63f1d8089c",
         "page_count": 1,
-        "extracted_chars": 8783,
+        "extracted_chars": 7869,
         "truncated": false,
         "title": "Unesp - Universidade Estadual Paulista - Portal",
         "evidence_status": "IRRELEVANT",
@@ -1465,7 +1477,7 @@
       {
         "url": "https://www2.unesp.br/portal#!/noticias/v/id::43375/processo-seletivo-unificado-para-ingresso-na-pos-graduacao-da-unesp-abre-inscricoes-para-57-programas-com-ofertas-de-mestrado-ou-doutorado",
         "type": "HTML",
-        "content_hash": "e80098ec8391520169050c28bcf909b65fe8e5f8b665eec21f492f7e896acc77",
+        "content_hash": "79244572bb95da967113511ebe09b86a6f2b0acf89dfbf43344b7420a06ee7ba",
         "page_count": 1,
         "extracted_chars": 805,
         "truncated": false,
@@ -1475,13 +1487,13 @@
         "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
       },
       {
-        "url": "https://jornal.unesp.br/2026/08/26/danca-do-dragao-e-musica-erudita-composta-por-chineses-e-apresentada-por-brasileiros-sao-os-temas-da-nova-edicao-do-conexao-china/",
+        "url": "https://jornal.unesp.br/2026/08/28/a-odisseia-e-tema-do-prato-do-dia/",
         "type": "HTML",
-        "content_hash": "d337327a299645436baa49ac0dcb8ffe64ae66a64867063685c75bf4d72282bb",
+        "content_hash": "728b7a67a3d6c5812bfe86193735935ec0a375de1adf4bbb17ed8f4edc8c9560",
         "page_count": 1,
-        "extracted_chars": 4332,
+        "extracted_chars": 8744,
         "truncated": false,
-        "title": "Jornal da Unesp | Dança do dragão e música erudita composta por chineses e apresentada por brasileiros são os temas da nova edição do Conexão China",
+        "title": "Jornal da Unesp | A Odisseia é tema do Prato do Dia",
         "evidence_status": "IRRELEVANT",
         "relevant": false,
         "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
@@ -1508,14 +1520,14 @@
   },
   "https://www.pciconcursos.com.br/noticias/unesp-abre-concurso-publico-para-professor-assistente-de-odontologia-em-sao-jose-dos-campos-sp": {
     "status": "AMBIGUOUS",
-    "checked_at": "2026-08-27T18:03:08-03:00",
+    "checked_at": "2026-08-29T12:39:25-03:00",
     "documents": [
       {
         "url": "https://www2.unesp.br/",
         "type": "HTML",
-        "content_hash": "d524fa67b25fb2d2443152aee58c665069fa5c166f83fe3b231c43fa6d2b01d6",
+        "content_hash": "84946bdc6e3d4048c959ee81e6c61c1bec12f9602fdfcc0d24124e63f1d8089c",
         "page_count": 1,
-        "extracted_chars": 8783,
+        "extracted_chars": 7869,
         "truncated": false,
         "title": "Unesp - Universidade Estadual Paulista - Portal",
         "evidence_status": "IRRELEVANT",
@@ -1525,7 +1537,7 @@
       {
         "url": "https://www2.unesp.br/portal#!/noticias/v/id::43375/processo-seletivo-unificado-para-ingresso-na-pos-graduacao-da-unesp-abre-inscricoes-para-57-programas-com-ofertas-de-mestrado-ou-doutorado",
         "type": "HTML",
-        "content_hash": "55382f5278df997dddca460c5702238b5651b2293570ecf0eb13a67970f9588f",
+        "content_hash": "6413ee64a4be13b964db65df0c8b20e917017d9323e8a78cd2d4b3d686706557",
         "page_count": 1,
         "extracted_chars": 805,
         "truncated": false,
@@ -1548,13 +1560,13 @@
         "opportunities_count": 0
       },
       {
-        "url": "https://jornal.unesp.br/2026/08/26/danca-do-dragao-e-musica-erudita-composta-por-chineses-e-apresentada-por-brasileiros-sao-os-temas-da-nova-edicao-do-conexao-china/",
+        "url": "https://jornal.unesp.br/2026/08/28/a-odisseia-e-tema-do-prato-do-dia/",
         "type": "HTML",
-        "content_hash": "d337327a299645436baa49ac0dcb8ffe64ae66a64867063685c75bf4d72282bb",
+        "content_hash": "728b7a67a3d6c5812bfe86193735935ec0a375de1adf4bbb17ed8f4edc8c9560",
         "page_count": 1,
-        "extracted_chars": 4332,
+        "extracted_chars": 8744,
         "truncated": false,
-        "title": "Jornal da Unesp | Dança do dragão e música erudita composta por chineses e apresentada por brasileiros são os temas da nova edição do Conexão China",
+        "title": "Jornal da Unesp | A Odisseia é tema do Prato do Dia",
         "evidence_status": "IRRELEVANT",
         "relevant": false,
         "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
@@ -1569,14 +1581,14 @@
   },
   "https://www.pciconcursos.com.br/noticias/unesp-abre-concurso-para-professor-assistente-em-zootecnia-no-campus-de-botucatu-sp": {
     "status": "AMBIGUOUS",
-    "checked_at": "2026-08-27T18:03:08-03:00",
+    "checked_at": "2026-08-29T12:39:25-03:00",
     "documents": [
       {
         "url": "https://www2.unesp.br/",
         "type": "HTML",
-        "content_hash": "d524fa67b25fb2d2443152aee58c665069fa5c166f83fe3b231c43fa6d2b01d6",
+        "content_hash": "84946bdc6e3d4048c959ee81e6c61c1bec12f9602fdfcc0d24124e63f1d8089c",
         "page_count": 1,
-        "extracted_chars": 8783,
+        "extracted_chars": 7869,
         "truncated": false,
         "title": "Unesp - Universidade Estadual Paulista - Portal",
         "evidence_status": "IRRELEVANT",
@@ -1586,7 +1598,7 @@
       {
         "url": "https://www2.unesp.br/portal#!/noticias/v/id::43375/processo-seletivo-unificado-para-ingresso-na-pos-graduacao-da-unesp-abre-inscricoes-para-57-programas-com-ofertas-de-mestrado-ou-doutorado",
         "type": "HTML",
-        "content_hash": "64e276e71fe300ca31078afca521f8293dc06aa543c94fc0c0d5e09d2690e18e",
+        "content_hash": "42bb54e9605646e9773c6707ad7ae187dd420ff1c0a8338802c96464eac3cf5c",
         "page_count": 1,
         "extracted_chars": 805,
         "truncated": false,
@@ -1609,13 +1621,13 @@
         "opportunities_count": 0
       },
       {
-        "url": "https://jornal.unesp.br/2026/08/26/danca-do-dragao-e-musica-erudita-composta-por-chineses-e-apresentada-por-brasileiros-sao-os-temas-da-nova-edicao-do-conexao-china/",
+        "url": "https://jornal.unesp.br/2026/08/27/uma-cidade-inteira-vacinada-contra-a-covid-19-em-um-dia/",
         "type": "HTML",
-        "content_hash": "d337327a299645436baa49ac0dcb8ffe64ae66a64867063685c75bf4d72282bb",
+        "content_hash": "5af25891bffcbff621d08691874a13761fc9c4b8711c0bcb4055547138357fb2",
         "page_count": 1,
-        "extracted_chars": 4332,
+        "extracted_chars": 14104,
         "truncated": false,
-        "title": "Jornal da Unesp | Dança do dragão e música erudita composta por chineses e apresentada por brasileiros são os temas da nova edição do Conexão China",
+        "title": "Jornal da Unesp | Uma cidade inteira vacinada contra a Covid-19 em um dia",
         "evidence_status": "IRRELEVANT",
         "relevant": false,
         "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
