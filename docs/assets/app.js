@@ -24,13 +24,10 @@
     });
     controls.scoreValue.value = controls.score.value;
     controls.count.textContent = `${visible} resultado(s)`;
-    document.querySelectorAll('.vacancy-group').forEach(group => {
-      group.hidden = !group.querySelector('.vacancy-card:not([hidden])');
-    });
   }
 
-  Object.values(controls).filter(el => el && !['result-count', 'score-value'].includes(el.id))
-    .forEach(el => el.addEventListener(el.type === 'search' ? 'input' : 'change', applyFilters));
+  ['state', 'institution', 'eligibility', 'openOnly', 'newOnly']
+    .forEach(name => controls[name].addEventListener('change', applyFilters));
   controls.search.addEventListener('input', applyFilters);
   controls.score.addEventListener('input', applyFilters);
   document.querySelector('#clear').addEventListener('click', () => {

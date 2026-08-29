@@ -34,7 +34,12 @@ def test_report_is_responsive_and_escapes_content(tmp_path):
         "state": "PR", "title": "Professor de Gestão", "area": "Gestão Ambiental",
         "formal_eligibility": "YES", "formal_reason": "Compatível", "thematic_score": 90,
         "thematic_reason": "Alta aderência", "geographic_priority": 2, "status": "NEW",
-        "first_seen": "2026-08-23", "registration_end": "2026-09-15",
+        "first_seen": "2026-08-23", "publication_date": "2026-08-20",
+        "registration_start": "2026-09-01", "registration_end": "2026-09-15",
+        "employment_type": "Concurso público", "vacancies_count": 1,
+        "workload": "40 horas semanais", "salary_text": "R$ 10.000,00",
+        "graduation_requirement_raw": "Graduação em Administração.",
+        "doctorate_requirement_raw": "Doutorado em Administração.",
         "visual_category": "🔥 Forte oportunidade",
         "official_check_status": "READ", "requirements_source": "OFFICIAL_PDF",
         "official_check_reason": "Requisito associado à área.",
@@ -48,9 +53,17 @@ def test_report_is_responsive_and_escapes_content(tmp_path):
     assert "UFPR &lt;Campus&gt;" in page
     assert "Somente abertas" in page
     assert "Triagem, não decisão jurídica" in page
-    assert "Página 7" in page
-    assert "Abrir edital oficial" in page
-    assert "1 edital(is) listado(s)" in page
+    assert "Universidade ou Instituto" in page
+    assert "Requisito de graduação" in page
+    assert "Requisito de pós-graduação" in page
+    assert "20/08/2026" in page
+    assert "01/09/2026 a 15/09/2026" in page
+    assert "Concurso público" in page
+    assert "40 horas semanais" in page
+    assert "Graduação em Administração." in page
+    assert "Doutorado: Doutorado em Administração." in page
+    assert "Edital lido · página 7" in page
+    assert ">Edital</a>" in page
 
 
 def test_multi_area_report_does_not_repeat_parent_requirements(tmp_path):
@@ -59,18 +72,33 @@ def test_multi_area_report_does_not_repeat_parent_requirements(tmp_path):
         "source_url": "https://example.test/vaga", "institution": "UEM", "state": "PR",
         "title": "Professor colaborador", "area": "Não identificada", "status": "OPEN",
         "formal_eligibility": "UNKNOWN", "formal_reason": "Edital multiárea lido.",
-        "thematic_score": 25, "thematic_reason": "Uma área relevante.",
+        "thematic_score": 50, "thematic_reason": "Duas áreas relevantes.",
         "visual_category": "⚪ Informação insuficiente", "first_seen": "2026-08-23",
         "graduation_requirement_raw": "RESUMO GENÉRICO DO PAI",
+        "masters_requirement": "MESTRADO GENÉRICO DO PAI",
         "official_check_status": "READ_MULTI", "requirements_source": "OFFICIAL_PDF_MULTI",
         "official_opportunities": [{
             "area": "Engenharia da Sustentabilidade", "thematic_score": 25,
             "formal_eligibility": "UNKNOWN", "page": 14,
-            "requirement_text": "Graduação em Engenharia de Produção.",
+            "requirement_text": "Graduação em Engenharia de Produção; e Mestrado em Engenharia de Produção.",
+            "graduation_requirement_raw": "Graduação em Engenharia de Produção.",
+        }, {
+            "area": "Gestão Ambiental", "thematic_score": 40,
+            "formal_eligibility": "YES", "page": 18,
+            "requirement_text": "Graduação em Administração e doutorado na área.",
+            "graduation_requirement_raw": "Graduação em Administração.",
+            "doctorate_requirement_raw": "Doutorado em Ciências Ambientais.",
         }],
     }
     generate_report([vacancy], output, datetime(2026, 8, 23, 8, 17, tzinfo=ZoneInfo("America/Sao_Paulo")))
     page = output.read_text(encoding="utf-8")
     assert "RESUMO GENÉRICO DO PAI" not in page
-    assert "Use os blocos do edital abaixo" in page
+    assert "MESTRADO GENÉRICO DO PAI" not in page
+    assert page.count('class="vacancy-card vacancy-row') == 2
     assert "Engenharia da Sustentabilidade" in page
+    assert "Gestão Ambiental" in page
+    assert "Graduação em Engenharia de Produção." in page
+    assert "Pós-graduação: Mestrado em Engenharia de Produção." in page
+    assert "Doutorado: Doutorado em Ciências Ambientais." in page
+    assert "Edital lido · página 14" in page
+    assert "Edital lido · página 18" in page

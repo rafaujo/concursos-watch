@@ -18,7 +18,8 @@ Radar pessoal, automático e auditável de concursos públicos e processos selet
 - classificação formal `YES`, `NO`, `UNCERTAIN` ou `UNKNOWN` com justificativa;
 - pontuação temática transparente de 0 a 100, configurável;
 - prioridade geográfica sem excluir nenhum estado;
-- relatório HTML responsivo, acessível e filtrável, sem framework pesado;
+- lista HTML responsiva, acessível e filtrável, com comparação direta entre instituição, vaga, graduação e pós-graduação;
+- uma linha por área relevante nos editais multiárea, com divulgação, período de inscrição e detalhes da seleção;
 - testes das regras de aceitação, persistência, parser e relatório;
 - execução diária às 08:17 em `America/Sao_Paulo`, disparo manual, commit condicional e deploy no Pages.
 
