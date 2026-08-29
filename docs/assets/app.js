@@ -1,5 +1,6 @@
 (() => {
   const cards = [...document.querySelectorAll('.vacancy-card')];
+  const contests = [...document.querySelectorAll('.contest-group')];
   const controls = {
     search: document.querySelector('#search'), state: document.querySelector('#state'),
     institution: document.querySelector('#institution'), eligibility: document.querySelector('#eligibility'),
@@ -22,8 +23,14 @@
       card.hidden = !show;
       if (show) visible += 1;
     });
+    let visibleContests = 0;
+    contests.forEach(contest => {
+      const show = Boolean(contest.querySelector('.vacancy-card:not([hidden])'));
+      contest.hidden = !show;
+      if (show) visibleContests += 1;
+    });
     controls.scoreValue.value = controls.score.value;
-    controls.count.textContent = `${visible} resultado(s)`;
+    controls.count.textContent = `${visible} vaga(s) em ${visibleContests} concurso(s)`;
   }
 
   ['state', 'institution', 'eligibility', 'openOnly', 'newOnly']

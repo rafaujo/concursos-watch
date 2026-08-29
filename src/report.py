@@ -113,8 +113,8 @@ def _post_requirement(v: dict[str, Any]) -> str:
 
 def _detail_items(v: dict[str, Any]) -> list[tuple[str, str]]:
     details: list[tuple[str, str]] = []
-    if v.get("employment_type"):
-        details.append(("Seleção", str(v["employment_type"])))
+    if v.get("campus"):
+        details.append(("Campus", str(v["campus"])))
     if v.get("vacancies_count"):
         count = int(v["vacancies_count"])
         details.append(("Vagas", f"{count} vaga" if count == 1 else f"{count} vagas"))
@@ -126,12 +126,6 @@ def _detail_items(v: dict[str, Any]) -> list[tuple[str, str]]:
 
 
 def _row(v: dict[str, Any]) -> str:
-    links = [f'<a href="{_escape(v.get("source_url"))}" target="_blank" rel="noopener">PCI</a>']
-    official_target = v.get("official_document_url") or v.get("official_url")
-    if official_target:
-        label = "Edital" if v.get("official_document_url") else "Fonte oficial"
-        links.append(f'<a href="{_escape(official_target)}" target="_blank" rel="noopener">{label}</a>')
-
     graduation = (
         v.get("graduation_requirement_raw")
         or v.get("graduation_requirement")
@@ -142,8 +136,7 @@ def _row(v: dict[str, Any]) -> str:
     area = str(v.get("area") or "")
     area_identified = area and normalize_for_report(area) != "nao identificada"
     vacancy_name = area if area_identified else (v.get("title") or v.get("position"))
-    vacancy_context = v.get("_parent_title") if v.get("_is_subvacancy") else v.get("position")
-    location = " / ".join(item for item in (v.get("state"), v.get("city"), v.get("campus")) if item)
+    vacancy_context = v.get("reference") or v.get("position")
     eligibility = str(v.get("formal_eligibility") or "UNKNOWN")
     score = int(v.get("thematic_score") or 0)
     protected_count = len(v.get("official_pci_protected_documents") or [])
@@ -166,13 +159,6 @@ def _row(v: dict[str, Any]) -> str:
     is_open = str(v.get("status")) != "CLOSED"
     is_new = str(v.get("status")) == "NEW"
     analysis = " ".join(filter(None, (v.get("formal_reason"), v.get("thematic_reason"))))
-    publication = _format_date(v.get("publication_date"))
-    registration_start = _format_date(v.get("registration_start"))
-    registration_end = _format_date(v.get("registration_end"))
-    registration_period = (
-        f"{registration_start} a {registration_end}"
-        if v.get("registration_start") else f"até {registration_end}"
-    )
     details = "".join(
         f'<div><dt>{_escape(label)}</dt><dd>{_escape(value)}</dd></div>'
         for label, value in _detail_items(v)
@@ -180,11 +166,55 @@ def _row(v: dict[str, Any]) -> str:
     post_lines = "".join(f"<span>{_escape(line)}</span>" for line in post.split("\n"))
 
     return f'''<article role="row" class="vacancy-card vacancy-row eligibility-{_escape(eligibility).lower()}" data-state="{_escape(v.get("state"), '')}" data-institution="{_escape(v.get("institution"), '')}" data-eligibility="{_escape(eligibility)}" data-score="{score}" data-open="{str(is_open).lower()}" data-new="{str(is_new).lower()}" data-search="{_escape(search, '')}">
-      <div role="cell" class="list-cell institution-cell" data-label="Universidade ou Instituto"><strong>{_escape(v.get("institution"))}</strong><span>{_escape(location)}</span></div>
-      <div role="cell" class="list-cell vacancy-cell" data-label="Vaga"><strong>{_escape(vacancy_name)}</strong><span class="vacancy-context">{_escape(vacancy_context)}</span><dl class="dates"><div><dt>Divulgação</dt><dd>{_escape(publication)}</dd></div><div><dt>Inscrições</dt><dd>{_escape(registration_period)}</dd></div></dl><dl class="vacancy-details">{details}</dl><div class="row-badges"><span class="eligibility-badge">{_escape(ELIGIBILITY_LABELS.get(eligibility, eligibility))}</span><span>Aderência {score}/100</span></div><details class="row-details"><summary>Mais detalhes e fontes</summary><p>{_escape(analysis)}</p><nav>{' · '.join(links)}</nav></details></div>
+      <div role="cell" class="list-cell vacancy-cell" data-label="Vaga ou área"><strong>{_escape(vacancy_name)}</strong><span class="vacancy-context">{_escape(vacancy_context)}</span><div class="row-badges"><span class="eligibility-badge">{_escape(ELIGIBILITY_LABELS.get(eligibility, eligibility))}</span><span>Aderência {score}/100</span></div></div>
       <div role="cell" class="list-cell requirement-cell" data-label="Requisito de graduação"><p>{_escape(graduation)}</p></div>
       <div role="cell" class="list-cell requirement-cell post-cell" data-label="Requisito de pós-graduação"><p>{post_lines}</p><small>{_escape(source_note)}</small></div>
+      <div role="cell" class="list-cell details-cell" data-label="Detalhes da vaga"><dl class="vacancy-details">{details}</dl><details class="row-details"><summary>Análise</summary><p>{_escape(analysis)}</p></details></div>
     </article>'''
+
+
+def _contest_section(vacancy: dict[str, Any], index: int) -> str:
+    rows = _expanded_rows([vacancy])
+    publication = _format_date(vacancy.get("publication_date"))
+    registration_start = _format_date(vacancy.get("registration_start"))
+    registration_end = _format_date(vacancy.get("registration_end"))
+    registration_period = (
+        f"{registration_start} a {registration_end}"
+        if vacancy.get("registration_start") else f"até {registration_end}"
+    )
+    location = " / ".join(item for item in (vacancy.get("state"), vacancy.get("city")) if item)
+    contest_id = f"contest-{index}"
+    links = [f'<a href="{_escape(vacancy.get("source_url"))}" target="_blank" rel="noopener">Ver no PCI</a>']
+    official_target = vacancy.get("official_document_url") or vacancy.get("official_url")
+    if official_target:
+        label = "Abrir edital" if vacancy.get("official_document_url") else "Fonte oficial"
+        links.append(f'<a href="{_escape(official_target)}" target="_blank" rel="noopener">{label}</a>')
+    protected_count = len(vacancy.get("official_pci_protected_documents") or [])
+    if vacancy.get("official_check_status") in ("READ", "READ_MULTI"):
+        reading_note = "Edital lido e requisitos separados por vaga"
+    elif protected_count:
+        reading_note = f"{protected_count} edital(is) no PCI aguardando verificação humana"
+    else:
+        reading_note = f"Leitura do edital: {vacancy.get('official_check_status') or 'pendente'}"
+    contest_meta = (
+        ("Divulgação", publication),
+        ("Inscrições", registration_period),
+        ("Seleção", vacancy.get("employment_type") or "Não informada"),
+        ("Local", location or "Não informado"),
+    )
+    meta_html = "".join(
+        f'<div><dt>{_escape(label)}</dt><dd>{_escape(value)}</dd></div>'
+        for label, value in contest_meta
+    )
+    table_rows = "".join(_row(row) for row in rows)
+    row_label = "vaga relevante" if len(rows) == 1 else "vagas relevantes"
+    return f'''<section class="contest-group" aria-labelledby="{contest_id}">
+      <header class="contest-header"><div class="contest-title"><p>{_escape(vacancy.get("institution"))}</p><h3 id="{contest_id}">{_escape(vacancy.get("title"))}</h3><span>{len(rows)} {row_label} neste concurso · {_escape(reading_note)}</span></div><nav>{' '.join(links)}</nav></header>
+      <dl class="contest-meta">{meta_html}</dl>
+      <div class="contest-table" role="table" aria-label="Vagas e requisitos de {_escape(vacancy.get('title'))}">
+        <div class="list-header" role="row"><div role="columnheader">Vaga ou área</div><div role="columnheader">Requisito de graduação</div><div role="columnheader">Requisito de pós-graduação</div><div role="columnheader">Detalhes da vaga</div></div>{table_rows}
+      </div>
+    </section>'''
 
 
 def normalize_for_report(value: str) -> str:
@@ -206,11 +236,8 @@ def generate_report(vacancies: list[dict[str, Any]], output_path: Path, generate
     official_read_count = sum(v.get("official_check_status") in ("READ", "READ_MULTI") for v in visible)
     states = sorted({v.get("state") for v in visible if v.get("state")})
     institutions = sorted({v.get("institution") for v in visible if v.get("institution")})
-    list_rows = "".join(_row(v) for v in rows)
     sections = (
-        '<div class="list-header" role="row"><div role="columnheader">Universidade ou Instituto</div>'
-        '<div role="columnheader">Vaga</div><div role="columnheader">Requisito de graduação</div>'
-        '<div role="columnheader">Requisito de pós-graduação</div></div>' + list_rows
+        "".join(_contest_section(vacancy, index) for index, vacancy in enumerate(visible, start=1))
         if rows else '<div class="empty">Nenhuma vaga relevante registrada ainda. Execute o monitor para atualizar o radar.</div>'
     )
     options_state = "".join(f'<option value="{_escape(s)}">{_escape(s)}</option>' for s in states)
@@ -227,7 +254,7 @@ def generate_report(vacancies: list[dict[str, Any]], output_path: Path, generate
 <div class="summary"><div><strong>{generated_at.strftime('%d/%m/%Y %H:%M')}</strong><span>Última atualização (BRT)</span></div><div><strong>{open_count}</strong><span>Vagas abertas relevantes</span></div><div><strong>{new_count}</strong><span>Novas hoje</span></div><div><strong>PCI</strong><span>Fonte monitorada</span></div></div></div></header>
 <main><aside class="notice"><strong>Triagem, não decisão jurídica.</strong> “Elegível” não substitui a decisão da instituição sobre equivalência de títulos. <span class="official-count">Editais oficiais lidos com evidência aplicável: {official_read_count}.</span></aside>
 <section class="filters" aria-label="Filtros"><label>Buscar<input id="search" type="search" placeholder="Área, cidade, instituição…"></label><label>Estado<select id="state"><option value="">Todos</option>{options_state}</select></label><label>Instituição<select id="institution"><option value="">Todas</option>{options_inst}</select></label><label>Elegibilidade<select id="eligibility"><option value="">Todas</option><option>YES</option><option>UNCERTAIN</option><option>UNKNOWN</option><option>NO</option></select></label><label>Aderência mínima<input id="score" type="range" min="0" max="100" value="0"><output id="score-value">0</output></label><label class="check"><input id="open-only" type="checkbox" checked> Somente abertas</label><label class="check"><input id="new-only" type="checkbox"> Somente novas</label><button id="clear" type="button">Limpar filtros</button></section>
-<div class="results-heading"><h2>Lista de oportunidades</h2><span id="result-count">{len(rows)} resultado(s)</span></div><div id="cards" class="vacancy-list" role="table" aria-label="Oportunidades docentes e requisitos">{sections}</div>
+<div class="results-heading"><h2>Concursos e suas vagas</h2><span id="result-count">{len(rows)} vaga(s) em {len(visible)} concurso(s)</span></div><div id="cards" class="contest-list">{sections}</div>
 </main><footer>Gerado automaticamente · Fonte de descoberta: <a href="{config.PCI_LISTING_URL}">PCI Concursos</a> · Consulte sempre o edital oficial.</footer><script src="assets/app.js"></script></body></html>'''
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(document, encoding="utf-8", newline="\n")

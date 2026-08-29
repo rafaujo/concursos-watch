@@ -53,9 +53,11 @@ def test_report_is_responsive_and_escapes_content(tmp_path):
     assert "UFPR &lt;Campus&gt;" in page
     assert "Somente abertas" in page
     assert "Triagem, não decisão jurídica" in page
-    assert "Universidade ou Instituto" in page
+    assert "Concursos e suas vagas" in page
+    assert "Vaga ou área" in page
     assert "Requisito de graduação" in page
     assert "Requisito de pós-graduação" in page
+    assert "Detalhes da vaga" in page
     assert "20/08/2026" in page
     assert "01/09/2026 a 15/09/2026" in page
     assert "Concurso público" in page
@@ -63,7 +65,9 @@ def test_report_is_responsive_and_escapes_content(tmp_path):
     assert "Graduação em Administração." in page
     assert "Doutorado: Doutorado em Administração." in page
     assert "Edital lido · página 7" in page
-    assert ">Edital</a>" in page
+    assert ">Abrir edital</a>" in page
+    assert page.count('class="contest-group"') == 1
+    assert page.count('class="contest-table"') == 1
 
 
 def test_multi_area_report_does_not_repeat_parent_requirements(tmp_path):
@@ -94,7 +98,10 @@ def test_multi_area_report_does_not_repeat_parent_requirements(tmp_path):
     page = output.read_text(encoding="utf-8")
     assert "RESUMO GENÉRICO DO PAI" not in page
     assert "MESTRADO GENÉRICO DO PAI" not in page
+    assert page.count('class="contest-group"') == 1
+    assert page.count('class="contest-table"') == 1
     assert page.count('class="vacancy-card vacancy-row') == 2
+    assert "2 vagas relevantes neste concurso" in page
     assert "Engenharia da Sustentabilidade" in page
     assert "Gestão Ambiental" in page
     assert "Graduação em Engenharia de Produção." in page
@@ -102,3 +109,26 @@ def test_multi_area_report_does_not_repeat_parent_requirements(tmp_path):
     assert "Doutorado: Doutorado em Ciências Ambientais." in page
     assert "Edital lido · página 14" in page
     assert "Edital lido · página 18" in page
+
+
+def test_report_groups_different_contests_in_separate_tables(tmp_path):
+    output = tmp_path / "docs" / "index.html"
+    contests = [{
+        "source_url": f"https://example.test/concurso-{index}",
+        "institution": institution,
+        "state": "PR",
+        "title": title,
+        "area": area,
+        "status": "OPEN",
+        "formal_eligibility": "UNKNOWN",
+        "thematic_score": 20,
+    } for index, (institution, title, area) in enumerate((
+        ("UFPR", "Concurso nº 1", "Administração"),
+        ("UEL", "Concurso nº 2", "Gestão Ambiental"),
+    ), start=1)]
+    generate_report(contests, output, datetime(2026, 8, 23, 8, 17, tzinfo=ZoneInfo("America/Sao_Paulo")))
+    page = output.read_text(encoding="utf-8")
+    assert page.count('class="contest-group"') == 2
+    assert page.count('class="contest-table"') == 2
+    assert page.count('class="vacancy-card vacancy-row') == 2
+    assert "2 vaga(s) em 2 concurso(s)" in page
