@@ -57,7 +57,8 @@ def test_report_is_responsive_and_escapes_content(tmp_path):
     assert "Vaga ou área" in page
     assert "Requisito de graduação" in page
     assert "Requisito de pós-graduação" in page
-    assert "Detalhes da vaga" in page
+    assert "Detalhes específicos" in page
+    assert "Detalhes comuns a todas as vagas" in page
     assert "20/08/2026" in page
     assert "01/09/2026 a 15/09/2026" in page
     assert "Concurso público" in page
@@ -80,23 +81,29 @@ def test_multi_area_report_does_not_repeat_parent_requirements(tmp_path):
         "formal_eligibility": "UNKNOWN", "formal_reason": "Edital multiárea lido.",
         "thematic_score": 50, "thematic_reason": "Duas áreas relevantes.",
         "visual_category": "⚪ Informação insuficiente", "first_seen": "2026-08-23",
+        "registration_start": "2026-08-26", "registration_end": "2026-09-16",
+        "vacancies_count": 1, "workload": "40 horas semanais",
+        "salary_text": "R$ 1.893,95 a R$ 11.221,64",
         "graduation_requirement_raw": "RESUMO GENÉRICO DO PAI",
         "masters_requirement": "MESTRADO GENÉRICO DO PAI",
         "official_check_status": "READ_MULTI", "requirements_source": "OFFICIAL_PDF_MULTI",
         "official_opportunities": [{
             "area": "Engenharia da Sustentabilidade", "thematic_score": 25,
             "formal_eligibility": "UNKNOWN", "page": 14,
+            "campus": "Câmpus Sede",
             "requirement_text": "Graduação em Engenharia de Produção; e Mestrado em Engenharia de Produção.",
             "graduation_requirement_raw": "Graduação em Engenharia de Produção.",
         }, {
             "area": "Gestão Ambiental", "thematic_score": 40,
             "formal_eligibility": "YES", "page": 18,
+            "campus": "Câmpus Cianorte",
             "requirement_text": "Graduação em Administração e doutorado na área.",
             "graduation_requirement_raw": "Graduação em Administração.",
             "doctorate_requirement_raw": "Doutorado em Ciências Ambientais.",
         }, {
             "area": "História Ambiental", "thematic_score": 0,
             "formal_eligibility": "UNKNOWN", "page": 20,
+            "campus": "Câmpus Umuarama",
             "requirement_text": "Graduação em História; e Mestrado em História.",
         }],
     }
@@ -116,6 +123,12 @@ def test_multi_area_report_does_not_repeat_parent_requirements(tmp_path):
     assert ">Doutorado em Ciências Ambientais</span>" in page
     assert "Edital lido · página 14" in page
     assert "Edital lido · página 18" in page
+    assert page.count("<dt>Inscrições</dt>") == 1
+    assert page.count("<dt>Vagas</dt>") == 1
+    assert page.count("<dt>Jornada</dt>") == 1
+    assert page.count("<dt>Remuneração</dt>") == 1
+    assert page.count("<dt>Campus</dt>") == 3
+    assert "Câmpus Sede" in page and "Câmpus Cianorte" in page and "Câmpus Umuarama" in page
 
 
 def test_report_groups_different_contests_in_separate_tables(tmp_path):
@@ -141,7 +154,7 @@ def test_report_groups_different_contests_in_separate_tables(tmp_path):
     assert "2 vaga(s) em 2 concurso(s)" in page
 
 
-def test_report_splits_unila_degree_requirements_and_moves_registration_to_details(tmp_path):
+def test_report_splits_unila_requirements_and_moves_common_details_below_title(tmp_path):
     output = tmp_path / "docs" / "index.html"
     vacancy = {
         "source_url": "https://example.test/unila-musica",
@@ -174,5 +187,7 @@ def test_report_splits_unila_degree_requirements_and_moves_registration_to_detai
     page = output.read_text(encoding="utf-8")
     assert '<div role="cell" class="list-cell requirement-cell" data-label="Requisito de graduação"><p>Música</p>' in page
     assert '<span>Mestrado e Doutorado em Música ou áreas correlatas</span>' in page
-    assert '<div role="cell" class="list-cell details-cell" data-label="Detalhes da vaga"><dl class="vacancy-details"><div><dt>Inscrições</dt><dd>04/09/2026 a 04/10/2026</dd>' in page
+    assert '<div class="contest-common"><strong>Detalhes comuns a todas as vagas</strong><dl><div><dt>Inscrições</dt><dd>04/09/2026 a 04/10/2026</dd>' in page
+    assert '<div role="cell" class="list-cell details-cell" data-label="Detalhes específicos"><span class="no-specific-details">Nenhum detalhe específico</span>' in page
+    assert page.count("<dt>Inscrições</dt>") == 1
     assert "Titulação Mínima Exigida" not in page

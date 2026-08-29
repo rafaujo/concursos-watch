@@ -159,13 +159,14 @@ def _structured_requirements(v: dict[str, Any]) -> tuple[str, str]:
 
 def _detail_items(v: dict[str, Any]) -> list[tuple[str, str]]:
     details: list[tuple[str, str]] = []
-    registration_start = _format_date(v.get("registration_start"))
-    registration_end = _format_date(v.get("registration_end"))
-    registration_period = (
-        f"{registration_start} a {registration_end}"
-        if v.get("registration_start") else f"até {registration_end}"
-    )
-    details.append(("Inscrições", registration_period))
+    if v.get("registration_start") or v.get("registration_end"):
+        registration_start = _format_date(v.get("registration_start"))
+        registration_end = _format_date(v.get("registration_end"))
+        registration_period = (
+            f"{registration_start} a {registration_end}"
+            if v.get("registration_start") else f"até {registration_end}"
+        )
+        details.append(("Inscrições", registration_period))
     if v.get("campus"):
         details.append(("Campus", str(v["campus"])))
     if v.get("vacancies_count"):
@@ -178,7 +179,18 @@ def _detail_items(v: dict[str, Any]) -> list[tuple[str, str]]:
     return details
 
 
-def _row(v: dict[str, Any]) -> str:
+def _common_detail_items(rows: list[dict[str, Any]]) -> list[tuple[str, str]]:
+    if not rows:
+        return []
+    row_details = [dict(_detail_items(row)) for row in rows]
+    common: list[tuple[str, str]] = []
+    for label, value in _detail_items(rows[0]):
+        if value and all(details.get(label) == value for details in row_details[1:]):
+            common.append((label, value))
+    return common
+
+
+def _row(v: dict[str, Any], common_detail_labels: set[str] | None = None) -> str:
     graduation, post = _structured_requirements(v)
     area = str(v.get("area") or "")
     area_identified = area and normalize_for_report(area) != "nao identificada"
@@ -206,9 +218,15 @@ def _row(v: dict[str, Any]) -> str:
     is_open = str(v.get("status")) != "CLOSED"
     is_new = str(v.get("status")) == "NEW"
     analysis = " ".join(filter(None, (v.get("formal_reason"), v.get("thematic_reason"))))
+    common_detail_labels = common_detail_labels or set()
+    specific_details = [item for item in _detail_items(v) if item[0] not in common_detail_labels]
     details = "".join(
         f'<div><dt>{_escape(label)}</dt><dd>{_escape(value)}</dd></div>'
-        for label, value in _detail_items(v)
+        for label, value in specific_details
+    )
+    details_content = (
+        f'<dl class="vacancy-details">{details}</dl>'
+        if details else '<span class="no-specific-details">Nenhum detalhe específico</span>'
     )
     post_lines = "".join(f"<span>{_escape(line)}</span>" for line in post.split(" / "))
 
@@ -216,12 +234,14 @@ def _row(v: dict[str, Any]) -> str:
       <div role="cell" class="list-cell vacancy-cell" data-label="Vaga ou área"><strong>{_escape(vacancy_name)}</strong><span class="vacancy-context">{_escape(vacancy_context)}</span><div class="row-badges"><span class="eligibility-badge">{_escape(ELIGIBILITY_LABELS.get(eligibility, eligibility))}</span><span>Aderência {score}/100</span></div></div>
       <div role="cell" class="list-cell requirement-cell" data-label="Requisito de graduação"><p>{_escape(graduation)}</p></div>
       <div role="cell" class="list-cell requirement-cell post-cell" data-label="Requisito de pós-graduação"><p>{post_lines}</p><small>{_escape(source_note)}</small></div>
-      <div role="cell" class="list-cell details-cell" data-label="Detalhes da vaga"><dl class="vacancy-details">{details}</dl><details class="row-details"><summary>Análise</summary><p>{_escape(analysis)}</p></details></div>
+      <div role="cell" class="list-cell details-cell" data-label="Detalhes específicos">{details_content}<details class="row-details"><summary>Análise</summary><p>{_escape(analysis)}</p></details></div>
     </article>'''
 
 
 def _contest_section(vacancy: dict[str, Any], index: int) -> str:
     rows = _expanded_rows([vacancy])
+    common_details = _common_detail_items(rows)
+    common_detail_labels = {label for label, _ in common_details}
     publication = _format_date(vacancy.get("publication_date"))
     location = " / ".join(item for item in (vacancy.get("state"), vacancy.get("city")) if item)
     contest_id = f"contest-{index}"
@@ -247,13 +267,23 @@ def _contest_section(vacancy: dict[str, Any], index: int) -> str:
         f'<div><dt>{_escape(label)}</dt><dd>{_escape(value)}</dd></div>'
         for label, value in contest_meta
     )
-    table_rows = "".join(_row(row) for row in rows)
+    common_details_html = "".join(
+        f'<div><dt>{_escape(label)}</dt><dd>{_escape(value)}</dd></div>'
+        for label, value in common_details
+    )
+    common_block = (
+        '<div class="contest-common"><strong>Detalhes comuns a todas as vagas</strong>'
+        f'<dl>{common_details_html}</dl></div>'
+        if common_details else ""
+    )
+    table_rows = "".join(_row(row, common_detail_labels) for row in rows)
     row_label = "vaga listada" if len(rows) == 1 else "vagas listadas"
     return f'''<section class="contest-group" aria-labelledby="{contest_id}">
       <header class="contest-header"><div class="contest-title"><p>{_escape(vacancy.get("institution"))}</p><h3 id="{contest_id}">{_escape(vacancy.get("title"))}</h3><span>{len(rows)} {row_label} neste concurso · {_escape(reading_note)}</span></div><nav>{' '.join(links)}</nav></header>
       <dl class="contest-meta">{meta_html}</dl>
+      {common_block}
       <div class="contest-table" role="table" aria-label="Vagas e requisitos de {_escape(vacancy.get('title'))}">
-        <div class="list-header" role="row"><div role="columnheader">Vaga ou área</div><div role="columnheader">Requisito de graduação</div><div role="columnheader">Requisito de pós-graduação</div><div role="columnheader">Detalhes da vaga</div></div>{table_rows}
+        <div class="list-header" role="row"><div role="columnheader">Vaga ou área</div><div role="columnheader">Requisito de graduação</div><div role="columnheader">Requisito de pós-graduação</div><div role="columnheader">Detalhes específicos</div></div>{table_rows}
       </div>
     </section>'''
 
@@ -290,12 +320,12 @@ def generate_report(vacancies: list[dict[str, Any]], output_path: Path, generate
     document = f'''<!doctype html>
 <html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Radar automático de concursos acadêmicos"><title>Concursos Watch</title>
-<link rel="stylesheet" href="assets/style.css"></head><body data-profile="{profile_json}">
+<link rel="stylesheet" href="assets/style.css?v=4"></head><body data-profile="{profile_json}">
 <header class="hero"><div class="hero-inner"><p class="eyebrow">CONCURSOS WATCH</p><h1>Radar de Concursos Acadêmicos</h1><p class="intro">Oportunidades docentes públicas organizadas por concurso, edital, vaga e requisitos de formação.</p>
 <div class="summary"><div><strong>{generated_at.strftime('%d/%m/%Y %H:%M')}</strong><span>Última atualização (BRT)</span></div><div><strong>{open_count}</strong><span>Vagas abertas listadas</span></div><div><strong>{new_count}</strong><span>Novas hoje</span></div><div><strong>PCI</strong><span>Fonte monitorada</span></div></div></div></header>
 <main><aside class="notice"><strong>Triagem, não decisão jurídica.</strong> “Elegível” não substitui a decisão da instituição sobre equivalência de títulos. <span class="official-count">Editais oficiais lidos com evidência aplicável: {official_read_count}.</span></aside>
 <section class="filters" aria-label="Filtros"><label>Buscar<input id="search" type="search" placeholder="Área, cidade, instituição…"></label><label>Estado<select id="state"><option value="">Todos</option>{options_state}</select></label><label>Instituição<select id="institution"><option value="">Todas</option>{options_inst}</select></label><label>Elegibilidade<select id="eligibility"><option value="">Todas</option><option>YES</option><option>UNCERTAIN</option><option>UNKNOWN</option><option>NO</option></select></label><label>Aderência mínima<input id="score" type="range" min="0" max="100" value="0"><output id="score-value">0</output></label><label class="check"><input id="open-only" type="checkbox"> Somente abertas</label><label class="check"><input id="new-only" type="checkbox"> Somente novas</label><button id="clear" type="button">Limpar filtros</button></section>
 <div class="results-heading"><h2>Todas as vagas por concurso</h2><span id="result-count">{len(rows)} vaga(s) em {len(visible)} concurso(s)</span></div><div id="cards" class="contest-list">{sections}</div>
-</main><footer>Gerado automaticamente · Fonte de descoberta: <a href="{config.PCI_LISTING_URL}">PCI Concursos</a> · Consulte sempre o edital oficial.</footer><script src="assets/app.js"></script></body></html>'''
+</main><footer>Gerado automaticamente · Fonte de descoberta: <a href="{config.PCI_LISTING_URL}">PCI Concursos</a> · Consulte sempre o edital oficial.</footer><script src="assets/app.js?v=4"></script></body></html>'''
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(document, encoding="utf-8", newline="\n")

@@ -31,6 +31,10 @@ main { padding:28px 0 70px; }.notice { padding:14px 18px; margin-bottom:20px; ba
 .contest-header nav a+ a { color:var(--green); background:#dfece5; }
 .contest-meta { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:1px; margin:0; background:var(--line); border-bottom:1px solid var(--line); }
 .contest-meta div { min-width:0; padding:10px 16px; background:#fffdf8; }
+.contest-common { display:flex; align-items:start; gap:22px; padding:14px 16px; background:#eaf2ed; border-bottom:1px solid var(--line); }
+.contest-common>strong { flex:0 0 190px; color:var(--green); font-size:.74rem; letter-spacing:.035em; text-transform:uppercase; }
+.contest-common dl { display:grid; flex:1; grid-template-columns:repeat(auto-fit,minmax(145px,1fr)); gap:10px 22px; margin:0; }
+.contest-common dl div { min-width:0; }
 .contest-table { overflow:hidden; }
 .list-header,.vacancy-row { display:grid; grid-template-columns:minmax(220px,1.05fr) minmax(250px,1.2fr) minmax(250px,1.2fr) minmax(190px,.9fr); }
 .list-header { color:white; background:var(--ink); font-size:.72rem; font-weight:800; letter-spacing:.055em; text-transform:uppercase; }
@@ -50,6 +54,7 @@ main { padding:28px 0 70px; }.notice { padding:14px 18px; margin-bottom:20px; ba
 .vacancy-details { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:6px 12px; margin:10px 0; }
 .vacancy-details:empty { display:none; }
 .vacancy-details div { min-width:0; }
+.no-specific-details { display:block; color:var(--muted); font-size:.78rem; }
 dt { color:var(--muted); font-size:.66rem; font-weight:800; letter-spacing:.035em; text-transform:uppercase; }
 dd { margin:1px 0; overflow-wrap:anywhere; font-size:.82rem; }
 .row-badges { display:flex; flex-wrap:wrap; gap:6px; margin-top:12px; }
@@ -70,7 +75,7 @@ footer { padding:28px 16px; color:#dce8e2; background:var(--ink); text-align:cen
 @media (max-width:980px) {
   .summary { grid-template-columns:1fr 1fr; }.summary div:nth-child(2) { border-right:0; }.filters { grid-template-columns:1fr 1fr; }
   .list-header { display:none; }
-  .contest-header { flex-direction:column; gap:14px; }.contest-meta { grid-template-columns:1fr 1fr; }
+  .contest-header { flex-direction:column; gap:14px; }.contest-meta { grid-template-columns:1fr 1fr; }.contest-common { flex-direction:column; gap:8px; }.contest-common>strong { flex-basis:auto; }
   .contest-table { padding:14px; background:#f5f2e9; }
   .vacancy-row { grid-template-columns:1fr 1fr; margin-bottom:14px; background:var(--surface)!important; border:1px solid var(--line); border-left:4px solid var(--green2); border-radius:10px; overflow:hidden; }
   .vacancy-row:last-child { margin-bottom:0; }

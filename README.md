@@ -20,7 +20,8 @@ Radar pessoal, automático e auditável de concursos públicos e processos selet
 - prioridade geográfica sem excluir nenhum estado;
 - concursos agrupados por edital, cada um com sua própria tabela responsiva, acessível e filtrável;
 - uma linha por vaga ou área nos editais multiárea, inclusive quando a aderência temática é zero;
-- graduação e pós-graduação separadas em campos limpos; inscrições, campus, jornada e remuneração ficam nos detalhes da vaga;
+- graduação e pós-graduação separadas em campos limpos;
+- detalhes iguais em todas as vagas — como inscrições e remuneração — aparecem uma única vez abaixo do título; cada linha conserva somente os detalhes específicos;
 - exibição inicial sem filtros ativos, preservando filtros opcionais para exploração posterior;
 - testes das regras de aceitação, persistência, parser e relatório;
 - execução diária às 08:17 em `America/Sao_Paulo`, disparo manual, commit condicional e deploy no Pages.
