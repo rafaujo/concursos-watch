@@ -2320,9 +2320,45 @@
     ]
   },
   "https://www.pciconcursos.com.br/noticias/unicamp-sp-abre-concurso-para-professor-titular-na-area-de-desenvolvimento-economico": {
-    "status": "AMBIGUOUS",
-    "checked_at": "2026-08-28T18:26:37-03:00",
+    "status": "BLOCKED",
+    "checked_at": "2026-08-29T14:33:04-03:00",
     "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/unicamp-sp-abre-concurso-para-professor-titular-na-area-de-desenvolvimento-economico",
+        "type": "PCI_HTML",
+        "content_hash": "05fd351f0cbbd0c2bda8cafd91278747d82391b72bcc1a9e6960407da1c8f678",
+        "page_count": 1,
+        "extracted_chars": 13648,
+        "truncated": false,
+        "title": "UNICAMP - SP abre concurso para Professor Titular na área de Desenvolvimento Econômico",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      },
+      {
+        "url": "https://solicita.dados.unicamp.br/concurso/",
+        "type": "HTML",
+        "content_hash": "8abc63d81ff126aad18d3cc26f175507184aa86247dd8a1260891815f146cdb3",
+        "page_count": 1,
+        "extracted_chars": 3776,
+        "truncated": false,
+        "title": "CGU - SOLICITA",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://solicita.dados.unicamp.br/concurso/?language=en",
+        "type": "HTML",
+        "content_hash": "8ad18de4eb440d654043ea71bc1a70b09ec3afded136d0472c2f1ff93782f384",
+        "page_count": 1,
+        "extracted_chars": 3634,
+        "truncated": false,
+        "title": "CGU - SOLICITA",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
       {
         "url": "https://www.unicamp.br/",
         "type": "HTML",
@@ -2386,21 +2422,54 @@
         "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
       }
     ],
-    "reader_version": 2,
+    "reader_version": 3,
     "applicable": false,
-    "reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
-    "errors": []
+    "reason": "O PCI lista 1 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
+    "errors": [],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL Nº 26 P 20541 D",
+        "url": null,
+        "pci_link_id": "1703757",
+        "pci_news_code": "6a26f1b479bc902cee0b8dc0bc933771",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
+    ]
   },
   "https://www.pciconcursos.com.br/noticias/ufmg-abre-concurso-publico-para-professor-de-magisterio-superior-na-area-de-antropologia-do-desenvolvimento": {
-    "status": "AMBIGUOUS",
-    "checked_at": "2026-08-28T18:26:37-03:00",
+    "status": "BLOCKED",
+    "checked_at": "2026-08-29T14:33:04-03:00",
     "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/ufmg-abre-concurso-publico-para-professor-de-magisterio-superior-na-area-de-antropologia-do-desenvolvimento",
+        "type": "PCI_HTML",
+        "content_hash": "b7bc5cd554a6fc6578dc76b9bd887537f6eb6ed3fbdff6eec9b27a96155a46f3",
+        "page_count": 1,
+        "extracted_chars": 14807,
+        "truncated": false,
+        "title": "UFMG abre concurso público para professor de magistério superior na área de Antropologia do Desenvolvimento",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      },
+      {
+        "url": "https://www.pciconcursos.com.br/apostilas/basico-para-concursos",
+        "type": "HTML",
+        "content_hash": "b34ac50cc25c357fbd0a66270d68eba61bd543094b225a87a1cff5809f96e468",
+        "page_count": 1,
+        "extracted_chars": 2664,
+        "truncated": false,
+        "title": "PCI Concursos - Apostilas",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
       {
         "url": "https://www.ufmg.br",
         "type": "HTML",
-        "content_hash": "111ac0c0b2f9b755c33003a017d1ef8f6325074a472574969f0b0fc46e224ac8",
+        "content_hash": "560c748d2fe165ca54679dc5fcb0eea2a229e8c6f325d2806c412adb6f1c0550",
         "page_count": 1,
-        "extracted_chars": 5502,
+        "extracted_chars": 5518,
         "truncated": false,
         "title": "Universidade Federal de Minas Gerais – Liderança regional e nacional em ensino superior gratuito, extensão, cultura, pesquisa científica e geração de patentes em todas as áreas do conhecimento",
         "evidence_status": "IRRELEVANT",
@@ -2421,24 +2490,66 @@
         "opportunities_count": 0
       },
       {
-        "url": "https://www.ufmg.br/cursos/formas-de-ingresso/concursos-publicos/",
+        "url": "https://www.ufmg.br/comunicacao/noticias/institucional/inscricoes-de-trabalhos-seguem-abertas-ate-11-de-setembro/",
         "type": "HTML",
-        "content_hash": "6e68140bb09e87a0b385ec63d0ff09863391ec08e996f48d66d498e2362a9ef1",
+        "content_hash": "d75a5ea9daebad6a6a3358e01badde832ed6342af84e25a27a2baffed38f9629",
         "page_count": 1,
-        "extracted_chars": 778,
+        "extracted_chars": 8857,
         "truncated": false,
-        "title": "Concursos Públicos – Universidade Federal de Minas Gerais",
+        "title": "Inscrições de trabalhos seguem abertas até 11 de setembro – Universidade Federal de Minas Gerais",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://sistemas.ufmg.br/idp/login.jsp",
+        "type": "HTML",
+        "content_hash": "17dcf8bdd7b17ad00757fd07f775aab659e6afb34a1fbe55058552c0788e2a0c",
+        "page_count": 1,
+        "extracted_chars": 271,
+        "truncated": false,
+        "title": "SSO - minhaUFMG",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www.ufmg.br/comunicacao/noticias/institucional/lancados-editais-para-recomposicao-em-oito-orgaos-colegiados-da-administracao-central/",
+        "type": "HTML",
+        "content_hash": "f19b4a50cfeba8c371a6eb17a1ec60c563d6ca285b8773817f64ec7c6960ede5",
+        "page_count": 1,
+        "extracted_chars": 5132,
+        "truncated": false,
+        "title": "Lançados editais para recomposição em oito órgãos colegiados da Administração Central – Universidade Federal de Minas Gerais",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www.ufmg.br/comunicacao/noticias/evento-cultural/wander-melo-miranda-lanca-biografia-de-graciliano-ramos-neste-sabado-em-belo-horizonte/",
+        "type": "HTML",
+        "content_hash": "d250ed1abe39d8cecff17dd43d51813da82b90df1478f81caebdf096994ea4b1",
+        "page_count": 1,
+        "extracted_chars": 26907,
+        "truncated": false,
+        "title": "Wander Melo Miranda lança biografia de Graciliano Ramos neste sábado em Belo Horizonte – Universidade Federal de Minas Gerais",
         "evidence_status": "IRRELEVANT",
         "relevant": false,
         "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
       }
     ],
-    "reader_version": 2,
+    "reader_version": 3,
     "applicable": false,
-    "reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
-    "errors": [
-      "https://www2.ufmg.br/concursos/Concursos/Professor-Adjunto: SSLError: HTTPSConnectionPool(host='www2.ufmg.br', port=443): Max retries exceeded with url: /concursos/Concursos/Professor-Adjunto (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))",
-      "https://www2.ufmg.br/concursos/Concursos/Professor-Assistente: SSLError: HTTPSConnectionPool(host='www2.ufmg.br', port=443): Max retries exceeded with url: /concursos/Concursos/Professor-Assistente (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))"
+    "reason": "O PCI lista 1 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
+    "errors": [],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL Nº 1639",
+        "url": null,
+        "pci_link_id": "1702666",
+        "pci_news_code": "6733983e5c072d92abbb0d4e498b9e57",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
     ]
   },
   "https://www.pciconcursos.com.br/noticias/uesc-ba-publica-edital-de-processo-seletivo-para-professor-visitante-em-engenharia-civil-e-ambiental": {
@@ -2861,15 +2972,63 @@
     ]
   },
   "https://www.pciconcursos.com.br/noticias/ufrn-abre-processo-seletivo-para-professores-do-magisterio-superior-e-ebtt": {
-    "status": "AMBIGUOUS",
-    "checked_at": "2026-08-28T18:26:37-03:00",
+    "status": "BLOCKED",
+    "checked_at": "2026-08-29T14:33:04-03:00",
     "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/ufrn-abre-processo-seletivo-para-professores-do-magisterio-superior-e-ebtt",
+        "type": "PCI_HTML",
+        "content_hash": "b2f1cc18e22d17fba2995b437b5ec899caee822cfd62e8c72496af560daf6802",
+        "page_count": 1,
+        "extracted_chars": 7528,
+        "truncated": false,
+        "title": "UFRN abre processo seletivo para professores do Magistério Superior e EBTT",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      },
       {
         "url": "https://www.ufrn.br/",
         "type": "HTML",
-        "content_hash": "28f78b4117cbf986de85ef8b86051dd7f7e133b78a44ee6101317664150a7d98",
+        "content_hash": "daa5c15d35399e762010c4307d58b97abe40d508297f15ea9318fdda893c9e64",
         "page_count": 1,
-        "extracted_chars": 2261,
+        "extracted_chars": 2310,
+        "truncated": false,
+        "title": "Portal da UFRN",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://docente.ufrn.br/",
+        "type": "HTML",
+        "content_hash": "406b6faaad63a0ab8db354089146b81fc8df67326e77b49d82527188c303a8e1",
+        "page_count": 1,
+        "extracted_chars": 626,
+        "truncated": false,
+        "title": "Docentes | Busca",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://ufrn.br/institucional/politica-de-cookies",
+        "type": "HTML",
+        "content_hash": "146f90bce110d8de70479a59ccc81116e276b362300166f8b82d45ffb22d91eb",
+        "page_count": 1,
+        "extracted_chars": 2697,
+        "truncated": false,
+        "title": "Portal da UFRN",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://ufrn.br/institucional/politica-de-privacidade-e-termos-de-uso",
+        "type": "HTML",
+        "content_hash": "58dd252fb06447e0033330e49652ffcdddb50e83ba87b877aa9802d2f6fcdaf0",
+        "page_count": 1,
+        "extracted_chars": 3044,
         "truncated": false,
         "title": "Portal da UFRN",
         "evidence_status": "IRRELEVANT",
@@ -2916,11 +3075,18 @@
         "opportunities_count": 0
       }
     ],
-    "reader_version": 2,
+    "reader_version": 3,
     "applicable": false,
-    "reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
-    "errors": [
-      "https://docente.ufrn.br/: RetryError: HTTPSConnectionPool(host='docente.ufrn.br', port=443): Max retries exceeded with url: / (Caused by ResponseError('too many 504 error responses'))"
+    "reason": "O PCI lista 1 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
+    "errors": [],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL Nº 106/2026",
+        "url": null,
+        "pci_link_id": "1704458",
+        "pci_news_code": "dd2ab3aa6d43bc489413a7cf0c1a70fa",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
     ]
   }
 }
