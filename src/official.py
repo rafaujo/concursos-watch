@@ -24,14 +24,19 @@ from bs4 import BeautifulSoup
 from pypdf import PdfReader
 
 import config
-from .parser import clean_text, extract_requirement_sentences, normalize_text
+from .parser import (
+    clean_text,
+    extract_pci_document_references,
+    extract_requirement_sentences,
+    normalize_text,
+)
 
 
 LOGGER = logging.getLogger(__name__)
 REQUIREMENT_TERMS = {
     "graduation": ("graduacao", "graduado", "bacharel", "licenciatura", "formacao superior"),
-    "masters": ("mestrado", "mestre"),
-    "doctorate": ("doutorado", "doutor"),
+    "masters": ("mestrado", "titulo de mestre", "grau de mestre"),
+    "doctorate": ("doutorado", "titulo de doutor", "grau de doutor"),
 }
 GENERIC_CONTEXT = {
     "professor", "professora", "concurso", "processo", "seletivo", "publico",
@@ -294,6 +299,8 @@ def score_candidate_link(label: str, url: str, vacancy: Mapping[str, Any]) -> in
         score += 45
     if any(term in combined for term in ("concurso", "processo-seletivo", "processo seletivo", "selecao")):
         score += 24
+    if "inscricoes" in combined or "inscricao" in combined:
+        score += 24
     if any(term in combined for term in ("professor", "docente", "magisterio")):
         score += 20
     score += min(30, 6 * sum(token in combined for token in vacancy_context_tokens(vacancy)))
@@ -311,7 +318,15 @@ def score_candidate_link(label: str, url: str, vacancy: Mapping[str, Any]) -> in
 def extract_candidate_links(html_bytes: bytes, base_url: str, vacancy: Mapping[str, Any]) -> list[dict[str, Any]]:
     soup = BeautifulSoup(html_bytes, "html.parser")
     candidates: dict[str, dict[str, Any]] = {}
-    for anchor in soup.select("a[href]"):
+    base_host = (urlsplit(base_url).hostname or "").lower()
+    if base_host == "pciconcursos.com.br" or base_host.endswith(".pciconcursos.com.br"):
+        anchors = soup.select(
+            'article#noticia [itemprop="articleBody"] a[href], '
+            'article#noticia a.edital-pdf-link[href]'
+        )
+    else:
+        anchors = soup.select("a[href]")
+    for anchor in anchors:
         href = anchor.get("href", "").strip()
         if href.startswith(("#", "javascript:", "mailto:", "tel:")):
             continue
@@ -328,7 +343,9 @@ def extract_candidate_links(html_bytes: bytes, base_url: str, vacancy: Mapping[s
         ):
             continue
         label = clean_text(" ".join((anchor.get_text(" ", strip=True), anchor.get("title", ""))))
-        score = score_candidate_link(label, url, vacancy)
+        context_node = anchor.find_parent(("p", "li"))
+        context = clean_text(context_node.get_text(" ", strip=True) if context_node else label)[:500]
+        score = score_candidate_link(f"{label} {context}", url, vacancy)
         if score < 20:
             continue
         current = candidates.get(url)
@@ -442,7 +459,11 @@ class OfficialDocumentReader:
 
     def read(self, vacancy: Mapping[str, Any], checked_at: datetime) -> dict[str, Any]:
         seeds = []
-        for field in ("official_url", "institution_url"):
+        for document in vacancy.get("pci_documents") or []:
+            value = document.get("url")
+            if value and value not in seeds:
+                seeds.append(str(value))
+        for field in ("source_url", "official_url", "institution_url"):
             value = vacancy.get(field)
             if value and value not in seeds:
                 seeds.append(str(value))
@@ -451,7 +472,7 @@ class OfficialDocumentReader:
                 "status": "NO_LINK", "checked_at": checked_at.isoformat(timespec="seconds"),
                 "reader_version": config.OFFICIAL_READER_VERSION,
                 "documents": [], "applicable": False,
-                "reason": "O PCI não forneceu link externo para uma fonte oficial.",
+                "reason": "A vaga não possui URL do PCI ou fonte oficial consultável.",
             }
 
         canonical_seeds = [canonical_url(url) for url in seeds]
@@ -463,6 +484,7 @@ class OfficialDocumentReader:
         best_multi: dict[str, Any] | None = None
         errors: list[str] = []
         blocked = False
+        pci_protected_documents: list[dict[str, Any]] = []
 
         while queue and len(visited) < config.OFFICIAL_MAX_LINKS_PER_VACANCY:
             url, depth = queue.popleft()
@@ -502,7 +524,27 @@ class OfficialDocumentReader:
                 elif "html" in content_type or data.lstrip().startswith((b"<!DOCTYPE", b"<html", b"<HTML")):
                     pages, title, page_blocked = self._extract_html_page(data)
                     blocked = blocked or page_blocked
-                    relevant, relevance_reason = assess_document_relevance(pages, vacancy, final_url)
+                    final_host = (urlsplit(final_url).hostname or "").lower()
+                    is_pci_news = (
+                        (final_host == "pciconcursos.com.br" or final_host.endswith(".pciconcursos.com.br"))
+                        and "/noticias/" in urlsplit(final_url).path
+                    )
+                    if is_pci_news:
+                        pci_refs = extract_pci_document_references(
+                            BeautifulSoup(data, "html.parser"), final_url
+                        )
+                        known_refs = {
+                            f"{item.get('pci_news_code')}:{item.get('pci_link_id')}"
+                            for item in pci_protected_documents
+                        }
+                        for item in pci_refs:
+                            ref_key = f"{item.get('pci_news_code')}:{item.get('pci_link_id')}"
+                            if item.get("access") == "HUMAN_VERIFICATION_REQUIRED" and ref_key not in known_refs:
+                                pci_protected_documents.append(item)
+                                known_refs.add(ref_key)
+                        relevant, relevance_reason = False, "Notícia do PCI usada somente para localizar o edital."
+                    else:
+                        relevant, relevance_reason = assess_document_relevance(pages, vacancy, final_url)
                     evidence = (
                         extract_requirement_evidence(pages, vacancy, allow_unscoped=False)
                         if relevant else {
@@ -511,7 +553,7 @@ class OfficialDocumentReader:
                         }
                     )
                     document = {
-                        "url": final_url, "type": "HTML", "content_hash": digest,
+                        "url": final_url, "type": "PCI_HTML" if is_pci_news else "HTML", "content_hash": digest,
                         "page_count": 1, "extracted_chars": len(pages[0][1]),
                         "truncated": False, "title": title,
                         "evidence_status": evidence["confidence"],
@@ -561,6 +603,7 @@ class OfficialDocumentReader:
                 "confidence": best["confidence"], "applicable": True,
                 "requirements": best["requirements"], "evidence": best["evidence"],
                 "reason": best["reason"], "errors": errors[:5],
+                "pci_protected_documents": pci_protected_documents,
             }
         if best_multi:
             return {
@@ -571,8 +614,14 @@ class OfficialDocumentReader:
                 "confidence": "STRUCTURED", "applicable": False,
                 "opportunities": best_multi["opportunities"],
                 "reason": best_multi["reason"], "errors": errors[:5],
+                "pci_protected_documents": pci_protected_documents,
             }
-        if blocked:
+        if pci_protected_documents:
+            status, reason = (
+                "BLOCKED",
+                f"O PCI lista {len(pci_protected_documents)} edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
+            )
+        elif blocked:
             status, reason = "BLOCKED", "A fonte oficial exige verificação humana; nenhum bloqueio foi contornado."
         elif any(item.get("type") == "PDF" and not item.get("extracted_chars") for item in documents):
             status, reason = "NO_TEXT", "O edital parece ser digitalizado e não contém camada de texto extraível."
@@ -584,4 +633,5 @@ class OfficialDocumentReader:
             "status": status, "checked_at": checked, "documents": documents,
             "reader_version": config.OFFICIAL_READER_VERSION,
             "applicable": False, "reason": reason, "errors": errors[:5],
+            "pci_protected_documents": pci_protected_documents,
         }

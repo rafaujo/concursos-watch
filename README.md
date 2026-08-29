@@ -13,7 +13,7 @@ Radar pessoal, automático e auditável de concursos públicos e processos selet
 - processamento de páginas novas, alteradas ou que precisam de revisão — sem baixar tudo novamente todos os dias;
 - `first_seen`, `last_seen`, `last_checked`, hashes de listagem e conteúdo e histórico resumido de mudanças;
 - datas brasileiras e fechamento automático; `CLOSING_SOON` significa prazo nos próximos 7 dias;
-- leitura limitada e segura de páginas e PDFs oficiais, com evidência e página de origem;
+- leitura limitada e segura de páginas e PDFs oficiais, começando sempre pelos editais listados na notícia do PCI, com evidência e página de origem;
 - separação das áreas de editais multiárea antes da classificação;
 - classificação formal `YES`, `NO`, `UNCERTAIN` ou `UNKNOWN` com justificativa;
 - pontuação temática transparente de 0 a 100, configurável;
@@ -104,7 +104,7 @@ python monitor.py --max-fetch 3 --delay 0.25
 
 Itens que ficaram na fila porque `--max-fetch` foi usado continuam com `processed: false` e serão analisados na execução seguinte. Para logs de diagnóstico, acrescente `--verbose`.
 
-A etapa oficial revisa uma quantidade limitada por execução e mantém cache. Leituras conclusivas são renovadas em 14 dias; fontes ambíguas ou indisponíveis voltam à fila em 2 dias. Para diagnosticar uma instituição específica sem baixar páginas do PCI:
+A etapa oficial revisa toda vaga aberta e tematicamente relevante, independentemente de a triagem inicial ser `YES`, `NO`, `UNCERTAIN` ou `UNKNOWN`. A notícia do PCI é sempre a primeira rota: PDFs diretos têm prioridade; quando o PCI oculta o endereço atrás de Turnstile, o bloqueio é registrado e o leitor tenta as fontes institucionais. Leituras conclusivas são renovadas em 14 dias; fontes ambíguas ou indisponíveis voltam à fila em 2 dias. Para diagnosticar uma instituição específica sem baixar páginas do PCI:
 
 ```bash
 python monitor.py --max-fetch 0 --force-official --official-match UEM --max-official 1
@@ -177,7 +177,7 @@ Implemente `VacancyAnalyzer.analyze(vacancy, profile)`. Uma estratégia segura �
 ## Limitações conhecidas
 
 - Nem toda instituição fornece um link direto ou um PDF textual; nesses casos o resultado continua auditavelmente `UNKNOWN`/`UNCERTAIN`.
-- PDFs protegidos por verificação humana não são contornados; o crawler não tenta burlar CAPTCHA ou bloqueios.
+- O PCI atualmente só libera alguns endereços de PDF após Cloudflare Turnstile. O sistema registra o edital e oferece a notícia para abertura manual, mas não burla CAPTCHA; em seguida tenta localizar o mesmo documento na fonte institucional.
 - Extração por regras não interpreta todas as construções jurídicas possíveis.
 - Tabelas de editais com estrutura inédita podem exigir uma nova regra de segmentação; o sistema evita agregar requisitos quando não consegue delimitá-los com segurança.
 - O link externo encontrado pode apontar para inscrições, e não diretamente para o PDF do edital.

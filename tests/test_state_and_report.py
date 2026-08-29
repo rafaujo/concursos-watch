@@ -40,6 +40,7 @@ def test_report_is_responsive_and_escapes_content(tmp_path):
         "official_check_reason": "Requisito associado à área.",
         "official_document_url": "https://example.test/edital.pdf",
         "official_requirement_evidence": [{"page": 7, "text": "Graduação em Administração."}],
+        "official_pci_protected_documents": [{"label": "EDITAL Nº 1", "pci_link_id": "123"}],
     }
     generate_report([vacancy], output, datetime(2026, 8, 23, 8, 17, tzinfo=ZoneInfo("America/Sao_Paulo")))
     page = output.read_text(encoding="utf-8")
@@ -49,6 +50,7 @@ def test_report_is_responsive_and_escapes_content(tmp_path):
     assert "Triagem, não decisão jurídica" in page
     assert "Página 7" in page
     assert "Abrir edital oficial" in page
+    assert "1 edital(is) listado(s)" in page
 
 
 def test_multi_area_report_does_not_repeat_parent_requirements(tmp_path):

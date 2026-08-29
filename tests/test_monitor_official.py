@@ -53,5 +53,27 @@ def test_multi_area_official_result_classifies_each_sub_vacancy_independently():
     assert vacancy["official_opportunities"][0]["formal_eligibility"] == "NO"
     assert vacancy["official_opportunities"][1]["formal_eligibility"] == "YES"
     assert vacancy["thematic_score"] >= config.STRONG_YES_SCORE
-    assert vacancy["graduation_requirement_raw"] == "Requisito resumido do PCI."
-    assert "concatenados" not in vacancy["graduation_requirement_raw"]
+    assert vacancy["graduation_requirement_raw"] is None
+
+
+def test_discarded_document_reparses_pci_summary_instead_of_using_stale_snapshot():
+    vacancy = {
+        "title": "Concurso para Professor Doutor no Departamento de Administração",
+        "raw_text": "Concurso para Professor Doutor no Departamento de Administração. Consulte o edital.",
+        "state": "SP", "area": "Políticas Públicas", "status": "OPEN",
+        "formal_eligibility": "NO", "thematic_score": 20,
+        "doctorate_requirement_raw": "Professor Doutor no Departamento de Administração.",
+        "pci_doctorate_requirement_raw": "Professor Doutor no Departamento de Administração.",
+    }
+    result = {
+        "status": "BLOCKED", "checked_at": "2026-08-29T08:17:00-03:00",
+        "reason": "O PCI exige verificação humana.", "documents": [], "errors": [],
+        "applicable": False, "pci_protected_documents": [{"pci_link_id": "123"}],
+    }
+    changed = _apply_official_result(
+        vacancy, result, RuleBasedAnalyzer(),
+        datetime(2026, 8, 29, 8, 17, tzinfo=ZoneInfo("America/Sao_Paulo")),
+    )
+    assert changed is True
+    assert vacancy["doctorate_requirement_raw"] is None
+    assert vacancy["formal_eligibility"] == "UNKNOWN"

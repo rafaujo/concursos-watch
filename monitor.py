@@ -33,7 +33,11 @@ def _restore_pci_requirements(vacancy: dict[str, Any]) -> None:
         "doctorate_requirement_raw": "doctorate_requirement",
     }
     for field, parsed_field in mapping.items():
-        vacancy[field] = vacancy.get(f"pci_{field}", pci_requirements.get(parsed_field))
+        pci_field = f"pci_{field}"
+        if vacancy.get("raw_text"):
+            vacancy[pci_field] = pci_requirements.get(parsed_field)
+        vacancy[field] = vacancy.get(pci_field)
+        vacancy[field.removesuffix("_raw")] = vacancy[field]
 
 
 def _merge_vacancy(
@@ -73,6 +77,7 @@ def _apply_official_result(
     vacancy["official_evidence_confidence"] = result.get("confidence")
     vacancy["official_requirement_evidence"] = result.get("evidence", [])
     vacancy["official_errors"] = result.get("errors", [])
+    vacancy["official_pci_protected_documents"] = result.get("pci_protected_documents", [])
 
     if result.get("opportunities"):
         _restore_pci_requirements(vacancy)
@@ -151,16 +156,8 @@ def _apply_official_result(
             vacancy["status"] = compute_status(vacancy, now.date(), is_updated=True)
         return restored
     requirements = result.get("requirements") or {}
-    pci_requirements = extract_requirement_sentences(str(vacancy.get("raw_text") or ""))
-    parsed_mapping = {
-        "graduation_requirement_raw": "graduation_requirement",
-        "masters_requirement_raw": "masters_requirement",
-        "doctorate_requirement_raw": "doctorate_requirement",
-    }
+    _restore_pci_requirements(vacancy)
     for field, value in requirements.items():
-        pci_field = f"pci_{field}"
-        if pci_field not in vacancy:
-            vacancy[pci_field] = pci_requirements.get(parsed_mapping[field])
         vacancy[field] = value
     vacancy["requirements_source"] = f"OFFICIAL_{result.get('document_type', 'DOCUMENT')}"
     vacancy["official_evidence_text"] = " ".join(
@@ -283,11 +280,7 @@ def run(
             vacancy for vacancy in by_url.values()
             if vacancy.get("status") != "CLOSED"
             and int(vacancy.get("thematic_score") or 0) > 0
-            and (force_official or (
-                vacancy.get("formal_eligibility") in ("UNKNOWN", "UNCERTAIN")
-                or str(vacancy.get("requirements_source") or "").startswith("OFFICIAL_")
-            ))
-            and (vacancy.get("official_url") or vacancy.get("institution_url"))
+            and vacancy.get("source_url")
             and (
                 force_official
                 or should_check_official(official_cache.get(vacancy["source_url"]), now.date())

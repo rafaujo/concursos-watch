@@ -90,6 +90,12 @@ def _card(v: dict[str, Any]) -> str:
             f'<li><strong>{_escape(page_label, "")}</strong>{_escape(str(item.get("text") or "")[:600])}</li>'
         )
     evidence_html = f'<ul class="evidence">{"".join(evidence_items)}</ul>' if evidence_items else ""
+    protected_count = len(v.get("official_pci_protected_documents") or [])
+    pci_protected_html = (
+        f'<p class="pci-protected"><strong>PCI:</strong> {_escape(protected_count)} edital(is) listado(s); '
+        'o endereço do PDF exige verificação humana no PCI. Use o botão “Ver no PCI”.</p>'
+        if protected_count else ""
+    )
     opportunity_items = []
     relevant_official = [
         item for item in (v.get("official_opportunities") or [])
@@ -118,7 +124,7 @@ def _card(v: dict[str, Any]) -> str:
         f'<div class="official-audit"><p><strong>Leitura do edital:</strong> {_escape(official_status)}'
         f' · Fonte dos requisitos: {_escape(v.get("requirements_source"), "Resumo do PCI")}</p>'
         f'<p>{_escape(v.get("official_check_reason"), "Fonte oficial ainda não consultada.")}</p>'
-        f'{opportunities_html}{evidence_html}</div>'
+        f'{pci_protected_html}{opportunities_html}{evidence_html}</div>'
     )
     return f'''<article class="vacancy-card eligibility-{_escape(v.get("formal_eligibility", "UNKNOWN")).lower()}" data-state="{_escape(v.get("state"), '')}" data-institution="{_escape(v.get("institution"), '')}" data-eligibility="{_escape(v.get("formal_eligibility", "UNKNOWN"))}" data-score="{int(v.get("thematic_score") or 0)}" data-open="{str(is_open).lower()}" data-new="{str(is_new).lower()}" data-search="{_escape(search, '')}">
       <header><span class="status">{_escape(v.get("visual_category"), "⚪ Informação insuficiente")}</span><span class="state">{_escape(v.get("state"), "BR")}</span></header>

@@ -3716,50 +3716,40 @@
     "publication_date": "2026-08-12",
     "graduation_requirement": null,
     "masters_requirement": null,
-    "doctorate_requirement": "A Universidade de São Paulo (USP) abriu um concurso público para preencher uma vaga no cargo de Professor Doutor no Departamento de Administração Escolar e Economia da Educação da Faculdade de Educação. Segundo o edital, a oportunidade é para o cargo de: Professor Doutor na área de Políticas Públicas e Educação Especial (1 vaga) A jornada será em regime de dedicação integral à docência e à pesquisa, com remuneração de R$ 16.994,01.",
+    "doctorate_requirement": null,
     "graduation_requirement_raw": null,
     "masters_requirement_raw": null,
-    "doctorate_requirement_raw": "A Universidade de São Paulo (USP) abriu um concurso público para preencher uma vaga no cargo de Professor Doutor no Departamento de Administração Escolar e Economia da Educação da Faculdade de Educação. Segundo o edital, a oportunidade é para o cargo de: Professor Doutor na área de Políticas Públicas e Educação Especial (1 vaga) A jornada será em regime de dedicação integral à docência e à pesquisa, com remuneração de R$ 16.994,01.",
+    "doctorate_requirement_raw": null,
     "other_requirements": null,
     "content_hash": "c01e3166aeede6b5f5c2dddd4c8b71f1e4e58d069caa6873a52385c425c8ea64",
     "first_seen": "2026-08-23",
     "last_seen": "2026-08-23",
     "last_checked": "2026-08-23T17:37:43-03:00",
-    "changes": [],
-    "formal_eligibility": "NO",
-    "formal_reason": "O edital parece exigir exclusivamente Doutorado em Administração, que não equivale automaticamente a Ciências Ambientais.",
+    "changes": [
+      "elegibilidade restaurada após descartar documento não correspondente: NO → UNKNOWN"
+    ],
+    "formal_eligibility": "UNKNOWN",
+    "formal_reason": "O anúncio não informa requisitos de formação suficientes; consulte o edital oficial.",
     "thematic_score": 44,
     "thematic_reason": "Aderência parcial devido a: Politicas Publicas, Administracao.",
     "geographic_priority": 4,
-    "visual_category": "🔴 Formalmente incompatível",
-    "status": "OPEN",
-    "official_check_status": "AMBIGUOUS",
-    "official_checked_at": "2026-08-23T19:00:15-03:00",
-    "official_check_reason": "Documentos consultados, mas os requisitos não puderam ser associados com segurança à vaga.",
+    "visual_category": "⚪ Informação insuficiente",
+    "status": "UPDATED",
+    "official_check_status": "BLOCKED",
+    "official_checked_at": "2026-08-29T14:30:42-03:00",
+    "official_check_reason": "O PCI lista 1 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
     "official_documents": [
       {
-        "url": "https://www5.usp.br/",
-        "type": "HTML",
-        "content_hash": "04d2db59baf5e3ea1f61c020befdd985f1a05e7ffbf062d7cffd70322651077f",
+        "url": "https://www.pciconcursos.com.br/noticias/usp-abre-concurso-para-professor-doutor-na-faculdade-de-educacao",
+        "type": "PCI_HTML",
+        "content_hash": "db416d304be6663e3f1f5bd0175c799953653e74b7b8f503d31ee1e075cf4e34",
         "page_count": 1,
-        "extracted_chars": 4085,
+        "extracted_chars": 13390,
         "truncated": false,
-        "title": "USP – Universidade de São Paulo – Universidade pública, autarquia ligada à Secretaria de Estado de Ensino Superior de São Paulo",
+        "title": "USP abre concurso para Professor Doutor na Faculdade de Educação",
         "evidence_status": "IRRELEVANT",
         "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
-      },
-      {
-        "url": "https://www5.usp.br/institucional/concursos-e-licitacoes/",
-        "type": "HTML",
-        "content_hash": "39412d7dddc2c6621508160a9fceb5866ab93debc9acceef0041080fe0e2a4f5",
-        "page_count": 1,
-        "extracted_chars": 2613,
-        "truncated": false,
-        "title": "Concursos e licitações – USP – Universidade de São Paulo",
-        "evidence_status": "IRRELEVANT",
-        "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
       },
       {
         "url": "https://uspdigital.usp.br/gr/admissao",
@@ -3774,13 +3764,73 @@
         "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
       },
       {
+        "url": "https://drive.google.com/a/usp.br/file/d/19ovAI8LAgXKiYafY1Z2rcgkQqdDiDEOn/view?usp=sharing",
+        "type": "HTML",
+        "content_hash": "1c522ec2a729aca32b2d6bac6d6b793d4b3a1af546700836402779657edf4059",
+        "page_count": 1,
+        "extracted_chars": 75,
+        "truncated": false,
+        "title": "TutorialUnificarPDFs_VersaoFinal.pdf - Google Drive",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://drive.google.com/a/usp.br/file/d/1YeqkpBsZ8rE_guSysKBxIUbXMjRke3e1/view?usp=sharing",
+        "type": "HTML",
+        "content_hash": "3141b540156ba3f3242206368c51d443d44c77632765208b8b4a58d724494076",
+        "page_count": 1,
+        "extracted_chars": 83,
+        "truncated": false,
+        "title": "Roteiro de Inscrição de Concurso Docente.pdf - Google Drive",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www5.usp.br/",
+        "type": "HTML",
+        "content_hash": "e439a83df8d92b0ff5c0c447b355396747062385a73cf572310cc3882fd41467",
+        "page_count": 1,
+        "extracted_chars": 4085,
+        "truncated": false,
+        "title": "USP – Universidade de São Paulo – Universidade pública, autarquia ligada à Secretaria de Estado de Ensino Superior de São Paulo",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www5.usp.br/institucional/concursos-e-licitacoes/",
+        "type": "HTML",
+        "content_hash": "e2277fb9f2a973a32de9a40259195131b5d012cc42791d4c6743378d8417b08e",
+        "page_count": 1,
+        "extracted_chars": 2613,
+        "truncated": false,
+        "title": "Concursos e licitações – USP – Universidade de São Paulo",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
         "url": "https://drh.usp.br/",
         "type": "HTML",
-        "content_hash": "c46950a2d29466ca84a9251cad6ad749bf2b6701c7774b5b7f846fa0104f224d",
+        "content_hash": "6fa346c7e2f2f9811af9998d08d838eab0a7067e1d14ce995efc58facbf3c25a",
         "page_count": 1,
         "extracted_chars": 2116,
         "truncated": false,
         "title": "Departamento de Recursos Humanos – Universidade de São Paulo",
+        "evidence_status": "IRRELEVANT",
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://uspdigital.usp.br/urania/pessoaListar?incfonema=sim&codund=0&nomabvset=&incalu=aluno&incfun=funcionario&incdoc=docente",
+        "type": "HTML",
+        "content_hash": "92ea96699dabbe6cfd11535a08dd1cd287da00978a5228efc75e1330e7fa0ac6",
+        "page_count": 1,
+        "extracted_chars": 3992,
+        "truncated": false,
+        "title": "Urânia",
         "evidence_status": "IRRELEVANT",
         "relevant": false,
         "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
@@ -3791,10 +3841,21 @@
     "official_content_hash": null,
     "official_evidence_confidence": null,
     "official_requirement_evidence": [],
-    "official_errors": [
-      "http://twitter.com/intent/tweet?via=usponline&text=Concursos%20e%20licita%C3%A7%C3%B5es&url=https%3A%2F%2Fwww5.usp.br%2Finstitucional%2Fconcursos-e-licitacoes%2F: HTTPError: 520 Server Error: <none> for url: http://twitter.com/intent/tweet?via=usponline&text=Concursos%20e%20licita%C3%A7%C3%B5es&url=https%3A%2F%2Fwww5.usp.br%2Finstitucional%2Fconcursos-e-licitacoes%2F"
+    "official_errors": [],
+    "requirements_source": "PCI_SUMMARY",
+    "official_pci_protected_documents": [
+      {
+        "label": "EDITAL Nº 36/2026",
+        "url": null,
+        "pci_link_id": "1703758",
+        "pci_news_code": "0533e23280f8d1fae312a2ee0e6afa1a",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
     ],
-    "requirements_source": "PCI_SUMMARY"
+    "pci_graduation_requirement_raw": null,
+    "pci_masters_requirement_raw": null,
+    "pci_doctorate_requirement_raw": null,
+    "updated_at": "2026-08-29"
   },
   {
     "id": "8882cde9cbe9b44ac139",

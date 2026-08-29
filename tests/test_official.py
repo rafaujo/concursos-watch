@@ -1,10 +1,14 @@
-from datetime import date
+from datetime import date, datetime
+from zoneinfo import ZoneInfo
+
+import requests
 
 from src.official import (
     assess_document_relevance,
     extract_candidate_links,
     extract_requirement_evidence,
     extract_structured_opportunities,
+    OfficialDocumentReader,
     score_candidate_link,
     should_check_official,
 )
@@ -124,12 +128,54 @@ def test_candidate_links_prioritize_edital_pdf_and_ignore_results():
     assert all("formulario-de-recurso" not in item["url"] for item in links)
 
 
+def test_pci_candidate_links_use_article_context_and_ignore_recommendations():
+    html = '''<html><body><article id="noticia">
+      <div itemprop="articleBody">
+        <p>As inscrições são feitas no <a href="https://universidade.example/admissao">portal da universidade</a>.</p>
+      </div>
+      <aside><a href="/noticias/outro-edital-para-professor">Outro edital para professor</a></aside>
+    </article></body></html>'''.encode("utf-8")
+    links = extract_candidate_links(
+        html, "https://www.pciconcursos.com.br/noticias/vaga-atual",
+        {"title": "Concurso para professor", "area": "Não identificada"},
+    )
+    assert [item["url"] for item in links] == ["https://universidade.example/admissao"]
+
+
+def test_reader_starts_at_pci_and_records_protected_edital(monkeypatch):
+    pci_url = "https://www.pciconcursos.com.br/noticias/vaga-docente"
+    official_url = "https://universidade.example/concursos"
+    pci_html = b'''<html><body><article id="noticia">
+      <div itemprop="articleBody"><p>Concurso para professor.</p></div>
+      <a class="edital-pdf-link" href="javascript:void(0)" data-code="abc" data-link="123">EDITAL 4/2026</a>
+    </article></body></html>'''
+    official_html = b"<html><body>Portal geral da universidade</body></html>"
+    reader = OfficialDocumentReader(requests.Session(), delay=0)
+    calls = []
+
+    def fake_fetch(url):
+        calls.append(url)
+        if url == pci_url:
+            return pci_html, pci_url, "text/html"
+        return official_html, official_url, "text/html"
+
+    monkeypatch.setattr(reader, "_fetch", fake_fetch)
+    result = reader.read(
+        {"source_url": pci_url, "official_url": official_url, "title": "Concurso para professor", "area": "Não identificada"},
+        datetime(2026, 8, 29, 8, 17, tzinfo=ZoneInfo("America/Sao_Paulo")),
+    )
+    assert calls[0] == pci_url
+    assert result["status"] == "BLOCKED"
+    assert result["pci_protected_documents"][0]["pci_link_id"] == "123"
+    assert "verificação humana" in result["reason"]
+
+
 def test_official_cache_ttl_depends_on_status():
     today = date(2026, 8, 23)
     assert should_check_official(None, today)
-    current = {"reader_version": 2}
+    current = {"reader_version": 3}
     assert not should_check_official({**current, "checked_at": "2026-08-20", "status": "READ"}, today)
     assert should_check_official({**current, "checked_at": "2026-08-01", "status": "READ"}, today)
     assert should_check_official({**current, "checked_at": "2026-08-20", "status": "AMBIGUOUS"}, today)
     assert should_check_official({**current, "checked_at": "2026-08-20", "status": "ERROR"}, today)
-    assert should_check_official({"reader_version": 1, "checked_at": "2026-08-20", "status": "READ"}, today)
+    assert should_check_official({"reader_version": 2, "checked_at": "2026-08-20", "status": "READ"}, today)

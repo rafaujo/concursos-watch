@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from src.parser import normalize_text, parse_brazilian_dates, parse_pci_detail
+from src.parser import extract_requirement_sentences, normalize_text, parse_brazilian_dates, parse_pci_detail
 from src.pci import parse_listing
 
 
@@ -16,6 +16,14 @@ def test_brazilian_date_formats_and_ranges():
     assert [item.isoformat() for item in parse_brazilian_dates(text)] == ["2026-08-23", "2026-09-15"]
     range_text = "de 10 de agosto a 2 de setembro de 2026"
     assert [item.isoformat() for item in parse_brazilian_dates(range_text)] == ["2026-08-10", "2026-09-02"]
+
+
+def test_professor_doutor_job_title_is_not_a_doctorate_requirement():
+    requirements = extract_requirement_sentences(
+        "Concurso para Professor Doutor no Departamento de Administração. "
+        "A titulação exigida deve ser consultada no edital."
+    )
+    assert requirements["doctorate_requirement"] is None
 
 
 def test_current_pci_listing_shape():
@@ -42,3 +50,7 @@ def test_current_pci_detail_shape_and_raw_requirements():
     assert "Graduação em Administração" in vacancy["graduation_requirement_raw"]
     assert "Doutorado em Ciências Ambientais" in vacancy["doctorate_requirement_raw"]
     assert vacancy["official_url"] == "https://concursos.ufpr.br/edital-1"
+    assert vacancy["pci_documents"] == [{
+        "label": "EDITAL Nº 36/2026", "url": None, "pci_link_id": "1703758",
+        "pci_news_code": "notice-code", "access": "HUMAN_VERIFICATION_REQUIRED",
+    }]

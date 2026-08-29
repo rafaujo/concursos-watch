@@ -99,8 +99,8 @@ def extract_requirement_sentences(text: str) -> dict[str, str | None]:
 
     return {
         "graduation_requirement": select(("graduacao", "graduado", "bacharel", "formacao superior")),
-        "masters_requirement": select(("mestrado", "mestre")),
-        "doctorate_requirement": select(("doutorado", "doutor")),
+        "masters_requirement": select(("mestrado", "titulo de mestre", "grau de mestre")),
+        "doctorate_requirement": select(("doutorado", "titulo de doutor", "grau de doutor")),
     }
 
 
@@ -116,11 +116,37 @@ def _external_links(article: Any, source_url: str) -> tuple[str | None, str | No
         if source_host in host or "pci.app.br" in host:
             continue
         label = normalize_text(anchor.get_text(" ", strip=True))
-        if any(term in label for term in ("inscri", "edital", "concurso", "selecao")):
+        context = normalize_text(anchor.parent.get_text(" ", strip=True) if anchor.parent else "")
+        if any(term in f"{label} {context}" for term in ("inscri", "edital", "concurso", "selecao")):
             official_url = official_url or href
         else:
             institution_url = institution_url or href
     return official_url, institution_url
+
+
+def extract_pci_document_references(container: Any, source_url: str) -> list[dict[str, Any]]:
+    """Capture PCI edital controls without attempting to bypass human verification."""
+    references: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for anchor in container.select("a.edital-pdf-link"):
+        href = anchor.get("href", "").strip()
+        direct_url = None
+        if href.startswith(("http://", "https://", "/")):
+            direct_url = urljoin(source_url, href)
+        link_id = anchor.get("data-link")
+        news_code = anchor.get("data-code")
+        key = direct_url or f"{news_code}:{link_id}"
+        if not key or key in seen:
+            continue
+        seen.add(key)
+        references.append({
+            "label": clean_text(anchor.get_text(" ", strip=True) or anchor.get("title", "Edital")),
+            "url": direct_url,
+            "pci_link_id": link_id,
+            "pci_news_code": news_code,
+            "access": "DIRECT" if direct_url else "HUMAN_VERIFICATION_REQUIRED",
+        })
+    return references
 
 
 def _find_money(text: str) -> str | None:
@@ -180,6 +206,7 @@ def parse_pci_detail(html: str, source_url: str, listing: dict[str, Any] | None 
     requirements = extract_requirement_sentences(body_text)
     start, end = parse_registration_period(body_text)
     official_url, institution_url = _external_links(body, source_url)
+    pci_documents = extract_pci_document_references(article, source_url)
     area, subarea = _infer_area(body_text)
 
     published = article.select_one("abbr.published[title]")
@@ -204,6 +231,7 @@ def parse_pci_detail(html: str, source_url: str, listing: dict[str, Any] | None 
         "institution": listing.get("institution") or title.split(" abre ", 1)[0].split(" publica ", 1)[0],
         "institution_url": institution_url,
         "official_url": official_url,
+        "pci_documents": pci_documents,
         "campus": clean_text(re.search(r"campus\s+(?:de\s+)?([^.,;]{2,60})", body_text, re.I).group(1))
         if re.search(r"campus\s+(?:de\s+)?([^.,;]{2,60})", body_text, re.I) else None,
         "state": state or "",
