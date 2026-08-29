@@ -53,7 +53,7 @@ def test_report_is_responsive_and_escapes_content(tmp_path):
     assert "UFPR &lt;Campus&gt;" in page
     assert "Somente abertas" in page
     assert "Triagem, não decisão jurídica" in page
-    assert "Concursos e suas vagas" in page
+    assert "Todas as vagas por concurso" in page
     assert "Vaga ou área" in page
     assert "Requisito de graduação" in page
     assert "Requisito de pós-graduação" in page
@@ -62,10 +62,12 @@ def test_report_is_responsive_and_escapes_content(tmp_path):
     assert "01/09/2026 a 15/09/2026" in page
     assert "Concurso público" in page
     assert "40 horas semanais" in page
-    assert "Graduação em Administração." in page
-    assert "Doutorado: Doutorado em Administração." in page
+    assert ">Administração</p>" in page
+    assert ">Doutorado em Administração</span>" in page
     assert "Edital lido · página 7" in page
     assert ">Abrir edital</a>" in page
+    assert '<input id="open-only" type="checkbox">' in page
+    assert '<dt>Inscrições</dt><dd>01/09/2026 a 15/09/2026</dd>' in page
     assert page.count('class="contest-group"') == 1
     assert page.count('class="contest-table"') == 1
 
@@ -92,6 +94,10 @@ def test_multi_area_report_does_not_repeat_parent_requirements(tmp_path):
             "requirement_text": "Graduação em Administração e doutorado na área.",
             "graduation_requirement_raw": "Graduação em Administração.",
             "doctorate_requirement_raw": "Doutorado em Ciências Ambientais.",
+        }, {
+            "area": "História Ambiental", "thematic_score": 0,
+            "formal_eligibility": "UNKNOWN", "page": 20,
+            "requirement_text": "Graduação em História; e Mestrado em História.",
         }],
     }
     generate_report([vacancy], output, datetime(2026, 8, 23, 8, 17, tzinfo=ZoneInfo("America/Sao_Paulo")))
@@ -100,13 +106,14 @@ def test_multi_area_report_does_not_repeat_parent_requirements(tmp_path):
     assert "MESTRADO GENÉRICO DO PAI" not in page
     assert page.count('class="contest-group"') == 1
     assert page.count('class="contest-table"') == 1
-    assert page.count('class="vacancy-card vacancy-row') == 2
-    assert "2 vagas relevantes neste concurso" in page
+    assert page.count('class="vacancy-card vacancy-row') == 3
+    assert "3 vagas listadas neste concurso" in page
     assert "Engenharia da Sustentabilidade" in page
     assert "Gestão Ambiental" in page
-    assert "Graduação em Engenharia de Produção." in page
-    assert "Pós-graduação: Mestrado em Engenharia de Produção." in page
-    assert "Doutorado: Doutorado em Ciências Ambientais." in page
+    assert "História Ambiental" in page
+    assert ">Engenharia de Produção</p>" in page
+    assert ">Mestrado em Engenharia de Produção</span>" in page
+    assert ">Doutorado em Ciências Ambientais</span>" in page
     assert "Edital lido · página 14" in page
     assert "Edital lido · página 18" in page
 
@@ -121,7 +128,7 @@ def test_report_groups_different_contests_in_separate_tables(tmp_path):
         "area": area,
         "status": "OPEN",
         "formal_eligibility": "UNKNOWN",
-        "thematic_score": 20,
+        "thematic_score": 20 if index == 1 else 0,
     } for index, (institution, title, area) in enumerate((
         ("UFPR", "Concurso nº 1", "Administração"),
         ("UEL", "Concurso nº 2", "Gestão Ambiental"),
@@ -132,3 +139,40 @@ def test_report_groups_different_contests_in_separate_tables(tmp_path):
     assert page.count('class="contest-table"') == 2
     assert page.count('class="vacancy-card vacancy-row') == 2
     assert "2 vaga(s) em 2 concurso(s)" in page
+
+
+def test_report_splits_unila_degree_requirements_and_moves_registration_to_details(tmp_path):
+    output = tmp_path / "docs" / "index.html"
+    vacancy = {
+        "source_url": "https://example.test/unila-musica",
+        "institution": "UNILA",
+        "state": "PR",
+        "title": "Professor substituto de Música e Tecnologia",
+        "area": "Música e Tecnologia",
+        "status": "OPEN",
+        "formal_eligibility": "UNCERTAIN",
+        "thematic_score": 22,
+        "registration_start": "2026-09-04",
+        "registration_end": "2026-10-04",
+        "graduation_requirement_raw": (
+            "Artes/Música Subárea: Música e Tecnologia Titulação Mínima Exigida: "
+            "Graduação em Música, e Mestrado e Doutorado em Música ou áreas correlatas. "
+            "Inscrições: De 04 de setembro a 04 de outubro de 2026."
+        ),
+        "masters_requirement_raw": (
+            "Artes/Música Subárea: Música e Tecnologia Titulação Mínima Exigida: "
+            "Graduação em Música, e Mestrado e Doutorado em Música ou áreas correlatas. "
+            "Inscrições: De 04 de setembro a 04 de outubro de 2026."
+        ),
+        "doctorate_requirement_raw": (
+            "Artes/Música Subárea: Música e Tecnologia Titulação Mínima Exigida: "
+            "Graduação em Música, e Mestrado e Doutorado em Música ou áreas correlatas. "
+            "Inscrições: De 04 de setembro a 04 de outubro de 2026."
+        ),
+    }
+    generate_report([vacancy], output, datetime(2026, 8, 29, 8, 17, tzinfo=ZoneInfo("America/Sao_Paulo")))
+    page = output.read_text(encoding="utf-8")
+    assert '<div role="cell" class="list-cell requirement-cell" data-label="Requisito de graduação"><p>Música</p>' in page
+    assert '<span>Mestrado e Doutorado em Música ou áreas correlatas</span>' in page
+    assert '<div role="cell" class="list-cell details-cell" data-label="Detalhes da vaga"><dl class="vacancy-details"><div><dt>Inscrições</dt><dd>04/09/2026 a 04/10/2026</dd>' in page
+    assert "Titulação Mínima Exigida" not in page

@@ -19,7 +19,9 @@ Radar pessoal, automático e auditável de concursos públicos e processos selet
 - pontuação temática transparente de 0 a 100, configurável;
 - prioridade geográfica sem excluir nenhum estado;
 - concursos agrupados por edital, cada um com sua própria tabela responsiva, acessível e filtrável;
-- uma linha por vaga ou área relevante nos editais multiárea, com graduação, pós-graduação e detalhes individualizados;
+- uma linha por vaga ou área nos editais multiárea, inclusive quando a aderência temática é zero;
+- graduação e pós-graduação separadas em campos limpos; inscrições, campus, jornada e remuneração ficam nos detalhes da vaga;
+- exibição inicial sem filtros ativos, preservando filtros opcionais para exploração posterior;
 - testes das regras de aceitação, persistência, parser e relatório;
 - execução diária às 08:17 em `America/Sao_Paulo`, disparo manual, commit condicional e deploy no Pages.
 
@@ -133,7 +135,7 @@ Os pesos ficam em `THEMATIC_WEIGHTS`, e os destaques em `STRONG_YES_SCORE` e `ST
 
 `UNKNOWN` significa que o anúncio ou o bloco correspondente do edital não ofereceu evidência suficiente. Ele pode permanecer mesmo após o PDF ter sido lido. `UNCERTAIN` significa que há uma expressão ambígua — por exemplo “áreas afins” ou uma referência à Área de Avaliação Interdisciplinar — que requer interpretação humana.
 
-Em editais multiárea, cada área é analisada como uma sub-vaga. Requisitos de Agronomia, Engenharia e Educação, por exemplo, nunca são concatenados para decidir um único resultado. Cada concurso recebe uma tabela própria, que mostra somente as vagas com aderência ao perfil e liga cada requisito à página do edital.
+Em editais multiárea, cada área é analisada como uma sub-vaga. Requisitos de Agronomia, Engenharia e Educação, por exemplo, nunca são concatenados para decidir um único resultado. Cada concurso recebe uma tabela própria com todas as vagas extraídas, e cada requisito permanece ligado à página correspondente do edital. A página abre sem filtros ativos.
 
 ## GitHub Actions e Pages
 

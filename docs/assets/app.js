@@ -40,7 +40,7 @@
   document.querySelector('#clear').addEventListener('click', () => {
     controls.search.value = ''; controls.state.value = ''; controls.institution.value = '';
     controls.eligibility.value = ''; controls.score.value = 0;
-    controls.openOnly.checked = true; controls.newOnly.checked = false; applyFilters();
+    controls.openOnly.checked = false; controls.newOnly.checked = false; applyFilters();
   });
   applyFilters();
 })();

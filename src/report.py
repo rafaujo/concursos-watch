@@ -20,6 +20,14 @@ ELIGIBILITY_LABELS = {
     "UNKNOWN": "Informação insuficiente",
 }
 
+STATUS_LABELS = {
+    "NEW": "Novo",
+    "UPDATED": "Atualizado",
+    "OPEN": "Aberto",
+    "CLOSING_SOON": "Encerrando em breve",
+    "CLOSED": "Encerrado",
+}
+
 
 def _escape(value: Any, fallback: str = "Não informado") -> str:
     if value is None or value == "":
@@ -59,14 +67,10 @@ def _sort_key(vacancy: dict[str, Any]) -> tuple[Any, ...]:
 
 
 def _expanded_rows(vacancies: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    """Turn structured multi-area notices into one comparable row per relevant area."""
+    """Turn structured multi-area notices into one row per vacancy in the notice."""
     rows: list[dict[str, Any]] = []
     for vacancy in vacancies:
-        opportunities = [
-            item for item in (vacancy.get("official_opportunities") or [])
-            if int(item.get("thematic_score") or 0) > 0
-        ]
-        opportunities.sort(key=lambda item: -int(item.get("thematic_score") or 0))
+        opportunities = list(vacancy.get("official_opportunities") or [])
         if vacancy.get("official_check_status") == "READ_MULTI" and opportunities:
             for opportunity in opportunities:
                 rows.append({
@@ -87,32 +91,81 @@ def _expanded_rows(vacancies: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return rows
 
 
-def _post_requirement(v: dict[str, Any]) -> str:
+POST_TERM_PATTERN = r"(?:mestrado|doutorado|especializa[cç][aã]o|p[oó]s-gradua[cç][aã]o)"
+
+
+def _clean_requirement_text(value: Any) -> str:
+    text = re.sub(r"\s+", " ", str(value or "")).strip()
+    if not text:
+        return ""
+    title_marker = re.search(r"titula[cç][aã]o\s+m[ií]nima\s+exigida\s*:\s*", text, re.I)
+    if title_marker:
+        text = text[title_marker.end():]
+    text = re.sub(r"\bInscri[cç][oõ]es?\s*:.*$", "", text, flags=re.I)
+    text = re.sub(r"^(?:Requisito\(s\)|Requisitos?)\s*:\s*", "", text, flags=re.I)
+    return text.strip(" .;,:")
+
+
+def _split_requirement_text(value: Any) -> tuple[str, str]:
+    text = _clean_requirement_text(value)
+    if not text:
+        return "", ""
+    post_match = re.search(rf"\b{POST_TERM_PATTERN}\b", text, flags=re.I)
+    graduation = text[:post_match.start()] if post_match else text
+    post = text[post_match.start():] if post_match else ""
+    graduation = re.sub(r"[,;:]?\s*(?:e|ou)?\s*$", "", graduation, flags=re.I).strip()
+    graduation = re.sub(
+        r"^(?:gradua[cç][aã]o|bacharelado|licenciatura|tecnologia)\s+"
+        r"(?:(?:em|nas?\s+[aá]reas?\s+de|na\s+[aá]rea\s+de)\s+)?",
+        "",
+        graduation,
+        flags=re.I,
+    ).strip(" .;,:")
+    post = re.sub(r"^(?:e|ou)\s+", "", post, flags=re.I).strip(" .;,:")
+    return graduation, post
+
+
+def _structured_requirements(v: dict[str, Any]) -> tuple[str, str]:
     if v.get("_is_subvacancy"):
-        masters = v.get("masters_requirement_raw")
-        doctorate = v.get("doctorate_requirement_raw")
+        graduation, fallback_post = _split_requirement_text(v.get("requirement_text"))
+        explicit_post_parts: list[str] = []
+        for source in (v.get("masters_requirement_raw"), v.get("doctorate_requirement_raw")):
+            _, post = _split_requirement_text(source)
+            if post and post not in explicit_post_parts:
+                explicit_post_parts.append(post)
+        post = " / ".join(explicit_post_parts) or fallback_post
+        return graduation or "Não informado", post or "Não informado"
     else:
-        masters = v.get("masters_requirement_raw") or v.get("masters_requirement")
-        doctorate = v.get("doctorate_requirement_raw") or v.get("doctorate_requirement")
-    parts: list[str] = []
-    if masters:
-        parts.append(f"Mestrado: {masters}")
-    if doctorate and doctorate != masters:
-        parts.append(f"Doutorado: {doctorate}")
-    if not parts and v.get("_is_subvacancy"):
-        requirement = str(v.get("requirement_text") or "")
-        post_match = re.search(
-            r"\b(mestrado|doutorado|especializa[cç][aã]o|p[oó]s-gradua[cç][aã]o)\b.*$",
-            requirement,
-            flags=re.IGNORECASE,
-        )
-        if post_match:
-            parts.append(f"Pós-graduação: {post_match.group(0)}")
-    return "\n".join(parts) or "Não informado"
+        raw_sources = [
+            v.get("graduation_requirement_raw") or v.get("graduation_requirement"),
+            v.get("masters_requirement_raw") or v.get("masters_requirement"),
+            v.get("doctorate_requirement_raw") or v.get("doctorate_requirement"),
+        ]
+        sources = []
+        for source in raw_sources:
+            if source and source not in sources:
+                sources.append(source)
+
+    graduation_parts: list[str] = []
+    post_parts: list[str] = []
+    for source in sources:
+        graduation, post = _split_requirement_text(source)
+        if graduation and graduation not in graduation_parts:
+            graduation_parts.append(graduation)
+        if post and post not in post_parts:
+            post_parts.append(post)
+    return " / ".join(graduation_parts) or "Não informado", " / ".join(post_parts) or "Não informado"
 
 
 def _detail_items(v: dict[str, Any]) -> list[tuple[str, str]]:
     details: list[tuple[str, str]] = []
+    registration_start = _format_date(v.get("registration_start"))
+    registration_end = _format_date(v.get("registration_end"))
+    registration_period = (
+        f"{registration_start} a {registration_end}"
+        if v.get("registration_start") else f"até {registration_end}"
+    )
+    details.append(("Inscrições", registration_period))
     if v.get("campus"):
         details.append(("Campus", str(v["campus"])))
     if v.get("vacancies_count"):
@@ -126,13 +179,7 @@ def _detail_items(v: dict[str, Any]) -> list[tuple[str, str]]:
 
 
 def _row(v: dict[str, Any]) -> str:
-    graduation = (
-        v.get("graduation_requirement_raw")
-        or v.get("graduation_requirement")
-        or (v.get("requirement_text") if v.get("_is_subvacancy") else None)
-        or "Não informado"
-    )
-    post = _post_requirement(v)
+    graduation, post = _structured_requirements(v)
     area = str(v.get("area") or "")
     area_identified = area and normalize_for_report(area) != "nao identificada"
     vacancy_name = area if area_identified else (v.get("title") or v.get("position"))
@@ -163,7 +210,7 @@ def _row(v: dict[str, Any]) -> str:
         f'<div><dt>{_escape(label)}</dt><dd>{_escape(value)}</dd></div>'
         for label, value in _detail_items(v)
     )
-    post_lines = "".join(f"<span>{_escape(line)}</span>" for line in post.split("\n"))
+    post_lines = "".join(f"<span>{_escape(line)}</span>" for line in post.split(" / "))
 
     return f'''<article role="row" class="vacancy-card vacancy-row eligibility-{_escape(eligibility).lower()}" data-state="{_escape(v.get("state"), '')}" data-institution="{_escape(v.get("institution"), '')}" data-eligibility="{_escape(eligibility)}" data-score="{score}" data-open="{str(is_open).lower()}" data-new="{str(is_new).lower()}" data-search="{_escape(search, '')}">
       <div role="cell" class="list-cell vacancy-cell" data-label="Vaga ou área"><strong>{_escape(vacancy_name)}</strong><span class="vacancy-context">{_escape(vacancy_context)}</span><div class="row-badges"><span class="eligibility-badge">{_escape(ELIGIBILITY_LABELS.get(eligibility, eligibility))}</span><span>Aderência {score}/100</span></div></div>
@@ -176,12 +223,6 @@ def _row(v: dict[str, Any]) -> str:
 def _contest_section(vacancy: dict[str, Any], index: int) -> str:
     rows = _expanded_rows([vacancy])
     publication = _format_date(vacancy.get("publication_date"))
-    registration_start = _format_date(vacancy.get("registration_start"))
-    registration_end = _format_date(vacancy.get("registration_end"))
-    registration_period = (
-        f"{registration_start} a {registration_end}"
-        if vacancy.get("registration_start") else f"até {registration_end}"
-    )
     location = " / ".join(item for item in (vacancy.get("state"), vacancy.get("city")) if item)
     contest_id = f"contest-{index}"
     links = [f'<a href="{_escape(vacancy.get("source_url"))}" target="_blank" rel="noopener">Ver no PCI</a>']
@@ -198,16 +239,16 @@ def _contest_section(vacancy: dict[str, Any], index: int) -> str:
         reading_note = f"Leitura do edital: {vacancy.get('official_check_status') or 'pendente'}"
     contest_meta = (
         ("Divulgação", publication),
-        ("Inscrições", registration_period),
         ("Seleção", vacancy.get("employment_type") or "Não informada"),
         ("Local", location or "Não informado"),
+        ("Situação", STATUS_LABELS.get(vacancy.get("status"), vacancy.get("status") or "Não informada")),
     )
     meta_html = "".join(
         f'<div><dt>{_escape(label)}</dt><dd>{_escape(value)}</dd></div>'
         for label, value in contest_meta
     )
     table_rows = "".join(_row(row) for row in rows)
-    row_label = "vaga relevante" if len(rows) == 1 else "vagas relevantes"
+    row_label = "vaga listada" if len(rows) == 1 else "vagas listadas"
     return f'''<section class="contest-group" aria-labelledby="{contest_id}">
       <header class="contest-header"><div class="contest-title"><p>{_escape(vacancy.get("institution"))}</p><h3 id="{contest_id}">{_escape(vacancy.get("title"))}</h3><span>{len(rows)} {row_label} neste concurso · {_escape(reading_note)}</span></div><nav>{' '.join(links)}</nav></header>
       <dl class="contest-meta">{meta_html}</dl>
@@ -228,7 +269,7 @@ def normalize_for_report(value: str) -> str:
 def generate_report(vacancies: list[dict[str, Any]], output_path: Path, generated_at: datetime | None = None) -> None:
     generated_at = generated_at or datetime.now(ZoneInfo("America/Sao_Paulo"))
     today = generated_at.date()
-    visible = [v for v in vacancies if _is_recently_closed(v, today) and v.get("thematic_score", 0) > 0]
+    visible = [v for v in vacancies if _is_recently_closed(v, today)]
     visible.sort(key=_sort_key)
     rows = _expanded_rows(visible)
     open_count = sum(v.get("status") != "CLOSED" for v in rows)
@@ -250,11 +291,11 @@ def generate_report(vacancies: list[dict[str, Any]], output_path: Path, generate
 <html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Radar automático de concursos acadêmicos"><title>Concursos Watch</title>
 <link rel="stylesheet" href="assets/style.css"></head><body data-profile="{profile_json}">
-<header class="hero"><div class="hero-inner"><p class="eyebrow">CONCURSOS WATCH</p><h1>Radar de Concursos Acadêmicos</h1><p class="intro">Triagem diária de oportunidades docentes públicas compatíveis com Administração e Ciências Ambientais.</p>
-<div class="summary"><div><strong>{generated_at.strftime('%d/%m/%Y %H:%M')}</strong><span>Última atualização (BRT)</span></div><div><strong>{open_count}</strong><span>Vagas abertas relevantes</span></div><div><strong>{new_count}</strong><span>Novas hoje</span></div><div><strong>PCI</strong><span>Fonte monitorada</span></div></div></div></header>
+<header class="hero"><div class="hero-inner"><p class="eyebrow">CONCURSOS WATCH</p><h1>Radar de Concursos Acadêmicos</h1><p class="intro">Oportunidades docentes públicas organizadas por concurso, edital, vaga e requisitos de formação.</p>
+<div class="summary"><div><strong>{generated_at.strftime('%d/%m/%Y %H:%M')}</strong><span>Última atualização (BRT)</span></div><div><strong>{open_count}</strong><span>Vagas abertas listadas</span></div><div><strong>{new_count}</strong><span>Novas hoje</span></div><div><strong>PCI</strong><span>Fonte monitorada</span></div></div></div></header>
 <main><aside class="notice"><strong>Triagem, não decisão jurídica.</strong> “Elegível” não substitui a decisão da instituição sobre equivalência de títulos. <span class="official-count">Editais oficiais lidos com evidência aplicável: {official_read_count}.</span></aside>
-<section class="filters" aria-label="Filtros"><label>Buscar<input id="search" type="search" placeholder="Área, cidade, instituição…"></label><label>Estado<select id="state"><option value="">Todos</option>{options_state}</select></label><label>Instituição<select id="institution"><option value="">Todas</option>{options_inst}</select></label><label>Elegibilidade<select id="eligibility"><option value="">Todas</option><option>YES</option><option>UNCERTAIN</option><option>UNKNOWN</option><option>NO</option></select></label><label>Aderência mínima<input id="score" type="range" min="0" max="100" value="0"><output id="score-value">0</output></label><label class="check"><input id="open-only" type="checkbox" checked> Somente abertas</label><label class="check"><input id="new-only" type="checkbox"> Somente novas</label><button id="clear" type="button">Limpar filtros</button></section>
-<div class="results-heading"><h2>Concursos e suas vagas</h2><span id="result-count">{len(rows)} vaga(s) em {len(visible)} concurso(s)</span></div><div id="cards" class="contest-list">{sections}</div>
+<section class="filters" aria-label="Filtros"><label>Buscar<input id="search" type="search" placeholder="Área, cidade, instituição…"></label><label>Estado<select id="state"><option value="">Todos</option>{options_state}</select></label><label>Instituição<select id="institution"><option value="">Todas</option>{options_inst}</select></label><label>Elegibilidade<select id="eligibility"><option value="">Todas</option><option>YES</option><option>UNCERTAIN</option><option>UNKNOWN</option><option>NO</option></select></label><label>Aderência mínima<input id="score" type="range" min="0" max="100" value="0"><output id="score-value">0</output></label><label class="check"><input id="open-only" type="checkbox"> Somente abertas</label><label class="check"><input id="new-only" type="checkbox"> Somente novas</label><button id="clear" type="button">Limpar filtros</button></section>
+<div class="results-heading"><h2>Todas as vagas por concurso</h2><span id="result-count">{len(rows)} vaga(s) em {len(visible)} concurso(s)</span></div><div id="cards" class="contest-list">{sections}</div>
 </main><footer>Gerado automaticamente · Fonte de descoberta: <a href="{config.PCI_LISTING_URL}">PCI Concursos</a> · Consulte sempre o edital oficial.</footer><script src="assets/app.js"></script></body></html>'''
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(document, encoding="utf-8", newline="\n")
