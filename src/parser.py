@@ -5,10 +5,12 @@ from __future__ import annotations
 import re
 import unicodedata
 from datetime import date, datetime
-from typing import Any, Iterable
+from typing import Any
 from urllib.parse import urlparse
 
 from bs4 import BeautifulSoup
+
+from .requirements import extract_requirement_fields
 
 
 MONTHS = {
@@ -84,24 +86,7 @@ def parse_registration_period(text: str) -> tuple[str | None, str | None]:
 
 
 def extract_requirement_sentences(text: str) -> dict[str, str | None]:
-    sentences = re.split(r"(?<=[.!?;])\s+|\n+", clean_text(text))
-
-    def select(terms: Iterable[str]) -> str | None:
-        matches = []
-        for sentence in sentences:
-            normalized = normalize_text(sentence)
-            if any(term in normalized for term in terms) and any(
-                cue in normalized
-                for cue in ("exig", "requis", "titul", "gradu", "formacao", "doutor", "mestre")
-            ):
-                matches.append(clean_text(sentence))
-        return " ".join(dict.fromkeys(matches)) or None
-
-    return {
-        "graduation_requirement": select(("graduacao", "graduado", "bacharel", "formacao superior")),
-        "masters_requirement": select(("mestrado", "titulo de mestre", "grau de mestre")),
-        "doctorate_requirement": select(("doutorado", "titulo de doutor", "grau de doutor")),
-    }
+    return extract_requirement_fields(text)
 
 
 def _external_links(article: Any, source_url: str) -> tuple[str | None, str | None]:
@@ -249,6 +234,7 @@ def parse_pci_detail(html: str, source_url: str, listing: dict[str, Any] | None 
         "vacancies_count": int(vacancy_match.group(1)) if vacancy_match else listing.get("vacancies_count"),
         **requirements,
         "graduation_requirement_raw": requirements["graduation_requirement"],
+        "postgraduate_requirement_raw": requirements["postgraduate_requirement"],
         "masters_requirement_raw": requirements["masters_requirement"],
         "doctorate_requirement_raw": requirements["doctorate_requirement"],
         "other_requirements": None,

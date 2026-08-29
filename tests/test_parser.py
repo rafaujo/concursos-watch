@@ -1,7 +1,7 @@
 from pathlib import Path
 
 from src.parser import extract_requirement_sentences, normalize_text, parse_brazilian_dates, parse_pci_detail
-from src.pci import parse_listing
+from src.pci import is_potential_listing, parse_listing
 
 
 FIXTURES = Path(__file__).parent / "fixtures"
@@ -35,6 +35,15 @@ def test_current_pci_listing_shape():
     assert vacancy["position"] == "Professor Adjunto"
     assert vacancy["registration_end"] == "2026-09-15"
     assert "?" not in vacancy["source_url"]
+
+
+def test_every_valid_card_from_professor_listing_is_selected_before_ui_filters():
+    assert is_potential_listing({
+        "source_url": "https://www.pciconcursos.com.br/noticias/prefeitura-professores",
+        "title": "Prefeitura abre vagas para professores da educação básica",
+        "institution": "Prefeitura",
+        "position": "Professor de Educação Básica",
+    })
 
 
 def test_current_pci_detail_shape_and_raw_requirements():

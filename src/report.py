@@ -11,6 +11,12 @@ from typing import Any
 from zoneinfo import ZoneInfo
 
 import config
+from .requirements import (
+    clean_requirement_context,
+    extract_requirement_fields,
+    graduation_for_display,
+    split_academic_requirement,
+)
 
 
 ELIGIBILITY_LABELS = {
@@ -73,7 +79,7 @@ def _expanded_rows(vacancies: list[dict[str, Any]]) -> list[dict[str, Any]]:
         opportunities = list(vacancy.get("official_opportunities") or [])
         if vacancy.get("official_check_status") == "READ_MULTI" and opportunities:
             for opportunity in opportunities:
-                rows.append({
+                row = {
                     **vacancy,
                     **opportunity,
                     "_is_subvacancy": True,
@@ -85,75 +91,63 @@ def _expanded_rows(vacancies: list[dict[str, Any]]) -> list[dict[str, Any]]:
                     "thematic_score": opportunity.get("thematic_score", 0),
                     "thematic_reason": opportunity.get("thematic_reason"),
                     "visual_category": opportunity.get("visual_category"),
-                })
+                }
+                for field in (
+                    "graduation_requirement", "graduation_requirement_raw",
+                    "postgraduate_requirement", "postgraduate_requirement_raw",
+                    "masters_requirement", "masters_requirement_raw",
+                    "doctorate_requirement", "doctorate_requirement_raw",
+                ):
+                    row[field] = opportunity.get(field)
+                rows.append(row)
         else:
             rows.append({**vacancy, "_is_subvacancy": False, "_parent_title": vacancy.get("title")})
     return rows
 
 
-POST_TERM_PATTERN = r"(?:mestrado|doutorado|especializa[cç][aã]o|p[oó]s-gradua[cç][aã]o)"
-
-
-def _clean_requirement_text(value: Any) -> str:
-    text = re.sub(r"\s+", " ", str(value or "")).strip()
-    if not text:
-        return ""
-    title_marker = re.search(r"titula[cç][aã]o\s+m[ií]nima\s+exigida\s*:\s*", text, re.I)
-    if title_marker:
-        text = text[title_marker.end():]
-    text = re.sub(r"\bInscri[cç][oõ]es?\s*:.*$", "", text, flags=re.I)
-    text = re.sub(r"^(?:Requisito\(s\)|Requisitos?)\s*:\s*", "", text, flags=re.I)
-    return text.strip(" .;,:")
-
-
-def _split_requirement_text(value: Any) -> tuple[str, str]:
-    text = _clean_requirement_text(value)
-    if not text:
-        return "", ""
-    post_match = re.search(rf"\b{POST_TERM_PATTERN}\b", text, flags=re.I)
-    graduation = text[:post_match.start()] if post_match else text
-    post = text[post_match.start():] if post_match else ""
-    graduation = re.sub(r"[,;:]?\s*(?:e|ou)?\s*$", "", graduation, flags=re.I).strip()
-    graduation = re.sub(
-        r"^(?:gradua[cç][aã]o|bacharelado|licenciatura|tecnologia)\s+"
-        r"(?:(?:em|nas?\s+[aá]reas?\s+de|na\s+[aá]rea\s+de)\s+)?",
-        "",
-        graduation,
-        flags=re.I,
-    ).strip(" .;,:")
-    post = re.sub(r"^(?:e|ou)\s+", "", post, flags=re.I).strip(" .;,:")
-    return graduation, post
-
-
 def _structured_requirements(v: dict[str, Any]) -> tuple[str, str]:
-    if v.get("_is_subvacancy"):
-        graduation, fallback_post = _split_requirement_text(v.get("requirement_text"))
-        explicit_post_parts: list[str] = []
-        for source in (v.get("masters_requirement_raw"), v.get("doctorate_requirement_raw")):
-            _, post = _split_requirement_text(source)
-            if post and post not in explicit_post_parts:
-                explicit_post_parts.append(post)
-        post = " / ".join(explicit_post_parts) or fallback_post
-        return graduation or "Não informado", post or "Não informado"
-    else:
-        raw_sources = [
-            v.get("graduation_requirement_raw") or v.get("graduation_requirement"),
-            v.get("masters_requirement_raw") or v.get("masters_requirement"),
-            v.get("doctorate_requirement_raw") or v.get("doctorate_requirement"),
-        ]
-        sources = []
-        for source in raw_sources:
-            if source and source not in sources:
-                sources.append(source)
+    """Build display fields from every explicit qualification run.
 
+    PCI prose is reparsed at render time so older cached records benefit from
+    parser corrections without waiting for their next network refresh.
+    """
+    sources: list[tuple[Any, str | None]] = []
+    if v.get("_is_subvacancy"):
+        sources.append((v.get("requirement_text"), None))
+    elif not str(v.get("requirements_source") or "").startswith("OFFICIAL_"):
+        pci_requirements = extract_requirement_fields(v.get("raw_text"))
+        sources.extend((
+            (pci_requirements.get("graduation_requirement"), "graduation"),
+            (pci_requirements.get("postgraduate_requirement"), "postgraduate"),
+        ))
+    sources.extend((
+        (v.get("graduation_requirement_raw") or v.get("graduation_requirement"), "graduation"),
+        (v.get("postgraduate_requirement_raw") or v.get("postgraduate_requirement"), "postgraduate"),
+        (v.get("masters_requirement_raw") or v.get("masters_requirement"), "postgraduate"),
+        (v.get("doctorate_requirement_raw") or v.get("doctorate_requirement"), "postgraduate"),
+    ))
     graduation_parts: list[str] = []
     post_parts: list[str] = []
-    for source in sources:
-        graduation, post = _split_requirement_text(source)
-        if graduation and graduation not in graduation_parts:
-            graduation_parts.append(graduation)
-        if post and post not in post_parts:
-            post_parts.append(post)
+    seen_sources: set[str] = set()
+    for source, assumed_category in sources:
+        normalized_source = re.sub(r"\s+", " ", str(source or "")).strip()
+        if not normalized_source or normalized_source in seen_sources:
+            continue
+        seen_sources.add(normalized_source)
+        separated = split_academic_requirement(normalized_source)
+        if not separated["graduation"] and not separated["postgraduate"] and assumed_category:
+            cleaned = clean_requirement_context(normalized_source)
+            # A short already-structured value may omit the degree label. Long
+            # prose is never guessed into a column.
+            if cleaned and len(cleaned) <= 180:
+                separated[assumed_category].append(cleaned)
+        for value in separated["graduation"]:
+            graduation = graduation_for_display(value)
+            if graduation and graduation not in graduation_parts:
+                graduation_parts.append(graduation)
+        for post in separated["postgraduate"]:
+            if post and post not in post_parts:
+                post_parts.append(post)
     return " / ".join(graduation_parts) or "Não informado", " / ".join(post_parts) or "Não informado"
 
 

@@ -29,6 +29,7 @@ def _restore_pci_requirements(vacancy: dict[str, Any]) -> None:
     pci_requirements = extract_requirement_sentences(str(vacancy.get("raw_text") or ""))
     mapping = {
         "graduation_requirement_raw": "graduation_requirement",
+        "postgraduate_requirement_raw": "postgraduate_requirement",
         "masters_requirement_raw": "masters_requirement",
         "doctorate_requirement_raw": "doctorate_requirement",
     }
@@ -279,7 +280,6 @@ def run(
         official_candidates = [
             vacancy for vacancy in by_url.values()
             if vacancy.get("status") != "CLOSED"
-            and int(vacancy.get("thematic_score") or 0) > 0
             and vacancy.get("source_url")
             and (
                 force_official
@@ -300,7 +300,8 @@ def run(
                 )
             ]
         limit = config.OFFICIAL_MAX_VACANCIES_PER_RUN if max_official is None else max_official
-        official_candidates = official_candidates[:limit]
+        if limit is not None:
+            official_candidates = official_candidates[:limit]
         print(f"\nOfficial documents queue: {len(official_candidates)}")
         for index, vacancy in enumerate(official_candidates, start=1):
             print(f"Reading official source {index}/{len(official_candidates)}: {vacancy['institution']}")

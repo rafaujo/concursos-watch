@@ -23,8 +23,10 @@ RECHECK_CLOSING_WITHIN_DAYS = 10
 # Official-document stage. The crawler follows only a small, scored set of
 # links found on institution/organizer pages and never bypasses CAPTCHA.
 OFFICIAL_CHECK_ENABLED = True
-OFFICIAL_READER_VERSION = 3
-OFFICIAL_MAX_VACANCIES_PER_RUN = 12
+OFFICIAL_READER_VERSION = 4
+# None means every due professor notice is reviewed. The cache still prevents
+# unchanged editais from being downloaded on every daily execution.
+OFFICIAL_MAX_VACANCIES_PER_RUN = None
 OFFICIAL_MAX_LINKS_PER_VACANCY = 8
 OFFICIAL_MAX_DEPTH = 2
 OFFICIAL_MAX_DOCUMENT_BYTES = 20 * 1024 * 1024

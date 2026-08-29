@@ -11,6 +11,7 @@ import config
 TRACKED_CHANGE_FIELDS = (
     "title", "salary_text", "registration_start", "registration_end",
     "graduation_requirement_raw", "masters_requirement_raw", "doctorate_requirement_raw",
+    "postgraduate_requirement_raw",
 )
 
 
@@ -19,6 +20,7 @@ def detect_changes(old: dict[str, Any], new: dict[str, Any]) -> list[str]:
         "title": "título alterado", "salary_text": "remuneração alterada",
         "registration_start": "início das inscrições alterado",
         "registration_end": "prazo alterado", "graduation_requirement_raw": "requisito de graduação alterado",
+        "postgraduate_requirement_raw": "requisito de pós-graduação alterado",
         "masters_requirement_raw": "requisito de mestrado alterado", "doctorate_requirement_raw": "requisito de doutorado alterado",
     }
     changes = [labels[field] for field in TRACKED_CHANGE_FIELDS if old.get(field) != new.get(field)]

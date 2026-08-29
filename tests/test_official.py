@@ -173,9 +173,9 @@ def test_reader_starts_at_pci_and_records_protected_edital(monkeypatch):
 def test_official_cache_ttl_depends_on_status():
     today = date(2026, 8, 23)
     assert should_check_official(None, today)
-    current = {"reader_version": 3}
+    current = {"reader_version": 4}
     assert not should_check_official({**current, "checked_at": "2026-08-20", "status": "READ"}, today)
     assert should_check_official({**current, "checked_at": "2026-08-01", "status": "READ"}, today)
     assert should_check_official({**current, "checked_at": "2026-08-20", "status": "AMBIGUOUS"}, today)
     assert should_check_official({**current, "checked_at": "2026-08-20", "status": "ERROR"}, today)
-    assert should_check_official({"reader_version": 2, "checked_at": "2026-08-20", "status": "READ"}, today)
+    assert should_check_official({"reader_version": 3, "checked_at": "2026-08-20", "status": "READ"}, today)

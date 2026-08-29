@@ -103,16 +103,12 @@ def parse_listing(html: str) -> list[dict[str, Any]]:
 
 
 def is_potential_listing(vacancy: Mapping[str, Any]) -> bool:
-    text = normalize_text(" ".join(str(vacancy.get(k) or "") for k in ("title", "institution", "position")))
-    if any(term in text for term in config.CHEAP_REJECT_HINTS) and not any(
-        term in text for term in config.HIGHER_EDUCATION_HINTS
-    ):
-        return False
-    if any(term in text for term in config.HIGHER_EDUCATION_HINTS):
-        return True
-    if any(term in text for term in config.THEMATIC_WEIGHTS):
-        return True
-    return any(term in text for term in ("professor substituto", "docente", "ensino superior")) and "prefeitura" not in text
+    """Accept every valid card from PCI's dedicated professor listing.
+
+    Course/profile filtering belongs to the published UI, not discovery. This
+    intentionally includes basic-education and municipal teaching notices.
+    """
+    return bool(vacancy.get("source_url") and vacancy.get("title"))
 
 
 class PCIConcursosSource(VacancySource):

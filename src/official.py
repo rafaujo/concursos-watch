@@ -30,14 +30,10 @@ from .parser import (
     extract_requirement_sentences,
     normalize_text,
 )
+from .requirements import extract_requirement_fields, split_academic_requirement
 
 
 LOGGER = logging.getLogger(__name__)
-REQUIREMENT_TERMS = {
-    "graduation": ("graduacao", "graduado", "bacharel", "licenciatura", "formacao superior"),
-    "masters": ("mestrado", "titulo de mestre", "grau de mestre"),
-    "doctorate": ("doutorado", "titulo de doutor", "grau de doutor"),
-}
 GENERIC_CONTEXT = {
     "professor", "professora", "concurso", "processo", "seletivo", "publico",
     "vaga", "vagas", "universidade", "instituto", "federal", "estadual",
@@ -142,8 +138,18 @@ def assess_document_relevance(
 
 
 def _requirement_kinds(text: str) -> list[str]:
-    normalized = normalize_text(text)
-    return [kind for kind, terms in REQUIREMENT_TERMS.items() if any(term in normalized for term in terms)]
+    parts = split_academic_requirement(text)
+    kinds = []
+    if parts["graduation"]:
+        kinds.append("graduation")
+    post = " ".join(parts["postgraduate"])
+    if re.search(r"\bmestrado\b|\bt[ií]tulo\s+de\s+mestre\b|\bgrau\s+de\s+mestre\b", post, re.I):
+        kinds.append("masters")
+    if re.search(r"\bdoutorado\b|\bt[ií]tulo\s+de\s+doutor\b|\bgrau\s+de\s+doutor\b", post, re.I):
+        kinds.append("doctorate")
+    if parts["postgraduate"]:
+        kinds.append("postgraduate")
+    return kinds
 
 
 def _page_segments(text: str) -> list[str]:
@@ -217,15 +223,18 @@ def extract_requirement_evidence(
         }
 
     requirements: dict[str, str] = {}
+    parsed = extract_requirement_fields(
+        " ".join(dict.fromkeys(item["text"] for item in selected))
+    )
     field_names = {
-        "graduation": "graduation_requirement_raw",
-        "masters": "masters_requirement_raw",
-        "doctorate": "doctorate_requirement_raw",
+        "graduation_requirement": "graduation_requirement_raw",
+        "postgraduate_requirement": "postgraduate_requirement_raw",
+        "masters_requirement": "masters_requirement_raw",
+        "doctorate_requirement": "doctorate_requirement_raw",
     }
-    for kind, field in field_names.items():
-        snippets = [item["text"] for item in selected if kind in item["kinds"]]
-        if snippets:
-            requirements[field] = clean_text(" ".join(dict.fromkeys(snippets)))[:3000]
+    for parsed_field, stored_field in field_names.items():
+        if parsed.get(parsed_field):
+            requirements[stored_field] = str(parsed[parsed_field])[:3000]
     return {
         "applicable": bool(requirements), "confidence": confidence,
         "requirements": requirements, "evidence": selected[:10], "reason": reason,
@@ -264,7 +273,7 @@ def extract_structured_opportunities(pages: Iterable[tuple[int, str]]) -> list[d
             requirement_text = clean_text(requirement_match.group(1))
             if len(area) < 3 or len(requirement_text) < 5:
                 continue
-            requirements = extract_requirement_sentences(f"Requisitos: {requirement_text}")
+            requirements = extract_requirement_fields(f"Requisitos: {requirement_text}")
             reference_match = re.search(r"\bDTD\s*[\d-]+", block, re.I)
             workload_match = re.search(r"\b\d{1,3}\s+horas?\s+semanais\b", block, re.I)
             campus_match = re.search(r"local\s+de\s+atua[cç][aã]o\s+(.+?)(?=requisito\(s\)|$)", block, re.I)
@@ -273,6 +282,7 @@ def extract_structured_opportunities(pages: Iterable[tuple[int, str]]) -> list[d
                 "area": area,
                 "requirement_text": requirement_text,
                 "graduation_requirement_raw": requirements["graduation_requirement"],
+                "postgraduate_requirement_raw": requirements["postgraduate_requirement"],
                 "masters_requirement_raw": requirements["masters_requirement"],
                 "doctorate_requirement_raw": requirements["doctorate_requirement"],
                 "page": page_number,

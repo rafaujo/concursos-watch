@@ -9,11 +9,11 @@ Radar pessoal, automático e auditável de concursos públicos e processos selet
 
 - descoberta tolerante a pequenas mudanças do HTML da página de professores;
 - `requests.Session`, User-Agent identificável, timeout, retries limitados, backoff e intervalo entre requisições;
-- filtro inicial conservador, privilegiando falsos positivos em vez de perder oportunidades;
+- seleção integral dos cartões da página de professores do PCI; curso, área e perfil ficam para os filtros da interface;
 - processamento de páginas novas, alteradas ou que precisam de revisão — sem baixar tudo novamente todos os dias;
 - `first_seen`, `last_seen`, `last_checked`, hashes de listagem e conteúdo e histórico resumido de mudanças;
 - datas brasileiras e fechamento automático; `CLOSING_SOON` significa prazo nos próximos 7 dias;
-- leitura limitada e segura de páginas e PDFs oficiais, começando sempre pelos editais listados na notícia do PCI, com evidência e página de origem;
+- leitura segura de todas as vagas docentes abertas que estiverem com revisão de edital vencida, começando sempre pelos documentos listados na notícia do PCI, com evidência e página de origem;
 - separação das áreas de editais multiárea antes da classificação;
 - classificação formal `YES`, `NO`, `UNCERTAIN` ou `UNKNOWN` com justificativa;
 - pontuação temática transparente de 0 a 100, configurável;
@@ -74,6 +74,7 @@ monitor.py                 orquestra uma execução
 config.py                  perfil, pesos, thresholds e política de rede
 src/pci.py                 cliente e parser da listagem PCI
 src/parser.py              detalhe, requisitos, texto e datas
+src/requirements.py        separação conservadora entre graduação e pós-graduação
 src/official.py            descoberta e leitura segura de editais HTML/PDF
 src/classifier.py          regras formais e temáticas
 src/storage.py             JSON atômico e validado
@@ -108,7 +109,7 @@ python monitor.py --max-fetch 3 --delay 0.25
 
 Itens que ficaram na fila porque `--max-fetch` foi usado continuam com `processed: false` e serão analisados na execução seguinte. Para logs de diagnóstico, acrescente `--verbose`.
 
-A etapa oficial revisa toda vaga aberta e tematicamente relevante, independentemente de a triagem inicial ser `YES`, `NO`, `UNCERTAIN` ou `UNKNOWN`. A notícia do PCI é sempre a primeira rota: PDFs diretos têm prioridade; quando o PCI oculta o endereço atrás de Turnstile, o bloqueio é registrado e o leitor tenta as fontes institucionais. Leituras conclusivas são renovadas em 14 dias; fontes ambíguas ou indisponíveis voltam à fila em 2 dias. Para diagnosticar uma instituição específica sem baixar páginas do PCI:
+A etapa oficial revisa toda vaga docente aberta, independentemente do curso, da aderência temática ou da triagem `YES`, `NO`, `UNCERTAIN` ou `UNKNOWN`. A notícia do PCI é sempre a primeira rota: PDFs diretos têm prioridade; quando o PCI oculta o endereço atrás de Turnstile, o bloqueio é registrado e o leitor tenta as fontes institucionais. Leituras conclusivas são renovadas em 14 dias; fontes ambíguas ou indisponíveis voltam à fila em 2 dias. Para diagnosticar uma instituição específica sem baixar páginas do PCI:
 
 ```bash
 python monitor.py --max-fetch 0 --force-official --official-match UEM --max-official 1
@@ -118,7 +119,7 @@ python monitor.py --max-fetch 0 --force-official --official-match UEM --max-offi
 
 `seen.json` não é apenas uma lista de URLs. Cada item registra hash da listagem, primeira/última aparição, última consulta detalhada, estado e eventual erro. Uma página é consultada quando:
 
-1. é nova e passa pelo filtro conservador;
+1. é nova na página de professores do PCI;
 2. os metadados da listagem mudam;
 3. está aberta e a janela configurada de revisão venceu;
 4. está próxima do prazo e ainda não foi revisada naquele dia;
