@@ -11,6 +11,7 @@ from typing import Any
 from zoneinfo import ZoneInfo
 
 import config
+from .parser import parse_cargo_item
 from .requirements import (
     clean_requirement_context,
     extract_requirement_fields,
@@ -115,10 +116,15 @@ def _pci_opportunity_rows(vacancy: dict[str, Any]) -> list[dict[str, Any]]:
     row does carry is its own course, which is what the reader filters by.
     """
     rows: list[dict[str, Any]] = []
-    for opportunity in vacancy.get("pci_opportunities") or []:
-        cargo = str(opportunity.get("cargo") or "").strip()
+    for stored in vacancy.get("pci_opportunities") or []:
+        cargo = str(stored.get("cargo") or "").strip()
         if not cargo:
             continue
+        # The cargo label is the evidence; everything else is derived from it.
+        # Re-deriving here means a parser correction reaches the page on the
+        # next build, instead of waiting for each notice's recheck window —
+        # the same reason the PCI prose above is reparsed at render time.
+        opportunity = parse_cargo_item(cargo) or stored
         # A cargo whose notice never names a discipline ("Professor 20h") still
         # deserves its row; it just stays out of the course filter rather than
         # appearing there as a subject it is not.
