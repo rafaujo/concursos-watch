@@ -3,7 +3,8 @@
   const contests = [...document.querySelectorAll('.contest-group')];
   const controls = {
     search: document.querySelector('#search'), state: document.querySelector('#state'),
-    institution: document.querySelector('#institution'), eligibility: document.querySelector('#eligibility'),
+    institution: document.querySelector('#institution'), course: document.querySelector('#course'),
+    eligibility: document.querySelector('#eligibility'),
     score: document.querySelector('#score'), openOnly: document.querySelector('#open-only'),
     newOnly: document.querySelector('#new-only'), count: document.querySelector('#result-count'),
     scoreValue: document.querySelector('#score-value')
@@ -16,6 +17,7 @@
       const show = (!query || card.dataset.search.includes(query)) &&
         (!controls.state.value || card.dataset.state === controls.state.value) &&
         (!controls.institution.value || card.dataset.institution === controls.institution.value) &&
+        (!controls.course.value || card.dataset.course === controls.course.value) &&
         (!controls.eligibility.value || card.dataset.eligibility === controls.eligibility.value) &&
         Number(card.dataset.score) >= Number(controls.score.value) &&
         (!controls.openOnly.checked || card.dataset.open === 'true') &&
@@ -33,13 +35,13 @@
     controls.count.textContent = `${visible} vaga(s) em ${visibleContests} concurso(s)`;
   }
 
-  ['state', 'institution', 'eligibility', 'openOnly', 'newOnly']
+  ['state', 'institution', 'course', 'eligibility', 'openOnly', 'newOnly']
     .forEach(name => controls[name].addEventListener('change', applyFilters));
   controls.search.addEventListener('input', applyFilters);
   controls.score.addEventListener('input', applyFilters);
   document.querySelector('#clear').addEventListener('click', () => {
     controls.search.value = ''; controls.state.value = ''; controls.institution.value = '';
-    controls.eligibility.value = ''; controls.score.value = 0;
+    controls.course.value = ''; controls.eligibility.value = ''; controls.score.value = 0;
     controls.openOnly.checked = false; controls.newOnly.checked = false; applyFilters();
   });
   applyFilters();
