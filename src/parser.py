@@ -89,6 +89,108 @@ def extract_requirement_sentences(text: str) -> dict[str, str | None]:
     return extract_requirement_fields(text)
 
 
+TEACHING_ROLE = re.compile(
+    r"\b(?:professor(?:a)?|docente|instrutor(?:a)?|regente\s+de\s+classe)\b", re.I
+)
+
+# Titles PCI puts before the discipline. Stripping them leaves the course, which
+# is what a reader actually filters by.
+ROLE_PREFIX = re.compile(
+    r"^(?:professor(?:a)?|docente|instrutor(?:a)?)"
+    r"(?:\s+(?:licenciad[oa]|habilitad[oa]|n[aã]o\s+habilitad[oa]|substitut[oa]|"
+    r"tempor[aá]ri[oa]|titular|adjunt[oa]|assistente|doutor(?:a)?|visitante|"
+    r"colaborador(?:a)?|auxiliar|com|de\s+n[ií]vel\s+\w+))*"
+    r"\s*(?::?\s*[aá]rea\s*[-–:]\s*)?"
+    r"(?:\s*(?:de|da|do|das|dos|em|na|no|para)\s+)?",
+    re.I,
+)
+
+VACANCY_HINT = re.compile(
+    r"\(\s*(?P<count>\d+)\s*vagas?(?P<reserve>\s*\+\s*(?:CR|cadastro\s+de\s+reserva))?\s*\)|"
+    r"\(\s*(?P<only_reserve>CR|cadastro\s+de\s+reserva)\s*\)",
+    re.I,
+)
+
+
+# PCI groups municipal teaching posts into "Área I/II/III"; the roman numeral is
+# the grouping, not the course the reader filters by.
+AREA_GROUP = re.compile(r"^[aá]rea\s+(?:[IVXLC]+|\d+)\s*[-–/:]\s*", re.I)
+
+
+def _strip_role_prefix(value: str) -> str:
+    """Remove the role wrapper, possibly nested ("Professor Licenciado: Área - Professor de X")."""
+    course = value
+    for _ in range(3):
+        reduced = ROLE_PREFIX.sub("", course, count=1).strip(" -–:;,.")
+        if reduced == course or not reduced:
+            break
+        course = reduced
+        if not TEACHING_ROLE.match(course):
+            break
+    return AREA_GROUP.sub("", course).strip(" -–:;,.")
+
+
+def parse_cargo_item(text: str) -> dict[str, Any] | None:
+    """Turn one PCI cargo bullet into a structured teaching vacancy.
+
+    Returns None for non-teaching cargos so a mixed notice (Enfermeiro,
+    Psicólogo, Professor de Geografia) yields only the teaching rows.
+    """
+    label = clean_text(text)
+    if not label or len(label) > 220 or not TEACHING_ROLE.search(label):
+        return None
+
+    vacancies_count = None
+    reserve = False
+    hint_match = VACANCY_HINT.search(label)
+    if hint_match:
+        if hint_match.group("count"):
+            vacancies_count = int(hint_match.group("count"))
+            reserve = bool(hint_match.group("reserve"))
+        else:
+            reserve = True
+
+    # Every trailing parenthetical that is not a vacancy count describes the
+    # required qualification, e.g. "(Licenciatura Curta)", "(Magistério)".
+    parentheticals = [
+        clean_text(item) for item in re.findall(r"\(([^()]{2,90})\)", label)
+        if not VACANCY_HINT.fullmatch(f"({item.strip()})")
+    ]
+    bare = clean_text(re.sub(r"\([^()]*\)", " ", label))
+    course = _strip_role_prefix(bare)
+    return {
+        "cargo": label,
+        "course": course or bare,
+        "requirement_hint": " / ".join(dict.fromkeys(parentheticals)) or None,
+        "vacancies_count": vacancies_count,
+        "reserve_only": reserve and vacancies_count is None,
+    }
+
+
+def extract_pci_opportunities(body: Any) -> list[dict[str, Any]]:
+    """Read the cargo list PCI renders as <li> items in the news body.
+
+    Flattening the body into prose destroys these boundaries, which is how a
+    whole position table used to end up inside one requirement field.
+    """
+    if body is None:
+        return []
+    opportunities: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for item in body.select("li"):
+        if item.select_one("a.edital-pdf-link"):
+            continue
+        parsed = parse_cargo_item(item.get_text(" ", strip=True))
+        if not parsed:
+            continue
+        key = normalize_text(parsed["cargo"])
+        if key in seen:
+            continue
+        seen.add(key)
+        opportunities.append(parsed)
+    return opportunities
+
+
 def _external_links(article: Any, source_url: str) -> tuple[str | None, str | None]:
     institution_url = None
     official_url = None
@@ -184,6 +286,7 @@ def parse_pci_detail(html: str, source_url: str, listing: dict[str, Any] | None 
         raise ValueError("PCI detail parser found an incomplete news article")
 
     title = clean_text(headline.get_text(" ", strip=True))
+    pci_opportunities = extract_pci_opportunities(body)
     body_text = clean_text(body.get_text(" ", strip=True))
     description_node = article.select_one('[itemprop="description"]')
     description = clean_text(description_node.get_text(" ", strip=True)) if description_node else ""
@@ -217,6 +320,7 @@ def parse_pci_detail(html: str, source_url: str, listing: dict[str, Any] | None 
         "institution_url": institution_url,
         "official_url": official_url,
         "pci_documents": pci_documents,
+        "pci_opportunities": pci_opportunities,
         "campus": clean_text(re.search(r"campus\s+(?:de\s+)?([^.,;]{2,60})", body_text, re.I).group(1))
         if re.search(r"campus\s+(?:de\s+)?([^.,;]{2,60})", body_text, re.I) else None,
         "state": state or "",

@@ -34,6 +34,36 @@ ACADEMIC_MARKER = re.compile(
     re.I,
 )
 
+# A requirement statement is a phrase, not a document. These bounds stop a run
+# of same-level markers from swallowing an entire enumerated list of cargos,
+# which is how PCI renders multi-position notices once the <li> markup is
+# flattened into prose.
+MAX_SEGMENT_CHARS = 300
+MAX_RUN_GAP_CHARS = 90
+CARGO_ENUMERATION = re.compile(
+    r"\b(?:professor(?:a)?|coordenador(?:a)?|instrutor(?:a)?|monitor(?:a)?)\b", re.I
+)
+# "(Cadastro de Reserva)" / "(CR)" only ever appears in a position table, never
+# inside a prose statement of the required qualification.
+RESERVE_MARKER = re.compile(r"\(\s*(?:cadastro\s+de\s+reserva|cr)\s*\)", re.I)
+MAX_CARGO_MENTIONS = 1
+
+
+def looks_like_cargo_list(segment: str) -> bool:
+    """Detect an enumerated list of positions masquerading as one requirement."""
+    if RESERVE_MARKER.search(segment):
+        return True
+    return len(CARGO_ENUMERATION.findall(segment)) > MAX_CARGO_MENTIONS
+
+
+def _trim_to_boundary(segment: str, limit: int = MAX_SEGMENT_CHARS) -> str:
+    """Cut an over-long segment back to the last clean separator."""
+    if len(segment) <= limit:
+        return segment
+    window = segment[:limit]
+    cut = max(window.rfind(";"), window.rfind(","), window.rfind(" "))
+    return window[:cut] if cut > 0 else window
+
 
 def clean_requirement_context(value: Any) -> str:
     """Remove headings and trailing application text without rewriting evidence."""
@@ -76,27 +106,43 @@ def split_academic_requirement(value: Any) -> dict[str, list[str]]:
 
     runs: list[dict[str, Any]] = []
     for match, category in markers:
-        if not runs or runs[-1]["category"] != category:
-            runs.append({"category": category, "start": match.start()})
+        distant = bool(runs) and match.start() - runs[-1]["last_end"] > MAX_RUN_GAP_CHARS
+        if not runs or runs[-1]["category"] != category or distant:
+            runs.append({"category": category, "start": match.start(), "last_end": match.end()})
+        else:
+            runs[-1]["last_end"] = match.end()
 
     result: dict[str, list[str]] = {"graduation": [], "postgraduate": []}
     for index, run in enumerate(runs):
         end = runs[index + 1]["start"] if index + 1 < len(runs) else len(text)
-        segment = text[run["start"]:end]
+        segment = _trim_to_boundary(text[run["start"]:end])
         segment = re.sub(
             r"[,;:]?\s*(?:(?:e|ou)\s+)?(?:al[eé]m\s+de\s+|com\s+)?$",
             "",
             segment,
             flags=re.I,
         ).strip(" .;,:")
-        if segment and segment not in result[run["category"]]:
+        if not segment or looks_like_cargo_list(segment):
+            continue
+        if segment not in result[run["category"]]:
             result[run["category"]].append(segment)
     return result
 
 
+# "Licenciatura Curta" / "Licenciatura Plena" name the degree itself, so
+# dropping the label would leave a meaningless "Curta".
+# A leading conjunction means the label was one alternative among several
+# ("Licenciatura ou Pós"), so removing it would strand the rest.
+DEGREE_MODIFIER = re.compile(
+    r"^(?:curta|plena|completa|integral|espec[ií]fica|m[ií]nima|"
+    r"ou|e|em\s+qualquer\s+[aá]rea)\b",
+    re.I,
+)
+
+
 def graduation_for_display(value: str) -> str:
     """Drop only the leading degree label; preserve modalities and alternatives."""
-    return re.sub(
+    stripped = re.sub(
         r"^(?:(?<!p[oó]s[- ])gradua[cç][aã]o|graduad[oa]s?|bacharelado|licenciatura|"
         r"curso\s+superior|forma[cç][aã]o\s+superior)\s*"
         r"(?:(?:com\s+habilita[cç][aã]o\s+)?(?:em|nas?\s+[aá]reas?\s+de|na\s+[aá]rea\s+de)\s*)?",
@@ -104,6 +150,9 @@ def graduation_for_display(value: str) -> str:
         value,
         flags=re.I,
     ).strip(" .;,:")
+    if DEGREE_MODIFIER.match(stripped):
+        return value.strip(" .;,:")
+    return stripped
 
 
 def extract_requirement_fields(text: Any) -> dict[str, str | None]:
