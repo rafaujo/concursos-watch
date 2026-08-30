@@ -116,16 +116,20 @@ def _pci_opportunity_rows(vacancy: dict[str, Any]) -> list[dict[str, Any]]:
     """
     rows: list[dict[str, Any]] = []
     for opportunity in vacancy.get("pci_opportunities") or []:
-        course = str(opportunity.get("course") or "").strip()
-        if not course:
+        cargo = str(opportunity.get("cargo") or "").strip()
+        if not cargo:
             continue
+        # A cargo whose notice never names a discipline ("Professor 20h") still
+        # deserves its row; it just stays out of the course filter rather than
+        # appearing there as a subject it is not.
+        course = str(opportunity.get("course") or "").strip()
         rows.append({
             **vacancy,
             "_is_subvacancy": True,
             "_parent_title": vacancy.get("title"),
-            "title": opportunity.get("cargo"),
-            "area": course,
-            "course": course,
+            "title": cargo,
+            "area": course or cargo,
+            "course": course or None,
             "position": opportunity.get("cargo") or vacancy.get("position"),
             "requirement_text": opportunity.get("requirement_hint"),
             "vacancies_count": opportunity.get("vacancies_count"),
@@ -200,7 +204,31 @@ def _structured_requirements(v: dict[str, Any]) -> tuple[str, str]:
         for post in separated["postgraduate"]:
             if post and post not in post_parts:
                 post_parts.append(post)
-    return " / ".join(graduation_parts) or "Não informado", " / ".join(post_parts) or "Não informado"
+    return _joined_for_display(graduation_parts), _joined_for_display(post_parts)
+
+
+# Each run is bounded on its own, but a cell that concatenates several of them
+# can still become a wall of text. Beyond a few statements the reader is better
+# served by the edital itself.
+MAX_DISPLAYED_REQUIREMENTS = 3
+MAX_DISPLAYED_CHARS = 400
+
+
+def _joined_for_display(parts: list[str]) -> str:
+    if not parts:
+        return "Não informado"
+    kept: list[str] = []
+    for part in parts[:MAX_DISPLAYED_REQUIREMENTS]:
+        candidate = " / ".join([*kept, part])
+        if kept and len(candidate) > MAX_DISPLAYED_CHARS:
+            break
+        kept.append(part)
+    joined = " / ".join(kept)
+    if len(joined) > MAX_DISPLAYED_CHARS:
+        joined = joined[:MAX_DISPLAYED_CHARS].rsplit(" ", 1)[0] + "…"
+    if len(kept) < len(parts):
+        joined += f" (+{len(parts) - len(kept)} no edital)"
+    return joined
 
 
 def _detail_items(v: dict[str, Any]) -> list[tuple[str, str]]:

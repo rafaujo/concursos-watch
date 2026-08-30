@@ -9,7 +9,12 @@ from pathlib import Path
 import pytest
 
 from src.parser import extract_pci_opportunities, parse_cargo_item, parse_pci_detail
-from src.report import _expanded_rows, _structured_requirements, generate_report
+from src.report import (
+    _expanded_rows,
+    _joined_for_display,
+    _structured_requirements,
+    generate_report,
+)
 from src.requirements import extract_requirement_fields, split_academic_requirement
 
 from bs4 import BeautifulSoup
@@ -54,6 +59,29 @@ class TestCargoExtraction:
         parsed = parse_cargo_item("Professor de Computação (Pós ou cursos de aperfeiçoamento)")
         assert parsed["course"] == "Computação"
         assert parsed["requirement_hint"] == "Pós ou cursos de aperfeiçoamento"
+
+    def test_row_number_is_not_part_of_the_course(self):
+        # "Professor 1 - Arte (6º ao 9º ano) (5 vagas)" — real PCI notice.
+        parsed = parse_cargo_item("Professor 1 - Arte (6º ao 9º ano) (5 vagas)")
+        assert parsed["course"] == "Arte"
+        assert parsed["vacancies_count"] == 5
+
+    def test_level_in_the_name_puts_the_subject_in_the_parenthetical(self):
+        # "Professor II (Educação Física)" — the II is a career level, not a course.
+        parsed = parse_cargo_item("Professor II (Educação Física) (cadastro de reserva)")
+        assert parsed["course"] == "Educação Física"
+        assert parsed["requirement_hint"] is None
+
+    def test_cargo_without_a_stated_subject_has_no_course(self):
+        # The notice says only "Professor 20h"; inventing a course would put a
+        # workload in the course filter as if it were a discipline.
+        assert parse_cargo_item("Professor 20h (5 vagas)")["course"] is None
+        assert parse_cargo_item("Professor I (4 vagas + CR)")["course"] is None
+
+    def test_formation_parenthetical_is_still_a_hint_not_a_course(self):
+        parsed = parse_cargo_item("Professor de Espanhol (Magistério)")
+        assert parsed["course"] == "Espanhol"
+        assert parsed["requirement_hint"] == "Magistério"
 
     def test_edital_pdf_list_is_not_a_cargo(self):
         html = (
@@ -139,6 +167,26 @@ class TestReportExpansion:
         assert post == "Não informado"
         _, post_computacao = _structured_requirements(by_course["Computação"])
         assert "Pós ou cursos de aperfeiçoamento" in post_computacao
+
+    def test_cargo_without_a_course_still_gets_a_row(self, blumenau):
+        vacancy = {
+            "id": "y", "title": "Concurso",
+            "pci_opportunities": [
+                {"cargo": "Professor 20h (5 vagas)", "course": None,
+                 "requirement_hint": None, "vacancies_count": 5, "reserve_only": False},
+            ],
+        }
+        rows = _expanded_rows([vacancy])
+        assert len(rows) == 1
+        assert rows[0]["title"] == "Professor 20h (5 vagas)"
+        assert rows[0]["course"] is None
+
+    def test_display_bounds_a_pile_of_requirement_runs(self):
+        assert _joined_for_display([]) == "Não informado"
+        long_parts = ["A" * 280, "B" * 280, "C" * 280]
+        joined = _joined_for_display(long_parts)
+        assert len(joined) <= 400
+        assert "no edital" in joined
 
     def test_notice_without_cargos_still_renders_one_row(self):
         rows = _expanded_rows([{"id": "x", "title": "Vaga única", "pci_opportunities": []}])

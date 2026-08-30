@@ -116,6 +116,25 @@ VACANCY_HINT = re.compile(
 # the grouping, not the course the reader filters by.
 AREA_GROUP = re.compile(r"^[aá]rea\s+(?:[IVXLC]+|\d+)\s*[-–/:]\s*", re.I)
 
+# Some municipalities number the rows of their cargo table ("Professor 1 - Arte").
+ITEM_NUMBER = re.compile(r"^\d{1,3}\s*[-–.)]\s*")
+
+# What is left when the cargo names a career level or a shift rather than a
+# subject: "Professor II", "Professor 20h". These are not courses, and when they
+# appear the discipline is usually in the parenthetical instead.
+DEGENERATE_COURSE = re.compile(
+    r"^(?:[IVX]{1,4}|\d{1,3}|\d{1,3}\s*h(?:oras)?|[a-z]{1,2})$", re.I
+)
+
+# A parenthetical naming the required qualification, as opposed to one naming
+# the discipline. "(Magistério)" qualifies; "(Educação Física)" is the subject.
+FORMATION_HINT = re.compile(
+    r"licenciatur|bacharel|magist[eé]rio|gradua[cç][aã]o|p[oó]s\b|especializa|"
+    r"mestrado|doutorado|forma[cç][aã]o|habilita[cç][aã]o|n[ií]vel\s+(?:m[eé]dio|superior)|"
+    r"curso\s+(?:superior|normal)|aperfei[cç]oamento",
+    re.I,
+)
+
 
 def _strip_role_prefix(value: str) -> str:
     """Remove the role wrapper, possibly nested ("Professor Licenciado: Área - Professor de X")."""
@@ -127,7 +146,8 @@ def _strip_role_prefix(value: str) -> str:
         course = reduced
         if not TEACHING_ROLE.match(course):
             break
-    return AREA_GROUP.sub("", course).strip(" -–:;,.")
+    course = AREA_GROUP.sub("", course).strip(" -–:;,.")
+    return ITEM_NUMBER.sub("", course).strip(" -–:;,.")
 
 
 def parse_cargo_item(text: str) -> dict[str, Any] | None:
@@ -158,10 +178,23 @@ def parse_cargo_item(text: str) -> dict[str, Any] | None:
     ]
     bare = clean_text(re.sub(r"\([^()]*\)", " ", label))
     course = _strip_role_prefix(bare)
+
+    # Separate the parentheticals that state a qualification from the ones that
+    # state the subject. "Professor II (Educação Física)" names its discipline
+    # there, and without this the level ("II") would be filed as the course.
+    hints = [item for item in parentheticals if FORMATION_HINT.search(item)]
+    subjects = [item for item in parentheticals if not FORMATION_HINT.search(item)]
+    if not course or DEGENERATE_COURSE.match(course):
+        # "Professor II (Educação Física)" states its subject in the
+        # parenthetical; "Professor 20h (5 vagas)" states none anywhere, and
+        # inventing one would put "20h" in the course filter as if it were a
+        # discipline. Leave it empty and let the cargo label carry the row.
+        course = subjects[0] if subjects else None
+
     return {
         "cargo": label,
-        "course": course or bare,
-        "requirement_hint": " / ".join(dict.fromkeys(parentheticals)) or None,
+        "course": course,
+        "requirement_hint": " / ".join(dict.fromkeys(hints)) or None,
         "vacancies_count": vacancies_count,
         "reserve_only": reserve and vacancies_count is None,
     }
