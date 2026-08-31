@@ -23,7 +23,7 @@ RECHECK_CLOSING_WITHIN_DAYS = 10
 # Official-document stage. The crawler follows only a small, scored set of
 # links found on institution/organizer pages and never bypasses CAPTCHA.
 OFFICIAL_CHECK_ENABLED = True
-OFFICIAL_READER_VERSION = 4
+OFFICIAL_READER_VERSION = 5
 # None means every due professor notice is reviewed. The cache still prevents
 # unchanged editais from being downloaded on every daily execution.
 OFFICIAL_MAX_VACANCIES_PER_RUN = None
@@ -99,6 +99,36 @@ THEMATIC_WEIGHTS = {
     "esg": 12,
 }
 
+# Institution type. The name of the institution decides, not the name of the
+# cargo: municipalities also advertise "Professor Assistente" and "Professor
+# Adjunto" for basic education, so those words classify nothing on their own.
+HIGHER_EDUCATION_INSTITUTIONS = (
+    "universidade", "instituto federal", "cefet", "faculdade",
+    "centro universitario", "ensino superior", "escola politecnica",
+    "colegio pedro ii", "fundacao universidade",
+)
+
+BASIC_EDUCATION_INSTITUTIONS = (
+    "prefeitura", "municipio", "secretaria municipal", "secretaria de educacao",
+    "secretaria da educacao", "secretaria estadual de educacao", "camara",
+    "consorcio", "saae", "instituto de previdencia",
+)
+
+# Phrases a municipal basic-education notice essentially never uses. Only these
+# may override an institution that otherwise looks municipal — for example a
+# municipal foundation that runs a college.
+HIGHER_EDUCATION_ONLY_TERMS = (
+    "magisterio superior", "ensino superior", "ebtt", "professor visitante",
+    "professor titular", "professor doutor", "docente do ensino superior",
+    "educacao basica, tecnica e tecnologica", "pos-graduacao stricto sensu",
+)
+
+INSTITUTION_TYPE_LABELS = {
+    "SUPERIOR": "Universidades e IFs",
+    "BASICA": "Prefeituras e estados",
+    "INDEFINIDA": "Indefinida",
+}
+
 HIGHER_EDUCATION_HINTS = (
     "universidade", "instituto federal", "ifba", "if baiano", "ifpr",
     "cefet", "faculdade", "campus", "magisterio superior", "professor titular",
@@ -121,3 +151,9 @@ GEOGRAPHIC_PRIORITIES = {
     "SC": 3,
     "RS": 3,
 }
+
+# Vários servidores de universidade (UNESP, UNICAMP, UFMG) entregam certificado
+# válido mas omitem o intermediário, e a cadeia não fecha. Quando isso — e só
+# isso — acontece, o documento é lido assim mesmo e fica marcado. Certificado
+# expirado, autoassinado ou emitido para outro nome continua recusado.
+OFFICIAL_ALLOW_INCOMPLETE_CHAIN = True

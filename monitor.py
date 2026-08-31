@@ -79,6 +79,7 @@ def _apply_official_result(
     vacancy["official_requirement_evidence"] = result.get("evidence", [])
     vacancy["official_errors"] = result.get("errors", [])
     vacancy["official_pci_protected_documents"] = result.get("pci_protected_documents", [])
+    vacancy["official_tls_unverified"] = bool(result.get("tls_unverified"))
 
     if result.get("opportunities"):
         _restore_pci_requirements(vacancy)
@@ -165,6 +166,16 @@ def _apply_official_result(
         str(item.get("text") or "") for item in result.get("evidence", [])
     )
     vacancy.update(analyzer.analyze(vacancy, config.PROFILE))
+    if result.get("tls_unverified") and vacancy.get("formal_eligibility") == "YES":
+        # The chain could not be completed, so the document's provenance is one
+        # notch weaker than a normal read. That is not enough to refuse the
+        # evidence, but it is enough to withhold the only verdict that would
+        # let someone skip reading the edital.
+        vacancy["formal_eligibility"] = "UNCERTAIN"
+        vacancy["formal_reason"] = (
+            "O edital foi lido de um servidor cuja cadeia TLS está incompleta; "
+            f"confirme na fonte antes de confiar. {vacancy.get('formal_reason') or ''}"
+        ).strip()
     changed = vacancy.get("formal_eligibility") != previous_eligibility
     if changed:
         vacancy["updated_at"] = now.date().isoformat()

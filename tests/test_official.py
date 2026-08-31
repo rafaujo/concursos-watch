@@ -1,7 +1,10 @@
 from datetime import date, datetime
 from zoneinfo import ZoneInfo
 
+import pytest
 import requests
+
+import config
 
 from src.official import (
     assess_document_relevance,
@@ -156,8 +159,8 @@ def test_reader_starts_at_pci_and_records_protected_edital(monkeypatch):
     def fake_fetch(url):
         calls.append(url)
         if url == pci_url:
-            return pci_html, pci_url, "text/html"
-        return official_html, official_url, "text/html"
+            return pci_html, pci_url, "text/html", False
+        return official_html, official_url, "text/html", False
 
     monkeypatch.setattr(reader, "_fetch", fake_fetch)
     result = reader.read(
@@ -173,9 +176,112 @@ def test_reader_starts_at_pci_and_records_protected_edital(monkeypatch):
 def test_official_cache_ttl_depends_on_status():
     today = date(2026, 8, 23)
     assert should_check_official(None, today)
-    current = {"reader_version": 4}
+    current = {"reader_version": config.OFFICIAL_READER_VERSION}
     assert not should_check_official({**current, "checked_at": "2026-08-20", "status": "READ"}, today)
     assert should_check_official({**current, "checked_at": "2026-08-01", "status": "READ"}, today)
     assert should_check_official({**current, "checked_at": "2026-08-20", "status": "AMBIGUOUS"}, today)
     assert should_check_official({**current, "checked_at": "2026-08-20", "status": "ERROR"}, today)
-    assert should_check_official({"reader_version": 3, "checked_at": "2026-08-20", "status": "READ"}, today)
+    assert should_check_official({"reader_version": config.OFFICIAL_READER_VERSION - 1, "checked_at": "2026-08-20", "status": "READ"}, today)
+
+
+class TestIncompleteTlsChain:
+    """Reading from a server that omits its intermediate certificate.
+
+    UNESP, UNICAMP and UFMG serve valid certificates but do not send the
+    intermediate, so the chain cannot be built and 18 university vacancies were
+    left without requirements. The retry exists for that case only.
+    """
+
+    def _reader(self, monkeypatch, error_message, on_retry=b"conteudo"):
+        reader = OfficialDocumentReader(requests.Session(), delay=0)
+        calls = []
+
+        class FakeResponse:
+            url = "https://universidade.example/edital.pdf"
+            headers = {"Content-Type": "application/pdf"}
+            history = []
+
+            def raise_for_status(self):
+                return None
+
+            def iter_content(self, chunk_size=0):
+                yield on_retry
+
+        def fake_get(url, **kwargs):
+            calls.append(kwargs.get("verify", True))
+            if kwargs.get("verify", True) is not False:
+                raise requests.exceptions.SSLError(error_message)
+            return FakeResponse()
+
+        monkeypatch.setattr(reader.session, "get", fake_get)
+        monkeypatch.setattr("src.official.is_public_http_url", lambda url: True)
+        return reader, calls
+
+    def test_missing_intermediate_is_retried_and_marked(self, monkeypatch):
+        reader, calls = self._reader(
+            monkeypatch,
+            "HTTPSConnectionPool: certificate verify failed: unable to get local issuer certificate",
+        )
+        data, url, content_type, tls_unverified = reader._fetch("https://universidade.example/edital.pdf")
+        assert data == b"conteudo"
+        assert tls_unverified is True
+        assert calls == [True, False], "deve tentar verificado antes de reler sem verificação"
+
+    @pytest.mark.parametrize("message", [
+        "certificate verify failed: certificate has expired",
+        "certificate verify failed: Hostname mismatch, certificate is not valid for 'x'",
+        "certificate verify failed: self signed certificate",
+    ])
+    def test_other_certificate_problems_stay_refused(self, monkeypatch, message):
+        reader, calls = self._reader(monkeypatch, message)
+        with pytest.raises(requests.exceptions.SSLError):
+            reader._fetch("https://universidade.example/edital.pdf")
+        assert calls == [True], "não pode reler sem verificação nesses casos"
+
+    def test_the_retry_can_be_switched_off(self, monkeypatch):
+        monkeypatch.setattr(config, "OFFICIAL_ALLOW_INCOMPLETE_CHAIN", False)
+        reader, calls = self._reader(
+            monkeypatch, "certificate verify failed: unable to get local issuer certificate"
+        )
+        with pytest.raises(requests.exceptions.SSLError):
+            reader._fetch("https://universidade.example/edital.pdf")
+        assert calls == [True]
+
+
+def test_frontier_explores_the_best_link_before_weaker_ones(monkeypatch):
+    """The budget must go to the strongest candidate found anywhere.
+
+    With a deque, the links a generic homepage offers were explored before the
+    next seed, so eight mediocre links from one portal could exhaust the budget
+    while the edital sat one seed away.
+    """
+    pci_url = "https://www.pciconcursos.com.br/noticias/vaga"
+    portal = "https://universidade.example/"
+    pci_html = b'<html><body><article id="noticia"><div itemprop="articleBody">' \
+               b"<p>Concurso para professor.</p></div></article></body></html>"
+    portal_html = (
+        '<html><body>'
+        '<a href="https://universidade.example/fale-conosco">Fale conosco</a>'
+        '<a href="https://universidade.example/noticias">Notícias da semana</a>'
+        '<a href="https://universidade.example/edital-professor.pdf">Edital de concurso para professor</a>'
+        "</body></html>"
+    ).encode()
+
+    reader = OfficialDocumentReader(requests.Session(), delay=0)
+    visited = []
+
+    def fake_fetch(url):
+        visited.append(url)
+        if url == pci_url:
+            return pci_html, pci_url, "text/html", False
+        return portal_html, url, "text/html", False
+
+    monkeypatch.setattr(reader, "_fetch", fake_fetch)
+    reader.read(
+        {"source_url": pci_url, "official_url": portal, "title": "Concurso para professor",
+         "area": "Não identificada"},
+        datetime(2026, 8, 30, 8, 17, tzinfo=ZoneInfo("America/Sao_Paulo")),
+    )
+    followed = [u for u in visited if u not in (pci_url, portal)]
+    assert followed, "o crawler deveria seguir algum link do portal"
+    assert "edital-professor.pdf" in followed[0], f"seguiu {followed[0]} antes do edital"

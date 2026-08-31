@@ -1,6 +1,11 @@
 import pytest
 
-from src.classifier import RuleBasedAnalyzer, classify_formal_eligibility, thematic_score
+from src.classifier import (
+    RuleBasedAnalyzer,
+    classify_formal_eligibility,
+    institution_type,
+    thematic_score,
+)
 
 
 @pytest.mark.parametrize(
@@ -54,3 +59,57 @@ def test_rule_analyzer_never_turns_clear_incompatibility_into_yes():
     assert result["thematic_score"] >= 85
     assert result["formal_eligibility"] == "NO"
     assert result["geographic_priority"] == 1
+
+
+class TestInstitutionType:
+    """Separating university/IF postings from municipal basic education.
+
+    Every case below is a real institution from the radar. The municipal ones
+    matter most: they advertise "Professor Assistente" and "Professor Adjunto"
+    for basic education, so a cargo-based rule reads them as university posts.
+    """
+
+    @pytest.mark.parametrize("institution", [
+        "UFMG - Universidade Federal de Minas Gerais",
+        "IFBA - Instituto Federal da Bahia",
+        "UNESP - Universidade Estadual Paulista",
+        "UTFPR - Universidade Tecnológica Federal do Paraná",
+        "CEFET-MG",
+        "UEMS - Universidade Estadual de Mato Grosso do Sul",
+    ])
+    def test_higher_education_institutions(self, institution):
+        assert institution_type({"institution": institution}) == "SUPERIOR"
+
+    @pytest.mark.parametrize("institution", [
+        "Prefeitura de Blumenau",
+        "SME - Secretaria Municipal de Educação de Belo Horizonte",
+        "SEDUC - Secretaria da Educação do Estado do Ceará",
+        "Câmara de Redentora",
+    ])
+    def test_basic_education_institutions(self, institution):
+        assert institution_type({"institution": institution}) == "BASICA"
+
+    def test_municipal_cargo_words_do_not_promote_to_higher_education(self):
+        # Real case: the cargo is "Professor Assistente de Educação Básica I".
+        vacancy = {
+            "institution": "Prefeitura de Ribeirão Bonito",
+            "position": "Professor Assistente",
+            "title": "Prefeitura de Ribeirão Bonito - SP abre processo seletivo para a educação",
+        }
+        assert institution_type(vacancy) == "BASICA"
+
+    def test_municipal_foundation_running_a_college_is_higher_education(self):
+        vacancy = {"institution": "FIMES - Fundação Integrada Municipal de Ensino Superior"}
+        assert institution_type(vacancy) == "SUPERIOR"
+
+    def test_explicit_higher_education_wording_overrides_a_municipal_name(self):
+        vacancy = {
+            "institution": "Prefeitura de Exemplo",
+            "title": "Concurso para Professor do Magistério Superior",
+        }
+        assert institution_type(vacancy) == "SUPERIOR"
+
+    def test_unclassifiable_stays_undefined(self):
+        # Guessing here would either hide a real opportunity or pollute the list.
+        assert institution_type({"institution": "Fundação InoversaSul"}) == "INDEFINIDA"
+        assert institution_type({"institution": "Marinha do Brasil"}) == "INDEFINIDA"

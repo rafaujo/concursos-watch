@@ -2,11 +2,45 @@
 
 from __future__ import annotations
 
+import re
 from typing import Any, Mapping
 
 import config
 from .interfaces import VacancyAnalyzer
 from .parser import normalize_text
+
+
+# Federal and state university acronyms are formed too regularly to enumerate:
+# UFMG, UFRJ, UEM, UENF, IFBA, IFRS. Matching the shape catches the ones no
+# hand-written list would keep up with.
+ACADEMIC_ACRONYM = re.compile(r"\b(?:U[FE][A-Z]{1,4}|IF[A-Z]{1,4}|UNI[A-Z]{2,6}|UTFPR|USP|UNB)\b")
+
+
+def institution_type(vacancy: Mapping[str, Any]) -> str:
+    """Separate higher education from municipal/state basic education.
+
+    The institution name is the reliable signal. Cargo titles are not: a city
+    hall advertising "Professor Assistente de Educação Básica I" would be
+    misread as a university post, which is the opposite of useful for someone
+    filtering for university and federal-institute openings.
+    """
+    institution = str(vacancy.get("institution") or "")
+    normalized_institution = normalize_text(institution)
+    context = normalize_text(" ".join(
+        str(vacancy.get(key) or "")
+        for key in ("title", "position", "area", "description")
+    ))
+
+    higher = any(term in normalized_institution for term in config.HIGHER_EDUCATION_INSTITUTIONS)
+    if higher or ACADEMIC_ACRONYM.search(institution):
+        return "SUPERIOR"
+    if any(term in normalized_institution for term in config.BASIC_EDUCATION_INSTITUTIONS):
+        if any(term in context for term in config.HIGHER_EDUCATION_ONLY_TERMS):
+            return "SUPERIOR"
+        return "BASICA"
+    if any(term in context for term in config.HIGHER_EDUCATION_ONLY_TERMS):
+        return "SUPERIOR"
+    return "INDEFINIDA"
 
 
 def thematic_score(text: str) -> tuple[int, str]:

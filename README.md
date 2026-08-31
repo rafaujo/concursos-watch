@@ -19,6 +19,7 @@ Radar pessoal, automático e auditável de concursos públicos e processos selet
 - pontuação temática transparente de 0 a 100, configurável;
 - prioridade geográfica sem excluir nenhum estado;
 - concursos agrupados por edital, cada um com sua própria tabela responsiva, acessível e filtrável;
+- separação entre universidades/IFs e prefeituras/estados pelo nome da instituição, com a página abrindo já filtrada em universidades e IFs; o que não se consegue classificar fica como `INDEFINIDA` em vez de ser chutado para um dos lados;
 - uma linha por vaga ou área nos editais multiárea, inclusive quando a aderência temática é zero;
 - graduação e pós-graduação separadas em campos limpos;
 - detalhes iguais em todas as vagas — como inscrições e remuneração — aparecem uma única vez abaixo do título; cada linha conserva somente os detalhes específicos;
@@ -166,6 +167,7 @@ Edite apenas `config.py` para:
 - mudar formação e classificação CAPES em `PROFILE`;
 - ajustar pesos em `THEMATIC_WEIGHTS`;
 - mudar estados prioritários em `GEOGRAPHIC_PRIORITIES`;
+- ajustar o que conta como universidade ou prefeitura em `HIGHER_EDUCATION_INSTITUTIONS`, `BASIC_EDUCATION_INSTITUTIONS` e `HIGHER_EDUCATION_ONLY_TERMS`;
 - ajustar destaque, prazo de fechamento, retenção e frequência de rechecagem;
 - mudar pausa, timeout ou retries do crawler.
 
@@ -178,6 +180,21 @@ Crie uma classe que implemente `VacancySource.discover()` e `VacancySource.fetch
 ## Adicionar análise por LLM no futuro
 
 Implemente `VacancyAnalyzer.analyze(vacancy, profile)`. Uma estratégia segura é manter as regras atuais como primeira etapa e usar o LLM apenas para complementar `UNKNOWN`/`UNCERTAIN`, guardando modelo, prompt, resposta estruturada e evidências. Nenhum resultado de LLM deve apagar o texto original do requisito.
+
+## Cadeia TLS incompleta
+
+Vários servidores de universidade — UNESP, UNICAMP, UFMG e UFSJ entre eles —
+entregam um certificado válido mas omitem o intermediário, e a cadeia não fecha.
+O navegador disfarça buscando o intermediário sozinho; o `requests` não faz isso,
+e 18 vagas de universidade ficavam sem requisito por causa disso.
+
+Quando — e somente quando — o erro é `unable to get local issuer certificate`, o
+documento é lido assim mesmo. Certificado expirado, autoassinado ou emitido para
+outro nome continua recusado, porque aí a identidade do servidor está em dúvida
+de verdade. Toda leitura desse tipo é marcada em `official_tls_unverified`,
+aparece no card como *cadeia TLS incompleta no servidor*, e nunca produz um
+`YES`: um `YES` vindo daí é rebaixado para `UNCERTAIN`. Para desligar, use
+`OFFICIAL_ALLOW_INCOMPLETE_CHAIN = False` em `config.py`.
 
 ## Limitações conhecidas
 

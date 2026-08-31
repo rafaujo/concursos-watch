@@ -11,6 +11,7 @@ from typing import Any
 from zoneinfo import ZoneInfo
 
 import config
+from .classifier import institution_type
 from .parser import parse_cargo_item
 from .requirements import (
     clean_requirement_context,
@@ -286,6 +287,8 @@ def _row(v: dict[str, Any], common_detail_labels: set[str] | None = None) -> str
         pages = [v["page"]]
     if v.get("official_check_status") in ("READ", "READ_MULTI"):
         source_note = "Edital lido" + (f" · página {', '.join(map(str, pages[:3]))}" if pages else "")
+        if v.get("official_tls_unverified"):
+            source_note += " · cadeia TLS incompleta no servidor"
     elif protected_count:
         source_note = f"{protected_count} edital(is) no PCI · verificação humana"
     else:
@@ -294,6 +297,7 @@ def _row(v: dict[str, Any], common_detail_labels: set[str] | None = None) -> str
     search = " ".join(str(item or "") for item in (
         v.get("title"), v.get("_parent_title"), v.get("institution"), v.get("area"),
         v.get("course"), v.get("state"), v.get("city"), graduation, post,
+        config.INSTITUTION_TYPE_LABELS.get(institution_type(v), ""),
     )).lower()
     is_open = str(v.get("status")) != "CLOSED"
     is_new = str(v.get("status")) == "NEW"
@@ -310,7 +314,7 @@ def _row(v: dict[str, Any], common_detail_labels: set[str] | None = None) -> str
     )
     post_lines = "".join(f"<span>{_escape(line)}</span>" for line in post.split(" / "))
 
-    return f'''<article role="row" class="vacancy-card vacancy-row eligibility-{_escape(eligibility).lower()}" data-state="{_escape(v.get("state"), '')}" data-institution="{_escape(v.get("institution"), '')}" data-eligibility="{_escape(eligibility)}" data-score="{score}" data-open="{str(is_open).lower()}" data-new="{str(is_new).lower()}" data-course="{_escape(v.get("course"), '')}" data-search="{_escape(search, '')}">
+    return f'''<article role="row" class="vacancy-card vacancy-row eligibility-{_escape(eligibility).lower()}" data-state="{_escape(v.get("state"), '')}" data-institution="{_escape(v.get("institution"), '')}" data-eligibility="{_escape(eligibility)}" data-score="{score}" data-open="{str(is_open).lower()}" data-new="{str(is_new).lower()}" data-course="{_escape(v.get("course"), '')}" data-institution-type="{_escape(institution_type(v))}" data-search="{_escape(search, '')}">
       <div role="cell" class="list-cell vacancy-cell" data-label="Vaga ou área"><strong>{_escape(vacancy_name)}</strong><span class="vacancy-context">{_escape(vacancy_context)}</span><div class="row-badges"><span class="eligibility-badge">{_escape(ELIGIBILITY_LABELS.get(eligibility, eligibility))}</span><span>Aderência {score}/100</span></div></div>
       <div role="cell" class="list-cell requirement-cell" data-label="Requisito de graduação"><p>{_escape(graduation)}</p></div>
       <div role="cell" class="list-cell requirement-cell post-cell" data-label="Requisito de pós-graduação"><p>{post_lines}</p><small>{_escape(source_note)}</small></div>
@@ -405,12 +409,12 @@ def generate_report(vacancies: list[dict[str, Any]], output_path: Path, generate
     document = f'''<!doctype html>
 <html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Radar automático de concursos acadêmicos"><title>Concursos Watch</title>
-<link rel="stylesheet" href="assets/style.css?v=5"></head><body data-profile="{profile_json}">
+<link rel="stylesheet" href="assets/style.css?v=6"></head><body data-profile="{profile_json}">
 <header class="hero"><div class="hero-inner"><p class="eyebrow">CONCURSOS WATCH</p><h1>Radar de Concursos Acadêmicos</h1><p class="intro">Oportunidades docentes públicas organizadas por concurso, edital, vaga e requisitos de formação.</p>
 <div class="summary"><div><strong>{generated_at.strftime('%d/%m/%Y %H:%M')}</strong><span>Última atualização (BRT)</span></div><div><strong>{open_count}</strong><span>Vagas abertas listadas</span></div><div><strong>{new_count}</strong><span>Novas hoje</span></div><div><strong>PCI</strong><span>Fonte monitorada</span></div></div></div></header>
 <main><aside class="notice"><strong>Triagem, não decisão jurídica.</strong> “Elegível” não substitui a decisão da instituição sobre equivalência de títulos. <span class="official-count">Editais oficiais lidos com evidência aplicável: {official_read_count}.</span></aside>
-<section class="filters" aria-label="Filtros"><label>Buscar<input id="search" type="search" placeholder="Área, cidade, instituição…"></label><label>Estado<select id="state"><option value="">Todos</option>{options_state}</select></label><label>Instituição<select id="institution"><option value="">Todas</option>{options_inst}</select></label><label>Curso<select id="course"><option value="">Todos</option>{options_course}</select></label><label>Elegibilidade<select id="eligibility"><option value="">Todas</option><option>YES</option><option>UNCERTAIN</option><option>UNKNOWN</option><option>NO</option></select></label><label>Aderência mínima<input id="score" type="range" min="0" max="100" value="0"><output id="score-value">0</output></label><label class="check"><input id="open-only" type="checkbox"> Somente abertas</label><label class="check"><input id="new-only" type="checkbox"> Somente novas</label><button id="clear" type="button">Limpar filtros</button></section>
+<section class="filters" aria-label="Filtros"><label>Buscar<input id="search" type="search" placeholder="Área, cidade, instituição…"></label><label>Estado<select id="state"><option value="">Todos</option>{options_state}</select></label><label>Instituição<select id="institution"><option value="">Todas</option>{options_inst}</select></label><label>Tipo<select id="institution-type"><option value="">Todas</option><option value="SUPERIOR" selected>Universidades e IFs</option><option value="BASICA">Prefeituras e estados</option><option value="INDEFINIDA">Indefinida</option></select></label><label>Curso<select id="course"><option value="">Todos</option>{options_course}</select></label><label>Elegibilidade<select id="eligibility"><option value="">Todas</option><option>YES</option><option>UNCERTAIN</option><option>UNKNOWN</option><option>NO</option></select></label><label>Aderência mínima<input id="score" type="range" min="0" max="100" value="0"><output id="score-value">0</output></label><label class="check"><input id="open-only" type="checkbox"> Somente abertas</label><label class="check"><input id="new-only" type="checkbox"> Somente novas</label><button id="clear" type="button">Limpar filtros</button></section>
 <div class="results-heading"><h2>Todas as vagas por concurso</h2><span id="result-count">{len(rows)} vaga(s) em {len(visible)} concurso(s)</span></div><div id="cards" class="contest-list">{sections}</div>
-</main><footer>Gerado automaticamente · Fonte de descoberta: <a href="{config.PCI_LISTING_URL}">PCI Concursos</a> · Consulte sempre o edital oficial.</footer><script src="assets/app.js?v=5"></script></body></html>'''
+</main><footer>Gerado automaticamente · Fonte de descoberta: <a href="{config.PCI_LISTING_URL}">PCI Concursos</a> · Consulte sempre o edital oficial.</footer><script src="assets/app.js?v=6"></script></body></html>'''
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(document, encoding="utf-8", newline="\n")

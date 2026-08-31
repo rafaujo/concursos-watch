@@ -13,7 +13,8 @@ import logging
 import re
 import socket
 import time
-from collections import deque
+import heapq
+import itertools
 from datetime import date, datetime
 from io import BytesIO
 from typing import Any, Iterable, Mapping
@@ -43,6 +44,11 @@ GENERIC_CONTEXT = {
     "requisito", "requisitos", "local", "carga", "horaria", "semanal",
     "temporario", "temporarios", "colaborador", "colaboradores",
 }
+
+
+# Seeds — the PCI notice and the institution links it named — outrank any
+# link discovered later, and keep their given order among themselves.
+SEED_PRIORITY = 10_000
 
 
 class OfficialReadError(RuntimeError):
@@ -389,16 +395,39 @@ class OfficialDocumentReader:
         self.delay = config.OFFICIAL_REQUEST_DELAY_SECONDS if delay is None else delay
         self._last_request_at = 0.0
 
-    def _fetch(self, url: str) -> tuple[bytes, str, str]:
+    def _request(self, url: str) -> tuple[requests.Response, bool]:
+        """Fetch with verification; retry unverified only for a missing intermediate.
+
+        Several Brazilian universities — UNESP, UNICAMP, UFMG among them — serve
+        a perfectly valid certificate but omit the intermediate, so the chain
+        cannot be built. Browsers paper over this by fetching the intermediate
+        themselves; requests does not, and the edital becomes unreadable.
+
+        The retry is deliberately narrow. "Unable to get local issuer" means the
+        chain is incomplete; an expired, self-signed or wrong-hostname
+        certificate means the server's identity is genuinely in question, and
+        those stay refused. Anything read this way is marked, surfaced in the
+        page, and never allowed to produce a confident verdict.
+        """
+        kwargs = dict(timeout=config.REQUEST_TIMEOUT_SECONDS, stream=True, allow_redirects=True)
+        try:
+            return self.session.get(url, **kwargs), False
+        except requests.exceptions.SSLError as exc:
+            if not config.OFFICIAL_ALLOW_INCOMPLETE_CHAIN:
+                raise
+            if "unable to get local issuer certificate" not in str(exc):
+                raise
+            LOGGER.warning("Cadeia TLS incompleta em %s; relendo sem verificação e marcando", url)
+            return self.session.get(url, verify=False, **kwargs), True
+
+    def _fetch(self, url: str) -> tuple[bytes, str, str, bool]:
         if not is_public_http_url(url):
             raise OfficialReadError("URL oficial recusada por validação de segurança")
         elapsed = time.monotonic() - self._last_request_at
         if self._last_request_at and elapsed < self.delay:
             time.sleep(self.delay - elapsed)
         LOGGER.info("Consultando fonte oficial: %s", url)
-        response = self.session.get(
-            url, timeout=config.REQUEST_TIMEOUT_SECONDS, stream=True, allow_redirects=True
-        )
+        response, tls_unverified = self._request(url)
         self._last_request_at = time.monotonic()
         for item in [*response.history, response]:
             if not is_public_http_url(item.url):
@@ -419,7 +448,7 @@ class OfficialDocumentReader:
         data = b"".join(chunks)
         if not data:
             raise OfficialReadError("Documento oficial vazio")
-        return data, response.url, response.headers.get("Content-Type", "").lower()
+        return data, response.url, response.headers.get("Content-Type", "").lower(), tls_unverified
 
     @staticmethod
     def _extract_pdf_pages(data: bytes) -> tuple[list[tuple[int, str]], dict[str, Any]]:
@@ -486,7 +515,15 @@ class OfficialDocumentReader:
             }
 
         canonical_seeds = [canonical_url(url) for url in seeds]
-        queue = deque((url, 0) for url in canonical_seeds)
+        # A priority frontier, not a queue. With a deque, the eight links a
+        # generic institution homepage offers are explored before the second
+        # seed is ever tried, so the budget is spent on whatever that one page
+        # happened to link to. Ordering globally by score means the most
+        # promising candidate found anywhere goes next.
+        order = itertools.count()
+        frontier: list[tuple[int, int, str, int]] = []
+        for index, url in enumerate(canonical_seeds):
+            heapq.heappush(frontier, (-SEED_PRIORITY + index, next(order), url, 0))
         queued = set(canonical_seeds)
         visited: set[str] = set()
         documents: list[dict[str, Any]] = []
@@ -496,13 +533,13 @@ class OfficialDocumentReader:
         blocked = False
         pci_protected_documents: list[dict[str, Any]] = []
 
-        while queue and len(visited) < config.OFFICIAL_MAX_LINKS_PER_VACANCY:
-            url, depth = queue.popleft()
+        while frontier and len(visited) < config.OFFICIAL_MAX_LINKS_PER_VACANCY:
+            _, _, url, depth = heapq.heappop(frontier)
             if url in visited:
                 continue
             visited.add(url)
             try:
-                data, final_url, content_type = self._fetch(url)
+                data, final_url, content_type, tls_unverified = self._fetch(url)
                 digest = hashlib.sha256(data).hexdigest()
                 is_pdf = data.startswith(b"%PDF-") or "application/pdf" in content_type
                 if is_pdf:
@@ -519,6 +556,7 @@ class OfficialDocumentReader:
                     document = {
                         "url": final_url, "type": "PDF", "content_hash": digest,
                         **metadata, "evidence_status": evidence["confidence"],
+                        "tls_unverified": tls_unverified,
                         "relevant": relevant, "relevance_reason": relevance_reason,
                         "opportunities_count": len(structured),
                     }
@@ -567,16 +605,17 @@ class OfficialDocumentReader:
                         "page_count": 1, "extracted_chars": len(pages[0][1]),
                         "truncated": False, "title": title,
                         "evidence_status": evidence["confidence"],
+                        "tls_unverified": tls_unverified,
                         "relevant": relevant, "relevance_reason": relevance_reason,
                     }
                     if not page_blocked and depth < config.OFFICIAL_MAX_DEPTH:
                         links = extract_candidate_links(data, final_url, vacancy)
-                        # Explore the strongest descendant before unrelated links
-                        # already queued from a generic portal homepage.
-                        for item in reversed(links):
+                        for item in links:
                             candidate = item["url"]
                             if candidate not in visited and candidate not in queued:
-                                queue.appendleft((candidate, depth + 1))
+                                heapq.heappush(
+                                    frontier, (-int(item["score"]), next(order), candidate, depth + 1)
+                                )
                                 queued.add(candidate)
                 else:
                     documents.append({
@@ -611,6 +650,7 @@ class OfficialDocumentReader:
                 "document_type": best["document"]["type"],
                 "content_hash": best["document"]["content_hash"],
                 "confidence": best["confidence"], "applicable": True,
+                "tls_unverified": bool(best["document"].get("tls_unverified")),
                 "requirements": best["requirements"], "evidence": best["evidence"],
                 "reason": best["reason"], "errors": errors[:5],
                 "pci_protected_documents": pci_protected_documents,
@@ -622,6 +662,7 @@ class OfficialDocumentReader:
                 "documents": documents, "document_url": best_multi["document"]["url"],
                 "document_type": "PDF", "content_hash": best_multi["document"]["content_hash"],
                 "confidence": "STRUCTURED", "applicable": False,
+                "tls_unverified": bool(best_multi["document"].get("tls_unverified")),
                 "opportunities": best_multi["opportunities"],
                 "reason": best_multi["reason"], "errors": errors[:5],
                 "pci_protected_documents": pci_protected_documents,
