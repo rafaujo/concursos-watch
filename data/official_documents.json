@@ -23745,5 +23745,1266 @@
         "access": "HUMAN_VERIFICATION_REQUIRED"
       }
     ]
+  },
+  "https://www.pciconcursos.com.br/noticias/uerj-abre-concursos-para-professores-assistentes-e-adjuntos-em-diversas-areas": {
+    "status": "BLOCKED",
+    "checked_at": "2026-09-01T12:28:28-03:00",
+    "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/uerj-abre-concursos-para-professores-assistentes-e-adjuntos-em-diversas-areas",
+        "type": "PCI_HTML",
+        "content_hash": "dd490477e8e371702392343de4a9cbb163831ffcc2b9625d804af41c2ec8e789",
+        "page_count": 1,
+        "extracted_chars": 8548,
+        "truncated": false,
+        "title": "UERJ abre concursos para professores assistentes e adjuntos em diversas áreas",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      },
+      {
+        "url": "https://www.uerj.br/",
+        "type": "HTML",
+        "content_hash": "e46820a7ec966cb4453d84dc67d9f46dc5391ace3a2afed9f1ee8647f5bd5c4b",
+        "page_count": 1,
+        "extracted_chars": 3268,
+        "truncated": false,
+        "title": "UERJ - Universidade do Estado do Rio de Janeiro - Universidade do Estado do Rio de Janeiro",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www.uerj.br/concursos-e-editais/",
+        "type": "HTML",
+        "content_hash": "2ef17707ac6280eb655d18ffe2a56ce0d8060c5c2534379487fc2c290cd867f2",
+        "page_count": 1,
+        "extracted_chars": 1327,
+        "truncated": false,
+        "title": "Concursos e Editais - UERJ - Universidade do Estado do Rio de Janeiro",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://concursos.sgp.uerj.br/",
+        "type": "HTML",
+        "content_hash": "f253f21ddc39653291d10c2e017817793453c356fa48fca271427561b3ae30fc",
+        "page_count": 1,
+        "extracted_chars": 7863,
+        "truncated": false,
+        "title": "UERJ-SGP Concursos",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www.uerj.br/wp-content/uploads/2019/01/informe_uerj95.pdf",
+        "type": "PDF",
+        "content_hash": "9613efabaafc7521d7bbaa604074524d45806570f757644e5763675cd2fb58d6",
+        "page_count": 4,
+        "extracted_chars": 15995,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://www.uerj.br/wp-content/uploads/2019/09/UERJemQuestao-107_SITE.pdf",
+        "type": "PDF",
+        "content_hash": "a16473e71198d147a03d1b6f02956ce2b7a0f2488c267c2063d316a4b83d7972",
+        "page_count": 27,
+        "extracted_chars": 127982,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://www.uerj.br/wp-content/uploads/2019/12/988.pdf",
+        "type": "PDF",
+        "content_hash": "2e9c1d453dd7be986f67aec78268bb9952642b21f47d2602532eef38cff71f14",
+        "page_count": 2,
+        "extracted_chars": 5818,
+        "truncated": false,
+        "title": "988.indd",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
+      }
+    ],
+    "reader_version": 5,
+    "applicable": false,
+    "reason": "O PCI lista 16 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
+    "errors": [
+      "http://www.sgp.uerj.br/site/index.php/concursos.html: HTTPError: 404 Client Error: Not Found for url: https://www.sgp.uerj.br/site/concursos.html"
+    ],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL - UERJ 225 PROFESSOR ADJUNTO ÁREA DE ENGENHARIAS ENGENHARIA AMBIENTAL",
+        "url": null,
+        "pci_link_id": "1704574",
+        "pci_news_code": "0b9031aa293ebb2f531868793cb85b87",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "EDITAL - UERJ 226 PROFESSOR ADJUNTO CIÊNCIAS AMBIENTAIS",
+        "url": null,
+        "pci_link_id": "1704575",
+        "pci_news_code": "0b9031aa293ebb2f531868793cb85b87",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "EDITAL - UERJ 229 PROFESSOR ASSISTENTE CLÍNICA MÉDICA",
+        "url": null,
+        "pci_link_id": "1704577",
+        "pci_news_code": "0b9031aa293ebb2f531868793cb85b87",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "RETIFICAÇÃO - UERJ 229",
+        "url": null,
+        "pci_link_id": "1704576",
+        "pci_news_code": "0b9031aa293ebb2f531868793cb85b87",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "EDITAL - UERJ 230 PROFESSOR ADJUNTO CLÍNICA MÉDICA",
+        "url": null,
+        "pci_link_id": "1704578",
+        "pci_news_code": "0b9031aa293ebb2f531868793cb85b87",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "RETIFICAÇÃO - UERJ 230",
+        "url": null,
+        "pci_link_id": "1704579",
+        "pci_news_code": "0b9031aa293ebb2f531868793cb85b87",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "EDITAL - UERJ 231 PROFESSOR ADJUNTO GINECOLOGIA E OBSTETRÍCIA OBSTETRÍCIA GERAL",
+        "url": null,
+        "pci_link_id": "1704580",
+        "pci_news_code": "0b9031aa293ebb2f531868793cb85b87",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "RETIFICAÇÃO - UERJ 231",
+        "url": null,
+        "pci_link_id": "1704581",
+        "pci_news_code": "0b9031aa293ebb2f531868793cb85b87",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "EDITAL - UERJ 232 PROFESSOR ADJUNTO HEMATOLOGIA",
+        "url": null,
+        "pci_link_id": "1704582",
+        "pci_news_code": "0b9031aa293ebb2f531868793cb85b87",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "RETIFICAÇÃO - UERJ 232",
+        "url": null,
+        "pci_link_id": "1704583",
+        "pci_news_code": "0b9031aa293ebb2f531868793cb85b87",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "EDITAL - UERJ 233 PROFESSOR ADJUNTO FISIATRIA",
+        "url": null,
+        "pci_link_id": "1704584",
+        "pci_news_code": "0b9031aa293ebb2f531868793cb85b87",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "RETIFICAÇÃO - UERJ 233",
+        "url": null,
+        "pci_link_id": "1704585",
+        "pci_news_code": "0b9031aa293ebb2f531868793cb85b87",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "EDITAL - UERJ 236 PROFESSOR ADJUNTO ENDOCRINOLOGIA",
+        "url": null,
+        "pci_link_id": "1704586",
+        "pci_news_code": "0b9031aa293ebb2f531868793cb85b87",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "RETIFICAÇÃO - UERJ 236",
+        "url": null,
+        "pci_link_id": "1704587",
+        "pci_news_code": "0b9031aa293ebb2f531868793cb85b87",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "EDITAL - UERJ 243 PROFESSOR ADJUNTO GASTROENTEROLOGIA",
+        "url": null,
+        "pci_link_id": "1704588",
+        "pci_news_code": "0b9031aa293ebb2f531868793cb85b87",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "RETIFICAÇÃO - UERJ 243",
+        "url": null,
+        "pci_link_id": "1704589",
+        "pci_news_code": "0b9031aa293ebb2f531868793cb85b87",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
+    ]
+  },
+  "https://www.pciconcursos.com.br/noticias/prefeitura-de-palmeira-sc-abre-concurso-e-processo-seletivo-para-diversos-cargos": {
+    "status": "BLOCKED",
+    "checked_at": "2026-09-01T12:28:28-03:00",
+    "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/prefeitura-de-palmeira-sc-abre-concurso-e-processo-seletivo-para-diversos-cargos",
+        "type": "PCI_HTML",
+        "content_hash": "1cb404dc2a7edd33ac998c0b3ed7f5009158cdeb7c1f7767fb83280909c964e6",
+        "page_count": 1,
+        "extracted_chars": 11309,
+        "truncated": false,
+        "title": "Prefeitura de Palmeira - SC abre concurso e processo seletivo para diversos cargos",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      }
+    ],
+    "reader_version": 5,
+    "applicable": false,
+    "reason": "O PCI lista 2 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
+    "errors": [
+      "https://palmeira.sc.gov.br/: HTTPError: 403 Client Error: Forbidden for url: https://palmeira.sc.gov.br/"
+    ],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL DE PROCESSO SELETIVO Nº 02/2026",
+        "url": null,
+        "pci_link_id": "1704564",
+        "pci_news_code": "78827f95d0e664cd4a9fc828d348e900",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "EDITAL DE CONCURSO PÚBLICO Nº 003/2026",
+        "url": null,
+        "pci_link_id": "1704565",
+        "pci_news_code": "78827f95d0e664cd4a9fc828d348e900",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
+    ]
+  },
+  "https://www.pciconcursos.com.br/noticias/prefeitura-de-limeira-sp-prorroga-inscricoes-de-concursos-com-vagas-em-diversas-areas": {
+    "status": "BLOCKED",
+    "checked_at": "2026-09-01T12:28:28-03:00",
+    "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/prefeitura-de-limeira-sp-prorroga-inscricoes-de-concursos-com-vagas-em-diversas-areas",
+        "type": "PCI_HTML",
+        "content_hash": "6eda5e253ddf100d0dee272ec7385f512fd3748104781b447f3d088cf11e5677",
+        "page_count": 1,
+        "extracted_chars": 22427,
+        "truncated": false,
+        "title": "Prefeitura de Limeira - SP prorroga inscrições de concursos com vagas em diversas áreas",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      },
+      {
+        "url": "https://www.limeira.sp.gov.br/",
+        "type": "HTML",
+        "content_hash": "e64cc96cb328bf2750334aa2f504aeb762df871e4f15b734dff14b7aea26965f",
+        "page_count": 1,
+        "extracted_chars": 4770,
+        "truncated": false,
+        "title": "Prefeitura de Limeira",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www.pciconcursos.com.br/apostilas/prefeitura-de-limeira-sp",
+        "type": "HTML",
+        "content_hash": "86086e79e0cd0235a140cbb0a92464ad34d06f6a3859192ee1050e5d5daf9f95",
+        "page_count": 1,
+        "extracted_chars": 6555,
+        "truncated": false,
+        "title": "PCI Concursos - Apostilas",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://sme.limeira.sp.gov.br/inscricao_creche.php?matricula=creche",
+        "type": "HTML",
+        "content_hash": "dd133dee5f8f37c1e392eb532a15f92bdee1cfaa99246342f2f0cf6751bc5e80",
+        "page_count": 1,
+        "extracted_chars": 7213,
+        "truncated": false,
+        "title": "Secretaria Municipal de Educação de Limeira-SP",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://sme.limeira.sp.gov.br/leis/Decreto_Municipal_05_de_03_janeiro_2024.pdf",
+        "type": "PDF",
+        "content_hash": "064c8bc0081639c6fd7960c5f1f15d8e6e20fc75a6bd3c8a445f78c180cceb35",
+        "page_count": 2,
+        "extracted_chars": 392,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://sme.limeira.sp.gov.br/leis/Lei%20N4137%20de%2028%20de%20maio%20de%202007.pdf",
+        "type": "PDF",
+        "content_hash": "90aaa06df4a3b4a16f5fc61cbcaf72a72e284f11913cfe864971607f31b7cf78",
+        "page_count": 1,
+        "extracted_chars": 1236,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://sme.limeira.sp.gov.br/leis/Lei%20N5882.pdf",
+        "type": "PDF",
+        "content_hash": "beb136901b8a5e1684db9854f5fb8047d2f24c5530b7561814b88e148d0ae718",
+        "page_count": 2,
+        "extracted_chars": 2486,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
+      }
+    ],
+    "reader_version": 5,
+    "applicable": false,
+    "reason": "O PCI lista 4 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
+    "errors": [
+      "https://www.avancasp.org.br/: HTTPError: 403 Client Error: Forbidden for url: https://www.avancasp.org.br/"
+    ],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL DE CONCURSO PÚBLICO 01/2026",
+        "url": null,
+        "pci_link_id": "1703337",
+        "pci_news_code": "59921a0c869d8ea08668d6903ba32fd0",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "EDITAL DE CONCURSO PÚBLICO 02/2026",
+        "url": null,
+        "pci_link_id": "1703338",
+        "pci_news_code": "59921a0c869d8ea08668d6903ba32fd0",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "EDITAL DE PRORROGAÇÃO DAS INSCRIÇÕES - CONCURSO PÚBLICO 01/2026",
+        "url": null,
+        "pci_link_id": "1704569",
+        "pci_news_code": "59921a0c869d8ea08668d6903ba32fd0",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "EDITAL DE PRORROGAÇÃO DAS INSCRIÇÕES - CONCURSO PÚBLICO 02/2026",
+        "url": null,
+        "pci_link_id": "1704570",
+        "pci_news_code": "59921a0c869d8ea08668d6903ba32fd0",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
+    ]
+  },
+  "https://www.pciconcursos.com.br/noticias/prefeitura-de-sao-jose-do-inhacora-rs-abre-processo-seletivo-para-formacao-de-cadastro-de-reserva": {
+    "status": "BLOCKED",
+    "checked_at": "2026-09-01T12:28:28-03:00",
+    "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/prefeitura-de-sao-jose-do-inhacora-rs-abre-processo-seletivo-para-formacao-de-cadastro-de-reserva",
+        "type": "PCI_HTML",
+        "content_hash": "178f496595cb222381e40ab3e0e2c27923692c57f9beca54d49fdd6907be2acc",
+        "page_count": 1,
+        "extracted_chars": 9301,
+        "truncated": false,
+        "title": "Prefeitura de São José do Inhacorá - RS abre processo seletivo para formação de cadastro de reserva",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      }
+    ],
+    "reader_version": 5,
+    "applicable": false,
+    "reason": "O PCI lista 1 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
+    "errors": [
+      "https://saojosedoinhacora.rs.gov.br/: ConnectTimeout: HTTPSConnectionPool(host='saojosedoinhacora.rs.gov.br', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<HTTPSConnection(host='saojosedoinhacora.rs.gov.br', port=443) at 0x7f0930a98fe0>, 'Connection to saojosedoinhacora.rs.gov.br timed out. (connect timeout=30)'))"
+    ],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL Nº 181/2026",
+        "url": null,
+        "pci_link_id": "1704602",
+        "pci_news_code": "c6cb9cf39674dad57c846a5f8550e927",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
+    ]
+  },
+  "https://www.pciconcursos.com.br/noticias/uerj-abre-concurso-publico-para-professor-adjunto-no-instituto-de-fisica": {
+    "status": "BLOCKED",
+    "checked_at": "2026-09-01T12:28:28-03:00",
+    "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/uerj-abre-concurso-publico-para-professor-adjunto-no-instituto-de-fisica",
+        "type": "PCI_HTML",
+        "content_hash": "777309958ea26d7d77397afbb7a12f0e0d6a5204a37ec8389f599eed30cde44f",
+        "page_count": 1,
+        "extracted_chars": 7246,
+        "truncated": false,
+        "title": "UERJ abre concurso público para professor adjunto no Instituto de Física",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      },
+      {
+        "url": "https://www.uerj.br/",
+        "type": "HTML",
+        "content_hash": "0abdd6b9fe67bb3e7420cbbc76792261fe53c47063ee15b4008a9158c9565dd8",
+        "page_count": 1,
+        "extracted_chars": 3268,
+        "truncated": false,
+        "title": "UERJ - Universidade do Estado do Rio de Janeiro - Universidade do Estado do Rio de Janeiro",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www.uerj.br/agenda/zeny-rosendahl-recebera-titulo-de-professora-emerita/",
+        "type": "HTML",
+        "content_hash": "6318d3ee1af8a0ae9bad93f0fbe90777db3dca3b06543a32cd5d2c73a52bf4d1",
+        "page_count": 1,
+        "extracted_chars": 2653,
+        "truncated": false,
+        "title": "Zeny Rosendahl receberá título de Professora Emérita da Uerj - UERJ - Universidade do Estado do Rio de Janeiro",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www.uerj.br/wp-content/uploads/2019/01/informe_uerj95.pdf",
+        "type": "PDF",
+        "content_hash": "9613efabaafc7521d7bbaa604074524d45806570f757644e5763675cd2fb58d6",
+        "page_count": 4,
+        "extracted_chars": 15995,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://www.uerj.br/wp-content/uploads/2019/09/UERJemQuestao-107_SITE.pdf",
+        "type": "PDF",
+        "content_hash": "a16473e71198d147a03d1b6f02956ce2b7a0f2488c267c2063d316a4b83d7972",
+        "page_count": 27,
+        "extracted_chars": 127982,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://www.uerj.br/wp-content/uploads/2019/12/988.pdf",
+        "type": "PDF",
+        "content_hash": "2e9c1d453dd7be986f67aec78268bb9952642b21f47d2602532eef38cff71f14",
+        "page_count": 2,
+        "extracted_chars": 5818,
+        "truncated": false,
+        "title": "988.indd",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://www.uerj.br/wp-content/uploads/2024/04/Guia_Uerj_de_Ramais_2024_3.pdf",
+        "type": "PDF",
+        "content_hash": "e01026548e1745911467ff4d81ed42c2095d0691bd90642a61e06cf8dd1a6f71",
+        "page_count": 440,
+        "extracted_chars": 471157,
+        "truncated": true,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://www.uerj.br/agenda/inscricoes-abertas-para-o-workshop-do-programa-de-pos-graduacao-em-quimica/",
+        "type": "HTML",
+        "content_hash": "4409274e9b7159341685185fbaa2234eb30453016b58949d4e696d50c85f6683",
+        "page_count": 1,
+        "extracted_chars": 2672,
+        "truncated": false,
+        "title": "Inscrições abertas para o Workshop do Programa de Pós-Graduação em Química - UERJ - Universidade do Estado do Rio de Janeiro",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      }
+    ],
+    "reader_version": 5,
+    "applicable": false,
+    "reason": "O PCI lista 1 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
+    "errors": [],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL - UERJ 234 PROFESSOR ADJUNTO FÍSICA FÍSICA GERAL",
+        "url": null,
+        "pci_link_id": "1704590",
+        "pci_news_code": "8a52eb52f031dfb41978bb46ce0c101f",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
+    ]
+  },
+  "https://www.pciconcursos.com.br/noticias/prefeitura-de-oliveira-fortes-mg-publica-retificacao-de-concurso-publico": {
+    "status": "BLOCKED",
+    "checked_at": "2026-09-01T12:28:28-03:00",
+    "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/prefeitura-de-oliveira-fortes-mg-publica-retificacao-de-concurso-publico",
+        "type": "PCI_HTML",
+        "content_hash": "f0728a247e3fc8d4590a9d06d387d5c476e8adc5e6b20f8a533b4c7e2923ba95",
+        "page_count": 1,
+        "extracted_chars": 18153,
+        "truncated": false,
+        "title": "Prefeitura de Oliveira Fortes - MG publica retificação de concurso público",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      },
+      {
+        "url": "https://oliveirafortes.mg.gov.br/",
+        "type": "HTML",
+        "content_hash": "33ed421d2fc42f0cf32c36b7d78213d89f1dd73384dc2ba2963da08226b0fa8d",
+        "page_count": 1,
+        "extracted_chars": 1856,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      }
+    ],
+    "reader_version": 5,
+    "applicable": false,
+    "reason": "O PCI lista 2 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
+    "errors": [
+      "https://www.auctorconsultoria.com.br/: HTTPError: 403 Client Error: Forbidden for url: https://www.auctorconsultoria.com.br/"
+    ],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL DE CONCURSO PÚBLICO Nº 01/2026",
+        "url": null,
+        "pci_link_id": "1701983",
+        "pci_news_code": "d18d7fe415c1f808551f88515dce262e",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "1ª RETIFICAÇÃO DO EDITAL DE CONCURSO PÚBLICO Nº 01/2026",
+        "url": null,
+        "pci_link_id": "1704612",
+        "pci_news_code": "d18d7fe415c1f808551f88515dce262e",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
+    ]
+  },
+  "https://www.pciconcursos.com.br/noticias/uerj-abre-concurso-para-professor-adjunto-na-area-de-nefrologia": {
+    "status": "BLOCKED",
+    "checked_at": "2026-09-01T12:28:28-03:00",
+    "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/uerj-abre-concurso-para-professor-adjunto-na-area-de-nefrologia",
+        "type": "PCI_HTML",
+        "content_hash": "a404661af9f7c974a081798fed650f4f2699d7f8081b4f02d34d6c2fffb8a714",
+        "page_count": 1,
+        "extracted_chars": 7273,
+        "truncated": false,
+        "title": "UERJ abre concurso para professor adjunto na área de nefrologia",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      },
+      {
+        "url": "https://www.uerj.br/",
+        "type": "HTML",
+        "content_hash": "0abdd6b9fe67bb3e7420cbbc76792261fe53c47063ee15b4008a9158c9565dd8",
+        "page_count": 1,
+        "extracted_chars": 3268,
+        "truncated": false,
+        "title": "UERJ - Universidade do Estado do Rio de Janeiro - Universidade do Estado do Rio de Janeiro",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www.uerj.br/wp-content/uploads/2019/01/informe_uerj95.pdf",
+        "type": "PDF",
+        "content_hash": "9613efabaafc7521d7bbaa604074524d45806570f757644e5763675cd2fb58d6",
+        "page_count": 4,
+        "extracted_chars": 15995,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://www.uerj.br/wp-content/uploads/2019/09/UERJemQuestao-107_SITE.pdf",
+        "type": "PDF",
+        "content_hash": "a16473e71198d147a03d1b6f02956ce2b7a0f2488c267c2063d316a4b83d7972",
+        "page_count": 27,
+        "extracted_chars": 127982,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://www.uerj.br/wp-content/uploads/2019/12/988.pdf",
+        "type": "PDF",
+        "content_hash": "2e9c1d453dd7be986f67aec78268bb9952642b21f47d2602532eef38cff71f14",
+        "page_count": 2,
+        "extracted_chars": 5818,
+        "truncated": false,
+        "title": "988.indd",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://www.uerj.br/wp-content/uploads/2024/04/Guia_Uerj_de_Ramais_2024_3.pdf",
+        "type": "PDF",
+        "content_hash": "e01026548e1745911467ff4d81ed42c2095d0691bd90642a61e06cf8dd1a6f71",
+        "page_count": 440,
+        "extracted_chars": 471157,
+        "truncated": true,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://www.uerj.br/agenda/inscricoes-abertas-para-o-workshop-do-programa-de-pos-graduacao-em-quimica/",
+        "type": "HTML",
+        "content_hash": "4409274e9b7159341685185fbaa2234eb30453016b58949d4e696d50c85f6683",
+        "page_count": 1,
+        "extracted_chars": 2672,
+        "truncated": false,
+        "title": "Inscrições abertas para o Workshop do Programa de Pós-Graduação em Química - UERJ - Universidade do Estado do Rio de Janeiro",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www.uerj.br/concursos-e-editais/",
+        "type": "HTML",
+        "content_hash": "2ef17707ac6280eb655d18ffe2a56ce0d8060c5c2534379487fc2c290cd867f2",
+        "page_count": 1,
+        "extracted_chars": 1327,
+        "truncated": false,
+        "title": "Concursos e Editais - UERJ - Universidade do Estado do Rio de Janeiro",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      }
+    ],
+    "reader_version": 5,
+    "applicable": false,
+    "reason": "O PCI lista 2 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
+    "errors": [],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL - PROFESSOR ADJUNTO NEFROLOGIA",
+        "url": null,
+        "pci_link_id": "1704592",
+        "pci_news_code": "8f44976ef474ab136049d18dcbeb417c",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "RETIFICAÇÃO",
+        "url": null,
+        "pci_link_id": "1704593",
+        "pci_news_code": "8f44976ef474ab136049d18dcbeb417c",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
+    ]
+  },
+  "https://www.pciconcursos.com.br/noticias/uerj-abre-concurso-publico-para-professor-adjunto-na-area-de-hematologia": {
+    "status": "BLOCKED",
+    "checked_at": "2026-09-01T12:28:28-03:00",
+    "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/uerj-abre-concurso-publico-para-professor-adjunto-na-area-de-hematologia",
+        "type": "PCI_HTML",
+        "content_hash": "436380e3cc7cb887885c6d3b5aef5850d6b815a7df3d40966cd76ea66e03fede",
+        "page_count": 1,
+        "extracted_chars": 7344,
+        "truncated": false,
+        "title": "UERJ abre concurso público para professor adjunto na área de hematologia",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      },
+      {
+        "url": "https://www.uerj.br/",
+        "type": "HTML",
+        "content_hash": "9e042310a38949ec029c0f06019069bbf7547642f7dedf41442131e30d5ae875",
+        "page_count": 1,
+        "extracted_chars": 3268,
+        "truncated": false,
+        "title": "UERJ - Universidade do Estado do Rio de Janeiro - Universidade do Estado do Rio de Janeiro",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www.uerj.br/wp-content/uploads/2019/01/informe_uerj95.pdf",
+        "type": "PDF",
+        "content_hash": "9613efabaafc7521d7bbaa604074524d45806570f757644e5763675cd2fb58d6",
+        "page_count": 4,
+        "extracted_chars": 15995,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://www.uerj.br/wp-content/uploads/2019/09/UERJemQuestao-107_SITE.pdf",
+        "type": "PDF",
+        "content_hash": "a16473e71198d147a03d1b6f02956ce2b7a0f2488c267c2063d316a4b83d7972",
+        "page_count": 27,
+        "extracted_chars": 127982,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://www.uerj.br/wp-content/uploads/2019/12/988.pdf",
+        "type": "PDF",
+        "content_hash": "2e9c1d453dd7be986f67aec78268bb9952642b21f47d2602532eef38cff71f14",
+        "page_count": 2,
+        "extracted_chars": 5818,
+        "truncated": false,
+        "title": "988.indd",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://www.uerj.br/wp-content/uploads/2024/04/Guia_Uerj_de_Ramais_2024_3.pdf",
+        "type": "PDF",
+        "content_hash": "e01026548e1745911467ff4d81ed42c2095d0691bd90642a61e06cf8dd1a6f71",
+        "page_count": 440,
+        "extracted_chars": 471157,
+        "truncated": true,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://www.uerj.br/agenda/inscricoes-abertas-para-o-workshop-do-programa-de-pos-graduacao-em-quimica/",
+        "type": "HTML",
+        "content_hash": "4409274e9b7159341685185fbaa2234eb30453016b58949d4e696d50c85f6683",
+        "page_count": 1,
+        "extracted_chars": 2672,
+        "truncated": false,
+        "title": "Inscrições abertas para o Workshop do Programa de Pós-Graduação em Química - UERJ - Universidade do Estado do Rio de Janeiro",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www.uerj.br/concursos-e-editais/",
+        "type": "HTML",
+        "content_hash": "2ef17707ac6280eb655d18ffe2a56ce0d8060c5c2534379487fc2c290cd867f2",
+        "page_count": 1,
+        "extracted_chars": 1327,
+        "truncated": false,
+        "title": "Concursos e Editais - UERJ - Universidade do Estado do Rio de Janeiro",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      }
+    ],
+    "reader_version": 5,
+    "applicable": false,
+    "reason": "O PCI lista 2 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
+    "errors": [],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL - UERJ 237 PROFESSOR ADJUNTO HEMATOLOGIA",
+        "url": null,
+        "pci_link_id": "1704594",
+        "pci_news_code": "5eb93ab3447dd1ba34f30697b22eb403",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "RETIFICAÇÃO",
+        "url": null,
+        "pci_link_id": "1704595",
+        "pci_news_code": "5eb93ab3447dd1ba34f30697b22eb403",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
+    ]
+  },
+  "https://www.pciconcursos.com.br/noticias/uerj-abre-concurso-publico-com-vaga-para-professor-adjunto-de-bioquimica": {
+    "status": "BLOCKED",
+    "checked_at": "2026-09-01T12:28:28-03:00",
+    "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/uerj-abre-concurso-publico-com-vaga-para-professor-adjunto-de-bioquimica",
+        "type": "PCI_HTML",
+        "content_hash": "8dcd5900a185f52f42d2d22aae1108465b978d07724100a52dde402da3d1fd24",
+        "page_count": 1,
+        "extracted_chars": 7458,
+        "truncated": false,
+        "title": "UERJ abre concurso público com vaga para professor adjunto de Bioquímica",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      },
+      {
+        "url": "https://www.uerj.br/",
+        "type": "HTML",
+        "content_hash": "9e042310a38949ec029c0f06019069bbf7547642f7dedf41442131e30d5ae875",
+        "page_count": 1,
+        "extracted_chars": 3268,
+        "truncated": false,
+        "title": "UERJ - Universidade do Estado do Rio de Janeiro - Universidade do Estado do Rio de Janeiro",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www.uerj.br/wp-content/uploads/2019/01/informe_uerj95.pdf",
+        "type": "PDF",
+        "content_hash": "9613efabaafc7521d7bbaa604074524d45806570f757644e5763675cd2fb58d6",
+        "page_count": 4,
+        "extracted_chars": 15995,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://www.uerj.br/wp-content/uploads/2019/09/UERJemQuestao-107_SITE.pdf",
+        "type": "PDF",
+        "content_hash": "a16473e71198d147a03d1b6f02956ce2b7a0f2488c267c2063d316a4b83d7972",
+        "page_count": 27,
+        "extracted_chars": 127982,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://www.uerj.br/wp-content/uploads/2019/12/988.pdf",
+        "type": "PDF",
+        "content_hash": "2e9c1d453dd7be986f67aec78268bb9952642b21f47d2602532eef38cff71f14",
+        "page_count": 2,
+        "extracted_chars": 5818,
+        "truncated": false,
+        "title": "988.indd",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://www.uerj.br/wp-content/uploads/2024/04/Guia_Uerj_de_Ramais_2024_3.pdf",
+        "type": "PDF",
+        "content_hash": "e01026548e1745911467ff4d81ed42c2095d0691bd90642a61e06cf8dd1a6f71",
+        "page_count": 440,
+        "extracted_chars": 471157,
+        "truncated": true,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://www.uerj.br/agenda/inscricoes-abertas-para-o-workshop-do-programa-de-pos-graduacao-em-quimica/",
+        "type": "HTML",
+        "content_hash": "4409274e9b7159341685185fbaa2234eb30453016b58949d4e696d50c85f6683",
+        "page_count": 1,
+        "extracted_chars": 2672,
+        "truncated": false,
+        "title": "Inscrições abertas para o Workshop do Programa de Pós-Graduação em Química - UERJ - Universidade do Estado do Rio de Janeiro",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www.uerj.br/concursos-e-editais/",
+        "type": "HTML",
+        "content_hash": "2ef17707ac6280eb655d18ffe2a56ce0d8060c5c2534379487fc2c290cd867f2",
+        "page_count": 1,
+        "extracted_chars": 1327,
+        "truncated": false,
+        "title": "Concursos e Editais - UERJ - Universidade do Estado do Rio de Janeiro",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      }
+    ],
+    "reader_version": 5,
+    "applicable": false,
+    "reason": "O PCI lista 1 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
+    "errors": [],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL - UERJ 227 PROFESSOR ADJUNTO BIOQUÍMICA",
+        "url": null,
+        "pci_link_id": "1704597",
+        "pci_news_code": "ec2903ed1e00330481c522c72e266b49",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
+    ]
+  },
+  "https://www.pciconcursos.com.br/noticias/uerj-rj-abre-vaga-para-professor-adjunto-de-cardiologia-em-cabo-frio": {
+    "status": "BLOCKED",
+    "checked_at": "2026-09-01T12:28:28-03:00",
+    "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/uerj-rj-abre-vaga-para-professor-adjunto-de-cardiologia-em-cabo-frio",
+        "type": "PCI_HTML",
+        "content_hash": "1a8f2d708149155a2f6b8b267484975f0afa2c3c574b47f89a72d62a75af381c",
+        "page_count": 1,
+        "extracted_chars": 7308,
+        "truncated": false,
+        "title": "UERJ - RJ abre vaga para professor adjunto de cardiologia em Cabo Frio",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      },
+      {
+        "url": "https://www.uerj.br/",
+        "type": "HTML",
+        "content_hash": "9e042310a38949ec029c0f06019069bbf7547642f7dedf41442131e30d5ae875",
+        "page_count": 1,
+        "extracted_chars": 3268,
+        "truncated": false,
+        "title": "UERJ - Universidade do Estado do Rio de Janeiro - Universidade do Estado do Rio de Janeiro",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www.uerj.br/wp-content/uploads/2019/01/informe_uerj95.pdf",
+        "type": "PDF",
+        "content_hash": "9613efabaafc7521d7bbaa604074524d45806570f757644e5763675cd2fb58d6",
+        "page_count": 4,
+        "extracted_chars": 15995,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://www.uerj.br/wp-content/uploads/2019/09/UERJemQuestao-107_SITE.pdf",
+        "type": "PDF",
+        "content_hash": "a16473e71198d147a03d1b6f02956ce2b7a0f2488c267c2063d316a4b83d7972",
+        "page_count": 27,
+        "extracted_chars": 127982,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://www.uerj.br/wp-content/uploads/2019/12/988.pdf",
+        "type": "PDF",
+        "content_hash": "2e9c1d453dd7be986f67aec78268bb9952642b21f47d2602532eef38cff71f14",
+        "page_count": 2,
+        "extracted_chars": 5818,
+        "truncated": false,
+        "title": "988.indd",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://www.uerj.br/wp-content/uploads/2024/04/Guia_Uerj_de_Ramais_2024_3.pdf",
+        "type": "PDF",
+        "content_hash": "e01026548e1745911467ff4d81ed42c2095d0691bd90642a61e06cf8dd1a6f71",
+        "page_count": 440,
+        "extracted_chars": 471157,
+        "truncated": true,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://www.uerj.br/agenda/inscricoes-abertas-para-o-workshop-do-programa-de-pos-graduacao-em-quimica/",
+        "type": "HTML",
+        "content_hash": "4409274e9b7159341685185fbaa2234eb30453016b58949d4e696d50c85f6683",
+        "page_count": 1,
+        "extracted_chars": 2672,
+        "truncated": false,
+        "title": "Inscrições abertas para o Workshop do Programa de Pós-Graduação em Química - UERJ - Universidade do Estado do Rio de Janeiro",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www.uerj.br/concursos-e-editais/",
+        "type": "HTML",
+        "content_hash": "2ef17707ac6280eb655d18ffe2a56ce0d8060c5c2534379487fc2c290cd867f2",
+        "page_count": 1,
+        "extracted_chars": 1327,
+        "truncated": false,
+        "title": "Concursos e Editais - UERJ - Universidade do Estado do Rio de Janeiro",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      }
+    ],
+    "reader_version": 5,
+    "applicable": false,
+    "reason": "O PCI lista 1 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
+    "errors": [],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL - UERJ 228 PROFESSOR ADJUNTO CARDIOLOGIA",
+        "url": null,
+        "pci_link_id": "1704596",
+        "pci_news_code": "23d133c8e3fd6013f20c426c403ff290",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
+    ]
+  },
+  "https://www.pciconcursos.com.br/noticias/uerj-abre-concurso-para-professor-adjunto-na-area-de-engenharia-economica": {
+    "status": "BLOCKED",
+    "checked_at": "2026-09-01T12:28:28-03:00",
+    "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/uerj-abre-concurso-para-professor-adjunto-na-area-de-engenharia-economica",
+        "type": "PCI_HTML",
+        "content_hash": "5df3075b31bd5fb48ff43d67e5b5598897aab0b7052e4b58d7f169b4bd889280",
+        "page_count": 1,
+        "extracted_chars": 7668,
+        "truncated": false,
+        "title": "UERJ abre concurso para professor adjunto na área de engenharia econômica",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      },
+      {
+        "url": "https://www.uerj.br/",
+        "type": "HTML",
+        "content_hash": "9c532844af0d0c75cbf31453a98788806cbd91fd69b8770de0f29124ba598435",
+        "page_count": 1,
+        "extracted_chars": 3268,
+        "truncated": false,
+        "title": "UERJ - Universidade do Estado do Rio de Janeiro - Universidade do Estado do Rio de Janeiro",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www.uerj.br/wp-content/uploads/2019/01/informe_uerj95.pdf",
+        "type": "PDF",
+        "content_hash": "9613efabaafc7521d7bbaa604074524d45806570f757644e5763675cd2fb58d6",
+        "page_count": 4,
+        "extracted_chars": 15995,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://www.uerj.br/wp-content/uploads/2019/09/UERJemQuestao-107_SITE.pdf",
+        "type": "PDF",
+        "content_hash": "a16473e71198d147a03d1b6f02956ce2b7a0f2488c267c2063d316a4b83d7972",
+        "page_count": 27,
+        "extracted_chars": 127982,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://www.uerj.br/wp-content/uploads/2019/12/988.pdf",
+        "type": "PDF",
+        "content_hash": "2e9c1d453dd7be986f67aec78268bb9952642b21f47d2602532eef38cff71f14",
+        "page_count": 2,
+        "extracted_chars": 5818,
+        "truncated": false,
+        "title": "988.indd",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://www.uerj.br/wp-content/uploads/2024/04/Guia_Uerj_de_Ramais_2024_3.pdf",
+        "type": "PDF",
+        "content_hash": "e01026548e1745911467ff4d81ed42c2095d0691bd90642a61e06cf8dd1a6f71",
+        "page_count": 440,
+        "extracted_chars": 471157,
+        "truncated": true,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://www.uerj.br/agenda/inscricoes-abertas-para-o-workshop-do-programa-de-pos-graduacao-em-quimica/",
+        "type": "HTML",
+        "content_hash": "4409274e9b7159341685185fbaa2234eb30453016b58949d4e696d50c85f6683",
+        "page_count": 1,
+        "extracted_chars": 2672,
+        "truncated": false,
+        "title": "Inscrições abertas para o Workshop do Programa de Pós-Graduação em Química - UERJ - Universidade do Estado do Rio de Janeiro",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      },
+      {
+        "url": "https://www.uerj.br/concursos-e-editais/",
+        "type": "HTML",
+        "content_hash": "2ef17707ac6280eb655d18ffe2a56ce0d8060c5c2534379487fc2c290cd867f2",
+        "page_count": 1,
+        "extracted_chars": 1327,
+        "truncated": false,
+        "title": "Concursos e Editais - UERJ - Universidade do Estado do Rio de Janeiro",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+      }
+    ],
+    "reader_version": 5,
+    "applicable": false,
+    "reason": "O PCI lista 1 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
+    "errors": [],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL - UERJ 239 PROFESSOR ADJUNTO ENGENHARIA ECONÔMICA",
+        "url": null,
+        "pci_link_id": "1704598",
+        "pci_news_code": "7948b670e0a9083266137d4ba58b1f5f",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
+    ]
   }
 }
