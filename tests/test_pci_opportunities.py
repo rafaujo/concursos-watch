@@ -8,7 +8,12 @@ from pathlib import Path
 
 import pytest
 
-from src.parser import extract_pci_opportunities, parse_cargo_item, parse_pci_detail
+from src.parser import (
+    extract_pci_opportunities,
+    extract_pci_opportunities_from_text,
+    parse_cargo_item,
+    parse_pci_detail,
+)
 from src.report import (
     _expanded_rows,
     _joined_for_display,
@@ -199,3 +204,70 @@ class TestReportExpansion:
         document = output.read_text(encoding="utf-8")
         assert '<select id="course">' in document
         assert 'data-course="Computação"' in document
+
+
+class TestCargoRecoveryFromProse:
+    """Recovering the cargo list when only the flattened text is stored.
+
+    The <li> reader only runs when a notice is fetched again, so 115 vacancies
+    stored before it existed showed "abre vagas" and expanded into nothing —
+    UFSCar's 66 cargos among them. Each cargo in the prose ends with its own
+    count or reserve marker, which makes the list recoverable at render time.
+    """
+
+    UFSCAR = (
+        "A Universidade Federal de São Carlos (UFSCar) publicou um edital. "
+        "Segundo o edital, as oportunidades são para os cargos de: "
+        "Professor de Organizações (1 vaga) "
+        "Professor de Engenharia de Produção - Tecnologia e Trabalho (1 vaga) "
+        "Professor de Química (3 vagas) "
+        "A jornada é de 40 horas semanais."
+    )
+
+    def test_recovers_each_cargo_with_its_count(self):
+        found = extract_pci_opportunities_from_text(self.UFSCAR)
+        assert [item["course"] for item in found] == [
+            "Organizações", "Engenharia de Produção - Tecnologia e Trabalho", "Química",
+        ]
+        assert [item["vacancies_count"] for item in found] == [1, 1, 3]
+
+    def test_trailing_prose_is_not_a_cargo(self):
+        cargos = " ".join(i["cargo"] for i in extract_pci_opportunities_from_text(self.UFSCAR))
+        assert "jornada" not in cargos.lower()
+
+    def test_edital_heading_does_not_become_part_of_the_cargo(self):
+        text = ("as oportunidades são para os cargos de: EDITAL Nº 002/2026 "
+                "Professor de Humanas (5 vagas)")
+        found = extract_pci_opportunities_from_text(text)
+        assert len(found) == 1
+        assert found[0]["course"] == "Humanas"
+        assert "EDITAL" not in found[0]["cargo"]
+
+    def test_consecutive_cargos_without_their_own_count_are_split(self):
+        # Only the last carries the marker; the earlier ones must not be
+        # swallowed into a single 160-character "course".
+        text = ("as oportunidades são para os cargos de: "
+                "Professor do Ensino Fundamental - Ciências "
+                "Professor do Ensino Fundamental - Geografia (2 vagas)")
+        courses = [i["course"] for i in extract_pci_opportunities_from_text(text)]
+        assert courses == [
+            "Ensino Fundamental - Ciências", "Ensino Fundamental - Geografia",
+        ]
+
+    def test_non_teaching_cargos_are_left_out(self):
+        text = ("as oportunidades são para os cargos de: Motorista (Cadastro de Reserva) "
+                "Enfermeiro Padrão (1 vaga) Professor PEB II - Matemática (Cadastro de Reserva)")
+        found = extract_pci_opportunities_from_text(text)
+        assert len(found) == 1
+        assert found[0]["course"] == "PEB II - Matemática"
+        assert found[0]["reserve_only"] is True
+
+    def test_career_wrapper_is_not_the_course(self):
+        assert parse_cargo_item(
+            "Professor da Carreira do Magistério Superior - Terapia Ocupacional (1 vaga)"
+        )["course"] == "Terapia Ocupacional"
+
+    def test_a_notice_without_the_marker_yields_nothing(self):
+        assert extract_pci_opportunities_from_text(
+            "A universidade abre uma vaga para Professor Adjunto."
+        ) == []

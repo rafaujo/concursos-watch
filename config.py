@@ -27,7 +27,7 @@ OFFICIAL_READER_VERSION = 5
 # None means every due professor notice is reviewed. The cache still prevents
 # unchanged editais from being downloaded on every daily execution.
 OFFICIAL_MAX_VACANCIES_PER_RUN = None
-OFFICIAL_MAX_LINKS_PER_VACANCY = 8
+OFFICIAL_MAX_LINKS_PER_VACANCY = 12
 OFFICIAL_MAX_DEPTH = 2
 OFFICIAL_MAX_DOCUMENT_BYTES = 20 * 1024 * 1024
 OFFICIAL_MAX_PDF_PAGES = 400
@@ -157,3 +157,36 @@ GEOGRAPHIC_PRIORITIES = {
 # isso — acontece, o documento é lido assim mesmo e fica marcado. Certificado
 # expirado, autoassinado ou emitido para outro nome continua recusado.
 OFFICIAL_ALLOW_INCOMPLETE_CHAIN = True
+
+# 79% das vagas gastavam o orçamento inteiro do crawler, e 17% dos acessos iam
+# para páginas que nunca conteriam um edital. Excluir o previsível é mais
+# barato que aumentar o orçamento — e as duas coisas juntas rendem mais.
+EXCLUDED_LINK_DOMAINS = (
+    "twitter.com", "x.com", "facebook.com", "linkedin.com", "whatsapp.com",
+    "instagram.com", "threads.com", "youtube.com", "youtu.be", "t.me",
+    "tiktok.com", "bsky.app", "pinterest.com", "flickr.com", "linktr.ee",
+    "mastodon.social", "telegram.me",
+)
+
+# Subdomínios de comunicação institucional: existem, são muito linkados, e
+# nunca hospedam o edital.
+EXCLUDED_LINK_SUBDOMAINS = (
+    "podcast", "jornal", "radio", "tv", "blog", "agencia", "webmail",
+)
+
+# Caminhos que nunca contêm um edital, em nenhum tipo de site. Páginas de
+# notícia ficam de fora desta lista de propósito: prefeituras pequenas anunciam
+# o concurso como notícia, e três editais reais foram encontrados assim. Elas
+# são desclassificadas pela pontuação abaixo, não proibidas.
+EXCLUDED_LINK_PATHS = (
+    "/login", "/signin", "/cadastro", "/senha", "/minha-conta",
+    "/busca", "/search", "/sitemap", "/rss", "/feed",
+    "/fale-conosco", "/contato", "/podcast",
+)
+
+# Termos que empurram um link para o fim da fila sem removê-lo: se não houver
+# candidato melhor, ainda vale gastar um acesso.
+DEPRIORITIZED_LINK_TERMS = (
+    "noticia", "noticias", "agenda", "evento", "imprensa", "midia",
+    "legislacao", "portaria", "decreto", "galeria", "webmail",
+)

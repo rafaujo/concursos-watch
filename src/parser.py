@@ -99,9 +99,12 @@ ROLE_PREFIX = re.compile(
     r"^(?:professor(?:a)?|docente|instrutor(?:a)?)"
     r"(?:\s+(?:licenciad[oa]|habilitad[oa]|n[aã]o\s+habilitad[oa]|substitut[oa]|"
     r"tempor[aá]ri[oa]|titular|adjunt[oa]|assistente|doutor(?:a)?|visitante|"
-    r"colaborador(?:a)?|auxiliar|com|de\s+n[ií]vel\s+\w+))*"
+    r"colaborador(?:a)?|auxiliar|com|de\s+n[ií]vel\s+\w+|"
+    r"(?:d[ao]\s+)?(?:carreira\s+d[ao]\s+)?magist[eé]rio(?:\s+superior)?|"
+    r"/pesquisador(?:a)?|do\s+ensino\s+superior))*"
     r"\s*(?::?\s*[aá]rea\s*[-–:]\s*)?"
-    r"(?:\s*(?:de|da|do|das|dos|em|na|no|para)\s+)?",
+    r"(?:\s*(?:de|da|do|das|dos|em|na|no|para)\s+)?"
+    r"(?:[aá]reas?\s+de\s+)?",
     re.I,
 )
 
@@ -198,6 +201,55 @@ def parse_cargo_item(text: str) -> dict[str, Any] | None:
         "vacancies_count": vacancies_count,
         "reserve_only": reserve and vacancies_count is None,
     }
+
+
+CARGO_LIST_MARKER = re.compile(
+    r"as oportunidades s[aã]o para os? cargos? de\s*:\s*", re.I
+)
+
+# In flattened prose every cargo ends with its own count or reserve marker, so
+# the closing parenthesis is a reliable boundary between one and the next.
+CARGO_TEXT_BOUNDARY = re.compile(
+    r"(.{3,180}?\(\s*(?:\d+\s*vagas?(?:\s*\+\s*(?:CR|cadastro de reserva))?|"
+    r"CR|cadastro de reserva)\s*\))",
+    re.I,
+)
+
+
+# Each cargo in a flattened list begins with its role word.
+ROLE_BOUNDARY = re.compile(r"(?=\bProfessor(?:a)?\b|\bDocente\b|\bInstrutor(?:a)?\b)", re.I)
+
+
+def extract_pci_opportunities_from_text(raw_text: Any) -> list[dict[str, Any]]:
+    """Recover the cargo list from prose when the markup is unavailable.
+
+    The <li> reading below is better and stays the first choice, but it only
+    runs when a notice is fetched again. Records stored before it existed keep
+    their flattened raw_text, and this recovers their cargos at render time
+    instead of leaving the vacancy unexpanded until its recheck window expires.
+    """
+    text = clean_text(str(raw_text or ""))
+    marker = CARGO_LIST_MARKER.search(text)
+    if not marker:
+        return []
+    opportunities: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for match in CARGO_TEXT_BOUNDARY.finditer(text[marker.end():]):
+        # One chunk can hold several cargos when the ones before the last carry
+        # no count of their own, and it can start with an edital heading. Both
+        # are separated by the role word, so split there and let the
+        # non-teaching leftovers fall out on their own.
+        chunk = match.group(1).strip(" .;,")
+        for piece in ROLE_BOUNDARY.split(chunk):
+            parsed = parse_cargo_item(piece.strip(" .;,-–"))
+            if not parsed:
+                continue
+            key = normalize_text(parsed["cargo"])
+            if key in seen:
+                continue
+            seen.add(key)
+            opportunities.append(parsed)
+    return opportunities
 
 
 def extract_pci_opportunities(body: Any) -> list[dict[str, Any]]:

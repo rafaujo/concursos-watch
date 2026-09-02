@@ -12,7 +12,7 @@ from zoneinfo import ZoneInfo
 
 import config
 from .classifier import institution_type
-from .parser import parse_cargo_item
+from .parser import extract_pci_opportunities_from_text, parse_cargo_item
 from .requirements import (
     clean_requirement_context,
     extract_requirement_fields,
@@ -104,6 +104,14 @@ def _expanded_rows(vacancies: list[dict[str, Any]]) -> list[dict[str, Any]]:
                 rows.append(row)
         elif vacancy.get("pci_opportunities"):
             rows.extend(_pci_opportunity_rows(vacancy))
+        elif extract_pci_opportunities_from_text(vacancy.get("raw_text")):
+            # Stored before the cargo reader existed. Recovering the list from
+            # the prose here means the vacancy expands on the next build rather
+            # than waiting weeks for its recheck window.
+            rows.extend(_pci_opportunity_rows({
+                **vacancy,
+                "pci_opportunities": extract_pci_opportunities_from_text(vacancy.get("raw_text")),
+            }))
         else:
             rows.append({**vacancy, "_is_subvacancy": False, "_parent_title": vacancy.get("title")})
     return rows
@@ -159,6 +167,31 @@ def _pci_opportunity_rows(vacancy: dict[str, Any]) -> list[dict[str, Any]]:
 
 POST_HINT = re.compile(r"\bp[oó]s\b|p[oó]s[- ]gradua|especializa|mestrado|doutorado", re.I)
 
+# A degree name with nothing else in it: "Mestrado", "Mestrado e Doutorado",
+# "graduação". The source did not say in what field.
+DEGREE_WORDS = re.compile(
+    r"(?:p[oó]s[- ]?gradua[cç][aã]o|mestrado|doutorado|especializa[cç][aã]o|"
+    r"gradua[cç][aã]o|bacharelado|licenciatura|t[ií]tulo\s+de\s+(?:mestre|doutor)|"
+    r"grau\s+de\s+(?:mestre|doutor)|conclu[ií]d[oa]s?|stricto\s+sensu|lato\s+sensu|"
+    r"\bem\b|\bna\b|\bde\b|\be\b|\bou\b|[\s,;()/-])+",
+    re.I,
+)
+
+
+def _mark_if_area_is_missing(value: str) -> str:
+    """Say when a degree comes without its field, instead of implying it did not.
+
+    "Mestrado" on its own reads like a complete requirement. It is not — the
+    notice simply never said in what, and the reader has to open the edital to
+    find out. Naming that is more useful than a word that looks finished.
+    """
+    if not value or value == "Não informado":
+        return value
+    remainder = DEGREE_WORDS.sub("", value).strip(" .,;:-–/()")
+    if remainder:
+        return value
+    return f"{value} — área não informada"
+
 
 def _hint_category(value: Any) -> str | None:
     """Place a short PCI formation hint ("Magistério", "Pós") in the right column."""
@@ -211,7 +244,10 @@ def _structured_requirements(v: dict[str, Any]) -> tuple[str, str]:
         for post in separated["postgraduate"]:
             if post and post not in post_parts:
                 post_parts.append(post)
-    return _joined_for_display(graduation_parts), _joined_for_display(post_parts)
+    return (
+        _mark_if_area_is_missing(_joined_for_display(graduation_parts)),
+        _mark_if_area_is_missing(_joined_for_display(post_parts)),
+    )
 
 
 # Each run is bounded on its own, but a cell that concatenates several of them

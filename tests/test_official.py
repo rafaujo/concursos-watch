@@ -11,6 +11,7 @@ from src.official import (
     extract_candidate_links,
     extract_requirement_evidence,
     extract_structured_opportunities,
+    is_excluded_link,
     OfficialDocumentReader,
     score_candidate_link,
     should_check_official,
@@ -101,7 +102,50 @@ def test_document_relevance_rejects_unrelated_institutional_pdf():
         "https://sites.uel.br/manual-vestibular.pdf",
     )
     assert relevant is False
-    assert "seleção para cargo docente" in reason
+    assert "não é um edital" in reason
+
+
+class TestRelevanceGate:
+    """What counts as a teaching selection at all.
+
+    Requiring one of ten fixed phrases rejected 94 real editais out of 192
+    downloaded PDFs — a municipal notice heads itself "CONCURSO PÚBLICO Nº
+    001/2026" and names the cargo in a table, matching none of them. The gate
+    now asks two independent questions, and the scoping checks that follow
+    still decide whether the document concerns this particular vacancy.
+    """
+
+    VAGA = {
+        "area": "Não identificada",
+        "institution": "Prefeitura de Riolândia",
+        "title": "Prefeitura de Riolândia - SP abre concurso para professores",
+    }
+
+    def test_accepts_a_municipal_edital_that_never_uses_the_old_phrasing(self):
+        texto = (
+            "PREFEITURA MUNICIPAL DE RIOLÂNDIA. CONCURSO PÚBLICO Nº 001/2026. "
+            "O Prefeito faz saber que estarão abertas as inscrições. "
+            "QUADRO DE CARGOS: PROFESSOR DE EDUCAÇÃO BÁSICA I — 5 vagas — "
+            "requisito: licenciatura plena em Pedagogia."
+        )
+        relevant, _ = assess_document_relevance([(1, texto)], self.VAGA, "https://x/edital.pdf")
+        assert relevant is True
+
+    @pytest.mark.parametrize("texto", [
+        "Aviso de cookies. Este site utiliza cookies para melhorar sua experiência.",
+        "Aviso de privacidade. Tratamos seus dados conforme a LGPD.",
+        "Decreto Municipal nº 05 de 03 de janeiro de 2024. Dispõe sobre o horário de expediente.",
+    ])
+    def test_still_rejects_documents_that_are_not_selections(self, texto):
+        relevant, _ = assess_document_relevance([(1, texto)], self.VAGA, "https://x/y.pdf")
+        assert relevant is False
+
+    def test_rejects_a_selection_with_no_teaching_cargo(self):
+        texto = ("CONCURSO PÚBLICO Nº 003/2026 para provimento de cargos de "
+                 "Agente Administrativo e Fiscal de Tributos. Inscrições abertas.")
+        relevant, reason = assess_document_relevance([(1, texto)], self.VAGA, "https://x/y.pdf")
+        assert relevant is False
+        assert "cargo docente" in reason
 
 
 def test_document_relevance_accepts_matching_teaching_area():
@@ -285,3 +329,84 @@ def test_frontier_explores_the_best_link_before_weaker_ones(monkeypatch):
     followed = [u for u in visited if u not in (pci_url, portal)]
     assert followed, "o crawler deveria seguir algum link do portal"
     assert "edital-professor.pdf" in followed[0], f"seguiu {followed[0]} antes do edital"
+
+
+class TestLinkExclusion:
+    """Not spending an access on a page that cannot hold an edital.
+
+    79% of vacancies were exhausting the crawl budget, and 17% of accesses went
+    to pages that never contain one — an access wasted here is an edital not
+    read somewhere else.
+    """
+
+    @pytest.mark.parametrize("url", [
+        "https://www.threads.com/login?next=x",
+        "https://www.facebook.com/universidade",
+        "https://podcast.unesp.br/18854/algum-episodio",
+        "https://jornal.unesp.br/2026/08/28/a-odisseia-e-tema-do-prato-do-dia/",
+        "https://universidade.example/busca?q=edital",
+        "https://universidade.example/fale-conosco",
+        "https://www.pciconcursos.com.br/apostilas/prefeitura-de-limeira-sp",
+    ])
+    def test_useless_links_are_excluded(self, url):
+        assert is_excluded_link(url) is True
+
+    @pytest.mark.parametrize("url", [
+        # Real edital announcements found on municipal news pages. Blocking
+        # /noticia/ outright cost three genuine documents.
+        "https://www.vgsul.sp.gov.br/noticia/7307/a-prefeitura-publicou-edital-de-concurso-publico-para-diversos-cargos/",
+        "https://www.vgsul.sp.gov.br/noticia/7308/estao-abertas-as-inscricoes-para-o-concurso-publico-n-0012026/",
+        "https://anicuns.go.gov.br/noticias",
+        "https://universidade.example/concursos/edital-12-2026.pdf",
+        "https://inscricoes.unesp.br/",
+        "https://www.pciconcursos.com.br/noticias/unesp-abre-concurso",
+    ])
+    def test_plausible_sources_are_kept(self, url):
+        assert is_excluded_link(url) is False
+
+    def test_news_links_are_deprioritised_below_edital_links(self):
+        vacancy = {"area": "Fonoaudiologia", "title": "Concurso para professor"}
+        edital = score_candidate_link(
+            "Edital de concurso", "https://universidade.example/edital-12-2026.pdf", vacancy
+        )
+        noticia = score_candidate_link(
+            "Notícias da semana", "https://universidade.example/noticias/semana", vacancy
+        )
+        assert edital > noticia
+
+    def test_a_news_page_that_names_the_edital_still_competes(self):
+        vacancy = {"area": "Não identificada", "title": "Concurso público"}
+        assert score_candidate_link(
+            "Prefeitura publicou edital de concurso público",
+            "https://cidade.sp.gov.br/noticia/7307/edital-de-concurso-publico/",
+            vacancy,
+        ) >= 20, "precisa continuar acima do corte de aceitação"
+
+
+def test_right_institution_wrong_area_is_still_rejected():
+    """Institution alone must not override a known area.
+
+    UNESP runs many simultaneous concursos. A document that is unmistakably
+    UNESP's is still the wrong document for a UNESP vacancy in another field,
+    and attributing its requirements would be worse than reporting none.
+    """
+    relevant, reason = assess_document_relevance(
+        [(1, "UNESP. Edital de concurso público para professor substituto na área de Fonoaudiologia.")],
+        {"area": "Música e Tecnologia", "institution": "UNESP - Universidade Estadual Paulista",
+         "title": "UNESP abre concurso para professor de Música"},
+        "https://www2.unesp.br/edital.pdf",
+    )
+    assert relevant is False
+    assert "área" in reason
+
+
+def test_institution_name_scopes_a_notice_without_an_area():
+    relevant, reason = assess_document_relevance(
+        [(1, "PREFEITURA MUNICIPAL DE RIOLÂNDIA. CONCURSO PÚBLICO Nº 001/2026. "
+             "Cargo: PROFESSOR DE EDUCAÇÃO BÁSICA I. Requisito: licenciatura em Pedagogia.")],
+        {"area": "Não identificada", "institution": "Prefeitura de Riolândia",
+         "title": "Prefeitura de Riolândia - SP abre concurso"},
+        "https://riolandia.sp.gov.br/edital.pdf",
+    )
+    assert relevant is True
+    assert "riolandia" in reason.lower()

@@ -108,14 +108,24 @@ def assess_document_relevance(
 ) -> tuple[bool, str]:
     """Require evidence that the document concerns this teaching selection."""
     text = normalize_text(" ".join(page_text for _, page_text in pages))
-    employment_markers = (
-        "concurso publico para professor", "concurso para professor",
-        "processo seletivo simplificado", "teste seletivo",
-        "selecao para professor", "selecao de professor", "vaga para professor",
-        "cargo de professor", "magisterio superior", "docente temporario",
+    # Two independent signals instead of one exact phrase. Requiring a fixed
+    # wording rejected 94 real editais: a municipal notice writes "CONCURSO
+    # PÚBLICO Nº 001/2026" in its heading and "PROFESSOR DE EDUCAÇÃO BÁSICA" in
+    # a table, and matches none of the phrases the previous list demanded. The
+    # scoping checks below still decide whether the document is about *this*
+    # vacancy, so this gate only has to exclude documents that are not a
+    # teaching selection at all — cookie notices, privacy policies, decrees.
+    selection_markers = (
+        "edital", "concurso publico", "concurso", "processo seletivo",
+        "selecao publica", "teste seletivo", "chamada publica",
     )
-    if not any(marker in text for marker in employment_markers):
-        return False, "O documento não foi identificado como seleção para cargo docente."
+    teaching_markers = (
+        "professor", "professora", "docente", "magisterio", "regente de classe",
+    )
+    if not any(marker in text for marker in selection_markers):
+        return False, "O documento não é um edital ou aviso de seleção."
+    if not any(marker in text for marker in teaching_markers):
+        return False, "O documento é uma seleção, mas não menciona cargo docente."
 
     identifier_pattern = re.compile(
         r"(?:edital|concurso)\s*(?:n(?:o|º|°)?\.?\s*)?(\d{1,5}(?:\s*[/.-]\s*\d{2,4})?)",
@@ -134,6 +144,19 @@ def assess_document_relevance(
         if overlap:
             return True, f"Documento docente associado à área por: {', '.join(overlap[:5])}."
         return False, "O documento docente não menciona a área identificada no anúncio."
+
+    # No usable area. The institution's own distinctive name is then the best
+    # signal left — deliberately checked only here, because for a vacancy whose
+    # area IS known the area must match: a UNESP edital for Fonoaudiologia is
+    # the wrong document for a UNESP vacancy in Música, however right the
+    # institution is.
+    institution_tokens = _tokens(str(vacancy.get("institution") or "")) - {
+        "prefeitura", "municipal", "municipio", "estado", "estadual", "federal",
+        "secretaria", "educacao", "camara", "instituto", "fundacao",
+    }
+    named = sorted(token for token in institution_tokens if token in text)
+    if named:
+        return True, f"Documento de seleção docente da instituição: {', '.join(named[:3])}."
 
     title_tokens = _tokens(" ".join(str(vacancy.get(key) or "") for key in ("title", "description")))
     normalized_url = normalize_text(document_url)
@@ -320,6 +343,10 @@ def score_candidate_link(label: str, url: str, vacancy: Mapping[str, Any]) -> in
     if any(term in combined for term in ("professor", "docente", "magisterio")):
         score += 20
     score += min(30, 6 * sum(token in combined for token in vacancy_context_tokens(vacancy)))
+    if any(term in combined for term in config.DEPRIORITIZED_LINK_TERMS):
+        # Not disqualifying: a small city hall may announce its edital in a news
+        # item. Just never ahead of a link that names the edital itself.
+        score -= 30
     if any(term in combined for term in (
         "resultado", "gabarito", "homologacao", "isencao", "login",
         "vestibular", "premio", "bolsa", "residencia", "licitacao",
@@ -329,6 +356,31 @@ def score_candidate_link(label: str, url: str, vacancy: Mapping[str, Any]) -> in
     )):
         score -= 120
     return score
+
+
+def is_excluded_link(url: str, base_host: str = "") -> bool:
+    """Reject links that cannot hold an edital, before they cost an access.
+
+    The crawler's budget is the binding constraint — 79% of vacancies spent it
+    in full — so an access wasted on a podcast episode or a login form is an
+    edital not read. Everything here was observed being followed in production.
+    """
+    parts = urlsplit(url)
+    host = (parts.hostname or "").lower()
+    if not host:
+        return True
+    if any(host == domain or host.endswith(f".{domain}") for domain in config.EXCLUDED_LINK_DOMAINS):
+        return True
+    if host.split(".")[0] in config.EXCLUDED_LINK_SUBDOMAINS:
+        return True
+    path = (parts.path or "").lower().rstrip("/")
+    if any(path == item or path.startswith(item + "/") for item in config.EXCLUDED_LINK_PATHS):
+        return True
+    # PCI is the discovery source, not a document host: its study-guide and
+    # listing pages were being followed as if they were institutional sources.
+    if host.endswith("pciconcursos.com.br") and "/noticias/" not in path:
+        return True
+    return False
 
 
 def extract_candidate_links(html_bytes: bytes, base_url: str, vacancy: Mapping[str, Any]) -> list[dict[str, Any]]:
@@ -349,14 +401,7 @@ def extract_candidate_links(html_bytes: bytes, base_url: str, vacancy: Mapping[s
         url = canonical_url(href, base_url)
         if url == canonical_url(base_url) or urlsplit(url).scheme not in ("http", "https"):
             continue
-        host = (urlsplit(url).hostname or "").lower()
-        if host == "x.com" or any(
-            host == domain or host.endswith(f".{domain}")
-            for domain in (
-                "twitter.com", "facebook.com", "linkedin.com", "whatsapp.com",
-                "instagram.com", "youtube.com", "youtu.be", "t.me",
-            )
-        ):
+        if is_excluded_link(url, base_host):
             continue
         label = clean_text(" ".join((anchor.get_text(" ", strip=True), anchor.get("title", ""))))
         context_node = anchor.find_parent(("p", "li"))
