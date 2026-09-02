@@ -32711,5 +32711,180 @@
         "access": "HUMAN_VERIFICATION_REQUIRED"
       }
     ]
+  },
+  "https://www.pciconcursos.com.br/noticias/prefeitura-de-sapezal-mt-abre-processo-seletivo-com-salarios-de-ate-7313": {
+    "status": "BLOCKED",
+    "checked_at": "2026-09-02T16:39:57-03:00",
+    "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/prefeitura-de-sapezal-mt-abre-processo-seletivo-com-salarios-de-ate-7313",
+        "type": "PCI_HTML",
+        "content_hash": "8188d7228119e6af3ee4d9ebd6452c34c4019e8c85f848414920da59cc693f97",
+        "page_count": 1,
+        "extracted_chars": 7040,
+        "truncated": false,
+        "title": "Prefeitura de Sapezal - MT abre processo seletivo com salários de até R$ 7.313,43",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      },
+      {
+        "url": "https://selecon.org.br/",
+        "type": "HTML",
+        "content_hash": "b97d2f65f1343cb43c4cd5e8233308b2b8399427eb01c44213110b389a0bda56",
+        "page_count": 1,
+        "extracted_chars": 18005,
+        "truncated": false,
+        "title": "Instituto Nacional de Seleções e Concursos - SELECON",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
+      },
+      {
+        "url": "https://www.sapezal.mt.gov.br/",
+        "type": "HTML",
+        "content_hash": "22356fabfbd0a292a0d9759b1a14553e49a9b0792fc7a62d6bff730d691cb8eb",
+        "page_count": 1,
+        "extracted_chars": 5002,
+        "truncated": false,
+        "title": "PREFEITURA DE SAPEZAL / MT",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
+      },
+      {
+        "url": "https://www.sapezal.mt.gov.br/portal/noticias/3",
+        "type": "HTML",
+        "content_hash": "957af44866d235c5f0fcdee7edc270ecaf4511fd612d62d8a44827026473d0eb",
+        "page_count": 1,
+        "extracted_chars": 14605,
+        "truncated": false,
+        "title": "PREFEITURA DE SAPEZAL / MT - Notícias",
+        "evidence_status": "NONE",
+        "tls_unverified": false,
+        "relevant": true,
+        "relevance_reason": "Documento de seleção docente da instituição: sapezal."
+      },
+      {
+        "url": "https://www.sapezal.mt.gov.br/portal/servicos/1081/selecao-de-professores-para-atuacao-no-curso-tecnico-em-administracao/",
+        "type": "HTML",
+        "content_hash": "583d0735bb556a1bd2ec158b794193f34aeeefef9b9394bc76a29ad33b411d05",
+        "page_count": 1,
+        "extracted_chars": 4058,
+        "truncated": false,
+        "title": "PREFEITURA DE SAPEZAL / MT - SELEÇÃO DE PROFESSORES PARA ATUAÇÃO NO CURSO TÉCNICO EM ADMINISTRAÇÃO",
+        "evidence_status": "NONE",
+        "tls_unverified": false,
+        "relevant": true,
+        "relevance_reason": "Documento de seleção docente da instituição: sapezal."
+      },
+      {
+        "url": "https://www.sapezal.mt.gov.br/portal/download/arquivos/CnxPz-/",
+        "type": "HTML",
+        "content_hash": "b1e6e413ba1659ac5b8efb67f0628f0eaf0137a27fe62f6223fab216c90df592",
+        "page_count": 1,
+        "extracted_chars": 0,
+        "truncated": false,
+        "title": null,
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não é um edital ou aviso de seleção."
+      },
+      {
+        "url": "https://www.sapezal.mt.gov.br/portal/servicos/1081/selecao-de-professores-para-atuacao-no-curso-tecnico-em-administracao",
+        "type": "HTML",
+        "content_hash": "718167672705dd1026bb621ce15672615f17648569345cc29b56dbfbed62dce8",
+        "page_count": 1,
+        "extracted_chars": 4058,
+        "truncated": false,
+        "title": "PREFEITURA DE SAPEZAL / MT - SELEÇÃO DE PROFESSORES PARA ATUAÇÃO NO CURSO TÉCNICO EM ADMINISTRAÇÃO",
+        "evidence_status": "NONE",
+        "tls_unverified": false,
+        "relevant": true,
+        "relevance_reason": "Documento de seleção docente da instituição: sapezal."
+      },
+      {
+        "url": "https://www.sapezal.mt.gov.br/portal/servicos/1070/universidade-aberta-do-brasil-uab---selecao-de-professores-2025/",
+        "type": "HTML",
+        "content_hash": "ce3b75d1e989ef78ef9d91a42af347149516920ee68244fa41ffbdf06c039f04",
+        "page_count": 1,
+        "extracted_chars": 3431,
+        "truncated": false,
+        "title": "PREFEITURA DE SAPEZAL / MT - Universidade Aberta do Brasil UAB - Seleção de Professores 2025",
+        "evidence_status": "NONE",
+        "tls_unverified": false,
+        "relevant": true,
+        "relevance_reason": "Documento de seleção docente da instituição: sapezal."
+      },
+      {
+        "url": "https://www.sapezal.mt.gov.br/portal/download/arquivos/hhxowx/",
+        "type": "HTML",
+        "content_hash": "ac3b84d92458d280698f011d3aa368a18e9d5ba5b2625ae7c06dd78876b83e6d",
+        "page_count": 1,
+        "extracted_chars": 0,
+        "truncated": false,
+        "title": null,
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não é um edital ou aviso de seleção."
+      },
+      {
+        "url": "https://www.sapezal.mt.gov.br/portal/servicos/1091/processo-seletivo-simplificado-para-selecao-de-profissionais-para-prestacao-de-servicos-docentes-temporarios-por-modulo-sapezal/",
+        "type": "HTML",
+        "content_hash": "9087de6b1bb7567dbf763a4d2cd7d5945cacd6a4a87425887720bf9856a0b55e",
+        "page_count": 1,
+        "extracted_chars": 3938,
+        "truncated": false,
+        "title": "PREFEITURA DE SAPEZAL / MT - PROCESSO SELETIVO SIMPLIFICADO PARA SELEÇÃO DE PROFISSIONAIS PARA PRESTAÇÃO DE SERVIÇOS DOCENTES TEMPORÁRIOS POR MÓDULO SAPEZAL",
+        "evidence_status": "NONE",
+        "tls_unverified": false,
+        "relevant": true,
+        "relevance_reason": "Documento de seleção docente da instituição: sapezal."
+      },
+      {
+        "url": "https://www.sapezal.mt.gov.br/portal/download/arquivos/dqxTAz/",
+        "type": "HTML",
+        "content_hash": "5718d4493a21843f54db83a8bb25a9b9069509bdda38c474f7711283f1f6c3a4",
+        "page_count": 1,
+        "extracted_chars": 0,
+        "truncated": false,
+        "title": null,
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não é um edital ou aviso de seleção."
+      },
+      {
+        "url": "https://www.sapezal.mt.gov.br/portal/download/arquivos/qsxTxo/",
+        "type": "HTML",
+        "content_hash": "a44e40ac8f0dadcc3e35af6aacba7e832b3d041c4ab7e913f0347b843c31229d",
+        "page_count": 1,
+        "extracted_chars": 0,
+        "truncated": false,
+        "title": null,
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não é um edital ou aviso de seleção."
+      }
+    ],
+    "reader_version": 5,
+    "applicable": false,
+    "reason": "O PCI lista 1 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
+    "errors": [],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL Nº 002/2026",
+        "url": null,
+        "pci_link_id": "1704650",
+        "pci_news_code": "24118f4e4959d995f8480d18899cd34b",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
+    ]
   }
 }

@@ -4364,5 +4364,19 @@
     "last_checked": "2026-09-02T15:05:48-03:00",
     "content_hash": "16ed81c641d8fbbe5764eb9ca0ba914146fff7ab4cb17f9a4e1df1959d2bedfa",
     "status": "NEW"
+  },
+  "https://www.pciconcursos.com.br/noticias/prefeitura-de-sapezal-mt-abre-processo-seletivo-com-salarios-de-ate-7313": {
+    "id": "f8fe94a9952e35b351e3",
+    "url": "https://www.pciconcursos.com.br/noticias/prefeitura-de-sapezal-mt-abre-processo-seletivo-com-salarios-de-ate-7313",
+    "first_seen": "2026-09-02",
+    "processed": true,
+    "potential": true,
+    "last_seen": "2026-09-02",
+    "title": "Prefeitura de Sapezal - MT abre processo seletivo com salários de até R$ 7.313,43",
+    "registration_end": "2026-09-30",
+    "listing_fingerprint": "539cb44f4848162f0038fe405374fcb817ebae91ecc08b9691873e6c1ea4af34",
+    "last_checked": "2026-09-02T16:39:57-03:00",
+    "content_hash": "508a23a508b0c697562e0d6c8096e13b6be86e81618320b53f29dd49b267cfb0",
+    "status": "NEW"
   }
 }
