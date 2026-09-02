@@ -12,6 +12,8 @@ from src.official import (
     extract_requirement_evidence,
     extract_structured_opportunities,
     is_excluded_link,
+    edital_numbers_for_display,
+    known_edital_numbers,
     OfficialDocumentReader,
     score_candidate_link,
     should_check_official,
@@ -410,3 +412,60 @@ def test_institution_name_scopes_a_notice_without_an_area():
     )
     assert relevant is True
     assert "riolandia" in reason.lower()
+
+
+class TestEditalNumberFromProtectedLabel:
+    """Using the one thing PCI leaves visible on a gated edital.
+
+    The PDF sits behind human verification, but the link's label — "EDITAL DE
+    ABERTURA Nº 005/2026" — is in the page. That number is present for 120 of
+    the 149 blocked vacancies, against 7 whose prose states one, and it is the
+    strongest identifier available for exactly the documents we cannot fetch.
+    """
+
+    VAGA = {
+        "institution": "Prefeitura de Massaranduba",
+        "title": "Prefeitura de Massaranduba - SC abre concurso para professores",
+        "official_pci_protected_documents": [
+            {"label": "EDITAL DE ABERTURA Nº 005/2026", "url": None},
+            {"label": "EDITAL RETIFICADO Nº 001/2026", "url": None},
+        ],
+    }
+
+    def test_numbers_are_read_from_the_protected_labels(self):
+        assert known_edital_numbers(self.VAGA) == {"5/26", "1/26"}
+
+    def test_prose_numbers_still_count(self):
+        vaga = {"title": "x", "raw_text": "Segundo o Edital nº 144/2026, as inscrições..."}
+        assert known_edital_numbers(vaga) == {"144/26"}
+
+    def test_a_vacancy_with_no_number_anywhere_yields_none(self):
+        assert known_edital_numbers({"title": "Concurso para professor"}) == set()
+
+    def test_a_matching_number_scopes_the_document(self):
+        relevant, reason = assess_document_relevance(
+            [(1, "PREFEITURA DE MASSARANDUBA. EDITAL DE CONCURSO PÚBLICO Nº 005/2026. "
+                 "Cargo de PROFESSOR. Requisito: licenciatura plena.")],
+            self.VAGA, "https://massaranduba.sc.gov.br/e.pdf",
+        )
+        assert relevant is True
+        assert "5/26" in reason
+
+    def test_a_link_carrying_the_number_outranks_everything_else(self):
+        edital = score_candidate_link(
+            "Edital 005/2026", "https://x.sc.gov.br/edital-005-2026.pdf", self.VAGA
+        )
+        outro = score_candidate_link(
+            "Edital de concurso público", "https://x.sc.gov.br/concursos/edital.pdf", self.VAGA
+        )
+        assert edital > outro
+
+
+def test_edital_number_is_displayed_as_the_institution_writes_it():
+    vaga = {"official_pci_protected_documents": [
+        {"label": "EDITAL DE ABERTURA Nº 005/2026"}, {"label": "EDITAL Nº 1/2026"},
+    ]}
+    # Matching normalises the year; the reader needs the original spelling to
+    # find the document on the institution's site.
+    assert edital_numbers_for_display(vaga) == ["005/2026", "1/2026"]
+    assert known_edital_numbers(vaga) == {"5/26", "1/26"}

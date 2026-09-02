@@ -127,15 +127,13 @@ def assess_document_relevance(
     if not any(marker in text for marker in teaching_markers):
         return False, "O documento é uma seleção, mas não menciona cargo docente."
 
-    identifier_pattern = re.compile(
-        r"(?:edital|concurso)\s*(?:n(?:o|º|°)?\.?\s*)?(\d{1,5}(?:\s*[/.-]\s*\d{2,4})?)",
-        re.I,
-    )
-    vacancy_text = " ".join(str(vacancy.get(key) or "") for key in ("title", "raw_text", "description"))
-    identifiers = {normalize_text(match) for match in identifier_pattern.findall(vacancy_text)}
-    document_identifiers = {normalize_text(match) for match in identifier_pattern.findall(text)}
-    if identifiers & document_identifiers:
-        return True, "Número do edital/concurso coincide com o anúncio do PCI."
+    identifiers = known_edital_numbers(vacancy)
+    document_identifiers = {
+        f"{int(m.group(1))}/{m.group(2)[-2:]}" for m in LOOSE_IDENTIFIER.finditer(text)
+    }
+    shared = identifiers & document_identifiers
+    if shared:
+        return True, f"Número do edital coincide com o anunciado no PCI: {', '.join(sorted(shared))}."
 
     area = normalize_text(str(vacancy.get("area") or ""))
     if area and area != "nao identificada":
@@ -164,6 +162,59 @@ def assess_document_relevance(
     if len(overlap) >= 2:
         return True, f"Documento docente associado ao anúncio por: {', '.join(overlap[:5])}."
     return False, "A vaga não tem área/número identificável e o documento não coincide com contexto suficiente."
+
+
+EDITAL_IDENTIFIER = re.compile(
+    r"(?:edital|concurso)\s*(?:n(?:o|º|°)?\.?\s*)?(\d{1,5}(?:\s*[/.-]\s*\d{2,4})?)",
+    re.I,
+)
+LOOSE_IDENTIFIER = re.compile(r"(\d{1,5})\s*[/.-]\s*(\d{2,4})")
+
+
+def known_edital_numbers(vacancy: Mapping[str, Any]) -> set[str]:
+    """Edital numbers we can state for this vacancy.
+
+    PCI hides the PDF behind human verification but leaves the link's label in
+    the page — "EDITAL DE ABERTURA Nº 005/2026". That label names the document
+    precisely, and it is present for 120 of the 149 blocked vacancies against
+    only 7 whose prose happens to state a number. Ignoring it wastes the single
+    strongest identifier available for the ones we cannot download.
+    """
+    numbers: set[str] = set()
+    labels = " ".join(
+        str(item.get("label") or "")
+        for item in (vacancy.get("official_pci_protected_documents") or [])
+    )
+    prose = " ".join(str(vacancy.get(key) or "") for key in ("title", "raw_text", "description"))
+    for match in LOOSE_IDENTIFIER.finditer(labels):
+        numbers.add(f"{int(match.group(1))}/{match.group(2)[-2:]}")
+    for match in EDITAL_IDENTIFIER.finditer(prose):
+        loose = LOOSE_IDENTIFIER.search(match.group(1))
+        if loose:
+            numbers.add(f"{int(loose.group(1))}/{loose.group(2)[-2:]}")
+    return numbers
+
+
+def edital_numbers_for_display(vacancy: Mapping[str, Any]) -> list[str]:
+    """The edital numbers as the institution writes them, for a human to search.
+
+    Matching normalises the year to two digits so "005/2026" and "5/26" compare
+    equal; a reader looking for the document needs it spelled the way the
+    edital is actually named.
+    """
+    labels = " ".join(
+        str(item.get("label") or "")
+        for item in (vacancy.get("official_pci_protected_documents") or [])
+    )
+    prose = " ".join(str(vacancy.get(key) or "") for key in ("title", "raw_text"))
+    shown: dict[str, str] = {}
+    for source in (labels, prose if not labels else ""):
+        for match in LOOSE_IDENTIFIER.finditer(source):
+            year = match.group(2)
+            year = year if len(year) == 4 else f"20{year}"
+            key = f"{int(match.group(1))}/{year[-2:]}"
+            shown.setdefault(key, f"{match.group(1)}/{year}")
+    return sorted(shown.values())
 
 
 def _requirement_kinds(text: str) -> list[str]:
@@ -332,6 +383,15 @@ def score_candidate_link(label: str, url: str, vacancy: Mapping[str, Any]) -> in
     normalized_url = normalize_text(url)
     combined = f"{normalized_label} {normalized_url}"
     score = 0
+    # A link that carries this vacancy's own edital number is the document, not
+    # a candidate for it. Nothing else on an institution's site competes.
+    numbers = known_edital_numbers(vacancy)
+    if numbers:
+        found = {
+            f"{int(m.group(1))}/{m.group(2)[-2:]}" for m in LOOSE_IDENTIFIER.finditer(combined)
+        }
+        if numbers & found:
+            score += 120
     if urlsplit(url).path.lower().endswith(".pdf") or "pdf" in normalized_label:
         score += 25
     if "edital" in combined:

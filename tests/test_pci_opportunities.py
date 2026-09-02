@@ -271,3 +271,65 @@ class TestCargoRecoveryFromProse:
         assert extract_pci_opportunities_from_text(
             "A universidade abre uma vaga para Professor Adjunto."
         ) == []
+
+
+class TestRequirementCleanup:
+    """Cutting the edital's prose off the end of a requirement.
+
+    Reading real editais raised coverage but brought their surrounding text
+    along: pay, hours and application deadlines were being displayed as if they
+    were part of the qualification.
+    """
+
+    def test_pay_and_hours_are_not_part_of_the_requirement(self):
+        fields = extract_requirement_fields(
+            "Requisito: Pós-graduação em Educação Especial e Inclusiva "
+            "A carga horária poderá variar entre 20 e 40 horas-aula."
+        )
+        assert fields["postgraduate_requirement"] == "Pós-graduação em Educação Especial e Inclusiva"
+
+    def test_application_dates_are_not_part_of_the_requirement(self):
+        fields = extract_requirement_fields(
+            "Requisito: graduação em Medicina. As inscrições vão de 1 a 20 de setembro."
+        )
+        assert fields["graduation_requirement"] == "graduação em Medicina"
+
+    def test_a_value_cut_mid_word_loses_the_fragment(self):
+        # "Graduação e/ou d" was reaching the page; the fragment is noise.
+        fields = extract_requirement_fields("Exige-se Graduação e/ou d")
+        assert not str(fields["graduation_requirement"] or "").endswith(" d")
+
+    def test_a_complete_requirement_is_left_alone(self):
+        fields = extract_requirement_fields("Mestrado em Matemática ou áreas afins")
+        assert fields["postgraduate_requirement"] == "Mestrado em Matemática ou áreas afins"
+
+
+class TestOfficialRequirementInheritance:
+    """A cargo row showing what the edital requires of the whole selection.
+
+    Suppressing it made sense while the contest-level value was the PCI cargo
+    table in disguise. Once it comes from the edital, hiding it leaves the row
+    emptier than the source — so it is shown, marked as general.
+    """
+
+    def _vacancy(self, source):
+        return {
+            "id": "z", "title": "Concurso", "institution": "Prefeitura de Exemplo",
+            "requirements_source": source,
+            "graduation_requirement_raw": "licenciatura plena em Pedagogia",
+            "pci_opportunities": [
+                {"cargo": "Professor de Artes (2 vagas)", "course": "Artes",
+                 "requirement_hint": None, "vacancies_count": 2, "reserve_only": False},
+            ],
+        }
+
+    def test_official_requirement_reaches_the_cargo_row(self):
+        row = _expanded_rows([self._vacancy("OFFICIAL_PDF")])[0]
+        graduation, _ = _structured_requirements(row)
+        assert "Pedagogia" in graduation
+        assert row["_contest_requirement_is_official"] is True
+
+    def test_pci_summary_requirement_still_does_not(self):
+        row = _expanded_rows([self._vacancy("PCI_SUMMARY")])[0]
+        assert _structured_requirements(row)[0] == "Não informado"
+        assert row["_contest_requirement_is_official"] is False

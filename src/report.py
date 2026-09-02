@@ -12,6 +12,7 @@ from zoneinfo import ZoneInfo
 
 import config
 from .classifier import institution_type
+from .official import edital_numbers_for_display
 from .parser import extract_pci_opportunities_from_text, parse_cargo_item
 from .requirements import (
     clean_requirement_context,
@@ -124,6 +125,7 @@ def _pci_opportunity_rows(vacancy: dict[str, Any]) -> list[dict[str, Any]]:
     contest-level classification unchanged rather than inventing one. What the
     row does carry is its own course, which is what the reader filters by.
     """
+    from_official = str(vacancy.get("requirements_source") or "").startswith("OFFICIAL_")
     rows: list[dict[str, Any]] = []
     for stored in vacancy.get("pci_opportunities") or []:
         cargo = str(stored.get("cargo") or "").strip()
@@ -150,9 +152,15 @@ def _pci_opportunity_rows(vacancy: dict[str, Any]) -> list[dict[str, Any]]:
             "vacancies_count": opportunity.get("vacancies_count"),
             "reference": "Cadastro de reserva" if opportunity.get("reserve_only") else None,
             "pci_opportunities": None,
-            # The contest-level requirement describes the whole notice, so it
-            # would misattribute another cargo's qualification to this course.
-            **{
+            "_contest_requirement_is_official": from_official,
+            # A contest-level requirement taken from the PCI summary is usually
+            # the cargo table itself, and repeating it on every row would
+            # attribute one cargo's qualification to all the others. Read from
+            # the actual edital it is different: it states what the selection
+            # requires, and suppressing it leaves the row emptier than the
+            # source. So it is kept, and labelled as general rather than
+            # specific to this cargo.
+            **({} if from_official else {
                 field: None
                 for field in (
                     "graduation_requirement", "graduation_requirement_raw",
@@ -160,7 +168,7 @@ def _pci_opportunity_rows(vacancy: dict[str, Any]) -> list[dict[str, Any]]:
                     "masters_requirement", "masters_requirement_raw",
                     "doctorate_requirement", "doctorate_requirement_raw",
                 )
-            },
+            }),
         })
     return rows or [{**vacancy, "_is_subvacancy": False, "_parent_title": vacancy.get("title")}]
 
@@ -325,8 +333,15 @@ def _row(v: dict[str, Any], common_detail_labels: set[str] | None = None) -> str
         source_note = "Edital lido" + (f" · página {', '.join(map(str, pages[:3]))}" if pages else "")
         if v.get("official_tls_unverified"):
             source_note += " · cadeia TLS incompleta no servidor"
+        if v.get("_contest_requirement_is_official") and not v.get("requirement_text"):
+            source_note += " · requisito geral do edital, não específico deste cargo"
     elif protected_count:
         source_note = f"{protected_count} edital(is) no PCI · verificação humana"
+        # The PDF is gated, but its number is not. Showing it turns a dead end
+        # into something the reader can search for on the institution's site.
+        numbers = edital_numbers_for_display(v)
+        if numbers:
+            source_note += f" · Edital nº {', '.join(numbers)}"
     else:
         source_note = f"Leitura: {v.get('official_check_status') or 'pendente'}"
 
@@ -445,12 +460,12 @@ def generate_report(vacancies: list[dict[str, Any]], output_path: Path, generate
     document = f'''<!doctype html>
 <html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Radar automático de concursos acadêmicos"><title>Concursos Watch</title>
-<link rel="stylesheet" href="assets/style.css?v=6"></head><body data-profile="{profile_json}">
+<link rel="stylesheet" href="assets/style.css?v=8"></head><body data-profile="{profile_json}">
 <header class="hero"><div class="hero-inner"><p class="eyebrow">CONCURSOS WATCH</p><h1>Radar de Concursos Acadêmicos</h1><p class="intro">Oportunidades docentes públicas organizadas por concurso, edital, vaga e requisitos de formação.</p>
 <div class="summary"><div><strong>{generated_at.strftime('%d/%m/%Y %H:%M')}</strong><span>Última atualização (BRT)</span></div><div><strong>{open_count}</strong><span>Vagas abertas listadas</span></div><div><strong>{new_count}</strong><span>Novas hoje</span></div><div><strong>PCI</strong><span>Fonte monitorada</span></div></div></div></header>
 <main><aside class="notice"><strong>Triagem, não decisão jurídica.</strong> “Elegível” não substitui a decisão da instituição sobre equivalência de títulos. <span class="official-count">Editais oficiais lidos com evidência aplicável: {official_read_count}.</span></aside>
 <section class="filters" aria-label="Filtros"><label>Buscar<input id="search" type="search" placeholder="Área, cidade, instituição…"></label><label>Estado<select id="state"><option value="">Todos</option>{options_state}</select></label><label>Instituição<select id="institution"><option value="">Todas</option>{options_inst}</select></label><label>Tipo<select id="institution-type"><option value="">Todas</option><option value="SUPERIOR" selected>Universidades e IFs</option><option value="BASICA">Prefeituras e estados</option><option value="INDEFINIDA">Indefinida</option></select></label><label>Curso<select id="course"><option value="">Todos</option>{options_course}</select></label><label>Elegibilidade<select id="eligibility"><option value="">Todas</option><option>YES</option><option>UNCERTAIN</option><option>UNKNOWN</option><option>NO</option></select></label><label>Aderência mínima<input id="score" type="range" min="0" max="100" value="0"><output id="score-value">0</output></label><label class="check"><input id="open-only" type="checkbox"> Somente abertas</label><label class="check"><input id="new-only" type="checkbox"> Somente novas</label><button id="clear" type="button">Limpar filtros</button></section>
 <div class="results-heading"><h2>Todas as vagas por concurso</h2><span id="result-count">{len(rows)} vaga(s) em {len(visible)} concurso(s)</span></div><div id="cards" class="contest-list">{sections}</div>
-</main><footer>Gerado automaticamente · Fonte de descoberta: <a href="{config.PCI_LISTING_URL}">PCI Concursos</a> · Consulte sempre o edital oficial.</footer><script src="assets/app.js?v=6"></script></body></html>'''
+</main><footer>Gerado automaticamente · Fonte de descoberta: <a href="{config.PCI_LISTING_URL}">PCI Concursos</a> · Consulte sempre o edital oficial.</footer><script src="assets/app.js?v=8"></script></body></html>'''
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(document, encoding="utf-8", newline="\n")

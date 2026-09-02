@@ -56,6 +56,25 @@ def looks_like_cargo_list(segment: str) -> bool:
     return len(CARGO_ENUMERATION.findall(segment)) > MAX_CARGO_MENTIONS
 
 
+# Where the requirement ends and the rest of the edital begins. These openings
+# start a new subject — pay, hours, how to apply — and everything from there on
+# belongs to the notice, not to the qualification.
+NEXT_SUBJECT = re.compile(
+    r"\s+(?:A\s+carga\s+hor[aá]ria|As\s+inscri[cç][oõ]es|A\s+remunera[cç][aã]o|"
+    r"O\s+sal[aá]rio|O\s+prazo|O\s+vencimento|A\s+jornada|O\s+contrato|"
+    r"A\s+prova|As\s+provas|O\s+edital\s+(?:est[aá]|pode)|A\s+sele[cç][aã]o\s+ser[aá])\b"
+)
+
+# A value that ends in a one or two letter fragment was cut mid-word by an
+# upstream bound; showing "Graduação e/ou d" is worse than showing nothing.
+TRUNCATED_TAIL = re.compile(r"(?:^|\s)\S{1,2}$")
+
+
+def _cut_at_next_subject(segment: str) -> str:
+    match = NEXT_SUBJECT.search(segment)
+    return segment[:match.start()] if match else segment
+
+
 def _trim_to_boundary(segment: str, limit: int = MAX_SEGMENT_CHARS) -> str:
     """Cut an over-long segment back to the last clean separator."""
     if len(segment) <= limit:
@@ -122,8 +141,13 @@ def split_academic_requirement(value: Any) -> dict[str, list[str]]:
             segment,
             flags=re.I,
         ).strip(" .;,:")
+        segment = _cut_at_next_subject(segment).strip(" .;,:")
         if not segment or looks_like_cargo_list(segment):
             continue
+        if TRUNCATED_TAIL.search(segment) and len(segment.split()) > 1:
+            segment = segment.rsplit(" ", 1)[0].strip(" .;,:/-–e")
+            if not segment:
+                continue
         if segment not in result[run["category"]]:
             result[run["category"]].append(segment)
     return result
