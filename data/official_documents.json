@@ -32067,5 +32067,649 @@
         "access": "HUMAN_VERIFICATION_REQUIRED"
       }
     ]
+  },
+  "https://www.pciconcursos.com.br/noticias/prefeitura-de-ibiracu-es-abre-processo-seletivo-para-professores": {
+    "status": "BLOCKED",
+    "checked_at": "2026-09-02T15:05:48-03:00",
+    "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/prefeitura-de-ibiracu-es-abre-processo-seletivo-para-professores",
+        "type": "PCI_HTML",
+        "content_hash": "084f0e7b4467efc8a4296f6ff61785cf2f00434b0dc5ebe23cb46dc9deabacdd",
+        "page_count": 1,
+        "extracted_chars": 7297,
+        "truncated": false,
+        "title": "Prefeitura de Ibiraçu - ES abre processo seletivo para professores",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      },
+      {
+        "url": "https://educacao.ibiracu.sisp.com.br/home",
+        "type": "HTML",
+        "content_hash": "0ea63254baececf146effbbf8beda1dd124bc8d80e4363b18678456e53a8acd5",
+        "page_count": 1,
+        "extracted_chars": 42,
+        "truncated": false,
+        "title": "Portal da Secretaria Municipal de Educação",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não é um edital ou aviso de seleção."
+      }
+    ],
+    "reader_version": 5,
+    "applicable": false,
+    "reason": "O PCI lista 1 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
+    "errors": [],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL Nº 013/2026",
+        "url": null,
+        "pci_link_id": "1704649",
+        "pci_news_code": "43e4be1f40ac1758dbd6034c001ebdb2",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
+    ]
+  },
+  "https://www.pciconcursos.com.br/noticias/prefeitura-de-cacapava-sp-abre-concurso-publico-com-salarios-de-ate-6871": {
+    "status": "BLOCKED",
+    "checked_at": "2026-09-02T15:05:48-03:00",
+    "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/prefeitura-de-cacapava-sp-abre-concurso-publico-com-salarios-de-ate-6871",
+        "type": "PCI_HTML",
+        "content_hash": "cf4b5d45f7aad2bcc0cdd637a058aceabb7aded4ed8e473ba19e687b797a1ec1",
+        "page_count": 1,
+        "extracted_chars": 15803,
+        "truncated": false,
+        "title": "Prefeitura de Caçapava - SP abre concurso público com salários de até R$ 6.871,92",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      },
+      {
+        "url": "https://www.cacapava.sp.gov.br/",
+        "type": "HTML",
+        "content_hash": "1b0e8033144109d81393e5453a090c88cef9626d68debf7934478e04910f6312",
+        "page_count": 1,
+        "extracted_chars": 5288,
+        "truncated": false,
+        "title": "Prefeitura de Caçapava",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
+      },
+      {
+        "url": "https://www.cacapava.sp.gov.br/publicacoes/editais/edital-de-abertura-de-inscricoes-para-processo-seletivo-interno",
+        "type": "HTML",
+        "content_hash": "02205450b10f1f8a443076f2810b98df87b438a3b4aea3e670a2509f906ffe51",
+        "page_count": 1,
+        "extracted_chars": 1417,
+        "truncated": false,
+        "title": "EDITAL DE ABERTURA DE INSCRIÇÕES PARA PROCESSO SELETIVO INTERNO - Prefeitura de Caçapava",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
+      },
+      {
+        "url": "https://ecrie.com.br/sistema/conteudos/arquivo/a_25_0_2_23062026140447.pdf",
+        "type": "PDF",
+        "content_hash": "9e636ff8338d2dcefb36a1ca291a7f7cf6387dfa6231d8991c7bd1925f5d2f97",
+        "page_count": 23,
+        "extracted_chars": 69191,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "AMBIGUOUS",
+        "tls_unverified": false,
+        "relevant": true,
+        "relevance_reason": "Documento de seleção docente da instituição: cacapava.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://ecrie.com.br/sistema/conteudos/arquivo/a_25_1_1_23062026140447.pdf",
+        "type": "PDF",
+        "content_hash": "ee39ccd1093207f6afb654958186f02505b60f467dbecd5139444fa383a6c1a1",
+        "page_count": 1,
+        "extracted_chars": 1576,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://api.whatsapp.com/send/?text=EDITAL+DE+ABERTURA+DE+INSCRI%C3%87%C3%95ES+PARA+PROCESSO+SELETIVO+INTERNO+http%3A%2F%2Fwww.cacapava.sp.gov.br%2Fpublicacoes%2Feditais%2Fedital-de-abertura-de-inscricoes-para-processo-seletivo-interno&type=custom_url&app_absent=0",
+        "type": "HTML",
+        "content_hash": "4cd822668f1766821ea3e42d56113fb38925c526b9bc3c632d767b6a1bc0e2a5",
+        "page_count": 1,
+        "extracted_chars": 463,
+        "truncated": false,
+        "title": "Compartilhe no WhatsApp",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
+      },
+      {
+        "url": "https://www.cacapava.sp.gov.br/publicacoes/editais/edital-do-concurso-municipal-de-fotografia-ipes-da-nossa-terra-",
+        "type": "HTML",
+        "content_hash": "e35333fe31bce4d7c18d48b1c5371c8265f030eedae8026512767f04f140e174",
+        "page_count": 1,
+        "extracted_chars": 803,
+        "truncated": false,
+        "title": "EDITAL DO CONCURSO MUNICIPAL DE FOTOGRAFIA “Ipês da Nossa Terra” - Prefeitura de Caçapava",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
+      },
+      {
+        "url": "https://api.whatsapp.com/send/?text=EDITAL+DO+CONCURSO+MUNICIPAL+DE+FOTOGRAFIA+%E2%80%9CIp%C3%AAs+da+Nossa+Terra%E2%80%9D+http%3A%2F%2Fwww.cacapava.sp.gov.br%2Fpublicacoes%2Feditais%2Fedital-do-concurso-municipal-de-fotografia-ipes-da-nossa-terra-&type=custom_url&app_absent=0",
+        "type": "HTML",
+        "content_hash": "5f8bea7422db8680f99a2ac2933178f885cf9c1f91417de2180a8b26f4b832f5",
+        "page_count": 1,
+        "extracted_chars": 464,
+        "truncated": false,
+        "title": "Compartilhe no WhatsApp",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
+      },
+      {
+        "url": "https://ecrie.com.br/sistema/conteudos/arquivo/a_25_0_1_24082026132551.pdf",
+        "type": "PDF",
+        "content_hash": "b273f1cee9cea46b822897fa6febbe49f24744545a08ecae5e0e9ac5aaab0b91",
+        "page_count": 1,
+        "extracted_chars": 667,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://ecrie.com.br/sistema/conteudos/arquivo/a_25_0_1_25082026160128.pdf",
+        "type": "PDF",
+        "content_hash": "342b134f39cdf9a96928ced0888288d0048693ade61d741eab53dfc544f010ed",
+        "page_count": 2,
+        "extracted_chars": 0,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não é um edital ou aviso de seleção.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://ecrie.com.br/sistema/conteudos/arquivo/a_25_0_1_26062026163338.pdf",
+        "type": "PDF",
+        "content_hash": "7815510f72cbba8cbaec64ee9da2fe716b1f237922153f272341489c0ce8ef5c",
+        "page_count": 1,
+        "extracted_chars": 912,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://ecrie.com.br/sistema/conteudos/arquivo/a_25_0_1_24082026170638.pdf",
+        "type": "PDF",
+        "content_hash": "3c29741745f786abcae9f27e2485eb1ec210ebf80c2a4be850b9a99a9ad93261",
+        "page_count": 3,
+        "extracted_chars": 4821,
+        "truncated": false,
+        "title": "Edital Ipês da Nossa Terra 2026",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente.",
+        "opportunities_count": 0
+      }
+    ],
+    "reader_version": 5,
+    "applicable": false,
+    "reason": "O PCI lista 1 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
+    "errors": [],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL DE CONCURSO PÚBLICO 01/2026",
+        "url": null,
+        "pci_link_id": "1704646",
+        "pci_news_code": "a4f8709627ff04e76472f3bf318bbfdb",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
+    ]
+  },
+  "https://www.pciconcursos.com.br/noticias/prefeitura-de-santa-gertrudes-sp-abre-selecao-para-cadastro-de-reserva-na-educacao": {
+    "status": "BLOCKED",
+    "checked_at": "2026-09-02T15:05:48-03:00",
+    "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/prefeitura-de-santa-gertrudes-sp-abre-selecao-para-cadastro-de-reserva-na-educacao",
+        "type": "PCI_HTML",
+        "content_hash": "fe4664a5eafc5ff229bcd9aabe75986eff1ea91fa7df211e4069806a2e1d7a80",
+        "page_count": 1,
+        "extracted_chars": 15499,
+        "truncated": false,
+        "title": "Prefeitura de Santa Gertrudes - SP abre seleção para cadastro de reserva na educação",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      },
+      {
+        "url": "https://www.imais.org.br/",
+        "type": "HTML",
+        "content_hash": "794a2f47bd430486a3b4dbfabd77f636f7e9c95fb41400bddf6abab76e1840b4",
+        "page_count": 1,
+        "extracted_chars": 814,
+        "truncated": false,
+        "title": "Instituto Mais",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
+      },
+      {
+        "url": "https://www.santagertrudes.sp.gov.br/",
+        "type": "HTML",
+        "content_hash": "32478b2dd38f7cfad3ff8763805f945cab7f28231078b2f03b6016be1658f3b3",
+        "page_count": 1,
+        "extracted_chars": 85,
+        "truncated": false,
+        "title": "Um momento, por favor…",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não é um edital ou aviso de seleção."
+      },
+      {
+        "url": "https://www.imais.org.br/concursos/detalhesconcurso/63",
+        "type": "HTML",
+        "content_hash": "262356a3db5cc8ca88d138862fd53f746e6ee13322803672958a018f53525b3f",
+        "page_count": 1,
+        "extracted_chars": 793,
+        "truncated": false,
+        "title": "Detalhes do Concurso",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
+      },
+      {
+        "url": "https://imais2023.blob.core.windows.net/concursospv/63/c/PM_SGertrudes_PSS_01-26_edital.pdf?sv=2025-11-05&st=2026-09-02T11%3A30%3A00Z&se=2027-03-31T02%3A59%3A00Z&sr=b&sp=r&sig=6NSDITdcULuzUBGaOH1I5rf9w848h67yHoubElfjU4Y%3D",
+        "type": "PDF",
+        "content_hash": "e4c6105ce41ce6b8da9d7d52b234f2d9823eb1d305d778ff492170a4bbec763e",
+        "page_count": 32,
+        "extracted_chars": 132199,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "AMBIGUOUS",
+        "tls_unverified": false,
+        "relevant": true,
+        "relevance_reason": "Documento de seleção docente da instituição: gertrudes, santa.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://www.imais.org.br/concursos/detalhesconcurso/60",
+        "type": "HTML",
+        "content_hash": "72d3188c9e4087c4109d20893eed67c21148e9bdbf085e6badc82036feb47a39",
+        "page_count": 1,
+        "extracted_chars": 4043,
+        "truncated": false,
+        "title": "Detalhes do Concurso",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
+      },
+      {
+        "url": "https://imais2023.blob.core.windows.net/concursospv/60/c/PMDiadema_PSI_01_2026_Edital_de_abertura_Pub_09_01_2026.pdf?sv=2025-11-05&st=2026-01-09T13%3A00%3A00Z&se=2027-01-31T03%3A00%3A00Z&sr=b&sp=r&sig=58qKF2FEppaCQHhJIPLATQaKyA5JyGaLnWxv6F0rFo0%3D",
+        "type": "PDF",
+        "content_hash": "e545c9918f986da9d7c961076371ed79d6a40c3554fa500e9c3384e2ff839de6",
+        "page_count": 20,
+        "extracted_chars": 88336,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://imais2023.blob.core.windows.net/concursospv/60/c/PM_Diadema_PSI_01_2026_Comunicado_06_Edital_de_Convoca%C3%A7%C3%A3o_Prova_Objetiva.pdf?sv=2025-11-05&st=2026-03-20T13%3A27%3A00Z&se=2027-01-01T02%3A59%3A00Z&sr=b&sp=r&sig=jNS3JdzO2cKbvQ6DxCMObnxCuKnWUeoumtgM08DhhDk%3D",
+        "type": "PDF",
+        "content_hash": "1e22d7143c7eaa9d86b629b019ef82a57918ea05656f228914d922455d5bec2b",
+        "page_count": 25,
+        "extracted_chars": 72473,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://imais2023.blob.core.windows.net/concursospv/60/c/PM_Diadema_PSI_01_2026_Comunicado_11_Convoca%C3%A7%C3%A3o_Heteroidentifica%C3%A7%C3%A3o.pdf?sv=2025-11-05&st=2026-04-17T15%3A28%3A00Z&se=2027-01-01T02%3A59%3A00Z&sr=b&sp=r&sig=rPF7vruMPoKI%2BAsTTS7LrXOMLQX4f8Qjpxgfr3uh0w4%3D",
+        "type": "PDF",
+        "content_hash": "5ec441401887d22d8ac630258c61f0c6d23b2af25513fc805fb79ef6d0183e71",
+        "page_count": 3,
+        "extracted_chars": 6984,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://www.imais.org.br/concursos/detalhesconcurso/61",
+        "type": "HTML",
+        "content_hash": "7b28d9a59d7e98c0183b409e3e6995ccac18fcf8efeda291d2fbcc054d9115a2",
+        "page_count": 1,
+        "extracted_chars": 3219,
+        "truncated": false,
+        "title": "Detalhes do Concurso",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
+      },
+      {
+        "url": "https://imais2023.blob.core.windows.net/concursospv/61/c/PM_Tiete_PS_01_2026_Comunicado_03_-_Edital_de_Convoca%C3%A7%C3%A3o.pdf?sv=2025-11-05&st=2026-05-11T13%3A02%3A00Z&se=2027-01-01T02%3A59%3A00Z&sr=b&sp=r&sig=C%2BTuGsplS6B0uAbqirUXiwt90%2FdYTiFnJLNGchpUVGA%3D",
+        "type": "PDF",
+        "content_hash": "cf5ee0427b2dfd2b303bb625cb60c24df0157c833f693a894f7e16b9f8dc9062",
+        "page_count": 7,
+        "extracted_chars": 23124,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://imais2023.blob.core.windows.net/concursospv/61/c/PMTiete_Edital_de_Abertura_PS_01_2026_Publica%C3%A7%C3%A3o_16_04_2026.pdf?sv=2025-11-05&st=2026-04-16T12%3A00%3A00Z&se=2027-01-01T02%3A59%3A00Z&sr=b&sp=r&sig=8bSEBavi2tIiwbsJnwYf23sKlH1f3EE5v3hiDv%2F%2FhWU%3D",
+        "type": "PDF",
+        "content_hash": "d610fad6fd48dee77b5cbd3152a91427fb89e369e846fa918a6434477d88350b",
+        "page_count": 23,
+        "extracted_chars": 98478,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente.",
+        "opportunities_count": 0
+      }
+    ],
+    "reader_version": 5,
+    "applicable": false,
+    "reason": "O PCI lista 1 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
+    "errors": [],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL Nº 01/2026",
+        "url": null,
+        "pci_link_id": "1704647",
+        "pci_news_code": "30ff5ad87f2d84d5a552395741fcfd25",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
+    ]
+  },
+  "https://www.pciconcursos.com.br/noticias/ifmg-abre-concurso-publico-para-professores-do-ensino-basico-tecnico-e-tecnologico": {
+    "status": "READ",
+    "checked_at": "2026-09-02T15:05:48-03:00",
+    "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/ifmg-abre-concurso-publico-para-professores-do-ensino-basico-tecnico-e-tecnologico",
+        "type": "PCI_HTML",
+        "content_hash": "84a20e1bff4f2c29be0627ed91c18cddcd60bc7ef5ada990de1beddc5d038002",
+        "page_count": 1,
+        "extracted_chars": 16163,
+        "truncated": false,
+        "title": "IFMG abre concurso público para Professores do Ensino Básico, Técnico e Tecnológico",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      },
+      {
+        "url": "https://portal.concursos.ifmg.edu.br/",
+        "type": "HTML",
+        "content_hash": "f57584cb981195176f7d1ae8e0d4a46ad49d44379d0fd2b03473f6d58c5754d5",
+        "page_count": 1,
+        "extracted_chars": 2920,
+        "truncated": false,
+        "title": "INSTITUTO FEDERAL MINAS GERAIS",
+        "evidence_status": "NONE",
+        "tls_unverified": false,
+        "relevant": true,
+        "relevance_reason": "Documento de seleção docente da instituição: gerais, minas, tecnologia."
+      },
+      {
+        "url": "https://portal.concursos.ifmg.edu.br/edital",
+        "type": "HTML",
+        "content_hash": "9ecb5507e1abaae4e9e5ba906e2480b32ece06b9e0cf42487daaedc8dbe3d076",
+        "page_count": 1,
+        "extracted_chars": 20316,
+        "truncated": false,
+        "title": "INSTITUTO FEDERAL MINAS GERAIS",
+        "evidence_status": "NONE",
+        "tls_unverified": false,
+        "relevant": true,
+        "relevance_reason": "Documento de seleção docente da instituição: gerais, minas, tecnologia."
+      },
+      {
+        "url": "https://portal.concursos.ifmg.edu.br/edital/index/abertos",
+        "type": "HTML",
+        "content_hash": "467cd603b40aab69a152937303f2e46d12500b43dd2a8fd67bc97cdb9593a5cb",
+        "page_count": 1,
+        "extracted_chars": 20316,
+        "truncated": false,
+        "title": "INSTITUTO FEDERAL MINAS GERAIS",
+        "evidence_status": "NONE",
+        "tls_unverified": false,
+        "relevant": true,
+        "relevance_reason": "Documento de seleção docente da instituição: gerais, minas, tecnologia."
+      },
+      {
+        "url": "https://portal.concursos.ifmg.edu.br/edital/index/andamento",
+        "type": "HTML",
+        "content_hash": "d67e32d6e09124a15c694d29cda198e04544927f42d609bdcf01f93d9991ed02",
+        "page_count": 1,
+        "extracted_chars": 20316,
+        "truncated": false,
+        "title": "INSTITUTO FEDERAL MINAS GERAIS",
+        "evidence_status": "NONE",
+        "tls_unverified": false,
+        "relevant": true,
+        "relevance_reason": "Documento de seleção docente da instituição: gerais, minas, tecnologia."
+      },
+      {
+        "url": "https://portal.concursos.ifmg.edu.br/edital/index/encerrados",
+        "type": "HTML",
+        "content_hash": "d8e18ac4d83c48ca16a5806218757bbc70582a88ef023aef80f2d52d90dad4a3",
+        "page_count": 1,
+        "extracted_chars": 20316,
+        "truncated": false,
+        "title": "INSTITUTO FEDERAL MINAS GERAIS",
+        "evidence_status": "NONE",
+        "tls_unverified": false,
+        "relevant": true,
+        "relevance_reason": "Documento de seleção docente da instituição: gerais, minas, tecnologia."
+      },
+      {
+        "url": "https://portal.concursos.ifmg.edu.br/edital/index/futuros",
+        "type": "HTML",
+        "content_hash": "956096bc952f2dde95ffb7daf6d7f8f7db3dc07bc151e2993e522407069f212b",
+        "page_count": 1,
+        "extracted_chars": 20316,
+        "truncated": false,
+        "title": "INSTITUTO FEDERAL MINAS GERAIS",
+        "evidence_status": "NONE",
+        "tls_unverified": false,
+        "relevant": true,
+        "relevance_reason": "Documento de seleção docente da instituição: gerais, minas, tecnologia."
+      },
+      {
+        "url": "https://portal.concursos.ifmg.edu.br/edital/ver/10",
+        "type": "HTML",
+        "content_hash": "c4463692c168d1971ce15ae7a93b77c4f56c8f6870e8ec3ca2e2abaeb63eb9b7",
+        "page_count": 1,
+        "extracted_chars": 3151,
+        "truncated": false,
+        "title": "INSTITUTO FEDERAL MINAS GERAIS",
+        "evidence_status": "AMBIGUOUS",
+        "tls_unverified": false,
+        "relevant": true,
+        "relevance_reason": "Documento de seleção docente da instituição: gerais, minas, tecnologia."
+      },
+      {
+        "url": "https://portal.concursos.ifmg.edu.br/edital/ver/100",
+        "type": "HTML",
+        "content_hash": "4ce8c8ca9a7b84499d185e3e0a9e2e1952406df925c6394e972a039dc98c381c",
+        "page_count": 1,
+        "extracted_chars": 2139,
+        "truncated": false,
+        "title": "INSTITUTO FEDERAL MINAS GERAIS",
+        "evidence_status": "NONE",
+        "tls_unverified": false,
+        "relevant": true,
+        "relevance_reason": "Documento de seleção docente da instituição: gerais, ifmg, minas."
+      },
+      {
+        "url": "https://portal.concursos.ifmg.edu.br/edital/ver/101",
+        "type": "HTML",
+        "content_hash": "6ac89527c35254681ebe62c7374613e72875b073d4b8869467ba2aee509c1da7",
+        "page_count": 1,
+        "extracted_chars": 4019,
+        "truncated": false,
+        "title": "INSTITUTO FEDERAL MINAS GERAIS",
+        "evidence_status": "AMBIGUOUS",
+        "tls_unverified": false,
+        "relevant": true,
+        "relevance_reason": "Documento de seleção docente da instituição: gerais, ifmg, minas."
+      },
+      {
+        "url": "https://portal.concursos.ifmg.edu.br/edital/ver/102",
+        "type": "HTML",
+        "content_hash": "b309054985002c74c6284f33dd7f77db44ebaeb4b4cf5c062d7b3566417c1b93",
+        "page_count": 1,
+        "extracted_chars": 2044,
+        "truncated": false,
+        "title": "INSTITUTO FEDERAL MINAS GERAIS",
+        "evidence_status": "NONE",
+        "tls_unverified": false,
+        "relevant": true,
+        "relevance_reason": "Documento de seleção docente da instituição: gerais, ifmg, minas."
+      },
+      {
+        "url": "https://portal.concursos.ifmg.edu.br/edital/ver/103",
+        "type": "HTML",
+        "content_hash": "a4cf5011e182d06c5c69da88c7b0be84bb01b9fd29e902eb9dc825fbcef69cff",
+        "page_count": 1,
+        "extracted_chars": 3393,
+        "truncated": false,
+        "title": "INSTITUTO FEDERAL MINAS GERAIS",
+        "evidence_status": "HIGH",
+        "tls_unverified": false,
+        "relevant": true,
+        "relevance_reason": "Documento de seleção docente da instituição: ciencia, gerais, minas."
+      }
+    ],
+    "reader_version": 5,
+    "document_url": "https://portal.concursos.ifmg.edu.br/edital/ver/103",
+    "document_type": "HTML",
+    "content_hash": "a4cf5011e182d06c5c69da88c7b0be84bb01b9fd29e902eb9dc825fbcef69cff",
+    "confidence": "HIGH",
+    "applicable": true,
+    "tls_unverified": false,
+    "requirements": {
+      "graduation_requirement_raw": "Graduação licenciatura ou bacharelado no curso de Ciências Sociais, Sociologia ou Antropologia",
+      "postgraduate_requirement_raw": "Doutorado em Sociologia ou Ciência Política ou Antropologia ou Educação, há 2 (dois) anos ou no caso de não possuir / título de Doutor, possua comprovada competência em ensino, pesquisa e extensão tecnológicos ou reconhecimento da qualificação profissional pelo mercado de trabalho, atestados pela Comissão de Seleção deste edital / Mestrado ou especialização em Sociologia ou Ciência Política ou Antropologia ou Educação IV- Ser docente ou pesquisador de reconhecida competência em sua área",
+      "masters_requirement_raw": "Mestrado ou especialização em Sociologia ou Ciência Política ou Antropologia ou Educação IV- Ser docente ou pesquisador de reconhecida competência em sua área",
+      "doctorate_requirement_raw": "Doutorado em Sociologia ou Ciência Política ou Antropologia ou Educação, há 2 (dois) anos ou no caso de não possuir / título de Doutor, possua comprovada competência em ensino, pesquisa e extensão tecnológicos ou reconhecimento da qualificação profissional pelo mercado de trabalho, atestados pela Comissão de Seleção deste edital"
+    },
+    "evidence": [
+      {
+        "page": 1,
+        "text": "DOWNLOAD 19/01/2026 LISTA DE INSCRIÇÕES DEFERIDAS. DOWNLOAD 05/01/2026 Resultado dos Pedidos de Isenção DOWNLOAD 15/12/2025 Retificação nº 03 - cronograma DOWNLOAD 12/12/2025 FORMULÁRIO UNIFICADO DE AUTODECLARAÇÃO PARA RESERVA DE VAGAS DOWNLOAD 12/12/2025 Comissão de Elaboração, Organização e Acompanhamento DOWNLOAD 12/12/2025 Banca Examinadora DOWNLOAD 12/12/2025 Retificação nº 02 - Cronograma DOWNLOAD 12/12/2025 Retificação nº 01 DOWNLOAD 12/12/2025 EDITAL 1123/2025 - Professor Visitante Campus Betim DOWNLOAD Processo Seletivo Professor Visitante SOCIOLOGIA Requisitos: I-Possuir Graduação licenciatura ou bacharelado no curso de Ciências Sociais, Sociologia ou Antropologia. II -Ser portador do título de Doutorado em Sociologia ou Ciência Política ou Antropologia ou Educação, há 2 (dois) anos ou no caso de não possuir o título de Doutor, possua comprovada competência em ensino, pesquisa e extensão tecnológicos ou reconhecimento da qualificação profissional pelo mercado de trabalho, atestados pela Comissão de Seleção deste edital. III- Possuir Mestrado ou especialização em Sociologia ou Ciência Política ou Antropologia ou Educação IV- Ser docente ou pesquisador de reconhecida competência em sua área;",
+        "kinds": [
+          "graduation",
+          "masters",
+          "doctorate",
+          "postgraduate"
+        ],
+        "context_terms": [
+          "ensino",
+          "selecao",
+          "tecnologico"
+        ],
+        "context_score": 3
+      },
+      {
+        "page": 1,
+        "text": "DOWNLOAD 05/01/2026 Resultado dos Pedidos de Isenção DOWNLOAD 15/12/2025 Retificação nº 03 - cronograma DOWNLOAD 12/12/2025 FORMULÁRIO UNIFICADO DE AUTODECLARAÇÃO PARA RESERVA DE VAGAS DOWNLOAD 12/12/2025 Comissão de Elaboração, Organização e Acompanhamento DOWNLOAD 12/12/2025 Banca Examinadora DOWNLOAD 12/12/2025 Retificação nº 02 - Cronograma DOWNLOAD 12/12/2025 Retificação nº 01 DOWNLOAD 12/12/2025 EDITAL 1123/2025 - Professor Visitante Campus Betim DOWNLOAD Processo Seletivo Professor Visitante SOCIOLOGIA Requisitos: I-Possuir Graduação licenciatura ou bacharelado no curso de Ciências Sociais, Sociologia ou Antropologia. II -Ser portador do título de Doutorado em Sociologia ou Ciência Política ou Antropologia ou Educação, há 2 (dois) anos ou no caso de não possuir o título de Doutor, possua comprovada competência em ensino, pesquisa e extensão tecnológicos ou reconhecimento da qualificação profissional pelo mercado de trabalho, atestados pela Comissão de Seleção deste edital. III- Possuir Mestrado ou especialização em Sociologia ou Ciência Política ou Antropologia ou Educação IV- Ser docente ou pesquisador de reconhecida competência em sua área; V - Ter produção científica relevante, preferencialmente nos últimos 5 (cinco) anos.",
+        "kinds": [
+          "graduation",
+          "masters",
+          "doctorate",
+          "postgraduate"
+        ],
+        "context_terms": [
+          "ensino",
+          "selecao",
+          "tecnologico"
+        ],
+        "context_score": 3
+      },
+      {
+        "page": 1,
+        "text": "I-Possuir Graduação licenciatura ou bacharelado no curso de Ciências Sociais, Sociologia ou Antropologia. II -Ser portador do título de Doutorado em Sociologia ou Ciência Política ou Antropologia ou Educação, há 2 (dois) anos ou no caso de não possuir o título de Doutor, possua comprovada competência em ensino, pesquisa e extensão tecnológicos ou reconhecimento da qualificação profissional pelo mercado de trabalho, atestados pela Comissão de Seleção deste edital. III- Possuir Mestrado ou especialização em Sociologia ou Ciência Política ou Antropologia ou Educação IV- Ser docente ou pesquisador de reconhecida competência em sua área; V - Ter produção científica relevante, preferencialmente nos últimos 5 (cinco) anos. Remuneração:",
+        "kinds": [
+          "graduation",
+          "masters",
+          "doctorate",
+          "postgraduate"
+        ],
+        "context_terms": [
+          "ensino",
+          "remuneracao",
+          "selecao",
+          "tecnologico"
+        ],
+        "context_score": 4
+      }
+    ],
+    "reason": "Requisitos associados à área/cargo por termos de contexto.",
+    "errors": [],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL Nº 607",
+        "url": null,
+        "pci_link_id": "1704648",
+        "pci_news_code": "319b8b48d294e890d01aae5d645dbdad",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
+    ]
   }
 }

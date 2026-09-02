@@ -244,7 +244,7 @@
     "potential": true,
     "last_seen": "2026-09-02",
     "title": "Prefeitura de Mogi Mirim - SP abre concursos e processo seletivo com vagas para diversas áreas",
-    "registration_end": "2026-10-11",
+    "registration_end": "2026-09-10",
     "listing_fingerprint": "286e7d92a1ddf625e37d4e4d8109fed0976a5c80bb680b56aa2e109d0db591a1",
     "last_checked": "2026-09-02T11:47:22-03:00",
     "content_hash": "996c5011c6602cb3b67d3d088b50ce21a110568b5910625d8d11ea3dc54a3ca9",
@@ -974,7 +974,7 @@
     "potential": true,
     "last_seen": "2026-09-02",
     "title": "UERJ abre concurso com vagas para professor adjunto na área de enfermagem",
-    "registration_end": "2026-10-19",
+    "registration_end": "2026-09-02",
     "listing_fingerprint": "143d71c2534ab82400c6a34bf3cdb25e37cfb48ab126891b2576be986e58b019",
     "last_checked": "2026-09-02T11:47:22-03:00",
     "content_hash": "46e583a9052af7218828acccf31d6af899fb03b15877318a5197565a75e81f7c",
@@ -992,7 +992,7 @@
     "listing_fingerprint": "319cb529420f5ce7ba6a7251a62a87d77b3fe440c98f58005ab7b1c5af37fee2",
     "last_checked": "2026-09-02T11:47:22-03:00",
     "content_hash": "bbdc6007db662b0df99c151cebb29ae89ad8c5bf350fa69acc6d3c741d85d69b",
-    "status": "CLOSING_SOON"
+    "status": "UPDATED"
   },
   "https://www.pciconcursos.com.br/noticias/uerj-publica-edital-de-concurso-para-o-cargo-de-professor-adjunto-na-area-de-ensino-de-geografia": {
     "id": "79f01a00b668434a22e8",
@@ -1186,7 +1186,7 @@
     "potential": true,
     "last_seen": "2026-09-02",
     "title": "Prefeitura de Delfinópolis - MG abre concurso e processo seletivo com diversas vagas",
-    "registration_end": "2026-10-18",
+    "registration_end": "2026-09-03",
     "listing_fingerprint": "c612dcb319169dbca0c33a2651e0f78f880f2bd4fd73d19ce06aca30eb6cfad6",
     "last_checked": "2026-09-02T11:47:22-03:00",
     "content_hash": "06fb289a5e9581a8c728d64b7854cddaffd565dc83dc60becb2fee4a290eca08",
@@ -1228,7 +1228,7 @@
     "potential": true,
     "last_seen": "2026-09-02",
     "title": "Prefeitura de Faria Lemos - MG abre concurso público com remunerações de até R$ 16.803,20",
-    "registration_end": "2026-09-27",
+    "registration_end": "2026-09-04",
     "listing_fingerprint": "7fb904082f2f3cf71923035dd36bfaa09d7f28b33a12479cdb934d8828e51d88",
     "last_checked": "2026-09-02T11:47:22-03:00",
     "content_hash": "c86f8b6a3699bb21d5fde34465f2e0cd3bc900e0823378365c7964d8f95f55c0",
@@ -1605,7 +1605,7 @@
     "potential": true,
     "last_seen": "2026-09-02",
     "title": "Prefeitura de Marialva - PR abre concurso público com salários de até R$ 6.768,66",
-    "registration_end": "2026-09-27",
+    "registration_end": "2026-09-03",
     "listing_fingerprint": "3739e2b7aaf08f46f65cdbd1e1a11b93d3aed15d8ea3de2356fd3f564d3399db",
     "last_checked": "2026-09-02T11:47:22-03:00",
     "content_hash": "1d2b74b4dff59bb8d8e4a17aa190ba35f23b75f2cd9f29215e360e456d20808b",
@@ -1821,7 +1821,7 @@
     "listing_fingerprint": "9c58e76338b5fdf702e4b8e877a723b0a6390515fcbd1e0cfd77852ae0b4e53b",
     "last_checked": "2026-08-24T08:46:32-03:00",
     "content_hash": "64218ec92d44dc7940e0b131f3c8252b769943b366483eaece5dc586c45801c2",
-    "status": "OPEN"
+    "status": "UPDATED"
   },
   "https://www.pciconcursos.com.br/noticias/unioeste-pr-retifica-processo-seletivo-para-professores-de-ensino-superior": {
     "id": "8ace6f53f283317f2aff",
@@ -2720,7 +2720,7 @@
     "listing_fingerprint": "e0e488977f4b404b28be155bb94e14bbf3f2819ee40f2e7c481694af51799dde",
     "last_checked": "2026-08-29T17:31:56-03:00",
     "content_hash": "02616b04c6bb077a85fcc25fcdb2cc1d858caa599d4bc4e592db9a18afd5cecb",
-    "status": "OPEN"
+    "status": "UPDATED"
   },
   "https://www.pciconcursos.com.br/noticias/prefeitura-de-guarabira-pb-abre-concurso-publico-com-vagas-imediatas-e-cadastro-de-reserva": {
     "id": "27cd0281d37201c3dfe1",
@@ -2909,7 +2909,7 @@
     "potential": true,
     "last_seen": "2026-09-02",
     "title": "Prefeitura de Buri - SP divulga editais de concursos públicos para formação de cadastro de reserva",
-    "registration_end": "2026-09-27",
+    "registration_end": "2026-09-03",
     "listing_fingerprint": "029d25011a306fcfde24dc55feed151d80b8a2aaaba36fd6416f1bc5f958929e",
     "last_checked": "2026-09-02T11:47:22-03:00",
     "content_hash": "f0224960d9127eda0f7e9bf2227127dde5fc841ac15a273b12be47f9a07ff369",
@@ -3439,7 +3439,7 @@
     "listing_fingerprint": "2ab8d4329e995f4695921b3d613db09f1b7387ecda67d4c371b117734c513073",
     "last_checked": "2026-08-27T18:03:08-03:00",
     "content_hash": "b0c51b3e889ea5e17a7b89052228160bb4787fad407f8ca23c43b0389cf912da",
-    "status": "OPEN"
+    "status": "UPDATED"
   },
   "https://www.pciconcursos.com.br/noticias/unila-pr-abre-processo-seletivo-para-professor-substituto-de-musica-e-tecnologia": {
     "id": "afe54420eabf03cd53ce",
@@ -3467,7 +3467,7 @@
     "listing_fingerprint": "9b6ba86cd9ba7c5e21f64a6c433a134c673e43c2e1c8baaa9100edec71bd2e30",
     "last_checked": "2026-08-27T18:03:08-03:00",
     "content_hash": "9efbc13e40485b3de9fc19f46ecde8a591bdfdeb3c3b315282a09402b248f14d",
-    "status": "OPEN"
+    "status": "UPDATED"
   },
   "https://www.pciconcursos.com.br/noticias/prefeitura-e-samae-de-jaragua-do-sul-sc-abrem-concursos-publicos-com-salarios-de-ate-15605": {
     "id": "6db056003237c44627fc",
@@ -3887,7 +3887,7 @@
     "listing_fingerprint": "b7054406fc75a8d56f44ab6a19d23e50ca243aed61dda1c98a6d227357941073",
     "last_checked": "2026-08-31T15:01:26-03:00",
     "content_hash": "0d05fdf501fce4db87bdd1b0497d6f1627508c4b96a9aad60cf5b22794b96c0e",
-    "status": "OPEN"
+    "status": "UPDATED"
   },
   "https://www.pciconcursos.com.br/noticias/seplad-e-seduc-pa-abrem-concurso-publico-com-vagas-para-diversas-areas-de-atuacao": {
     "id": "25a382125c1cfa5825de",
@@ -4191,7 +4191,7 @@
     "potential": true,
     "last_seen": "2026-09-02",
     "title": "Prefeitura de Paracatu - MG prorroga inscrições do concurso público com salários de até R$ 9.600,00",
-    "registration_end": "2026-08-03",
+    "registration_end": "2026-09-22",
     "listing_fingerprint": "5759630742260dc00230cd6db05b4ce1c3bce642e6a662815cfb38ed3bda582c",
     "last_checked": "2026-09-02T11:47:22-03:00",
     "content_hash": "1b4834c53d245c88f330024cff0d60812789be2a10b9b795b5d5152b001521f4",
@@ -4247,7 +4247,7 @@
     "potential": true,
     "last_seen": "2026-09-02",
     "title": "IFSul - RS abre processo seletivo para professor substituto em Passo Fundo",
-    "registration_end": "2026-09-04",
+    "registration_end": "2026-09-09",
     "listing_fingerprint": "1cbadbf1c3d7b5f4b7a3eb49ab7fff46968a125aecf926f6167b49ab512a8571",
     "last_checked": "2026-09-02T11:47:22-03:00",
     "content_hash": "bebfb189cfb155bbd6bf7a9281a8d492703cd95785ef613769125b58cb16c2f8",
@@ -4275,7 +4275,7 @@
     "potential": true,
     "last_seen": "2026-09-02",
     "title": "Prefeitura de Paraíso - SC abre concurso público com vagas imediatas e cadastro de reserva",
-    "registration_end": "2026-09-02",
+    "registration_end": "2026-10-01",
     "listing_fingerprint": "c2de14d015786de2861c6ccd12fa0000e852a1bed867ac6f9e9dc03e4d49eb04",
     "last_checked": "2026-09-02T11:47:22-03:00",
     "content_hash": "7293a2ea5eb9b0ea2f81848c8a2282ca4b13310f9bc319a92dcea0f931bc4642",
@@ -4303,10 +4303,66 @@
     "potential": true,
     "last_seen": "2026-09-02",
     "title": "Secretaria de Educação de Cristalina - GO abre seleção para professores substitutos",
-    "registration_end": "2026-10-05",
+    "registration_end": "2026-10-06",
     "listing_fingerprint": "193dbfd01fac160dc45ec5c9d1ee44bd0ccb2fd1b89710023cb9e57a3fb90264",
     "last_checked": "2026-09-02T11:47:22-03:00",
     "content_hash": "4c4d9e77e082996c71afc7bd3aa61b70601af4624a44f6ed940c7da25e78af54",
+    "status": "NEW"
+  },
+  "https://www.pciconcursos.com.br/noticias/prefeitura-de-cacapava-sp-abre-concurso-publico-com-salarios-de-ate-6871": {
+    "id": "5b44b916cb81ff1e8a5a",
+    "url": "https://www.pciconcursos.com.br/noticias/prefeitura-de-cacapava-sp-abre-concurso-publico-com-salarios-de-ate-6871",
+    "first_seen": "2026-09-02",
+    "processed": true,
+    "potential": true,
+    "last_seen": "2026-09-02",
+    "title": "Prefeitura de Caçapava - SP abre concurso público com salários de até R$ 6.871,92",
+    "registration_end": "2026-10-05",
+    "listing_fingerprint": "90e135bb89f88c4892f983f1b82da98978849a16b0a0faa2da8ccf3a5cf39b16",
+    "last_checked": "2026-09-02T15:05:48-03:00",
+    "content_hash": "ed9e55a9733f2f2c7fcc9f513fc482d8d8886178b9fa574280be817e805300e6",
+    "status": "NEW"
+  },
+  "https://www.pciconcursos.com.br/noticias/prefeitura-de-santa-gertrudes-sp-abre-selecao-para-cadastro-de-reserva-na-educacao": {
+    "id": "4cb140da7b419afc09ba",
+    "url": "https://www.pciconcursos.com.br/noticias/prefeitura-de-santa-gertrudes-sp-abre-selecao-para-cadastro-de-reserva-na-educacao",
+    "first_seen": "2026-09-02",
+    "processed": true,
+    "potential": true,
+    "last_seen": "2026-09-02",
+    "title": "Prefeitura de Santa Gertrudes - SP abre seleção para cadastro de reserva na educação",
+    "registration_end": "2026-10-08",
+    "listing_fingerprint": "85d0293fdf9b41a4d8001b4534c62ec1cf80d31c8069060a8ff9a37db9f07ea5",
+    "last_checked": "2026-09-02T15:05:48-03:00",
+    "content_hash": "ae946c4e00932317fa7dc043bf23fae1f638cea2ee1f278cdea0c5beae4497e9",
+    "status": "NEW"
+  },
+  "https://www.pciconcursos.com.br/noticias/ifmg-abre-concurso-publico-para-professores-do-ensino-basico-tecnico-e-tecnologico": {
+    "id": "7b300148739fa0a03f66",
+    "url": "https://www.pciconcursos.com.br/noticias/ifmg-abre-concurso-publico-para-professores-do-ensino-basico-tecnico-e-tecnologico",
+    "first_seen": "2026-09-02",
+    "processed": true,
+    "potential": true,
+    "last_seen": "2026-09-02",
+    "title": "IFMG abre concurso público para Professores do Ensino Básico, Técnico e Tecnológico",
+    "registration_end": "2029-09-29",
+    "listing_fingerprint": "6e6739b245426c707e01c57d33ec945a90fc385ffdd134e2fca6f1fecc0f6b3b",
+    "last_checked": "2026-09-02T15:05:48-03:00",
+    "content_hash": "61c105a78f662773d916b091881858fcb6f181ab07a14c5b3b096e1e1a572cc1",
+    "status": "NEW"
+  },
+  "https://www.pciconcursos.com.br/noticias/prefeitura-de-ibiracu-es-abre-processo-seletivo-para-professores": {
+    "id": "21b329e210f5b4f52cf6",
+    "url": "https://www.pciconcursos.com.br/noticias/prefeitura-de-ibiracu-es-abre-processo-seletivo-para-professores",
+    "first_seen": "2026-09-02",
+    "processed": true,
+    "potential": true,
+    "last_seen": "2026-09-02",
+    "title": "Prefeitura de Ibiraçu - ES abre processo seletivo para professores",
+    "registration_end": "2026-09-21",
+    "listing_fingerprint": "96f5de9555d9d8205379bc7f7207e064e72c8bc451580ec1ed863530fef35722",
+    "last_checked": "2026-09-02T15:05:48-03:00",
+    "content_hash": "16ed81c641d8fbbe5764eb9ca0ba914146fff7ab4cb17f9a4e1df1959d2bedfa",
     "status": "NEW"
   }
 }
