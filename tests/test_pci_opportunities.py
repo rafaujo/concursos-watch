@@ -20,7 +20,11 @@ from src.report import (
     _structured_requirements,
     generate_report,
 )
-from src.requirements import extract_requirement_fields, split_academic_requirement
+from src.requirements import (
+    condense_requirement,
+    extract_requirement_fields,
+    split_academic_requirement,
+)
 
 from bs4 import BeautifulSoup
 
@@ -333,3 +337,89 @@ class TestOfficialRequirementInheritance:
         row = _expanded_rows([self._vacancy("PCI_SUMMARY")])[0]
         assert _structured_requirements(row)[0] == "Não informado"
         assert row["_contest_requirement_is_official"] is False
+
+
+class TestAreaListNotices:
+    """Notices that list teaching areas instead of cargos.
+
+    UFRN writes "as oportunidades são para as seguintes áreas: Demografia
+    (Cadastro de reserva)" — a different opening phrase, and items with no role
+    word at all. Both had to hold for the notice to expand, so it produced
+    nothing while announcing thirty areas.
+    """
+
+    UFRN = (
+        "A UFRN divulgou um processo seletivo. Segundo o edital, as oportunidades são "
+        "para as seguintes áreas: Magistério Superior Direito Processual e Propedêutica "
+        "(Cadastro de reserva) Demografia (Cadastro de reserva) Matemática Aplicada "
+        "(Cadastro de reserva) A jornada é de 40 horas."
+    )
+
+    def test_an_area_list_expands_without_a_role_word(self):
+        courses = [i["course"] for i in extract_pci_opportunities_from_text(self.UFRN)]
+        assert courses == ["Direito Processual e Propedêutica", "Demografia", "Matemática Aplicada"]
+
+    def test_the_section_heading_is_not_glued_to_the_first_area(self):
+        first = extract_pci_opportunities_from_text(self.UFRN)[0]
+        assert not first["course"].startswith("Magistério Superior")
+
+    def test_a_cargo_list_still_requires_the_role_word(self):
+        # Municipal notices mix trades into the same list; without the role word
+        # Merendeira and Motorista would be filed as teaching vacancies.
+        text = ("as oportunidades são para os cargos de: Merendeira (1 vaga) "
+                "Motorista (2 vagas) Professor de Artes (1 vaga)")
+        courses = [i["course"] for i in extract_pci_opportunities_from_text(text)]
+        assert courses == ["Artes"]
+
+    def test_a_list_without_any_vacancy_marker_splits_on_the_role_word(self):
+        # Catanduva writes them back to back with nothing in between.
+        text = ("as oportunidades são para os cargos de: Professor Berçarista "
+                "Professor Recreacionista Professor II - Arte A jornada é de 30 horas.")
+        courses = [i["course"] for i in extract_pci_opportunities_from_text(text)]
+        assert courses == ["Berçarista", "Recreacionista", "II - Arte"]
+
+
+class TestRequirementCondensing:
+    """Reducing a requirement to the degree and its field.
+
+    What a reader scanning a list needs is "Mestrado em Educação ou áreas
+    afins", not the paragraph it was lifted from.
+    """
+
+    def test_the_field_survives_and_the_prose_does_not(self):
+        assert condense_requirement(
+            "Doutorado em Sociologia ou Ciência Política ou Antropologia ou Educação, "
+            "há 2 (dois) anos, conforme o disposto no edital"
+        ) == "Doutorado em Sociologia ou Ciência Política ou Antropologia ou Educação"
+
+    def test_chained_degrees_share_their_field(self):
+        # Splitting these would leave "Mestrado" with no area at all.
+        assert condense_requirement("Mestrado e Doutorado em Música ou áreas correlatas") == (
+            "Mestrado e Doutorado em Música ou áreas correlatas"
+        )
+
+    def test_a_second_degree_keeps_its_own_field(self):
+        assert condense_requirement(
+            "graduação em Medicina / Doutorado em Ciências da Saúde"
+        ) == "Graduação em Medicina · Doutorado em Ciências da Saúde"
+
+    def test_a_site_menu_is_not_a_requirement(self):
+        assert condense_requirement(
+            "Pós-Graduação Pesquisa Extensão Vestibular Unidades Portal da Universidade"
+        ) is None
+
+    def test_a_salary_table_is_not_a_requirement(self):
+        assert condense_requirement(
+            "Completo R$ 2.000,00 30h 1 R$ 110,00 12 Assistente Social Curso Superior"
+        ) is None
+
+    def test_the_degree_word_is_dropped_where_the_column_already_says_it(self):
+        assert condense_requirement("Graduação em Administração", keep_degree=False) == "Administração"
+
+    def test_a_degree_modifier_is_not_lost(self):
+        assert condense_requirement("Licenciatura Curta", keep_degree=False) == "Licenciatura Curta"
+
+    def test_a_vague_restatement_yields_to_the_specific_one(self):
+        assert condense_requirement(
+            "doutorado na área / Doutorado em Ciências Ambientais"
+        ) == "Doutorado em Ciências Ambientais"

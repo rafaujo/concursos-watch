@@ -149,18 +149,23 @@ def _strip_role_prefix(value: str) -> str:
         course = reduced
         if not TEACHING_ROLE.match(course):
             break
+    course = SECTION_HEADING.sub("", course).strip(" -–:;,.")
     course = AREA_GROUP.sub("", course).strip(" -–:;,.")
     return ITEM_NUMBER.sub("", course).strip(" -–:;,.")
 
 
-def parse_cargo_item(text: str) -> dict[str, Any] | None:
+def parse_cargo_item(text: str, *, require_role: bool = True) -> dict[str, Any] | None:
     """Turn one PCI cargo bullet into a structured teaching vacancy.
 
     Returns None for non-teaching cargos so a mixed notice (Enfermeiro,
-    Psicólogo, Professor de Geografia) yields only the teaching rows.
+    Psicólogo, Professor de Geografia) yields only the teaching rows. Set
+    require_role=False for a list the notice itself introduced as teaching
+    areas, where the items are bare subjects and no role word appears.
     """
     label = clean_text(text)
-    if not label or len(label) > 220 or not TEACHING_ROLE.search(label):
+    if not label or len(label) > 220:
+        return None
+    if require_role and not TEACHING_ROLE.search(label):
         return None
 
     vacancies_count = None
@@ -204,7 +209,9 @@ def parse_cargo_item(text: str) -> dict[str, Any] | None:
 
 
 CARGO_LIST_MARKER = re.compile(
-    r"as oportunidades s[aã]o para os? cargos? de\s*:\s*", re.I
+    r"(?:as oportunidades s[aã]o para|as vagas s[aã]o para|o edital contempla)\s+"
+    r"(?:os?\s+cargos?\s+de|as?\s+(?:seguintes\s+)?(?P<areas>[aá]reas?))\s*:\s*",
+    re.I,
 )
 
 # In flattened prose every cargo ends with its own count or reserve marker, so
@@ -216,8 +223,29 @@ CARGO_TEXT_BOUNDARY = re.compile(
 )
 
 
+# Headings that group a list of areas — UFRN separates "Magistério Superior"
+# from "EBTT" — and end up glued to the first item once the markup is gone.
+SECTION_HEADING = re.compile(
+    r"^(?:magist[eé]rio\s+superior|ebtt|ensino\s+b[aá]sico,?\s+t[eé]cnico\s+e\s+tecnol[oó]gico|"
+    r"quadro\s+(?:de\s+)?(?:cargos|vagas)|[aá]reas?\s+de\s+atua[cç][aã]o)\s+(?=[A-ZÀ-Ú])",
+    re.I,
+)
+
+# Where the cargo list stops and the notice resumes its prose.
+LIST_END = re.compile(
+    r"\s+(?:A\s+jornada|A\s+carga\s+hor[aá]ria|As\s+inscri[cç][oõ]es|A\s+remunera[cç][aã]o|"
+    r"O\s+sal[aá]rio|Os?\s+sal[aá]rios|O\s+contrato|A\s+sele[cç][aã]o|O\s+processo\s+seletivo\s+ser[aá]|"
+    r"O\s+edital\s+(?:completo|est[aá])|As\s+provas|Mais\s+informa[cç][oõ]es)\b"
+)
+
 # Each cargo in a flattened list begins with its role word.
 ROLE_BOUNDARY = re.compile(r"(?=\bProfessor(?:a)?\b|\bDocente\b|\bInstrutor(?:a)?\b)", re.I)
+
+
+def _before_trailing_prose(body: str) -> str:
+    """Stop where the notice goes back to talking about the selection."""
+    match = LIST_END.search(body)
+    return body[:match.start()] if match else body
 
 
 def extract_pci_opportunities_from_text(raw_text: Any) -> list[dict[str, Any]]:
@@ -232,16 +260,31 @@ def extract_pci_opportunities_from_text(raw_text: Any) -> list[dict[str, Any]]:
     marker = CARGO_LIST_MARKER.search(text)
     if not marker:
         return []
+
+    # A list introduced as "áreas" belongs entirely to this teaching selection —
+    # UFRN writes "as seguintes áreas: Demografia (Cadastro de reserva)" with no
+    # role word anywhere, and demanding one there loses every item. A list of
+    # "cargos" is different: municipal notices mix Merendeira and Motorista into
+    # it, so there the role word is what separates teaching from the rest.
+    areas_mode = bool(marker.group("areas"))
+    body = _before_trailing_prose(text[marker.end():])
+
+    chunks = [match.group(1) for match in CARGO_TEXT_BOUNDARY.finditer(body)]
+    if not chunks:
+        # No count or reserve marker anywhere: Catanduva lists "Professor
+        # Berçarista Professor I Professor II - Arte" with nothing between the
+        # items, so the role word is the only boundary left.
+        chunks = [body]
+
     opportunities: list[dict[str, Any]] = []
     seen: set[str] = set()
-    for match in CARGO_TEXT_BOUNDARY.finditer(text[marker.end():]):
+    for chunk in chunks:
         # One chunk can hold several cargos when the ones before the last carry
         # no count of their own, and it can start with an edital heading. Both
-        # are separated by the role word, so split there and let the
-        # non-teaching leftovers fall out on their own.
-        chunk = match.group(1).strip(" .;,")
-        for piece in ROLE_BOUNDARY.split(chunk):
-            parsed = parse_cargo_item(piece.strip(" .;,-–"))
+        # are separated by the role word.
+        pieces = [chunk] if areas_mode else ROLE_BOUNDARY.split(chunk)
+        for piece in pieces:
+            parsed = parse_cargo_item(piece.strip(" .;,-–"), require_role=not areas_mode)
             if not parsed:
                 continue
             key = normalize_text(parsed["cargo"])

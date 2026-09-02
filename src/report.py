@@ -16,6 +16,7 @@ from .official import edital_numbers_for_display
 from .parser import extract_pci_opportunities_from_text, parse_cargo_item
 from .requirements import (
     clean_requirement_context,
+    condense_requirement,
     extract_requirement_fields,
     graduation_for_display,
     split_academic_requirement,
@@ -252,9 +253,17 @@ def _structured_requirements(v: dict[str, Any]) -> tuple[str, str]:
         for post in separated["postgraduate"]:
             if post and post not in post_parts:
                 post_parts.append(post)
+    # Condense last: the reader wants "Mestrado em Educação ou áreas afins",
+    # not the paragraph it came from. Anything the condenser refuses was not a
+    # requirement to begin with — a site menu, a salary table — and showing
+    # nothing is better than showing that.
+    graduation = condense_requirement(
+        _joined_for_display(graduation_parts), keep_degree=False
+    )
+    post = condense_requirement(_joined_for_display(post_parts))
     return (
-        _mark_if_area_is_missing(_joined_for_display(graduation_parts)),
-        _mark_if_area_is_missing(_joined_for_display(post_parts)),
+        _mark_if_area_is_missing(graduation or "Não informado"),
+        _mark_if_area_is_missing(post or "Não informado"),
     )
 
 
@@ -460,12 +469,12 @@ def generate_report(vacancies: list[dict[str, Any]], output_path: Path, generate
     document = f'''<!doctype html>
 <html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Radar automático de concursos acadêmicos"><title>Concursos Watch</title>
-<link rel="stylesheet" href="assets/style.css?v=8"></head><body data-profile="{profile_json}">
+<link rel="stylesheet" href="assets/style.css?v=9"></head><body data-profile="{profile_json}">
 <header class="hero"><div class="hero-inner"><p class="eyebrow">CONCURSOS WATCH</p><h1>Radar de Concursos Acadêmicos</h1><p class="intro">Oportunidades docentes públicas organizadas por concurso, edital, vaga e requisitos de formação.</p>
 <div class="summary"><div><strong>{generated_at.strftime('%d/%m/%Y %H:%M')}</strong><span>Última atualização (BRT)</span></div><div><strong>{open_count}</strong><span>Vagas abertas listadas</span></div><div><strong>{new_count}</strong><span>Novas hoje</span></div><div><strong>PCI</strong><span>Fonte monitorada</span></div></div></div></header>
 <main><aside class="notice"><strong>Triagem, não decisão jurídica.</strong> “Elegível” não substitui a decisão da instituição sobre equivalência de títulos. <span class="official-count">Editais oficiais lidos com evidência aplicável: {official_read_count}.</span></aside>
 <section class="filters" aria-label="Filtros"><label>Buscar<input id="search" type="search" placeholder="Área, cidade, instituição…"></label><label>Estado<select id="state"><option value="">Todos</option>{options_state}</select></label><label>Instituição<select id="institution"><option value="">Todas</option>{options_inst}</select></label><label>Tipo<select id="institution-type"><option value="">Todas</option><option value="SUPERIOR" selected>Universidades e IFs</option><option value="BASICA">Prefeituras e estados</option><option value="INDEFINIDA">Indefinida</option></select></label><label>Curso<select id="course"><option value="">Todos</option>{options_course}</select></label><label>Elegibilidade<select id="eligibility"><option value="">Todas</option><option>YES</option><option>UNCERTAIN</option><option>UNKNOWN</option><option>NO</option></select></label><label>Aderência mínima<input id="score" type="range" min="0" max="100" value="0"><output id="score-value">0</output></label><label class="check"><input id="open-only" type="checkbox"> Somente abertas</label><label class="check"><input id="new-only" type="checkbox"> Somente novas</label><button id="clear" type="button">Limpar filtros</button></section>
 <div class="results-heading"><h2>Todas as vagas por concurso</h2><span id="result-count">{len(rows)} vaga(s) em {len(visible)} concurso(s)</span></div><div id="cards" class="contest-list">{sections}</div>
-</main><footer>Gerado automaticamente · Fonte de descoberta: <a href="{config.PCI_LISTING_URL}">PCI Concursos</a> · Consulte sempre o edital oficial.</footer><script src="assets/app.js?v=8"></script></body></html>'''
+</main><footer>Gerado automaticamente · Fonte de descoberta: <a href="{config.PCI_LISTING_URL}">PCI Concursos</a> · Consulte sempre o edital oficial.</footer><script src="assets/app.js?v=9"></script></body></html>'''
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(document, encoding="utf-8", newline="\n")

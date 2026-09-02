@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import re
+import unicodedata
 from typing import Any
 
 
@@ -209,3 +210,148 @@ def extract_requirement_fields(text: Any) -> dict[str, str | None]:
         "masters_requirement": join(masters),
         "doctorate_requirement": join(doctorate),
     }
+
+
+DEGREE = re.compile(
+    r"\b(gradua[cç][aã]o|licenciatura|bacharelado|curso superior|forma[cç][aã]o superior|"
+    r"especializa[cç][aã]o|p[oó]s[- ]?gradua[cç][aã]o|mestrado|doutorado|p[oó]s[- ]doutorado|"
+    r"resid[eê]ncia m[eé]dica|t[ií]tulo de mestre|t[ií]tulo de doutor|grau de mestre|grau de doutor)\b",
+    re.I,
+)
+CONNECTOR = re.compile(
+    r"^\s*(?:plena|curta|completa|integral|lato\s+sensu|stricto\s+sensu|"
+    r"com\s+habilita[cç][aã]o)?\s*"
+    r"(?:em|na[s]?\s+[aá]reas?(?:\s+de)?|de|do|da)\s*",
+    re.I,
+)
+STOP = re.compile(
+    r"\s+(?:com|conforme|desde que|sendo|obtido|reconhecid|expedid|na forma|nos termos|"
+    r"h[aá]\s+\d|para\s+o\s+cargo|e\s+registro|R\$|\d{2}h\b|acompanhad|o\s+disposto|§|nos\s+termos|previst|conforme\s+o\s+art)",
+    re.I,
+)
+# Degrees joined before a shared field: "Mestrado e Doutorado em Música".
+CHAINED_DEGREE = re.compile(r"\s*(?:,|e|ou|e/ou)\s*", re.I)
+
+TOC = re.compile(r"\.{4,}|\s\d{2,4}\s*$|sum[aá]rio", re.I)
+BAD_AREA = re.compile(r"^(?:mesmo|o disposto|os? candidatos?|a[s]? qual|conforme|refer)", re.I)
+NAV = re.compile(
+    r"vestibular|portal da universidade|pr[oó][- ]reitor|assist[eê]ncia estudantil|alojamento|"
+    r"\bEAD\b|bolsas|todas as unidades|coordenadoria|ingressar|biblioteca|ouvidoria|"
+    r"programas de p[oó]s[- ]gradua[cç][aã]o\b.{0,40}\b(?:resid[eê]ncia|especializa)",
+    re.I,
+)
+TABLE = re.compile(r"R\$\s*[\d.]+,\d{2}.*\b\d+\b|\b\d{2}h\b\s+\d")
+
+CANON = {
+    "graduacao": "Graduação", "licenciatura": "Licenciatura", "bacharelado": "Bacharelado",
+    "curso superior": "Graduação", "formacao superior": "Graduação",
+    "especializacao": "Especialização", "pos-graduacao": "Pós-graduação",
+    "posgraduacao": "Pós-graduação", "pos graduacao": "Pós-graduação",
+    "mestrado": "Mestrado", "doutorado": "Doutorado", "pos-doutorado": "Pós-doutorado",
+    "residencia medica": "Residência médica",
+    "titulo de mestre": "Mestrado", "titulo de doutor": "Doutorado",
+    "grau de mestre": "Mestrado", "grau de doutor": "Doutorado",
+}
+
+
+def normalize_text_simple(value: str) -> str:
+    value = unicodedata.normalize("NFKD", (value or "").lower())
+    return "".join(c for c in value if not unicodedata.combining(c)).strip()
+
+
+def _canon(word: str) -> str:
+    k = unicodedata.normalize("NFKD", word.lower())
+    k = "".join(c for c in k if not unicodedata.combining(c))
+    return CANON.get(k, word.capitalize())
+
+
+def condense_requirement(value: str | None, *, keep_degree: bool = True) -> str | None:
+    """Reduce a requirement to the degree and its field, dropping the rest.
+
+    A reader scanning a list needs "Mestrado em Educação ou áreas afins", not
+    the paragraph around it. Values that are not requirements at all — a
+    university site's navigation menu, a salary table, a table of contents —
+    return None rather than a shortened version of nonsense.
+
+    keep_degree=False drops the degree word itself, for a column already
+    titled "Requisito de graduação": repeating it there is noise. In the
+    postgraduate column the word carries the information — mestrado and
+    doutorado are different requirements — so it stays.
+    """
+    if not value or value == "Não informado":
+        return value
+    if NAV.search(value) or TABLE.search(value) or TOC.search(value):
+        return None
+    parts, seen = [], set()
+    consumed = 0
+    matches = list(DEGREE.finditer(value))
+    for index, match in enumerate(matches):
+        # "X ou Doutorado em Y" is one requirement with alternatives, not two.
+        # A degree already inside the previous item's area is part of it.
+        if match.start() < consumed:
+            continue
+        degree = _canon(match.group(1))
+        end = match.end()
+        # "Mestrado e Doutorado em Música" states one requirement whose field is
+        # shared: splitting it would leave the first degree with no area at all.
+        for following in matches[index + 1:]:
+            joiner = value[end:following.start()]
+            if not CHAINED_DEGREE.fullmatch(joiner):
+                break
+            degree = f"{degree}{joiner}{_canon(following.group(1))}"
+            end = following.end()
+            consumed = end
+        # Never read past where the next degree begins: its field belongs to
+        # it, not to this one.
+        stop_at = len(value)
+        for following in matches[index + 1:]:
+            if following.start() >= end:
+                stop_at = following.start()
+                break
+        tail = value[end:stop_at]
+        conn = CONNECTOR.match(tail)
+        if not conn:
+            # "Licenciatura Curta" names the degree with a modifier and no
+            # field. Reducing it to "Licenciatura" would drop the only thing
+            # that distinguishes it, so this degree's own phrase is kept — up
+            # to where the next degree begins, never the whole value.
+            phrase = value[match.start():stop_at].strip(" .;,:/-–")
+            stop = STOP.search(phrase)
+            if stop:
+                phrase = phrase[:stop.start()].strip(" .;,:/-–")
+            # Just the degree with nothing added: use the canonical spelling
+            # rather than whatever case the source happened to use.
+            if normalize_text_simple(phrase) == normalize_text_simple(match.group(1)):
+                phrase = degree
+            item = phrase if 0 < len(phrase) <= 60 else degree
+        else:
+            rest = tail[conn.end():]
+            stop = STOP.search(rest)
+            area = (rest[:stop.start()] if stop else rest).strip(" .,;:/-–()")
+            area = re.sub(r"\s+", " ", area)
+            if BAD_AREA.match(area):
+                area = ""
+            if len(area) > 80:
+                area = area[:80].rsplit(" ", 1)[0] + "…"
+            consumed = end + conn.end() + len(area)
+            if not keep_degree and area:
+                item = area
+            else:
+                item = f"{degree} em {area}" if area else degree
+        if item.lower() not in seen:
+            seen.add(item.lower())
+            parts.append(item)
+    # A bare degree alongside the same degree with a field is the same
+    # requirement stated twice; the specific one is the useful one.
+    parts = [
+        item for item in parts
+        if not any(other != item and other.lower().startswith(item.lower() + " em") for other in parts)
+    ]
+    if not parts:
+        # No degree word at all. That is the normal shape for an already
+        # stripped graduation ("Administração") and for a cargo's own hint
+        # ("Pós ou cursos de aperfeiçoamento"). Both are short and were not
+        # rejected as junk above, so keeping them beats discarding them; only
+        # a long value with no degree in it is something we cannot vouch for.
+        return value if len(value) <= 90 else None
+    return " · ".join(parts[:3])
