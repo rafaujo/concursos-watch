@@ -29769,15 +29769,15 @@
     ]
   },
   "https://www.pciconcursos.com.br/noticias/uerj-abre-concursos-para-professores-assistentes-e-adjuntos-em-diversas-areas": {
-    "status": "BLOCKED",
-    "checked_at": "2026-09-01T12:28:28-03:00",
+    "status": "READ",
+    "checked_at": "2026-09-03T12:01:31-03:00",
     "documents": [
       {
         "url": "https://www.pciconcursos.com.br/noticias/uerj-abre-concursos-para-professores-assistentes-e-adjuntos-em-diversas-areas",
         "type": "PCI_HTML",
-        "content_hash": "dd490477e8e371702392343de4a9cbb163831ffcc2b9625d804af41c2ec8e789",
+        "content_hash": "f7531745dd73373db4a5e576aab0ea4639bdcceb8ae716e5d9f5cfa6962afbbd",
         "page_count": 1,
-        "extracted_chars": 8548,
+        "extracted_chars": 8755,
         "truncated": false,
         "title": "UERJ abre concursos para professores assistentes e adjuntos em diversas áreas",
         "evidence_status": "IRRELEVANT",
@@ -29788,15 +29788,15 @@
       {
         "url": "https://www.uerj.br/",
         "type": "HTML",
-        "content_hash": "e46820a7ec966cb4453d84dc67d9f46dc5391ace3a2afed9f1ee8647f5bd5c4b",
+        "content_hash": "22b573205e49f1dacfd28a38bae5d2a886893e12d9c3b06c90562b2fa77f2607",
         "page_count": 1,
-        "extracted_chars": 3268,
+        "extracted_chars": 3544,
         "truncated": false,
         "title": "UERJ - Universidade do Estado do Rio de Janeiro - Universidade do Estado do Rio de Janeiro",
-        "evidence_status": "IRRELEVANT",
+        "evidence_status": "HIGH",
         "tls_unverified": false,
-        "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+        "relevant": true,
+        "relevance_reason": "Documento de seleção docente da instituição: janeiro, uerj."
       },
       {
         "url": "https://www.uerj.br/concursos-e-editais/",
@@ -29806,10 +29806,10 @@
         "extracted_chars": 1327,
         "truncated": false,
         "title": "Concursos e Editais - UERJ - Universidade do Estado do Rio de Janeiro",
-        "evidence_status": "IRRELEVANT",
+        "evidence_status": "NONE",
         "tls_unverified": false,
-        "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+        "relevant": true,
+        "relevance_reason": "Documento de seleção docente da instituição: janeiro, uerj."
       },
       {
         "url": "https://concursos.sgp.uerj.br/",
@@ -29822,7 +29822,7 @@
         "evidence_status": "IRRELEVANT",
         "tls_unverified": false,
         "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
       },
       {
         "url": "https://www.uerj.br/wp-content/uploads/2019/01/informe_uerj95.pdf",
@@ -29832,10 +29832,10 @@
         "extracted_chars": 15995,
         "truncated": false,
         "title": "",
-        "evidence_status": "IRRELEVANT",
+        "evidence_status": "HIGH",
         "tls_unverified": false,
-        "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "relevant": true,
+        "relevance_reason": "Documento de seleção docente da instituição: janeiro, uerj.",
         "opportunities_count": 0
       },
       {
@@ -29849,7 +29849,7 @@
         "evidence_status": "IRRELEVANT",
         "tls_unverified": false,
         "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "relevance_reason": "O documento não é um edital ou aviso de seleção.",
         "opportunities_count": 0
       },
       {
@@ -29860,144 +29860,183 @@
         "extracted_chars": 5818,
         "truncated": false,
         "title": "988.indd",
-        "evidence_status": "IRRELEVANT",
+        "evidence_status": "AMBIGUOUS",
         "tls_unverified": false,
-        "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "relevant": true,
+        "relevance_reason": "Documento de seleção docente da instituição: janeiro, uerj.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://www.uerj.br/wp-content/uploads/2024/04/Guia_Uerj_de_Ramais_2024_3.pdf",
+        "type": "PDF",
+        "content_hash": "e01026548e1745911467ff4d81ed42c2095d0691bd90642a61e06cf8dd1a6f71",
+        "page_count": 440,
+        "extracted_chars": 471157,
+        "truncated": true,
+        "title": "",
+        "evidence_status": "AMBIGUOUS",
+        "tls_unverified": false,
+        "relevant": true,
+        "relevance_reason": "Documento de seleção docente da instituição: janeiro, uerj.",
         "opportunities_count": 0
       }
     ],
     "reader_version": 5,
-    "applicable": false,
-    "reason": "O PCI lista 16 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
+    "document_url": "https://www.uerj.br/wp-content/uploads/2019/01/informe_uerj95.pdf",
+    "document_type": "PDF",
+    "content_hash": "9613efabaafc7521d7bbaa604074524d45806570f757644e5763675cd2fb58d6",
+    "confidence": "HIGH",
+    "applicable": true,
+    "tls_unverified": false,
+    "requirements": {
+      "postgraduate_requirement_raw": "doutorado e avaliamos se cabe fazer um livro ou não",
+      "doctorate_requirement_raw": "doutorado e avaliamos se cabe fazer um livro ou não"
+    },
+    "evidence": [
+      {
+        "page": 3,
+        "text": "é de professores da própria UERJ. A preferência é para livros. Mas tam- bém recebemos teses de doutorado e avaliamos se cabe fazer um livro ou não. Há um Conselho Editorial que",
+        "kinds": [
+          "doctorate",
+          "postgraduate"
+        ],
+        "context_terms": [
+          "doutorado",
+          "professores",
+          "uerj"
+        ],
+        "context_score": 3
+      }
+    ],
+    "reason": "Requisitos associados à área/cargo por termos de contexto.",
     "errors": [
-      "http://www.sgp.uerj.br/site/index.php/concursos.html: HTTPError: 404 Client Error: Not Found for url: https://www.sgp.uerj.br/site/concursos.html"
+      "http://www.sgp.uerj.br/site/index.php/concursos.html: ReadTimeout: HTTPConnectionPool(host='www.sgp.uerj.br', port=80): Read timed out. (read timeout=30)"
     ],
     "pci_protected_documents": [
       {
         "label": "EDITAL - UERJ 225 PROFESSOR ADJUNTO ÁREA DE ENGENHARIAS ENGENHARIA AMBIENTAL",
         "url": null,
         "pci_link_id": "1704574",
-        "pci_news_code": "0b9031aa293ebb2f531868793cb85b87",
+        "pci_news_code": "3c73116ec26c5f1abbe6176e6884b755",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       },
       {
         "label": "EDITAL - UERJ 226 PROFESSOR ADJUNTO CIÊNCIAS AMBIENTAIS",
         "url": null,
         "pci_link_id": "1704575",
-        "pci_news_code": "0b9031aa293ebb2f531868793cb85b87",
+        "pci_news_code": "3c73116ec26c5f1abbe6176e6884b755",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       },
       {
         "label": "EDITAL - UERJ 229 PROFESSOR ASSISTENTE CLÍNICA MÉDICA",
         "url": null,
         "pci_link_id": "1704577",
-        "pci_news_code": "0b9031aa293ebb2f531868793cb85b87",
+        "pci_news_code": "3c73116ec26c5f1abbe6176e6884b755",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       },
       {
         "label": "RETIFICAÇÃO - UERJ 229",
         "url": null,
         "pci_link_id": "1704576",
-        "pci_news_code": "0b9031aa293ebb2f531868793cb85b87",
+        "pci_news_code": "3c73116ec26c5f1abbe6176e6884b755",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       },
       {
         "label": "EDITAL - UERJ 230 PROFESSOR ADJUNTO CLÍNICA MÉDICA",
         "url": null,
         "pci_link_id": "1704578",
-        "pci_news_code": "0b9031aa293ebb2f531868793cb85b87",
+        "pci_news_code": "3c73116ec26c5f1abbe6176e6884b755",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       },
       {
         "label": "RETIFICAÇÃO - UERJ 230",
         "url": null,
         "pci_link_id": "1704579",
-        "pci_news_code": "0b9031aa293ebb2f531868793cb85b87",
+        "pci_news_code": "3c73116ec26c5f1abbe6176e6884b755",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       },
       {
         "label": "EDITAL - UERJ 231 PROFESSOR ADJUNTO GINECOLOGIA E OBSTETRÍCIA OBSTETRÍCIA GERAL",
         "url": null,
         "pci_link_id": "1704580",
-        "pci_news_code": "0b9031aa293ebb2f531868793cb85b87",
+        "pci_news_code": "3c73116ec26c5f1abbe6176e6884b755",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       },
       {
         "label": "RETIFICAÇÃO - UERJ 231",
         "url": null,
         "pci_link_id": "1704581",
-        "pci_news_code": "0b9031aa293ebb2f531868793cb85b87",
+        "pci_news_code": "3c73116ec26c5f1abbe6176e6884b755",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       },
       {
         "label": "EDITAL - UERJ 232 PROFESSOR ADJUNTO HEMATOLOGIA",
         "url": null,
         "pci_link_id": "1704582",
-        "pci_news_code": "0b9031aa293ebb2f531868793cb85b87",
+        "pci_news_code": "3c73116ec26c5f1abbe6176e6884b755",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       },
       {
         "label": "RETIFICAÇÃO - UERJ 232",
         "url": null,
         "pci_link_id": "1704583",
-        "pci_news_code": "0b9031aa293ebb2f531868793cb85b87",
+        "pci_news_code": "3c73116ec26c5f1abbe6176e6884b755",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       },
       {
         "label": "EDITAL - UERJ 233 PROFESSOR ADJUNTO FISIATRIA",
         "url": null,
         "pci_link_id": "1704584",
-        "pci_news_code": "0b9031aa293ebb2f531868793cb85b87",
+        "pci_news_code": "3c73116ec26c5f1abbe6176e6884b755",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       },
       {
         "label": "RETIFICAÇÃO - UERJ 233",
         "url": null,
         "pci_link_id": "1704585",
-        "pci_news_code": "0b9031aa293ebb2f531868793cb85b87",
+        "pci_news_code": "3c73116ec26c5f1abbe6176e6884b755",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       },
       {
         "label": "EDITAL - UERJ 236 PROFESSOR ADJUNTO ENDOCRINOLOGIA",
         "url": null,
         "pci_link_id": "1704586",
-        "pci_news_code": "0b9031aa293ebb2f531868793cb85b87",
+        "pci_news_code": "3c73116ec26c5f1abbe6176e6884b755",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       },
       {
         "label": "RETIFICAÇÃO - UERJ 236",
         "url": null,
         "pci_link_id": "1704587",
-        "pci_news_code": "0b9031aa293ebb2f531868793cb85b87",
+        "pci_news_code": "3c73116ec26c5f1abbe6176e6884b755",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       },
       {
         "label": "EDITAL - UERJ 243 PROFESSOR ADJUNTO GASTROENTEROLOGIA",
         "url": null,
         "pci_link_id": "1704588",
-        "pci_news_code": "0b9031aa293ebb2f531868793cb85b87",
+        "pci_news_code": "3c73116ec26c5f1abbe6176e6884b755",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       },
       {
         "label": "RETIFICAÇÃO - UERJ 243",
         "url": null,
         "pci_link_id": "1704589",
-        "pci_news_code": "0b9031aa293ebb2f531868793cb85b87",
+        "pci_news_code": "3c73116ec26c5f1abbe6176e6884b755",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       }
     ]
   },
   "https://www.pciconcursos.com.br/noticias/prefeitura-de-palmeira-sc-abre-concurso-e-processo-seletivo-para-diversos-cargos": {
     "status": "BLOCKED",
-    "checked_at": "2026-09-01T12:28:28-03:00",
+    "checked_at": "2026-09-03T12:01:31-03:00",
     "documents": [
       {
         "url": "https://www.pciconcursos.com.br/noticias/prefeitura-de-palmeira-sc-abre-concurso-e-processo-seletivo-para-diversos-cargos",
         "type": "PCI_HTML",
-        "content_hash": "1cb404dc2a7edd33ac998c0b3ed7f5009158cdeb7c1f7767fb83280909c964e6",
+        "content_hash": "eea15a43ec2052401a7f159c1768a6beebd514f76ae71ba2c28878bb1634206c",
         "page_count": 1,
-        "extracted_chars": 11309,
+        "extracted_chars": 12096,
         "truncated": false,
         "title": "Prefeitura de Palmeira - SC abre concurso e processo seletivo para diversos cargos",
         "evidence_status": "IRRELEVANT",
@@ -30017,28 +30056,28 @@
         "label": "EDITAL DE PROCESSO SELETIVO Nº 02/2026",
         "url": null,
         "pci_link_id": "1704564",
-        "pci_news_code": "78827f95d0e664cd4a9fc828d348e900",
+        "pci_news_code": "3e3298f5c71c9d52d3f7c0909aad3c44",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       },
       {
         "label": "EDITAL DE CONCURSO PÚBLICO Nº 003/2026",
         "url": null,
         "pci_link_id": "1704565",
-        "pci_news_code": "78827f95d0e664cd4a9fc828d348e900",
+        "pci_news_code": "3e3298f5c71c9d52d3f7c0909aad3c44",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       }
     ]
   },
   "https://www.pciconcursos.com.br/noticias/prefeitura-de-limeira-sp-prorroga-inscricoes-de-concursos-com-vagas-em-diversas-areas": {
     "status": "BLOCKED",
-    "checked_at": "2026-09-01T12:28:28-03:00",
+    "checked_at": "2026-09-03T12:01:31-03:00",
     "documents": [
       {
         "url": "https://www.pciconcursos.com.br/noticias/prefeitura-de-limeira-sp-prorroga-inscricoes-de-concursos-com-vagas-em-diversas-areas",
         "type": "PCI_HTML",
-        "content_hash": "6eda5e253ddf100d0dee272ec7385f512fd3748104781b447f3d088cf11e5677",
+        "content_hash": "7dd86f62ada1c8da9406aef13e499963dbbc3080ae4153529e0d2e855e8d2aac",
         "page_count": 1,
-        "extracted_chars": 22427,
+        "extracted_chars": 22928,
         "truncated": false,
         "title": "Prefeitura de Limeira - SP prorroga inscrições de concursos com vagas em diversas áreas",
         "evidence_status": "IRRELEVANT",
@@ -30049,28 +30088,15 @@
       {
         "url": "https://www.limeira.sp.gov.br/",
         "type": "HTML",
-        "content_hash": "e64cc96cb328bf2750334aa2f504aeb762df871e4f15b734dff14b7aea26965f",
+        "content_hash": "31727b61daba78da70b3443cf8b02b213b47fcbcd34562e4d3a8a7b0fcbcc177",
         "page_count": 1,
-        "extracted_chars": 4770,
+        "extracted_chars": 4733,
         "truncated": false,
         "title": "Prefeitura de Limeira",
         "evidence_status": "IRRELEVANT",
         "tls_unverified": false,
         "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
-      },
-      {
-        "url": "https://www.pciconcursos.com.br/apostilas/prefeitura-de-limeira-sp",
-        "type": "HTML",
-        "content_hash": "86086e79e0cd0235a140cbb0a92464ad34d06f6a3859192ee1050e5d5daf9f95",
-        "page_count": 1,
-        "extracted_chars": 6555,
-        "truncated": false,
-        "title": "PCI Concursos - Apostilas",
-        "evidence_status": "IRRELEVANT",
-        "tls_unverified": false,
-        "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+        "relevance_reason": "O documento não é um edital ou aviso de seleção."
       },
       {
         "url": "https://sme.limeira.sp.gov.br/inscricao_creche.php?matricula=creche",
@@ -30083,21 +30109,7 @@
         "evidence_status": "IRRELEVANT",
         "tls_unverified": false,
         "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
-      },
-      {
-        "url": "https://sme.limeira.sp.gov.br/leis/Decreto_Municipal_05_de_03_janeiro_2024.pdf",
-        "type": "PDF",
-        "content_hash": "064c8bc0081639c6fd7960c5f1f15d8e6e20fc75a6bd3c8a445f78c180cceb35",
-        "page_count": 2,
-        "extracted_chars": 392,
-        "truncated": false,
-        "title": "",
-        "evidence_status": "IRRELEVANT",
-        "tls_unverified": false,
-        "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
-        "opportunities_count": 0
+        "relevance_reason": "O documento não é um edital ou aviso de seleção."
       },
       {
         "url": "https://sme.limeira.sp.gov.br/leis/Lei%20N4137%20de%2028%20de%20maio%20de%202007.pdf",
@@ -30110,7 +30122,7 @@
         "evidence_status": "IRRELEVANT",
         "tls_unverified": false,
         "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "relevance_reason": "O documento não é um edital ou aviso de seleção.",
         "opportunities_count": 0
       },
       {
@@ -30124,7 +30136,35 @@
         "evidence_status": "IRRELEVANT",
         "tls_unverified": false,
         "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "relevance_reason": "O documento não é um edital ou aviso de seleção.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://sme.limeira.sp.gov.br/leis/Lei%20Ordinaria%20N5206_2026-05-08T13_17_16.pdf",
+        "type": "PDF",
+        "content_hash": "1307125b27fe940b976319225f1f36ae6fde8dcbb910cf106c33553ae809170f",
+        "page_count": 2,
+        "extracted_chars": 5512,
+        "truncated": false,
+        "title": "Câmara Municipal de Limeira",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não é um edital ou aviso de seleção.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://sme.limeira.sp.gov.br/leis/Lei_6825_2022.pdf",
+        "type": "PDF",
+        "content_hash": "f7bc88535fa70e3749517970d240c6a9e328af81599cfba1a99ac3161882be01",
+        "page_count": 1,
+        "extracted_chars": 6852,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não é um edital ou aviso de seleção.",
         "opportunities_count": 0
       }
     ],
@@ -30139,42 +30179,42 @@
         "label": "EDITAL DE CONCURSO PÚBLICO 01/2026",
         "url": null,
         "pci_link_id": "1703337",
-        "pci_news_code": "59921a0c869d8ea08668d6903ba32fd0",
+        "pci_news_code": "816a22df234358958840efd044b3e6c3",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       },
       {
         "label": "EDITAL DE CONCURSO PÚBLICO 02/2026",
         "url": null,
         "pci_link_id": "1703338",
-        "pci_news_code": "59921a0c869d8ea08668d6903ba32fd0",
+        "pci_news_code": "816a22df234358958840efd044b3e6c3",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       },
       {
         "label": "EDITAL DE PRORROGAÇÃO DAS INSCRIÇÕES - CONCURSO PÚBLICO 01/2026",
         "url": null,
         "pci_link_id": "1704569",
-        "pci_news_code": "59921a0c869d8ea08668d6903ba32fd0",
+        "pci_news_code": "816a22df234358958840efd044b3e6c3",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       },
       {
         "label": "EDITAL DE PRORROGAÇÃO DAS INSCRIÇÕES - CONCURSO PÚBLICO 02/2026",
         "url": null,
         "pci_link_id": "1704570",
-        "pci_news_code": "59921a0c869d8ea08668d6903ba32fd0",
+        "pci_news_code": "816a22df234358958840efd044b3e6c3",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       }
     ]
   },
   "https://www.pciconcursos.com.br/noticias/prefeitura-de-sao-jose-do-inhacora-rs-abre-processo-seletivo-para-formacao-de-cadastro-de-reserva": {
     "status": "BLOCKED",
-    "checked_at": "2026-09-01T12:28:28-03:00",
+    "checked_at": "2026-09-03T12:01:31-03:00",
     "documents": [
       {
         "url": "https://www.pciconcursos.com.br/noticias/prefeitura-de-sao-jose-do-inhacora-rs-abre-processo-seletivo-para-formacao-de-cadastro-de-reserva",
         "type": "PCI_HTML",
-        "content_hash": "178f496595cb222381e40ab3e0e2c27923692c57f9beca54d49fdd6907be2acc",
+        "content_hash": "76e509943295b767ad25b9267689402f71eb050eb8f6e24dda8a718c8f661234",
         "page_count": 1,
-        "extracted_chars": 9301,
+        "extracted_chars": 9308,
         "truncated": false,
         "title": "Prefeitura de São José do Inhacorá - RS abre processo seletivo para formação de cadastro de reserva",
         "evidence_status": "IRRELEVANT",
@@ -30187,28 +30227,28 @@
     "applicable": false,
     "reason": "O PCI lista 1 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
     "errors": [
-      "https://saojosedoinhacora.rs.gov.br/: ConnectTimeout: HTTPSConnectionPool(host='saojosedoinhacora.rs.gov.br', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<HTTPSConnection(host='saojosedoinhacora.rs.gov.br', port=443) at 0x7f0930a98fe0>, 'Connection to saojosedoinhacora.rs.gov.br timed out. (connect timeout=30)'))"
+      "https://saojosedoinhacora.rs.gov.br/: ConnectTimeout: HTTPSConnectionPool(host='saojosedoinhacora.rs.gov.br', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<HTTPSConnection(host='saojosedoinhacora.rs.gov.br', port=443) at 0x7f3061668980>, 'Connection to saojosedoinhacora.rs.gov.br timed out. (connect timeout=30)'))"
     ],
     "pci_protected_documents": [
       {
         "label": "EDITAL Nº 181/2026",
         "url": null,
         "pci_link_id": "1704602",
-        "pci_news_code": "c6cb9cf39674dad57c846a5f8550e927",
+        "pci_news_code": "9ee4c44568ec17180e70e25eb7a32ad7",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       }
     ]
   },
   "https://www.pciconcursos.com.br/noticias/uerj-abre-concurso-publico-para-professor-adjunto-no-instituto-de-fisica": {
-    "status": "BLOCKED",
-    "checked_at": "2026-09-01T12:28:28-03:00",
+    "status": "READ",
+    "checked_at": "2026-09-03T12:01:31-03:00",
     "documents": [
       {
         "url": "https://www.pciconcursos.com.br/noticias/uerj-abre-concurso-publico-para-professor-adjunto-no-instituto-de-fisica",
         "type": "PCI_HTML",
-        "content_hash": "777309958ea26d7d77397afbb7a12f0e0d6a5204a37ec8389f599eed30cde44f",
+        "content_hash": "5824558bfba96c67fadeb39c7346028d9d5f162677cb9a3628b8ac93fe2876be",
         "page_count": 1,
-        "extracted_chars": 7246,
+        "extracted_chars": 7465,
         "truncated": false,
         "title": "UERJ abre concurso público para professor adjunto no Instituto de Física",
         "evidence_status": "IRRELEVANT",
@@ -30219,28 +30259,15 @@
       {
         "url": "https://www.uerj.br/",
         "type": "HTML",
-        "content_hash": "0abdd6b9fe67bb3e7420cbbc76792261fe53c47063ee15b4008a9158c9565dd8",
+        "content_hash": "430bb516f3d17c8197efc6b6e938ee188f252527aa7ace179cbef63ef379e5de",
         "page_count": 1,
-        "extracted_chars": 3268,
+        "extracted_chars": 3544,
         "truncated": false,
         "title": "UERJ - Universidade do Estado do Rio de Janeiro - Universidade do Estado do Rio de Janeiro",
-        "evidence_status": "IRRELEVANT",
+        "evidence_status": "HIGH",
         "tls_unverified": false,
-        "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
-      },
-      {
-        "url": "https://www.uerj.br/agenda/zeny-rosendahl-recebera-titulo-de-professora-emerita/",
-        "type": "HTML",
-        "content_hash": "6318d3ee1af8a0ae9bad93f0fbe90777db3dca3b06543a32cd5d2c73a52bf4d1",
-        "page_count": 1,
-        "extracted_chars": 2653,
-        "truncated": false,
-        "title": "Zeny Rosendahl receberá título de Professora Emérita da Uerj - UERJ - Universidade do Estado do Rio de Janeiro",
-        "evidence_status": "IRRELEVANT",
-        "tls_unverified": false,
-        "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+        "relevant": true,
+        "relevance_reason": "Documento de seleção docente da instituição: janeiro, uerj."
       },
       {
         "url": "https://www.uerj.br/wp-content/uploads/2019/01/informe_uerj95.pdf",
@@ -30250,10 +30277,10 @@
         "extracted_chars": 15995,
         "truncated": false,
         "title": "",
-        "evidence_status": "IRRELEVANT",
+        "evidence_status": "HIGH",
         "tls_unverified": false,
-        "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "relevant": true,
+        "relevance_reason": "Documento de seleção docente da instituição: janeiro, uerj.",
         "opportunities_count": 0
       },
       {
@@ -30267,7 +30294,7 @@
         "evidence_status": "IRRELEVANT",
         "tls_unverified": false,
         "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "relevance_reason": "O documento não é um edital ou aviso de seleção.",
         "opportunities_count": 0
       },
       {
@@ -30278,10 +30305,10 @@
         "extracted_chars": 5818,
         "truncated": false,
         "title": "988.indd",
-        "evidence_status": "IRRELEVANT",
+        "evidence_status": "AMBIGUOUS",
         "tls_unverified": false,
-        "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "relevant": true,
+        "relevance_reason": "Documento de seleção docente da instituição: janeiro, uerj.",
         "opportunities_count": 0
       },
       {
@@ -30292,50 +30319,101 @@
         "extracted_chars": 471157,
         "truncated": true,
         "title": "",
-        "evidence_status": "IRRELEVANT",
+        "evidence_status": "AMBIGUOUS",
         "tls_unverified": false,
-        "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "relevant": true,
+        "relevance_reason": "Documento de seleção docente da instituição: janeiro, uerj.",
         "opportunities_count": 0
       },
       {
-        "url": "https://www.uerj.br/agenda/inscricoes-abertas-para-o-workshop-do-programa-de-pos-graduacao-em-quimica/",
+        "url": "https://www.uerj.br/concursos-e-editais/",
         "type": "HTML",
-        "content_hash": "4409274e9b7159341685185fbaa2234eb30453016b58949d4e696d50c85f6683",
+        "content_hash": "2ef17707ac6280eb655d18ffe2a56ce0d8060c5c2534379487fc2c290cd867f2",
         "page_count": 1,
-        "extracted_chars": 2672,
+        "extracted_chars": 1327,
         "truncated": false,
-        "title": "Inscrições abertas para o Workshop do Programa de Pós-Graduação em Química - UERJ - Universidade do Estado do Rio de Janeiro",
+        "title": "Concursos e Editais - UERJ - Universidade do Estado do Rio de Janeiro",
+        "evidence_status": "NONE",
+        "tls_unverified": false,
+        "relevant": true,
+        "relevance_reason": "Documento de seleção docente da instituição: janeiro, uerj."
+      },
+      {
+        "url": "https://concursos.sgp.uerj.br/",
+        "type": "HTML",
+        "content_hash": "f253f21ddc39653291d10c2e017817793453c356fa48fca271427561b3ae30fc",
+        "page_count": 1,
+        "extracted_chars": 7863,
+        "truncated": false,
+        "title": "UERJ-SGP Concursos",
         "evidence_status": "IRRELEVANT",
         "tls_unverified": false,
         "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
       }
     ],
     "reader_version": 5,
-    "applicable": false,
-    "reason": "O PCI lista 1 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
-    "errors": [],
+    "document_url": "https://www.uerj.br/wp-content/uploads/2019/01/informe_uerj95.pdf",
+    "document_type": "PDF",
+    "content_hash": "9613efabaafc7521d7bbaa604074524d45806570f757644e5763675cd2fb58d6",
+    "confidence": "HIGH",
+    "applicable": true,
+    "tls_unverified": false,
+    "requirements": {
+      "graduation_requirement_raw": "graduação do Pro- grama Institucional de Bolsas de Inicia- ção Cientíﬁ ca (Pibic) da UERJ estarão é de professores da própria UERJ",
+      "postgraduate_requirement_raw": "doutorado e avaliamos se cabe fazer um livro ou não",
+      "doctorate_requirement_raw": "doutorado e avaliamos se cabe fazer um livro ou não"
+    },
+    "evidence": [
+      {
+        "page": 2,
+        "text": "dos quais três serão premiados. As inscrições podem ser feitas na página www.hla.uerj.br/simposio. Quatro alunos de graduação do Pro- grama Institucional de Bolsas de Inicia- ção Cientíﬁ ca (Pibic) da UERJ estarão",
+        "kinds": [
+          "graduation"
+        ],
+        "context_terms": [
+          "uerj"
+        ],
+        "context_score": 1
+      },
+      {
+        "page": 3,
+        "text": "é de professores da própria UERJ. A preferência é para livros. Mas tam- bém recebemos teses de doutorado e avaliamos se cabe fazer um livro ou não. Há um Conselho Editorial que",
+        "kinds": [
+          "doctorate",
+          "postgraduate"
+        ],
+        "context_terms": [
+          "doutorado",
+          "uerj"
+        ],
+        "context_score": 2
+      }
+    ],
+    "reason": "Requisitos associados à área/cargo por termos de contexto.",
+    "errors": [
+      "http://www.sgp.uerj.br/site/index.php/concursos.html: ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+    ],
     "pci_protected_documents": [
       {
         "label": "EDITAL - UERJ 234 PROFESSOR ADJUNTO FÍSICA FÍSICA GERAL",
         "url": null,
         "pci_link_id": "1704590",
-        "pci_news_code": "8a52eb52f031dfb41978bb46ce0c101f",
+        "pci_news_code": "54c783043d30c6cb4f7cb5c2d2d58db1",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       }
     ]
   },
   "https://www.pciconcursos.com.br/noticias/prefeitura-de-oliveira-fortes-mg-publica-retificacao-de-concurso-publico": {
     "status": "BLOCKED",
-    "checked_at": "2026-09-01T12:28:28-03:00",
+    "checked_at": "2026-09-03T12:01:31-03:00",
     "documents": [
       {
         "url": "https://www.pciconcursos.com.br/noticias/prefeitura-de-oliveira-fortes-mg-publica-retificacao-de-concurso-publico",
         "type": "PCI_HTML",
-        "content_hash": "f0728a247e3fc8d4590a9d06d387d5c476e8adc5e6b20f8a533b4c7e2923ba95",
+        "content_hash": "84fd11a47d9cb48859d47eed75afcbff0924f2a9bccb936b467c79c5347a4fd5",
         "page_count": 1,
-        "extracted_chars": 18153,
+        "extracted_chars": 18208,
         "truncated": false,
         "title": "Prefeitura de Oliveira Fortes - MG publica retificação de concurso público",
         "evidence_status": "IRRELEVANT",
@@ -30346,7 +30424,7 @@
       {
         "url": "https://oliveirafortes.mg.gov.br/",
         "type": "HTML",
-        "content_hash": "33ed421d2fc42f0cf32c36b7d78213d89f1dd73384dc2ba2963da08226b0fa8d",
+        "content_hash": "4581041040f8722bc6fa00db7bf6a2762ca530075f9e8fc866e5779b2278063c",
         "page_count": 1,
         "extracted_chars": 1856,
         "truncated": false,
@@ -30354,7 +30432,7 @@
         "evidence_status": "IRRELEVANT",
         "tls_unverified": false,
         "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+        "relevance_reason": "O documento não é um edital ou aviso de seleção."
       }
     ],
     "reader_version": 5,
@@ -30368,28 +30446,28 @@
         "label": "EDITAL DE CONCURSO PÚBLICO Nº 01/2026",
         "url": null,
         "pci_link_id": "1701983",
-        "pci_news_code": "d18d7fe415c1f808551f88515dce262e",
+        "pci_news_code": "4b23240feaf99bb08eccb39e0b8c5803",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       },
       {
         "label": "1ª RETIFICAÇÃO DO EDITAL DE CONCURSO PÚBLICO Nº 01/2026",
         "url": null,
         "pci_link_id": "1704612",
-        "pci_news_code": "d18d7fe415c1f808551f88515dce262e",
+        "pci_news_code": "4b23240feaf99bb08eccb39e0b8c5803",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       }
     ]
   },
   "https://www.pciconcursos.com.br/noticias/uerj-abre-concurso-para-professor-adjunto-na-area-de-nefrologia": {
-    "status": "BLOCKED",
-    "checked_at": "2026-09-01T12:28:28-03:00",
+    "status": "READ",
+    "checked_at": "2026-09-03T12:01:31-03:00",
     "documents": [
       {
         "url": "https://www.pciconcursos.com.br/noticias/uerj-abre-concurso-para-professor-adjunto-na-area-de-nefrologia",
         "type": "PCI_HTML",
-        "content_hash": "a404661af9f7c974a081798fed650f4f2699d7f8081b4f02d34d6c2fffb8a714",
+        "content_hash": "3ddc96a943cbb6e32841e157d8df0acb8d91ea2551a78ebf0ef42aadaf7dfc49",
         "page_count": 1,
-        "extracted_chars": 7273,
+        "extracted_chars": 7491,
         "truncated": false,
         "title": "UERJ abre concurso para professor adjunto na área de nefrologia",
         "evidence_status": "IRRELEVANT",
@@ -30400,15 +30478,15 @@
       {
         "url": "https://www.uerj.br/",
         "type": "HTML",
-        "content_hash": "0abdd6b9fe67bb3e7420cbbc76792261fe53c47063ee15b4008a9158c9565dd8",
+        "content_hash": "430bb516f3d17c8197efc6b6e938ee188f252527aa7ace179cbef63ef379e5de",
         "page_count": 1,
-        "extracted_chars": 3268,
+        "extracted_chars": 3544,
         "truncated": false,
         "title": "UERJ - Universidade do Estado do Rio de Janeiro - Universidade do Estado do Rio de Janeiro",
         "evidence_status": "IRRELEVANT",
         "tls_unverified": false,
         "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+        "relevance_reason": "O documento docente não menciona a área identificada no anúncio."
       },
       {
         "url": "https://www.uerj.br/wp-content/uploads/2019/01/informe_uerj95.pdf",
@@ -30418,10 +30496,10 @@
         "extracted_chars": 15995,
         "truncated": false,
         "title": "",
-        "evidence_status": "IRRELEVANT",
+        "evidence_status": "MEDIUM",
         "tls_unverified": false,
-        "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "relevant": true,
+        "relevance_reason": "Documento docente associado à área por: doutorado.",
         "opportunities_count": 0
       },
       {
@@ -30435,7 +30513,7 @@
         "evidence_status": "IRRELEVANT",
         "tls_unverified": false,
         "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "relevance_reason": "O documento não é um edital ou aviso de seleção.",
         "opportunities_count": 0
       },
       {
@@ -30446,10 +30524,10 @@
         "extracted_chars": 5818,
         "truncated": false,
         "title": "988.indd",
-        "evidence_status": "IRRELEVANT",
+        "evidence_status": "MEDIUM",
         "tls_unverified": false,
-        "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "relevant": true,
+        "relevance_reason": "Documento docente associado à área por: doutorado.",
         "opportunities_count": 0
       },
       {
@@ -30460,24 +30538,11 @@
         "extracted_chars": 471157,
         "truncated": true,
         "title": "",
-        "evidence_status": "IRRELEVANT",
+        "evidence_status": "MEDIUM",
         "tls_unverified": false,
-        "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "relevant": true,
+        "relevance_reason": "Documento docente associado à área por: doutorado, nefrologia.",
         "opportunities_count": 0
-      },
-      {
-        "url": "https://www.uerj.br/agenda/inscricoes-abertas-para-o-workshop-do-programa-de-pos-graduacao-em-quimica/",
-        "type": "HTML",
-        "content_hash": "4409274e9b7159341685185fbaa2234eb30453016b58949d4e696d50c85f6683",
-        "page_count": 1,
-        "extracted_chars": 2672,
-        "truncated": false,
-        "title": "Inscrições abertas para o Workshop do Programa de Pós-Graduação em Química - UERJ - Universidade do Estado do Rio de Janeiro",
-        "evidence_status": "IRRELEVANT",
-        "tls_unverified": false,
-        "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
       },
       {
         "url": "https://www.uerj.br/concursos-e-editais/",
@@ -30490,40 +30555,201 @@
         "evidence_status": "IRRELEVANT",
         "tls_unverified": false,
         "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+        "relevance_reason": "O documento docente não menciona a área identificada no anúncio."
+      },
+      {
+        "url": "https://concursos.sgp.uerj.br/",
+        "type": "HTML",
+        "content_hash": "f253f21ddc39653291d10c2e017817793453c356fa48fca271427561b3ae30fc",
+        "page_count": 1,
+        "extracted_chars": 7863,
+        "truncated": false,
+        "title": "UERJ-SGP Concursos",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
       }
     ],
     "reader_version": 5,
-    "applicable": false,
-    "reason": "O PCI lista 2 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
-    "errors": [],
+    "document_url": "https://www.uerj.br/wp-content/uploads/2024/04/Guia_Uerj_de_Ramais_2024_3.pdf",
+    "document_type": "PDF",
+    "content_hash": "e01026548e1745911467ff4d81ed42c2095d0691bd90642a61e06cf8dd1a6f71",
+    "confidence": "MEDIUM",
+    "applicable": true,
+    "tls_unverified": false,
+    "requirements": {
+      "graduation_requirement_raw": "Graduação .......................................232 Coordenação de Ensino / Graduação Stricto Sensu",
+      "postgraduate_requirement_raw": "Pós-Graduação Stricto Sensu (Mestrado e Doutorado) ...........................................................................233 Secretaria dos Departamentos / Pós-Graduação Stricto Sensu (Mestrado e Doutorado) ...........................................................................233 Coordenação de Ensino / Pós-Graduação Lato Sensu (Especialização e Coordenação de Ensino / Pós-Graduação Lato Sensu (Especialização e Coordenação de Ensino de Pós-Graduação Stricto Sensu (Mestrado e Doutorado) ...........................................................................233 Coordenação de Ensino / Pós-Graduação Lato Sensu (Especialização e Núcleo de Prática Jurídica - NPJ / Pós-Graduação Lato Sensu e Cursos de Extensão .........300 Programa de Pós-Graduação em Direito - PPGD / Mestrado e Doutorado) / Pós-Graduação em Geografia - Mestrado / Doutorado ....................398 233 Coordenação de Ensino de Pós- / Mestrado e Doutorado) Setor: Coordenação Coordenação de Ensino de Pós- / Mestrado e Doutorado) Setor: Coordenação Nome: Lucia Helena Garcia Penna E-mail: mestradoedoutorado_fouerj@hotmail.com Coordenação dos Cursos / Especialização Setor: Coordenação Nome: Marilia Heffer Cantisano Local: Sala 7017 D E-mail: wjunger@ims.uerj.br Setor: Coordenação adjunta / Mestrado e Doutorado Nome: Rogerio Lopes Azize Telefon / Mestrado e Doutorado) Setor: Coordenação Programa de Pós-Graduação em Direito - PPGD (Mestrado e Doutorado) Setor: Coordenação Nome: Gustavo Siqueira",
+      "masters_requirement_raw": "Pós-Graduação Stricto Sensu (Mestrado e Doutorado) ...........................................................................233 Secretaria dos Departamentos / Pós-Graduação Stricto Sensu (Mestrado e Doutorado) ...........................................................................233 Coordenação de Ensino / Pós-Graduação Lato Sensu (Especialização e Coordenação de Ensino de Pós-Graduação Stricto Sensu (Mestrado e Doutorado) ...........................................................................233 Coordenação de Ensino / Mestrado e Doutorado) / Pós-Graduação em Geografia - Mestrado / Doutorado ....................398 233 Coordenação de Ensino de Pós- / Mestrado e Doutorado) Setor: Coordenação Coordenação de Ensino de Pós- / Mestrado e Doutorado) Setor: Coordenação Nome: Lucia Helena Garcia Penna E-mail: mestradoedoutorado_fouerj@hotmail.com Coordenação dos Cursos / Mestrado e Doutorado Nome: Rogerio Lopes Azize Telefon / Mestrado e Doutorado) Setor: Coordenação Programa de Pós-Graduação em Direito - PPGD (Mestrado e Doutorado) Setor: Coordenação Nome: Gustavo Siqueira",
+      "doctorate_requirement_raw": "Pós-Graduação Stricto Sensu (Mestrado e Doutorado) ...........................................................................233 Secretaria dos Departamentos / Pós-Graduação Stricto Sensu (Mestrado e Doutorado) ...........................................................................233 Coordenação de Ensino / Pós-Graduação Lato Sensu (Especialização e Coordenação de Ensino de Pós-Graduação Stricto Sensu (Mestrado e Doutorado) ...........................................................................233 Coordenação de Ensino / Mestrado e Doutorado) / Pós-Graduação em Geografia - Mestrado / Doutorado ....................398 233 Coordenação de Ensino de Pós- / Mestrado e Doutorado) Setor: Coordenação Coordenação de Ensino de Pós- / Mestrado e Doutorado) Setor: Coordenação Nome: Lucia Helena Garcia Penna E-mail: mestradoedoutorado_fouerj@hotmail.com Coordenação dos Cursos / Mestrado e Doutorado Nome: Rogerio Lopes Azize Telefon / Mestrado e Doutorado) Setor: Coordenação Programa de Pós-Graduação em Direito - PPGD (Mestrado e Doutorado) Setor: Coordenação Nome: Gustavo Siqueira"
+    },
+    "evidence": [
+      {
+        "page": 7,
+        "text": "Centro de Estudos da Faculdade de Enfermagem - Cefenf ...............232 Secretaria dos Departamentos ................................................ 232 Coordenação de Ensino de Graduação .......................................232 Coordenação de Ensino de Pós-Graduação Stricto Sensu (Mestrado e Doutorado) ...........................................................................233",
+        "kinds": [
+          "graduation",
+          "masters",
+          "doctorate",
+          "postgraduate"
+        ],
+        "context_terms": [
+          "doutorado"
+        ],
+        "context_score": 1
+      },
+      {
+        "page": 7,
+        "text": "Secretaria dos Departamentos ................................................ 232 Coordenação de Ensino de Graduação .......................................232 Coordenação de Ensino de Pós-Graduação Stricto Sensu (Mestrado e Doutorado) ...........................................................................233 Coordenação de Ensino de Pós-Graduação Lato Sensu (Especialização e",
+        "kinds": [
+          "graduation",
+          "masters",
+          "doctorate",
+          "postgraduate"
+        ],
+        "context_terms": [
+          "doutorado"
+        ],
+        "context_score": 1
+      },
+      {
+        "page": 7,
+        "text": "Coordenação de Ensino de Graduação .......................................232 Coordenação de Ensino de Pós-Graduação Stricto Sensu (Mestrado e Doutorado) ...........................................................................233 Coordenação de Ensino de Pós-Graduação Lato Sensu (Especialização e",
+        "kinds": [
+          "graduation",
+          "masters",
+          "doctorate",
+          "postgraduate"
+        ],
+        "context_terms": [
+          "doutorado"
+        ],
+        "context_score": 1
+      },
+      {
+        "page": 7,
+        "text": "Coordenação de Ensino de Pós-Graduação Stricto Sensu (Mestrado e Doutorado) ...........................................................................233 Coordenação de Ensino de Pós-Graduação Lato Sensu (Especialização e",
+        "kinds": [
+          "masters",
+          "doctorate",
+          "postgraduate"
+        ],
+        "context_terms": [
+          "doutorado"
+        ],
+        "context_score": 1
+      },
+      {
+        "page": 10,
+        "text": "Núcleo de Prática Jurídica - NPJ ............................................. 299 Centro de Estudos e Pesquisas no Ensino do Direito - Ceped ............299 Secretaria de Pós-Graduação Lato Sensu e Cursos de Extensão .........300 Programa de Pós-Graduação em Direito - PPGD (Mestrado e Doutorado) . 300",
+        "kinds": [
+          "masters",
+          "doctorate",
+          "postgraduate"
+        ],
+        "context_terms": [
+          "doutorado"
+        ],
+        "context_score": 1
+      },
+      {
+        "page": 10,
+        "text": "Centro de Estudos e Pesquisas no Ensino do Direito - Ceped ............299 Secretaria de Pós-Graduação Lato Sensu e Cursos de Extensão .........300 Programa de Pós-Graduação em Direito - PPGD (Mestrado e Doutorado) . 300 Biblioteca ........................................................................ 301",
+        "kinds": [
+          "masters",
+          "doctorate",
+          "postgraduate"
+        ],
+        "context_terms": [
+          "doutorado"
+        ],
+        "context_score": 1
+      },
+      {
+        "page": 12,
+        "text": "Departamento de Geografia Humana ........................................397 Departamento de Turismo .....................................................397 Pós-Graduação em Geografia - Mestrado / Doutorado ....................398",
+        "kinds": [
+          "masters",
+          "doctorate",
+          "postgraduate"
+        ],
+        "context_terms": [
+          "doutorado"
+        ],
+        "context_score": 1
+      },
+      {
+        "page": 236,
+        "text": "233 Coordenação de Ensino de Pós- Graduação Stricto Sensu (Mestrado e Doutorado) Setor: Coordenação",
+        "kinds": [
+          "graduation",
+          "masters",
+          "doctorate",
+          "postgraduate"
+        ],
+        "context_terms": [
+          "doutorado"
+        ],
+        "context_score": 1
+      },
+      {
+        "page": 236,
+        "text": "Coordenação de Ensino de Pós- Graduação Stricto Sensu (Mestrado e Doutorado) Setor: Coordenação Nome: Lucia Helena Garcia Penna",
+        "kinds": [
+          "graduation",
+          "masters",
+          "doctorate",
+          "postgraduate"
+        ],
+        "context_terms": [
+          "doutorado"
+        ],
+        "context_score": 1
+      },
+      {
+        "page": 249,
+        "text": "E-mail: mestradoedoutorado_fouerj@hotmail.com Coordenação dos Cursos de Especialização Setor: Coordenação Nome: Marilia Heffer Cantisano",
+        "kinds": [
+          "postgraduate"
+        ],
+        "context_terms": [
+          "doutorado"
+        ],
+        "context_score": 1
+      }
+    ],
+    "reason": "Requisitos associados à área/cargo por termos de contexto.",
+    "errors": [
+      "http://www.sgp.uerj.br/site/index.php/concursos.html: ReadTimeout: HTTPConnectionPool(host='www.sgp.uerj.br', port=80): Read timed out. (read timeout=30)"
+    ],
     "pci_protected_documents": [
       {
         "label": "EDITAL - PROFESSOR ADJUNTO NEFROLOGIA",
         "url": null,
         "pci_link_id": "1704592",
-        "pci_news_code": "8f44976ef474ab136049d18dcbeb417c",
+        "pci_news_code": "03e3c38db95f76bb61632f4c5a409fe8",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       },
       {
         "label": "RETIFICAÇÃO",
         "url": null,
         "pci_link_id": "1704593",
-        "pci_news_code": "8f44976ef474ab136049d18dcbeb417c",
+        "pci_news_code": "03e3c38db95f76bb61632f4c5a409fe8",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       }
     ]
   },
   "https://www.pciconcursos.com.br/noticias/uerj-abre-concurso-publico-para-professor-adjunto-na-area-de-hematologia": {
-    "status": "BLOCKED",
-    "checked_at": "2026-09-01T12:28:28-03:00",
+    "status": "READ",
+    "checked_at": "2026-09-03T12:01:31-03:00",
     "documents": [
       {
         "url": "https://www.pciconcursos.com.br/noticias/uerj-abre-concurso-publico-para-professor-adjunto-na-area-de-hematologia",
         "type": "PCI_HTML",
-        "content_hash": "436380e3cc7cb887885c6d3b5aef5850d6b815a7df3d40966cd76ea66e03fede",
+        "content_hash": "dd52fb5461ef9a84ab76e17ba9a644b005f85c52f7af263a495001bc5d5d31ae",
         "page_count": 1,
-        "extracted_chars": 7344,
+        "extracted_chars": 7572,
         "truncated": false,
         "title": "UERJ abre concurso público para professor adjunto na área de hematologia",
         "evidence_status": "IRRELEVANT",
@@ -30534,15 +30760,15 @@
       {
         "url": "https://www.uerj.br/",
         "type": "HTML",
-        "content_hash": "9e042310a38949ec029c0f06019069bbf7547642f7dedf41442131e30d5ae875",
+        "content_hash": "a260bdcde2ee558130321ebd213e67ab6a4e9ae36a34945e0c37ddcdebaec047",
         "page_count": 1,
-        "extracted_chars": 3268,
+        "extracted_chars": 3544,
         "truncated": false,
         "title": "UERJ - Universidade do Estado do Rio de Janeiro - Universidade do Estado do Rio de Janeiro",
         "evidence_status": "IRRELEVANT",
         "tls_unverified": false,
         "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+        "relevance_reason": "O documento docente não menciona a área identificada no anúncio."
       },
       {
         "url": "https://www.uerj.br/wp-content/uploads/2019/01/informe_uerj95.pdf",
@@ -30552,10 +30778,10 @@
         "extracted_chars": 15995,
         "truncated": false,
         "title": "",
-        "evidence_status": "IRRELEVANT",
+        "evidence_status": "MEDIUM",
         "tls_unverified": false,
-        "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "relevant": true,
+        "relevance_reason": "Documento docente associado à área por: doutorado.",
         "opportunities_count": 0
       },
       {
@@ -30569,7 +30795,7 @@
         "evidence_status": "IRRELEVANT",
         "tls_unverified": false,
         "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "relevance_reason": "O documento não é um edital ou aviso de seleção.",
         "opportunities_count": 0
       },
       {
@@ -30580,10 +30806,10 @@
         "extracted_chars": 5818,
         "truncated": false,
         "title": "988.indd",
-        "evidence_status": "IRRELEVANT",
+        "evidence_status": "MEDIUM",
         "tls_unverified": false,
-        "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "relevant": true,
+        "relevance_reason": "Documento docente associado à área por: doutorado, nivel.",
         "opportunities_count": 0
       },
       {
@@ -30594,24 +30820,11 @@
         "extracted_chars": 471157,
         "truncated": true,
         "title": "",
-        "evidence_status": "IRRELEVANT",
+        "evidence_status": "MEDIUM",
         "tls_unverified": false,
-        "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "relevant": true,
+        "relevance_reason": "Documento docente associado à área por: doutorado, hematologia.",
         "opportunities_count": 0
-      },
-      {
-        "url": "https://www.uerj.br/agenda/inscricoes-abertas-para-o-workshop-do-programa-de-pos-graduacao-em-quimica/",
-        "type": "HTML",
-        "content_hash": "4409274e9b7159341685185fbaa2234eb30453016b58949d4e696d50c85f6683",
-        "page_count": 1,
-        "extracted_chars": 2672,
-        "truncated": false,
-        "title": "Inscrições abertas para o Workshop do Programa de Pós-Graduação em Química - UERJ - Universidade do Estado do Rio de Janeiro",
-        "evidence_status": "IRRELEVANT",
-        "tls_unverified": false,
-        "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
       },
       {
         "url": "https://www.uerj.br/concursos-e-editais/",
@@ -30624,40 +30837,104 @@
         "evidence_status": "IRRELEVANT",
         "tls_unverified": false,
         "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+        "relevance_reason": "O documento docente não menciona a área identificada no anúncio."
+      },
+      {
+        "url": "https://concursos.sgp.uerj.br/",
+        "type": "HTML",
+        "content_hash": "f253f21ddc39653291d10c2e017817793453c356fa48fca271427561b3ae30fc",
+        "page_count": 1,
+        "extracted_chars": 7863,
+        "truncated": false,
+        "title": "UERJ-SGP Concursos",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
       }
     ],
     "reader_version": 5,
-    "applicable": false,
-    "reason": "O PCI lista 2 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
-    "errors": [],
+    "document_url": "https://www.uerj.br/wp-content/uploads/2019/12/988.pdf",
+    "document_type": "PDF",
+    "content_hash": "2e9c1d453dd7be986f67aec78268bb9952642b21f47d2602532eef38cff71f14",
+    "confidence": "MEDIUM",
+    "applicable": true,
+    "tls_unverified": false,
+    "requirements": {
+      "graduation_requirement_raw": "formação superior em Medicina, Enfer- magem ou Odontologia, além de possuir registro no respectivo Conselho Regional e Federal",
+      "postgraduate_requirement_raw": "mestrado e o doutorado do Programa de Pós-Graduação em Biologia Humana e Experimental (BHEX) / mestrado profis- sional em Saúde da Família (PROFSAÚDE)",
+      "masters_requirement_raw": "mestrado e o doutorado do Programa de Pós-Graduação em Biologia Humana e Experimental (BHEX) / mestrado profis- sional em Saúde da Família (PROFSAÚDE)",
+      "doctorate_requirement_raw": "mestrado e o doutorado do Programa de Pós-Graduação em Biologia Humana e Experimental (BHEX)"
+    },
+    "evidence": [
+      {
+        "page": 2,
+        "text": "QUINTA, DIA 5  BIOLOGIA: termina às 16h o prazo de inscrições para o mestrado e o doutorado do Programa de Pós-Graduação em Biologia Humana e Experimental (BHEX). Os cursos são destinados a médicos, biólogos, biomédicos, nutricionistas,",
+        "kinds": [
+          "masters",
+          "doctorate",
+          "postgraduate"
+        ],
+        "context_terms": [
+          "doutorado"
+        ],
+        "context_score": 1
+      },
+      {
+        "page": 2,
+        "text": "Nível Superior (CAPES). SEXTA, DIA 6  SAÚDE: encerram-se as inscrições para o mestrado profis- sional em Saúde da Família (PROFSAÚDE). O curso semi- presencial, com oferta nacional, é realizado na modalidade de",
+        "kinds": [
+          "masters",
+          "postgraduate"
+        ],
+        "context_terms": [
+          "nivel"
+        ],
+        "context_score": 1
+      },
+      {
+        "page": 2,
+        "text": "presencial, com oferta nacional, é realizado na modalidade de ensino a distância com previsão de nove encontros presenciais. O candidato deverá ter formação superior em Medicina, Enfer- magem ou Odontologia, além de possuir registro no respectivo Conselho Regional e Federal. O edital completo está disponível",
+        "kinds": [
+          "graduation"
+        ],
+        "context_terms": [
+          "nivel"
+        ],
+        "context_score": 1
+      }
+    ],
+    "reason": "Requisitos associados à área/cargo por termos de contexto.",
+    "errors": [
+      "http://www.sgp.uerj.br/site/index.php/concursos.html: ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+    ],
     "pci_protected_documents": [
       {
         "label": "EDITAL - UERJ 237 PROFESSOR ADJUNTO HEMATOLOGIA",
         "url": null,
         "pci_link_id": "1704594",
-        "pci_news_code": "5eb93ab3447dd1ba34f30697b22eb403",
+        "pci_news_code": "32fe00f6b0346d35306752891f56b67d",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       },
       {
         "label": "RETIFICAÇÃO",
         "url": null,
         "pci_link_id": "1704595",
-        "pci_news_code": "5eb93ab3447dd1ba34f30697b22eb403",
+        "pci_news_code": "32fe00f6b0346d35306752891f56b67d",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       }
     ]
   },
   "https://www.pciconcursos.com.br/noticias/uerj-abre-concurso-publico-com-vaga-para-professor-adjunto-de-bioquimica": {
-    "status": "BLOCKED",
-    "checked_at": "2026-09-01T12:28:28-03:00",
+    "status": "READ",
+    "checked_at": "2026-09-03T12:01:31-03:00",
     "documents": [
       {
         "url": "https://www.pciconcursos.com.br/noticias/uerj-abre-concurso-publico-com-vaga-para-professor-adjunto-de-bioquimica",
         "type": "PCI_HTML",
-        "content_hash": "8dcd5900a185f52f42d2d22aae1108465b978d07724100a52dde402da3d1fd24",
+        "content_hash": "3ae55d2fead04a494f59ccf7fd5947d3c198c0124ffa4826410332c74033910a",
         "page_count": 1,
-        "extracted_chars": 7458,
+        "extracted_chars": 7686,
         "truncated": false,
         "title": "UERJ abre concurso público com vaga para professor adjunto de Bioquímica",
         "evidence_status": "IRRELEVANT",
@@ -30668,15 +30945,15 @@
       {
         "url": "https://www.uerj.br/",
         "type": "HTML",
-        "content_hash": "9e042310a38949ec029c0f06019069bbf7547642f7dedf41442131e30d5ae875",
+        "content_hash": "a260bdcde2ee558130321ebd213e67ab6a4e9ae36a34945e0c37ddcdebaec047",
         "page_count": 1,
-        "extracted_chars": 3268,
+        "extracted_chars": 3544,
         "truncated": false,
         "title": "UERJ - Universidade do Estado do Rio de Janeiro - Universidade do Estado do Rio de Janeiro",
         "evidence_status": "IRRELEVANT",
         "tls_unverified": false,
         "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+        "relevance_reason": "O documento docente não menciona a área identificada no anúncio."
       },
       {
         "url": "https://www.uerj.br/wp-content/uploads/2019/01/informe_uerj95.pdf",
@@ -30686,10 +30963,10 @@
         "extracted_chars": 15995,
         "truncated": false,
         "title": "",
-        "evidence_status": "IRRELEVANT",
+        "evidence_status": "MEDIUM",
         "tls_unverified": false,
-        "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "relevant": true,
+        "relevance_reason": "Documento docente associado à área por: alcantara, biologia, gomes, roberto.",
         "opportunities_count": 0
       },
       {
@@ -30703,7 +30980,7 @@
         "evidence_status": "IRRELEVANT",
         "tls_unverified": false,
         "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "relevance_reason": "O documento não é um edital ou aviso de seleção.",
         "opportunities_count": 0
       },
       {
@@ -30714,10 +30991,10 @@
         "extracted_chars": 5818,
         "truncated": false,
         "title": "988.indd",
-        "evidence_status": "IRRELEVANT",
+        "evidence_status": "MEDIUM",
         "tls_unverified": false,
-        "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "relevant": true,
+        "relevance_reason": "Documento docente associado à área por: biologia, gomes.",
         "opportunities_count": 0
       },
       {
@@ -30728,24 +31005,11 @@
         "extracted_chars": 471157,
         "truncated": true,
         "title": "",
-        "evidence_status": "IRRELEVANT",
+        "evidence_status": "MEDIUM",
         "tls_unverified": false,
-        "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "relevant": true,
+        "relevance_reason": "Documento docente associado à área por: alcantara, biologia, bioquimica, gomes, roberto.",
         "opportunities_count": 0
-      },
-      {
-        "url": "https://www.uerj.br/agenda/inscricoes-abertas-para-o-workshop-do-programa-de-pos-graduacao-em-quimica/",
-        "type": "HTML",
-        "content_hash": "4409274e9b7159341685185fbaa2234eb30453016b58949d4e696d50c85f6683",
-        "page_count": 1,
-        "extracted_chars": 2672,
-        "truncated": false,
-        "title": "Inscrições abertas para o Workshop do Programa de Pós-Graduação em Química - UERJ - Universidade do Estado do Rio de Janeiro",
-        "evidence_status": "IRRELEVANT",
-        "tls_unverified": false,
-        "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
       },
       {
         "url": "https://www.uerj.br/concursos-e-editais/",
@@ -30758,33 +31022,79 @@
         "evidence_status": "IRRELEVANT",
         "tls_unverified": false,
         "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+        "relevance_reason": "O documento docente não menciona a área identificada no anúncio."
+      },
+      {
+        "url": "https://concursos.sgp.uerj.br/",
+        "type": "HTML",
+        "content_hash": "f253f21ddc39653291d10c2e017817793453c356fa48fca271427561b3ae30fc",
+        "page_count": 1,
+        "extracted_chars": 7863,
+        "truncated": false,
+        "title": "UERJ-SGP Concursos",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
       }
     ],
     "reader_version": 5,
-    "applicable": false,
-    "reason": "O PCI lista 1 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
-    "errors": [],
+    "document_url": "https://www.uerj.br/wp-content/uploads/2019/01/informe_uerj95.pdf",
+    "document_type": "PDF",
+    "content_hash": "9613efabaafc7521d7bbaa604074524d45806570f757644e5763675cd2fb58d6",
+    "confidence": "MEDIUM",
+    "applicable": true,
+    "tls_unverified": false,
+    "requirements": {
+      "graduation_requirement_raw": "graduação do Pro- grama Institucional de Bolsas de Inicia- ção Cientíﬁ ca (Pibic) da UERJ estarão é de professores da própria UERJ",
+      "postgraduate_requirement_raw": "doutorado e avaliamos se cabe fazer um livro ou não",
+      "doctorate_requirement_raw": "doutorado e avaliamos se cabe fazer um livro ou não"
+    },
+    "evidence": [
+      {
+        "page": 2,
+        "text": "dos quais três serão premiados. As inscrições podem ser feitas na página www.hla.uerj.br/simposio. Quatro alunos de graduação do Pro- grama Institucional de Bolsas de Inicia- ção Cientíﬁ ca (Pibic) da UERJ estarão",
+        "kinds": [
+          "graduation"
+        ],
+        "context_terms": [],
+        "context_score": 0
+      },
+      {
+        "page": 3,
+        "text": "é de professores da própria UERJ. A preferência é para livros. Mas tam- bém recebemos teses de doutorado e avaliamos se cabe fazer um livro ou não. Há um Conselho Editorial que",
+        "kinds": [
+          "doctorate",
+          "postgraduate"
+        ],
+        "context_terms": [],
+        "context_score": 0
+      }
+    ],
+    "reason": "Documento com poucos blocos de requisitos; associação conservadora à vaga.",
+    "errors": [
+      "http://www.sgp.uerj.br/site/index.php/concursos.html: ReadTimeout: HTTPConnectionPool(host='www.sgp.uerj.br', port=80): Read timed out. (read timeout=30)"
+    ],
     "pci_protected_documents": [
       {
         "label": "EDITAL - UERJ 227 PROFESSOR ADJUNTO BIOQUÍMICA",
         "url": null,
         "pci_link_id": "1704597",
-        "pci_news_code": "ec2903ed1e00330481c522c72e266b49",
+        "pci_news_code": "826d0813830e72bc7ee0d565cfa27624",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       }
     ]
   },
   "https://www.pciconcursos.com.br/noticias/uerj-rj-abre-vaga-para-professor-adjunto-de-cardiologia-em-cabo-frio": {
-    "status": "BLOCKED",
-    "checked_at": "2026-09-01T12:28:28-03:00",
+    "status": "READ",
+    "checked_at": "2026-09-03T12:01:31-03:00",
     "documents": [
       {
         "url": "https://www.pciconcursos.com.br/noticias/uerj-rj-abre-vaga-para-professor-adjunto-de-cardiologia-em-cabo-frio",
         "type": "PCI_HTML",
-        "content_hash": "1a8f2d708149155a2f6b8b267484975f0afa2c3c574b47f89a72d62a75af381c",
+        "content_hash": "b038a7a3652dce97e0d2dc73fe89b86618497a68ce9fcfcfaf03c816e929b69c",
         "page_count": 1,
-        "extracted_chars": 7308,
+        "extracted_chars": 7544,
         "truncated": false,
         "title": "UERJ - RJ abre vaga para professor adjunto de cardiologia em Cabo Frio",
         "evidence_status": "IRRELEVANT",
@@ -30795,15 +31105,15 @@
       {
         "url": "https://www.uerj.br/",
         "type": "HTML",
-        "content_hash": "9e042310a38949ec029c0f06019069bbf7547642f7dedf41442131e30d5ae875",
+        "content_hash": "a260bdcde2ee558130321ebd213e67ab6a4e9ae36a34945e0c37ddcdebaec047",
         "page_count": 1,
-        "extracted_chars": 3268,
+        "extracted_chars": 3544,
         "truncated": false,
         "title": "UERJ - Universidade do Estado do Rio de Janeiro - Universidade do Estado do Rio de Janeiro",
         "evidence_status": "IRRELEVANT",
         "tls_unverified": false,
         "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+        "relevance_reason": "O documento docente não menciona a área identificada no anúncio."
       },
       {
         "url": "https://www.uerj.br/wp-content/uploads/2019/01/informe_uerj95.pdf",
@@ -30813,10 +31123,10 @@
         "extracted_chars": 15995,
         "truncated": false,
         "title": "",
-        "evidence_status": "IRRELEVANT",
+        "evidence_status": "MEDIUM",
         "tls_unverified": false,
-        "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "relevant": true,
+        "relevance_reason": "Documento docente associado à área por: ciencias.",
         "opportunities_count": 0
       },
       {
@@ -30830,7 +31140,7 @@
         "evidence_status": "IRRELEVANT",
         "tls_unverified": false,
         "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "relevance_reason": "O documento não é um edital ou aviso de seleção.",
         "opportunities_count": 0
       },
       {
@@ -30841,10 +31151,10 @@
         "extracted_chars": 5818,
         "truncated": false,
         "title": "988.indd",
-        "evidence_status": "IRRELEVANT",
+        "evidence_status": "MEDIUM",
         "tls_unverified": false,
-        "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "relevant": true,
+        "relevance_reason": "Documento docente associado à área por: ciencias, departamento.",
         "opportunities_count": 0
       },
       {
@@ -30855,24 +31165,11 @@
         "extracted_chars": 471157,
         "truncated": true,
         "title": "",
-        "evidence_status": "IRRELEVANT",
+        "evidence_status": "HIGH",
         "tls_unverified": false,
-        "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "relevant": true,
+        "relevance_reason": "Documento docente associado à área por: cardiologia, ciencias, departamento, integradas, medicas.",
         "opportunities_count": 0
-      },
-      {
-        "url": "https://www.uerj.br/agenda/inscricoes-abertas-para-o-workshop-do-programa-de-pos-graduacao-em-quimica/",
-        "type": "HTML",
-        "content_hash": "4409274e9b7159341685185fbaa2234eb30453016b58949d4e696d50c85f6683",
-        "page_count": 1,
-        "extracted_chars": 2672,
-        "truncated": false,
-        "title": "Inscrições abertas para o Workshop do Programa de Pós-Graduação em Química - UERJ - Universidade do Estado do Rio de Janeiro",
-        "evidence_status": "IRRELEVANT",
-        "tls_unverified": false,
-        "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
       },
       {
         "url": "https://www.uerj.br/concursos-e-editais/",
@@ -30885,33 +31182,181 @@
         "evidence_status": "IRRELEVANT",
         "tls_unverified": false,
         "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+        "relevance_reason": "O documento docente não menciona a área identificada no anúncio."
+      },
+      {
+        "url": "https://concursos.sgp.uerj.br/",
+        "type": "HTML",
+        "content_hash": "f253f21ddc39653291d10c2e017817793453c356fa48fca271427561b3ae30fc",
+        "page_count": 1,
+        "extracted_chars": 7863,
+        "truncated": false,
+        "title": "UERJ-SGP Concursos",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
       }
     ],
     "reader_version": 5,
-    "applicable": false,
-    "reason": "O PCI lista 1 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
-    "errors": [],
+    "document_url": "https://www.uerj.br/wp-content/uploads/2024/04/Guia_Uerj_de_Ramais_2024_3.pdf",
+    "document_type": "PDF",
+    "content_hash": "e01026548e1745911467ff4d81ed42c2095d0691bd90642a61e06cf8dd1a6f71",
+    "confidence": "HIGH",
+    "applicable": true,
+    "tls_unverified": false,
+    "requirements": {
+      "graduation_requirement_raw": "Graduação – PR-1 / Graduados - DEPG ...........36 Centro de Estudos Ambientais e Desenvolvimento Sustentável - Ceads 37 Departamento de Orientação e Supervisão Pedagógica - DEP ..........34 Pró-reitoria / Graduados - DEPG ...........36 Centro de Estudos Ambientais e Desenvolvimento Sustentável - Ceads 37 Departamento de Apoio à Produção Científica e Tecnológica – Depesq .38 Departamento de Medicina Integral, Familiar e Comunitária - Dmifc .222 Departamento de Patologia e Laboratórios - DPL / Graduação .......................................232 Coordenação de Ensino / Graduação e Extensão .........................245 Núcleo de Extensão .............................................................245 Coordenação Geral / Graduação ........................................................................281 / Graduação / Graduados - DEPG Setor: Direção Nome: Alice Casimiro Lopes GUIA DE RAMAIS UERJ 228 Coordenadores / Graduação Setor: Coordenação Nome: Lilia Zago Local: Sala 8024 Bloco B 8º andar E-mail: claudioulysses@hotmail.com Setor: PPGCC – Programa de Pós-Graduação em Ciências Contábeis / Graduação Setor: Filosofia Nome: Alexandre Ibarrola",
+      "postgraduate_requirement_raw": "Pós-Graduação e Pesquisa – PR2 ......................................35 Departamento de Fomento ao Ensino para / Pós-Graduação Lato Sensu ..............................225 Coordenadores de Pós Graduação Stricto Sensu / Pós-Graduação Stricto Sensu (Mestrado e Doutorado) ...........................................................................233 Secretaria dos Departamentos / Pós-Graduação Stricto Sensu (Mestrado e Doutorado) ...........................................................................233 Coordenação de Ensino / Pós-Graduação Lato Sensu (Especialização e Departamento de Enfermagem Materno-Infantil – Demi .................238 Faculdade de Ciências Biológicas e Saúde - FCBS .....................................239 / Pós-Graduação em Ciência e Tec / Pós-Graduação e Pesquisa / Pós-graduação em Saúde Coletiva ............................................276 Departamento de Políticas e Instituições de Saúde .......................277 Departamento de Epidemiologia / Pós-Graduação ...................................................................282 Departamento de Nutrição Aplicada – DNA .................................283 Instituto de Nutrição - NUT ..............................................................281 / Pós-Graduação ...................................................................282 Departamento de Nutrição Aplicada – DNA .................................283 Departamento de Nutrição Social – DNS .....................................283 Faculdade de Administração e Finanças - FAF / Pós-Graduação em Ciências Econômicas - PPGCE ..........................292 Departamento de Análise Econômica - DAE / Pós-Graduação ...................................................................312 Departamentos / Pós-Graduação em Geografia - Mestrado / Doutorado ....................398 E-mail: coep@sr2.uerj.br Departamento de Fomento ao Ensino para / Pós Graduação Stricto Sensu Setor: Pós-graduação em Ciências Médicas Coordenadores de Pós Graduação Stricto Sensu Setor: Pós-graduação em Ciências Médicas Nome: Rogério Lopes Rufino Alves Telefone: 2868-8488 Local: FCM 2º andar E-mail: rrufino.uerj@gmail.com Setor / Pós-graduação em Ciências Médicas Nome: João Paulo e Fernanda (Secretários) Telefone: 2868-8488 Local: HUPE 3º andar E-mail: lgkraemeraguiar@gmail.com / posfisclinex.uerj@gmail.com Setor / Pós-graduação em Fisiopatologia e Ciências Cirúrgicas Nome: Luciano Alves Favorito Telefone: 2868-8527 Local: HUPE 4º andar E-mail: sampaio.uerj@gmail.com Setor / Pós-graduação em Fisiopatologia e Ciências Cirúrgicas Nome: Cíntia Guimarães (Secretária) Telefone: 2868-8527 Local: Sala 12034 D E-mail: departamentos.inu@gmail / Mestrado Acadêmico) Nome: Claudio Ulysses / Mestrado Acadêmico) Nome: Guilherme Teixeira Portugal (Sub- Coordenador) Local: Bloco E 9º andar E-mail: uerj.ppgcc@gmail.com Setor: PPGCC – Programa de Pós-Graduação em Ciências Contábeis / Mestrado Acadêmico) Nome: Francisco José Bezerra da Silva (Chefe de Secretaria) GUIA DE RA",
+      "masters_requirement_raw": "Pós-Graduação Stricto Sensu (Mestrado e Doutorado) ...........................................................................233 Secretaria dos Departamentos / Pós-Graduação Stricto Sensu (Mestrado e Doutorado) ...........................................................................233 Coordenação de Ensino / Pós-Graduação em Geografia - Mestrado / Doutorado ....................398 E-mail: coep@sr2.uerj.br Departamento de Fomento ao Ensino para / Mestrado Acadêmico) Nome: Claudio Ulysses / Mestrado Acadêmico) Nome: Guilherme Teixeira Portugal (Sub- Coordenador) Local: Bloco E 9º andar E-mail: uerj.ppgcc@gmail.com Setor: PPGCC – Programa de Pós-Graduação em Ciências Contábeis / Mestrado Acadêmico) Nome: Francisco José Bezerra da Silva (Chefe de Secretaria) GUIA DE RAMAIS UERJ 290 Setor: PPGCC – Programa de Pós-Graduação em Ciências Contábeis / Mestrado Acadêmico) Nome: Fátima Maria Pereira dos Santos Local: Sala 8027 Bloco B 8a andar E-mail: economia@uerj.br",
+      "doctorate_requirement_raw": "Pós-Graduação Stricto Sensu (Mestrado e Doutorado) ...........................................................................233 Secretaria dos Departamentos / Pós-Graduação Stricto Sensu (Mestrado e Doutorado) ...........................................................................233 Coordenação de Ensino / Pós-Graduação em Geografia - Mestrado / Doutorado ....................398 E-mail: coep@sr2.uerj.br Departamento de Fomento ao Ensino para"
+    },
+    "evidence": [
+      {
+        "page": 4,
+        "text": "Coordenadoria de Indicadores e Desenvolvimento Institucional – Cides .20 Laboratório de Estudos Contemporâneos – LABORE .........................21 Pró-reitoria de Graduação – PR-1 ........................................................ 21 Departamento de Políticas e Ações em Educação a Distância – Dpaed ...23 Departamento de Desenvolvimento Acadêmico e Projetos de Inovação",
+        "kinds": [
+          "graduation"
+        ],
+        "context_terms": [
+          "departamento"
+        ],
+        "context_score": 1
+      },
+      {
+        "page": 4,
+        "text": "Departamento de Estágios e Bolsas - Cetreina ............................33 Departamento de Orientação e Supervisão Pedagógica - DEP ..........34 Pró-reitoria de Pós-Graduação e Pesquisa – PR2 ......................................35 Departamento de Fomento ao Ensino para Graduados - DEPG ...........36 Centro de Estudos Ambientais e Desenvolvimento Sustentável - Ceads 37",
+        "kinds": [
+          "graduation",
+          "postgraduate"
+        ],
+        "context_terms": [
+          "departamento"
+        ],
+        "context_score": 1
+      },
+      {
+        "page": 4,
+        "text": "Departamento de Orientação e Supervisão Pedagógica - DEP ..........34 Pró-reitoria de Pós-Graduação e Pesquisa – PR2 ......................................35 Departamento de Fomento ao Ensino para Graduados - DEPG ...........36 Centro de Estudos Ambientais e Desenvolvimento Sustentável - Ceads 37 Departamento de Apoio à Produção Científica e Tecnológica – Depesq .38",
+        "kinds": [
+          "graduation",
+          "postgraduate"
+        ],
+        "context_terms": [
+          "departamento"
+        ],
+        "context_score": 1
+      },
+      {
+        "page": 7,
+        "text": "Departamento de Medicina Integral, Familiar e Comunitária - Dmifc .222 Departamento de Patologia e Laboratórios - DPL ......................... 222 Coordenadores de Pós-Graduação Lato Sensu ..............................225 Coordenadores de Pós Graduação Stricto Sensu ........................... 228 Laboratórios ..................................................................... 229",
+        "kinds": [
+          "postgraduate"
+        ],
+        "context_terms": [
+          "departamento"
+        ],
+        "context_score": 1
+      },
+      {
+        "page": 7,
+        "text": "Departamento de Patologia e Laboratórios - DPL ......................... 222 Coordenadores de Pós-Graduação Lato Sensu ..............................225 Coordenadores de Pós Graduação Stricto Sensu ........................... 228 Laboratórios ..................................................................... 229 Faculdade de Enfermagem – ENF ........................................................231",
+        "kinds": [
+          "postgraduate"
+        ],
+        "context_terms": [
+          "departamento"
+        ],
+        "context_score": 1
+      },
+      {
+        "page": 7,
+        "text": "Centro de Estudos da Faculdade de Enfermagem - Cefenf ...............232 Secretaria dos Departamentos ................................................ 232 Coordenação de Ensino de Graduação .......................................232 Coordenação de Ensino de Pós-Graduação Stricto Sensu (Mestrado e Doutorado) ...........................................................................233",
+        "kinds": [
+          "graduation",
+          "masters",
+          "doctorate",
+          "postgraduate"
+        ],
+        "context_terms": [
+          "departamento"
+        ],
+        "context_score": 1
+      },
+      {
+        "page": 7,
+        "text": "Secretaria dos Departamentos ................................................ 232 Coordenação de Ensino de Graduação .......................................232 Coordenação de Ensino de Pós-Graduação Stricto Sensu (Mestrado e Doutorado) ...........................................................................233 Coordenação de Ensino de Pós-Graduação Lato Sensu (Especialização e",
+        "kinds": [
+          "graduation",
+          "masters",
+          "doctorate",
+          "postgraduate"
+        ],
+        "context_terms": [
+          "departamento"
+        ],
+        "context_score": 1
+      },
+      {
+        "page": 8,
+        "text": "Departamento de Enfermagem Materno-Infantil – Demi .................238 Faculdade de Ciências Biológicas e Saúde - FCBS .....................................239 Pós-Graduação em Ciência e Tec. Ambiental ...............................239 Departamentos e Coordenações .............................................. 240 Demais Setores ..................................................................240",
+        "kinds": [
+          "postgraduate"
+        ],
+        "context_terms": [
+          "ciencias",
+          "departamento"
+        ],
+        "context_score": 2
+      },
+      {
+        "page": 8,
+        "text": "Departamento de Prótese - Deprotes ........................................244 Departamento de Diagnóstico e Terapêutica - Diater .....................244 Coordenação de Ensino de Graduação e Extensão .........................245 Núcleo de Extensão .............................................................245 Coordenação Geral de Pós-Graduação e Pesquisa ......................... 246",
+        "kinds": [
+          "graduation",
+          "postgraduate"
+        ],
+        "context_terms": [
+          "departamento"
+        ],
+        "context_score": 1
+      },
+      {
+        "page": 9,
+        "text": "Departamento de Biofísica e Biometria - DBB.............................. 272 Instituto de Medicina Social Hesio Cordeiro - IMS ....................................275 Pós-graduação em Saúde Coletiva ............................................276 Departamento de Políticas e Instituições de Saúde .......................277 Departamento de Epidemiologia ............................................. 277",
+        "kinds": [
+          "postgraduate"
+        ],
+        "context_terms": [
+          "departamento"
+        ],
+        "context_score": 1
+      }
+    ],
+    "reason": "Requisitos associados à área/cargo por termos de contexto.",
+    "errors": [
+      "http://www.sgp.uerj.br/site/index.php/concursos.html: ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+    ],
     "pci_protected_documents": [
       {
         "label": "EDITAL - UERJ 228 PROFESSOR ADJUNTO CARDIOLOGIA",
         "url": null,
         "pci_link_id": "1704596",
-        "pci_news_code": "23d133c8e3fd6013f20c426c403ff290",
+        "pci_news_code": "c9a6cec0c3f2ea1f06b4143772905927",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       }
     ]
   },
   "https://www.pciconcursos.com.br/noticias/uerj-abre-concurso-para-professor-adjunto-na-area-de-engenharia-economica": {
-    "status": "BLOCKED",
-    "checked_at": "2026-09-01T12:28:28-03:00",
+    "status": "READ",
+    "checked_at": "2026-09-03T12:01:31-03:00",
     "documents": [
       {
         "url": "https://www.pciconcursos.com.br/noticias/uerj-abre-concurso-para-professor-adjunto-na-area-de-engenharia-economica",
         "type": "PCI_HTML",
-        "content_hash": "5df3075b31bd5fb48ff43d67e5b5598897aab0b7052e4b58d7f169b4bd889280",
+        "content_hash": "fdad38ebd8d1410a1368a8eb17ed659994a73dd95f8f422deb3f8cee0f5706de",
         "page_count": 1,
-        "extracted_chars": 7668,
+        "extracted_chars": 7888,
         "truncated": false,
         "title": "UERJ abre concurso para professor adjunto na área de engenharia econômica",
         "evidence_status": "IRRELEVANT",
@@ -30922,15 +31367,15 @@
       {
         "url": "https://www.uerj.br/",
         "type": "HTML",
-        "content_hash": "9c532844af0d0c75cbf31453a98788806cbd91fd69b8770de0f29124ba598435",
+        "content_hash": "474249ed8e8141f659135e86dca21fcf7b501e09d0ee2e4005d0ab5a1c0cf1f3",
         "page_count": 1,
-        "extracted_chars": 3268,
+        "extracted_chars": 3544,
         "truncated": false,
         "title": "UERJ - Universidade do Estado do Rio de Janeiro - Universidade do Estado do Rio de Janeiro",
         "evidence_status": "IRRELEVANT",
         "tls_unverified": false,
         "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+        "relevance_reason": "O documento docente não menciona a área identificada no anúncio."
       },
       {
         "url": "https://www.uerj.br/wp-content/uploads/2019/01/informe_uerj95.pdf",
@@ -30940,10 +31385,10 @@
         "extracted_chars": 15995,
         "truncated": false,
         "title": "",
-        "evidence_status": "IRRELEVANT",
+        "evidence_status": "MEDIUM",
         "tls_unverified": false,
-        "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "relevant": true,
+        "relevance_reason": "Documento docente associado à área por: producao.",
         "opportunities_count": 0
       },
       {
@@ -30957,7 +31402,7 @@
         "evidence_status": "IRRELEVANT",
         "tls_unverified": false,
         "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "relevance_reason": "O documento não é um edital ou aviso de seleção.",
         "opportunities_count": 0
       },
       {
@@ -30968,10 +31413,10 @@
         "extracted_chars": 5818,
         "truncated": false,
         "title": "988.indd",
-        "evidence_status": "IRRELEVANT",
+        "evidence_status": "MEDIUM",
         "tls_unverified": false,
-        "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "relevant": true,
+        "relevance_reason": "Documento docente associado à área por: engenharia.",
         "opportunities_count": 0
       },
       {
@@ -30982,24 +31427,11 @@
         "extracted_chars": 471157,
         "truncated": true,
         "title": "",
-        "evidence_status": "IRRELEVANT",
+        "evidence_status": "MEDIUM",
         "tls_unverified": false,
-        "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente.",
+        "relevant": true,
+        "relevance_reason": "Documento docente associado à área por: engenharia, producao.",
         "opportunities_count": 0
-      },
-      {
-        "url": "https://www.uerj.br/agenda/inscricoes-abertas-para-o-workshop-do-programa-de-pos-graduacao-em-quimica/",
-        "type": "HTML",
-        "content_hash": "4409274e9b7159341685185fbaa2234eb30453016b58949d4e696d50c85f6683",
-        "page_count": 1,
-        "extracted_chars": 2672,
-        "truncated": false,
-        "title": "Inscrições abertas para o Workshop do Programa de Pós-Graduação em Química - UERJ - Universidade do Estado do Rio de Janeiro",
-        "evidence_status": "IRRELEVANT",
-        "tls_unverified": false,
-        "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
       },
       {
         "url": "https://www.uerj.br/concursos-e-editais/",
@@ -31012,19 +31444,65 @@
         "evidence_status": "IRRELEVANT",
         "tls_unverified": false,
         "relevant": false,
-        "relevance_reason": "O documento não foi identificado como seleção para cargo docente."
+        "relevance_reason": "O documento docente não menciona a área identificada no anúncio."
+      },
+      {
+        "url": "https://concursos.sgp.uerj.br/",
+        "type": "HTML",
+        "content_hash": "f253f21ddc39653291d10c2e017817793453c356fa48fca271427561b3ae30fc",
+        "page_count": 1,
+        "extracted_chars": 7863,
+        "truncated": false,
+        "title": "UERJ-SGP Concursos",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
       }
     ],
     "reader_version": 5,
-    "applicable": false,
-    "reason": "O PCI lista 1 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
-    "errors": [],
+    "document_url": "https://www.uerj.br/wp-content/uploads/2019/01/informe_uerj95.pdf",
+    "document_type": "PDF",
+    "content_hash": "9613efabaafc7521d7bbaa604074524d45806570f757644e5763675cd2fb58d6",
+    "confidence": "MEDIUM",
+    "applicable": true,
+    "tls_unverified": false,
+    "requirements": {
+      "graduation_requirement_raw": "graduação do Pro- grama Institucional de Bolsas de Inicia- ção Cientíﬁ ca (Pibic) da UERJ estarão é de professores da própria UERJ",
+      "postgraduate_requirement_raw": "doutorado e avaliamos se cabe fazer um livro ou não",
+      "doctorate_requirement_raw": "doutorado e avaliamos se cabe fazer um livro ou não"
+    },
+    "evidence": [
+      {
+        "page": 2,
+        "text": "dos quais três serão premiados. As inscrições podem ser feitas na página www.hla.uerj.br/simposio. Quatro alunos de graduação do Pro- grama Institucional de Bolsas de Inicia- ção Cientíﬁ ca (Pibic) da UERJ estarão",
+        "kinds": [
+          "graduation"
+        ],
+        "context_terms": [],
+        "context_score": 0
+      },
+      {
+        "page": 3,
+        "text": "é de professores da própria UERJ. A preferência é para livros. Mas tam- bém recebemos teses de doutorado e avaliamos se cabe fazer um livro ou não. Há um Conselho Editorial que",
+        "kinds": [
+          "doctorate",
+          "postgraduate"
+        ],
+        "context_terms": [],
+        "context_score": 0
+      }
+    ],
+    "reason": "Documento com poucos blocos de requisitos; associação conservadora à vaga.",
+    "errors": [
+      "http://www.sgp.uerj.br/site/index.php/concursos.html: ReadTimeout: HTTPConnectionPool(host='www.sgp.uerj.br', port=80): Read timed out. (read timeout=30)"
+    ],
     "pci_protected_documents": [
       {
         "label": "EDITAL - UERJ 239 PROFESSOR ADJUNTO ENGENHARIA ECONÔMICA",
         "url": null,
         "pci_link_id": "1704598",
-        "pci_news_code": "7948b670e0a9083266137d4ba58b1f5f",
+        "pci_news_code": "56eead40f82713d807d82bbf75624e09",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       }
     ]
@@ -32883,6 +33361,268 @@
         "url": null,
         "pci_link_id": "1704650",
         "pci_news_code": "24118f4e4959d995f8480d18899cd34b",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
+    ]
+  },
+  "https://www.pciconcursos.com.br/noticias/utfpr-abre-vaga-para-professor-substituto-em-engenharia-ambiental-e-sanitaria": {
+    "status": "BLOCKED",
+    "checked_at": "2026-09-03T12:01:31-03:00",
+    "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/utfpr-abre-vaga-para-professor-substituto-em-engenharia-ambiental-e-sanitaria",
+        "type": "PCI_HTML",
+        "content_hash": "dada6f6fe7fab47e91bbae15f5ab909eea36dd0c1b3579a2cb0d1a7cb8c28202",
+        "page_count": 1,
+        "extracted_chars": 8213,
+        "truncated": false,
+        "title": "UTFPR abre vaga para professor substituto em Engenharia Ambiental e Sanitária",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      },
+      {
+        "url": "https://www.utfpr.edu.br/",
+        "type": "HTML",
+        "content_hash": "4d981b2451b4951e38730448e1d7db68d7e24c456daac83a3c3c0d5c78c1d51c",
+        "page_count": 1,
+        "extracted_chars": 3537,
+        "truncated": false,
+        "title": "Universidade Tecnológica Federal do Paraná — UTFPR",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
+      },
+      {
+        "url": "https://www.utfpr.edu.br/editais/concursos",
+        "type": "HTML",
+        "content_hash": "2072f4bdef616851d9dd7ae9f46457ee6698d4cb3a10f6a93c68f6b9c21176d7",
+        "page_count": 1,
+        "extracted_chars": 2089,
+        "truncated": false,
+        "title": "Concursos",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
+      }
+    ],
+    "reader_version": 5,
+    "applicable": false,
+    "reason": "O PCI lista 1 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
+    "errors": [],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL DE ABERTURA PROCESSO SELETIVO Nº 002/2026",
+        "url": null,
+        "pci_link_id": "1704667",
+        "pci_news_code": "b7083e1f9d4bacb4fc861204d141da07",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
+    ]
+  },
+  "https://www.pciconcursos.com.br/noticias/prefeitura-de-itanhaem-sp-abre-concurso-publico-com-salarios-de-ate-6592": {
+    "status": "BLOCKED",
+    "checked_at": "2026-09-03T12:01:31-03:00",
+    "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/prefeitura-de-itanhaem-sp-abre-concurso-publico-com-salarios-de-ate-6592",
+        "type": "PCI_HTML",
+        "content_hash": "4fa0ff2f40e9480ad25ffd303b5bdce75fa3c720b360128c18fd92ef6cf85470",
+        "page_count": 1,
+        "extracted_chars": 16479,
+        "truncated": false,
+        "title": "Prefeitura de Itanhaém - SP abre concurso público com salários de até R$ 6.592,00",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      },
+      {
+        "url": "https://nossorumo.org.br/",
+        "type": "HTML",
+        "content_hash": "2410582d057ce5e2c602c14fb89c21edc400fb3585114268475d1cb102774403",
+        "page_count": 1,
+        "extracted_chars": 43469,
+        "truncated": false,
+        "title": "Nosso Rumo | Início",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
+      },
+      {
+        "url": "https://nossorumo.org.br/Inscricao/ValidarCpf",
+        "type": "HTML",
+        "content_hash": "d6795abe7a25ca91d831583224d1d4542a06c3ac584a876ab6d36a7be1b3cc0b",
+        "page_count": 1,
+        "extracted_chars": 595,
+        "truncated": false,
+        "title": "Nosso Rumo | Inscrição - Validação de CPF",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não é um edital ou aviso de seleção."
+      },
+      {
+        "url": "https://nossorumo.org.br/Inscricao/ValidarCpf/NTg3",
+        "type": "HTML",
+        "content_hash": "5e6a9fc4a1db7926a9353dd5158009410dd30b9832b9b70fdfa77d1e51906ec5",
+        "page_count": 1,
+        "extracted_chars": 595,
+        "truncated": false,
+        "title": "Nosso Rumo | Inscrição - Validação de CPF",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não é um edital ou aviso de seleção."
+      },
+      {
+        "url": "https://nossorumo.org.br/Inscricao/ValidarCpf/NTk5",
+        "type": "HTML",
+        "content_hash": "8dfcc2f8fcde8e9d83ebd4bb768aecdb98f87576cc1cb72a6a5408fdaffc0031",
+        "page_count": 1,
+        "extracted_chars": 595,
+        "truncated": false,
+        "title": "Nosso Rumo | Inscrição - Validação de CPF",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não é um edital ou aviso de seleção."
+      },
+      {
+        "url": "https://nossorumo.org.br/Inscricao/ValidarCpf/NTky",
+        "type": "HTML",
+        "content_hash": "9ead1cdeba0a82a7b565e18a6551179e1ad26889e041f09787056b9200839d76",
+        "page_count": 1,
+        "extracted_chars": 595,
+        "truncated": false,
+        "title": "Nosso Rumo | Inscrição - Validação de CPF",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não é um edital ou aviso de seleção."
+      },
+      {
+        "url": "https://nossorumo.org.br/Inscricao/ValidarCpf/NjA2",
+        "type": "HTML",
+        "content_hash": "cb15adbb73af4f39a237b4a8761b28b24c164992c4884a1624601c9d53c7ea9c",
+        "page_count": 1,
+        "extracted_chars": 595,
+        "truncated": false,
+        "title": "Nosso Rumo | Inscrição - Validação de CPF",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não é um edital ou aviso de seleção."
+      }
+    ],
+    "reader_version": 5,
+    "applicable": false,
+    "reason": "O PCI lista 1 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
+    "errors": [
+      "https://www.itanhaem.sp.gov.br/: HTTPError: 403 Client Error: Forbidden for url: https://www.itanhaem.sp.gov.br/"
+    ],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL Nº 03/2026",
+        "url": null,
+        "pci_link_id": "1704663",
+        "pci_news_code": "26089938a7d943bef59e69a2d1f72f8b",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
+    ]
+  },
+  "https://www.pciconcursos.com.br/noticias/prefeitura-de-vila-pavao-es-abre-selecao-para-cadastro-de-reserva-em-diversos-cargos": {
+    "status": "BLOCKED",
+    "checked_at": "2026-09-03T12:01:31-03:00",
+    "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/prefeitura-de-vila-pavao-es-abre-selecao-para-cadastro-de-reserva-em-diversos-cargos",
+        "type": "PCI_HTML",
+        "content_hash": "bcc79a259daa5037a8ba59ee7cf02ea8ccb45e2bfd03a8ce8a57a791c9b1696f",
+        "page_count": 1,
+        "extracted_chars": 7586,
+        "truncated": false,
+        "title": "Prefeitura de Vila Pavão - ES abre seleção para cadastro de reserva em diversos cargos",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      }
+    ],
+    "reader_version": 5,
+    "applicable": false,
+    "reason": "O PCI lista 1 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
+    "errors": [
+      "https://www.vilapavao.es.gov.br/: HTTPError: 403 Client Error: Forbidden for url: https://www.vilapavao.es.gov.br/"
+    ],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL Nº 008/2026",
+        "url": null,
+        "pci_link_id": "1704676",
+        "pci_news_code": "c6ab0c47bc2ec0396f34946c2c9a0085",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
+    ]
+  },
+  "https://www.pciconcursos.com.br/noticias/prefeitura-de-areia-pb-publica-edital-de-concurso-publico-com-salarios-de-ate-4782": {
+    "status": "BLOCKED",
+    "checked_at": "2026-09-03T12:01:31-03:00",
+    "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/prefeitura-de-areia-pb-publica-edital-de-concurso-publico-com-salarios-de-ate-4782",
+        "type": "PCI_HTML",
+        "content_hash": "b372521a793cc109a37d0f257068e0eb08e148c922871434cc0d89a35b2f93aa",
+        "page_count": 1,
+        "extracted_chars": 9351,
+        "truncated": false,
+        "title": "Prefeitura de Areia - PB publica edital de concurso público com salários de até R$ 4.782,72",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      },
+      {
+        "url": "https://areia.pb.gov.br/",
+        "type": "HTML",
+        "content_hash": "2007ee433d2a295e048a1d97874b196d217aff8333c97d42be46138197801d7b",
+        "page_count": 1,
+        "extracted_chars": 3399,
+        "truncated": false,
+        "title": "Prefeitura Municipal de Areia | Portal Oficial",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não é um edital ou aviso de seleção."
+      },
+      {
+        "url": "https://areia.pb.gov.br/concursos-publicos/",
+        "type": "HTML",
+        "content_hash": "2da6e35e9fc3154347d5946a4e63ec762f68d7aa7b4f5c54311a3417ae2fc7c8",
+        "page_count": 1,
+        "extracted_chars": 1425,
+        "truncated": false,
+        "title": "Concursos Públicos – Prefeitura Municipal de Areia | Portal Oficial",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
+      }
+    ],
+    "reader_version": 5,
+    "applicable": false,
+    "reason": "O PCI lista 1 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
+    "errors": [],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL NORMATIVO DE CONCURSO PÚBLICO Nº 001/2026",
+        "url": null,
+        "pci_link_id": "1704660",
+        "pci_news_code": "b84d0f1458b2f12d797ff49876992bb9",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       }
     ]
