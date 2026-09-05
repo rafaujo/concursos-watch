@@ -30186,14 +30186,14 @@
   },
   "https://www.pciconcursos.com.br/noticias/prefeitura-de-palmeira-sc-abre-concurso-e-processo-seletivo-para-diversos-cargos": {
     "status": "BLOCKED",
-    "checked_at": "2026-09-03T12:01:31-03:00",
+    "checked_at": "2026-09-05T10:52:59-03:00",
     "documents": [
       {
         "url": "https://www.pciconcursos.com.br/noticias/prefeitura-de-palmeira-sc-abre-concurso-e-processo-seletivo-para-diversos-cargos",
         "type": "PCI_HTML",
-        "content_hash": "eea15a43ec2052401a7f159c1768a6beebd514f76ae71ba2c28878bb1634206c",
+        "content_hash": "3ffbf107a57784835fd066423cdceeb7f4242297152140ca41f44f86a49e90f4",
         "page_count": 1,
-        "extracted_chars": 12096,
+        "extracted_chars": 11971,
         "truncated": false,
         "title": "Prefeitura de Palmeira - SC abre concurso e processo seletivo para diversos cargos",
         "evidence_status": "IRRELEVANT",
@@ -30213,28 +30213,28 @@
         "label": "EDITAL DE PROCESSO SELETIVO Nº 02/2026",
         "url": null,
         "pci_link_id": "1704564",
-        "pci_news_code": "3e3298f5c71c9d52d3f7c0909aad3c44",
+        "pci_news_code": "31080e9698efa04185bfb5747c80ef66",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       },
       {
         "label": "EDITAL DE CONCURSO PÚBLICO Nº 003/2026",
         "url": null,
         "pci_link_id": "1704565",
-        "pci_news_code": "3e3298f5c71c9d52d3f7c0909aad3c44",
+        "pci_news_code": "31080e9698efa04185bfb5747c80ef66",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       }
     ]
   },
   "https://www.pciconcursos.com.br/noticias/prefeitura-de-limeira-sp-prorroga-inscricoes-de-concursos-com-vagas-em-diversas-areas": {
     "status": "BLOCKED",
-    "checked_at": "2026-09-03T12:01:31-03:00",
+    "checked_at": "2026-09-05T10:52:59-03:00",
     "documents": [
       {
         "url": "https://www.pciconcursos.com.br/noticias/prefeitura-de-limeira-sp-prorroga-inscricoes-de-concursos-com-vagas-em-diversas-areas",
         "type": "PCI_HTML",
-        "content_hash": "7dd86f62ada1c8da9406aef13e499963dbbc3080ae4153529e0d2e855e8d2aac",
+        "content_hash": "1aab4bddb53350fdc17e459b76d6efc011b6a342ab294084c3bc76ee9cc85c6a",
         "page_count": 1,
-        "extracted_chars": 22928,
+        "extracted_chars": 22563,
         "truncated": false,
         "title": "Prefeitura de Limeira - SP prorroga inscrições de concursos com vagas em diversas áreas",
         "evidence_status": "IRRELEVANT",
@@ -30245,15 +30245,15 @@
       {
         "url": "https://www.limeira.sp.gov.br/",
         "type": "HTML",
-        "content_hash": "31727b61daba78da70b3443cf8b02b213b47fcbcd34562e4d3a8a7b0fcbcc177",
+        "content_hash": "2dd3591089a4a169943d9758400fb73d130f69403aad53cf353363f5787d97bb",
         "page_count": 1,
-        "extracted_chars": 4733,
+        "extracted_chars": 4723,
         "truncated": false,
         "title": "Prefeitura de Limeira",
         "evidence_status": "IRRELEVANT",
         "tls_unverified": false,
         "relevant": false,
-        "relevance_reason": "O documento não é um edital ou aviso de seleção."
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
       },
       {
         "url": "https://sme.limeira.sp.gov.br/inscricao_creche.php?matricula=creche",
@@ -30336,42 +30336,42 @@
         "label": "EDITAL DE CONCURSO PÚBLICO 01/2026",
         "url": null,
         "pci_link_id": "1703337",
-        "pci_news_code": "816a22df234358958840efd044b3e6c3",
+        "pci_news_code": "e3172879de93bf04a080c626c942c76c",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       },
       {
         "label": "EDITAL DE CONCURSO PÚBLICO 02/2026",
         "url": null,
         "pci_link_id": "1703338",
-        "pci_news_code": "816a22df234358958840efd044b3e6c3",
+        "pci_news_code": "e3172879de93bf04a080c626c942c76c",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       },
       {
         "label": "EDITAL DE PRORROGAÇÃO DAS INSCRIÇÕES - CONCURSO PÚBLICO 01/2026",
         "url": null,
         "pci_link_id": "1704569",
-        "pci_news_code": "816a22df234358958840efd044b3e6c3",
+        "pci_news_code": "e3172879de93bf04a080c626c942c76c",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       },
       {
         "label": "EDITAL DE PRORROGAÇÃO DAS INSCRIÇÕES - CONCURSO PÚBLICO 02/2026",
         "url": null,
         "pci_link_id": "1704570",
-        "pci_news_code": "816a22df234358958840efd044b3e6c3",
+        "pci_news_code": "e3172879de93bf04a080c626c942c76c",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       }
     ]
   },
   "https://www.pciconcursos.com.br/noticias/prefeitura-de-sao-jose-do-inhacora-rs-abre-processo-seletivo-para-formacao-de-cadastro-de-reserva": {
     "status": "BLOCKED",
-    "checked_at": "2026-09-03T12:01:31-03:00",
+    "checked_at": "2026-09-05T10:52:59-03:00",
     "documents": [
       {
         "url": "https://www.pciconcursos.com.br/noticias/prefeitura-de-sao-jose-do-inhacora-rs-abre-processo-seletivo-para-formacao-de-cadastro-de-reserva",
         "type": "PCI_HTML",
-        "content_hash": "76e509943295b767ad25b9267689402f71eb050eb8f6e24dda8a718c8f661234",
+        "content_hash": "3d330847ebb99460b5fd3efa3c8b44614a85bd2ae054ba24652e539149d690cc",
         "page_count": 1,
-        "extracted_chars": 9308,
+        "extracted_chars": 8632,
         "truncated": false,
         "title": "Prefeitura de São José do Inhacorá - RS abre processo seletivo para formação de cadastro de reserva",
         "evidence_status": "IRRELEVANT",
@@ -30384,14 +30384,14 @@
     "applicable": false,
     "reason": "O PCI lista 1 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
     "errors": [
-      "https://saojosedoinhacora.rs.gov.br/: ConnectTimeout: HTTPSConnectionPool(host='saojosedoinhacora.rs.gov.br', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<HTTPSConnection(host='saojosedoinhacora.rs.gov.br', port=443) at 0x7f3061668980>, 'Connection to saojosedoinhacora.rs.gov.br timed out. (connect timeout=30)'))"
+      "https://saojosedoinhacora.rs.gov.br/: ConnectTimeout: HTTPSConnectionPool(host='saojosedoinhacora.rs.gov.br', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<HTTPSConnection(host='saojosedoinhacora.rs.gov.br', port=443) at 0x7f423fbeb320>, 'Connection to saojosedoinhacora.rs.gov.br timed out. (connect timeout=30)'))"
     ],
     "pci_protected_documents": [
       {
         "label": "EDITAL Nº 181/2026",
         "url": null,
         "pci_link_id": "1704602",
-        "pci_news_code": "9ee4c44568ec17180e70e25eb7a32ad7",
+        "pci_news_code": "2e27b4615fb12fee85ab99c34d22cf0c",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       }
     ]
@@ -30563,14 +30563,14 @@
   },
   "https://www.pciconcursos.com.br/noticias/prefeitura-de-oliveira-fortes-mg-publica-retificacao-de-concurso-publico": {
     "status": "BLOCKED",
-    "checked_at": "2026-09-03T12:01:31-03:00",
+    "checked_at": "2026-09-05T10:52:59-03:00",
     "documents": [
       {
         "url": "https://www.pciconcursos.com.br/noticias/prefeitura-de-oliveira-fortes-mg-publica-retificacao-de-concurso-publico",
         "type": "PCI_HTML",
-        "content_hash": "84fd11a47d9cb48859d47eed75afcbff0924f2a9bccb936b467c79c5347a4fd5",
+        "content_hash": "f1c001c0e7d47cd4b38932b0e01d28317ebbb0d7cb8bd205336b9304432680c8",
         "page_count": 1,
-        "extracted_chars": 18208,
+        "extracted_chars": 16998,
         "truncated": false,
         "title": "Prefeitura de Oliveira Fortes - MG publica retificação de concurso público",
         "evidence_status": "IRRELEVANT",
@@ -30581,7 +30581,7 @@
       {
         "url": "https://oliveirafortes.mg.gov.br/",
         "type": "HTML",
-        "content_hash": "4581041040f8722bc6fa00db7bf6a2762ca530075f9e8fc866e5779b2278063c",
+        "content_hash": "5098f0313390f3f622de8b967f485699d11aaf9b0c575288ec4b72eacb78ceca",
         "page_count": 1,
         "extracted_chars": 1856,
         "truncated": false,
@@ -30603,14 +30603,14 @@
         "label": "EDITAL DE CONCURSO PÚBLICO Nº 01/2026",
         "url": null,
         "pci_link_id": "1701983",
-        "pci_news_code": "4b23240feaf99bb08eccb39e0b8c5803",
+        "pci_news_code": "2218723fce04750b4d0d09a4237a84ae",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       },
       {
         "label": "1ª RETIFICAÇÃO DO EDITAL DE CONCURSO PÚBLICO Nº 01/2026",
         "url": null,
         "pci_link_id": "1704612",
-        "pci_news_code": "4b23240feaf99bb08eccb39e0b8c5803",
+        "pci_news_code": "2218723fce04750b4d0d09a4237a84ae",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       }
     ]
@@ -33499,58 +33499,34 @@
   },
   "https://www.pciconcursos.com.br/noticias/utfpr-abre-vaga-para-professor-substituto-em-engenharia-ambiental-e-sanitaria": {
     "status": "BLOCKED",
-    "checked_at": "2026-09-03T12:01:31-03:00",
+    "checked_at": "2026-09-05T10:52:59-03:00",
     "documents": [
       {
         "url": "https://www.pciconcursos.com.br/noticias/utfpr-abre-vaga-para-professor-substituto-em-engenharia-ambiental-e-sanitaria",
         "type": "PCI_HTML",
-        "content_hash": "dada6f6fe7fab47e91bbae15f5ab909eea36dd0c1b3579a2cb0d1a7cb8c28202",
+        "content_hash": "874fd33261653887215c90f81984b94025274a13fa22db5b315876959596cb96",
         "page_count": 1,
-        "extracted_chars": 8213,
+        "extracted_chars": 8088,
         "truncated": false,
         "title": "UTFPR abre vaga para professor substituto em Engenharia Ambiental e Sanitária",
         "evidence_status": "IRRELEVANT",
         "tls_unverified": false,
         "relevant": false,
         "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
-      },
-      {
-        "url": "https://www.utfpr.edu.br/",
-        "type": "HTML",
-        "content_hash": "4d981b2451b4951e38730448e1d7db68d7e24c456daac83a3c3c0d5c78c1d51c",
-        "page_count": 1,
-        "extracted_chars": 3537,
-        "truncated": false,
-        "title": "Universidade Tecnológica Federal do Paraná — UTFPR",
-        "evidence_status": "IRRELEVANT",
-        "tls_unverified": false,
-        "relevant": false,
-        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
-      },
-      {
-        "url": "https://www.utfpr.edu.br/editais/concursos",
-        "type": "HTML",
-        "content_hash": "2072f4bdef616851d9dd7ae9f46457ee6698d4cb3a10f6a93c68f6b9c21176d7",
-        "page_count": 1,
-        "extracted_chars": 2089,
-        "truncated": false,
-        "title": "Concursos",
-        "evidence_status": "IRRELEVANT",
-        "tls_unverified": false,
-        "relevant": false,
-        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
       }
     ],
     "reader_version": 5,
     "applicable": false,
     "reason": "O PCI lista 1 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
-    "errors": [],
+    "errors": [
+      "https://www.utfpr.edu.br/: ConnectTimeout: HTTPSConnectionPool(host='www.utfpr.edu.br', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.utfpr.edu.br', port=443) at 0x7f423fea5880>, 'Connection to www.utfpr.edu.br timed out. (connect timeout=30)'))"
+    ],
     "pci_protected_documents": [
       {
-        "label": "EDITAL DE ABERTURA PROCESSO SELETIVO Nº 002/2026",
+        "label": "EDITAL DE ABERTURA Nº 002/2026",
         "url": null,
         "pci_link_id": "1704667",
-        "pci_news_code": "b7083e1f9d4bacb4fc861204d141da07",
+        "pci_news_code": "d48186c0fba49b861673d8f6aa6c1861",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       }
     ]
@@ -33703,14 +33679,14 @@
   },
   "https://www.pciconcursos.com.br/noticias/prefeitura-de-areia-pb-publica-edital-de-concurso-publico-com-salarios-de-ate-4782": {
     "status": "BLOCKED",
-    "checked_at": "2026-09-03T12:01:31-03:00",
+    "checked_at": "2026-09-05T10:52:59-03:00",
     "documents": [
       {
         "url": "https://www.pciconcursos.com.br/noticias/prefeitura-de-areia-pb-publica-edital-de-concurso-publico-com-salarios-de-ate-4782",
         "type": "PCI_HTML",
-        "content_hash": "b372521a793cc109a37d0f257068e0eb08e148c922871434cc0d89a35b2f93aa",
+        "content_hash": "e241585c15546adecffc01d45771fade16b1fd38a05610f2dde85875408d8544",
         "page_count": 1,
-        "extracted_chars": 9351,
+        "extracted_chars": 9041,
         "truncated": false,
         "title": "Prefeitura de Areia - PB publica edital de concurso público com salários de até R$ 4.782,72",
         "evidence_status": "IRRELEVANT",
@@ -33721,15 +33697,15 @@
       {
         "url": "https://areia.pb.gov.br/",
         "type": "HTML",
-        "content_hash": "2007ee433d2a295e048a1d97874b196d217aff8333c97d42be46138197801d7b",
+        "content_hash": "9f8580ff547a9fa30ed00d1cf7f58e4b41a9484ca6670e672825d177cda4b07b",
         "page_count": 1,
-        "extracted_chars": 3399,
+        "extracted_chars": 3455,
         "truncated": false,
         "title": "Prefeitura Municipal de Areia | Portal Oficial",
         "evidence_status": "IRRELEVANT",
         "tls_unverified": false,
         "relevant": false,
-        "relevance_reason": "O documento não é um edital ou aviso de seleção."
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
       },
       {
         "url": "https://areia.pb.gov.br/concursos-publicos/",
@@ -33739,6 +33715,19 @@
         "extracted_chars": 1425,
         "truncated": false,
         "title": "Concursos Públicos – Prefeitura Municipal de Areia | Portal Oficial",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
+      },
+      {
+        "url": "https://areia.pb.gov.br/e-oficial-areia-tem-novo-concurso-publico/",
+        "type": "HTML",
+        "content_hash": "0f19873eaecf02a45b271a40e802a51f5134f7393b06b669fd4e9de55fd76021",
+        "page_count": 1,
+        "extracted_chars": 3341,
+        "truncated": false,
+        "title": "É OFICIAL: AREIA TEM NOVO CONCURSO PÚBLICO! – Prefeitura Municipal de Areia | Portal Oficial",
         "evidence_status": "IRRELEVANT",
         "tls_unverified": false,
         "relevant": false,
@@ -33754,7 +33743,7 @@
         "label": "EDITAL NORMATIVO DE CONCURSO PÚBLICO Nº 001/2026",
         "url": null,
         "pci_link_id": "1704660",
-        "pci_news_code": "b84d0f1458b2f12d797ff49876992bb9",
+        "pci_news_code": "a52612e311288c1697cf718bf5466251",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       }
     ]
@@ -35751,6 +35740,1079 @@
         "url": null,
         "pci_link_id": "1704698",
         "pci_news_code": "66977271fc45a1bcb10125b79499f8ff",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
+    ]
+  },
+  "https://www.pciconcursos.com.br/noticias/prefeitura-de-mogi-mirim-sp-divulga-retificacoes-dos-concursos-publicos": {
+    "status": "BLOCKED",
+    "checked_at": "2026-09-05T10:52:59-03:00",
+    "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/prefeitura-de-mogi-mirim-sp-divulga-retificacoes-dos-concursos-publicos",
+        "type": "PCI_HTML",
+        "content_hash": "00996518337aff14c3a33ee85a5fd302281517d98d115b6ddc77d98f717f546e",
+        "page_count": 1,
+        "extracted_chars": 18030,
+        "truncated": false,
+        "title": "Prefeitura de Mogi Mirim - SP divulga retificações dos concursos públicos",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      },
+      {
+        "url": "https://www.mogimirim.sp.gov.br/",
+        "type": "HTML",
+        "content_hash": "bbda29c54f2ed8dee1059b3a299c3ba77d6ca69c8fa2e887c5a4ad659afb58ad",
+        "page_count": 1,
+        "extracted_chars": 4469,
+        "truncated": false,
+        "title": "Mogi Mirim/SP",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": true,
+        "relevant": false,
+        "relevance_reason": "O documento docente não menciona a área identificada no anúncio."
+      },
+      {
+        "url": "https://www.mogimirim.sp.gov.br/uploads/jornal/54252/b6G0qwKVSqeQS67atLoVsXuxxseWp8mn.pdf",
+        "type": "PDF",
+        "content_hash": "7fdaff2efd113032edcaf7f52f724e4c1d19c170a7c95a119eae1136f8ca62d3",
+        "page_count": 8,
+        "extracted_chars": 94362,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": true,
+        "relevant": false,
+        "relevance_reason": "O documento docente não menciona a área identificada no anúncio.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://www.mogimirim.sp.gov.br/uploads/jornal/54301/jo2QHT8ActhuyGdlGANEPuw97S-vyOTm.pdf",
+        "type": "PDF",
+        "content_hash": "6017eed4fd3f856a612aa74fbb87a55a4ff8a320aba07d1b11b8c758c992bdf5",
+        "page_count": 7,
+        "extracted_chars": 71398,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": true,
+        "relevant": false,
+        "relevance_reason": "O documento docente não menciona a área identificada no anúncio.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://www.mogimirim.sp.gov.br/uploads/jornal/54351/dTbFB4-ChslDB0ZG5mhQDBud5NjNQddO.pdf",
+        "type": "PDF",
+        "content_hash": "3aecca9b75b9ab2e26a8f2f2e4066ae905d4df26a4535b5237d30ceeae568107",
+        "page_count": 8,
+        "extracted_chars": 99590,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": true,
+        "relevant": false,
+        "relevance_reason": "O documento docente não menciona a área identificada no anúncio.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://www.mogimirim.sp.gov.br/contratacao?ContratacaoSearch%5Bid_contratacao_categoria%5D=1&ContratacaoSearch%5Bano%5D=&ContratacaoSearch%5Bq%5D=",
+        "type": "HTML",
+        "content_hash": "02bda0d58f066560d0a781ea01ec1ca8cabe184970ac83f1e702182e8507f812",
+        "page_count": 1,
+        "extracted_chars": 12335,
+        "truncated": false,
+        "title": "Mogi Mirim/SP | Contratações",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": true,
+        "relevant": false,
+        "relevance_reason": "O documento docente não menciona a área identificada no anúncio."
+      },
+      {
+        "url": "https://www.mogimirim.sp.gov.br/contratacao/view/27/concurso-publico-n-012026-edital-01",
+        "type": "HTML",
+        "content_hash": "245d50f3af4214a0e2f626d116c42d6078c73f9cee90f6d829d95a60dd399676",
+        "page_count": 1,
+        "extracted_chars": 4911,
+        "truncated": false,
+        "title": "Mogi Mirim/SP | Concurso PĂșblico NÂ° 01/2026 - Edital 01",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": true,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
+      },
+      {
+        "url": "https://www.mogimirim.sp.gov.br/contratacao/view/28/concurso-publico-n-012026-edital-02",
+        "type": "HTML",
+        "content_hash": "3f7b54d00b331935f46197097326f11234cbca653d304ed2b18ba12021c18149",
+        "page_count": 1,
+        "extracted_chars": 5538,
+        "truncated": false,
+        "title": "Mogi Mirim/SP | Concurso PĂșblico NÂ° 01/2026 - Edital 02",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": true,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
+      },
+      {
+        "url": "https://www.mogimirim.sp.gov.br/contratacao/view/29/concurso-publico-n-012026-edital-03",
+        "type": "HTML",
+        "content_hash": "75cf31b36fc6b5600b21cd3e8646a1b45ad7b37834e92b5682c8e8e34e6f4505",
+        "page_count": 1,
+        "extracted_chars": 7974,
+        "truncated": false,
+        "title": "Mogi Mirim/SP | Concurso Pﾃｺblico Nﾂｰ 01/2026 - Edital 03",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": true,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
+      },
+      {
+        "url": "https://www.mogimirim.sp.gov.br/contratacao/view/30/concurso-publico-n-012026-edital-04",
+        "type": "HTML",
+        "content_hash": "b1557497e24b7c5a866ee4f654dd64bfa6a5e94add2af5d503b999797ad0b805",
+        "page_count": 1,
+        "extracted_chars": 4880,
+        "truncated": false,
+        "title": "Mogi Mirim/SP | Concurso Público N° 01/2026 - Edital 04",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": true,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
+      },
+      {
+        "url": "https://www.mogimirim.sp.gov.br/contratacao/view/31/concurso-publico-n-012026-edital-05",
+        "type": "HTML",
+        "content_hash": "2d7d44328aed6357864da6e713673d64fa43a45d813784ec71f3de974b8cbfaa",
+        "page_count": 1,
+        "extracted_chars": 2788,
+        "truncated": false,
+        "title": "Mogi Mirim/SP | Concurso PÃšblico NÂ° 01/2026 - Edital 05",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": true,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
+      }
+    ],
+    "reader_version": 5,
+    "applicable": false,
+    "reason": "O PCI lista 7 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
+    "errors": [
+      "https://www.ibamsp-concursos.org.br/: HTTPError: 403 Client Error: Forbidden for url: https://www.ibamsp-concursos.org.br/"
+    ],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL DE ABERTURA PROCESSO SELETIVO Nº 01/2026",
+        "url": null,
+        "pci_link_id": "1703830",
+        "pci_news_code": "7f201e9358954d926943af44e16e979f",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "EDITAL DE ABERTURA 01 CONCURSO PÚBLICO Nº 02/2026",
+        "url": null,
+        "pci_link_id": "1703833",
+        "pci_news_code": "7f201e9358954d926943af44e16e979f",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "EDITAL DE ABERTURA 02 CONCURSO PÚBLICO Nº 02/2026",
+        "url": null,
+        "pci_link_id": "1703832",
+        "pci_news_code": "7f201e9358954d926943af44e16e979f",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "RETIFICAÇÃO - EDITAL DE ABERTURA CP Nº 02/2026 EDITAL 02",
+        "url": null,
+        "pci_link_id": "1704736",
+        "pci_news_code": "7f201e9358954d926943af44e16e979f",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "EDITAL DE ABERTURA 03 CONCURSO PÚBLICO Nº 02/2026",
+        "url": null,
+        "pci_link_id": "1703831",
+        "pci_news_code": "7f201e9358954d926943af44e16e979f",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "RETIFICAÇÃO - EDITAL DE ABERTURA CP Nº 02/2026 EDITAL 03",
+        "url": null,
+        "pci_link_id": "1704737",
+        "pci_news_code": "7f201e9358954d926943af44e16e979f",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "RETIFICAÇÃO II - EDITAL DE ABERTURA CP Nº 02/2026 EDITAL 03",
+        "url": null,
+        "pci_link_id": "1704738",
+        "pci_news_code": "7f201e9358954d926943af44e16e979f",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
+    ]
+  },
+  "https://www.pciconcursos.com.br/noticias/prefeitura-de-conchal-sp-abre-concurso-publico-com-vagas-para-diversos-cargos": {
+    "status": "BLOCKED",
+    "checked_at": "2026-09-05T10:52:59-03:00",
+    "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/prefeitura-de-conchal-sp-abre-concurso-publico-com-vagas-para-diversos-cargos",
+        "type": "PCI_HTML",
+        "content_hash": "ab49be5eca7c5bf76b459fe68ca4082814341eae50c2c2c88de037fc070b16ef",
+        "page_count": 1,
+        "extracted_chars": 15809,
+        "truncated": false,
+        "title": "Prefeitura de Conchal - SP abre concurso público com vagas para diversos cargos",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      },
+      {
+        "url": "https://conchal.sp.gov.br/",
+        "type": "HTML",
+        "content_hash": "b248a46e46dbe022bc1a53bc4b96591ea29867430735e158ac0d9a7b7daf0f16",
+        "page_count": 1,
+        "extracted_chars": 5681,
+        "truncated": false,
+        "title": "Prefeitura de Conchal",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
+      },
+      {
+        "url": "https://abconcursospublicos.org/",
+        "type": "HTML",
+        "content_hash": "898c8df25d9e88afa20b64e5ab6f15924b130dd59444cae9a1a82f5ae8148db0",
+        "page_count": 1,
+        "extracted_chars": 21712,
+        "truncated": false,
+        "title": "ABCP - Associação Brasileira de Concursos Públicos",
+        "evidence_status": "HIGH",
+        "tls_unverified": false,
+        "relevant": true,
+        "relevance_reason": "Documento de seleção docente da instituição: conchal."
+      },
+      {
+        "url": "https://abconcursospublicos.org/?jet_download=3a79cb01391db07c2d6704b44c7444b34bf73705",
+        "type": "PDF",
+        "content_hash": "c83e3cf0a4deb23074823e6adb2b9a503c6dfe2c0ea19815051239a9e434f392",
+        "page_count": 2,
+        "extracted_chars": 3656,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://abconcursospublicos.org/?jet_download=ea9ce352e9b4c13175cf9cc82a25636295ab8095",
+        "type": "PDF",
+        "content_hash": "92b5183da27ecaca04053742655049421dfbe1e3f85f15e995d101884bf0e849",
+        "page_count": 1,
+        "extracted_chars": 1403,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://abconcursospublicos.org/?jet_download=eabbd95d20426015e59b26c9f33976d4b322ff11",
+        "type": "PDF",
+        "content_hash": "67ce5fd8c6e9fee85564a92d4b3588f18923c012f0d75e7763a060c95aa5a156",
+        "page_count": 10,
+        "extracted_chars": 6307,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "A vaga não tem área/número identificável e o documento não coincide com contexto suficiente.",
+        "opportunities_count": 0
+      }
+    ],
+    "reader_version": 5,
+    "applicable": false,
+    "reason": "O PCI lista 1 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
+    "errors": [
+      "https://abcp.selecao.net.br/index/abertos/: HTTPError: 403 Client Error: Forbidden for url: https://abcp.selecao.net.br/index/abertos/",
+      "https://abcp.selecao.net.br/informacoes/2682/: HTTPError: 403 Client Error: Forbidden for url: https://abcp.selecao.net.br/informacoes/2682/",
+      "https://abcp.selecao.net.br/informacoes/2776/: HTTPError: 403 Client Error: Forbidden for url: https://abcp.selecao.net.br/informacoes/2776/",
+      "https://abcp.selecao.net.br/informacoes/2819/: HTTPError: 403 Client Error: Forbidden for url: https://abcp.selecao.net.br/informacoes/2819/",
+      "https://abcp.selecao.net.br/informacoes/2820/: HTTPError: 403 Client Error: Forbidden for url: https://abcp.selecao.net.br/informacoes/2820/"
+    ],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL Nº 001/2026",
+        "url": null,
+        "pci_link_id": "1704767",
+        "pci_news_code": "266f3b580af2a6d2aec1752adf021f39",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
+    ]
+  },
+  "https://www.pciconcursos.com.br/noticias/prefeitura-de-barra-bonita-sc-abre-concurso-com-salarios-de-ate-8344": {
+    "status": "BLOCKED",
+    "checked_at": "2026-09-05T10:52:59-03:00",
+    "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/prefeitura-de-barra-bonita-sc-abre-concurso-com-salarios-de-ate-8344",
+        "type": "PCI_HTML",
+        "content_hash": "d514d0011938fb9711294ab76e620a293ccee0351445cf1408180c063aadf609",
+        "page_count": 1,
+        "extracted_chars": 11701,
+        "truncated": false,
+        "title": "Prefeitura de Barra Bonita - SC abre concurso com salários de até R$ 8.344,63",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      }
+    ],
+    "reader_version": 5,
+    "applicable": false,
+    "reason": "O PCI lista 1 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
+    "errors": [
+      "https://barrabonita.sc.gov.br/: HTTPError: 403 Client Error: Forbidden for url: https://barrabonita.sc.gov.br/"
+    ],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL DE CONCURSO PÚBLICO Nº 002/2026",
+        "url": null,
+        "pci_link_id": "1704766",
+        "pci_news_code": "7b9b9f736e9464b12567bf7ffd5156fd",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
+    ]
+  },
+  "https://www.pciconcursos.com.br/noticias/prefeitura-de-sao-joao-do-oeste-sc-abre-concurso-publico-e-processo-seletivo-para-diversos-cargos": {
+    "status": "BLOCKED",
+    "checked_at": "2026-09-05T10:52:59-03:00",
+    "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/prefeitura-de-sao-joao-do-oeste-sc-abre-concurso-publico-e-processo-seletivo-para-diversos-cargos",
+        "type": "PCI_HTML",
+        "content_hash": "b2a6f68021296b21ec3b3ebad182b9ded82afc58a9b25fadeefde0e3bec8e528",
+        "page_count": 1,
+        "extracted_chars": 11901,
+        "truncated": false,
+        "title": "Prefeitura de São João do Oeste - SC abre concurso público e processo seletivo para diversos cargos",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      }
+    ],
+    "reader_version": 5,
+    "applicable": false,
+    "reason": "O PCI lista 2 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
+    "errors": [
+      "https://saojoao.sc.gov.br/: HTTPError: 403 Client Error: Forbidden for url: https://saojoao.sc.gov.br/"
+    ],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL DE PROCESSO SELETIVO Nº 013/2026",
+        "url": null,
+        "pci_link_id": "1704753",
+        "pci_news_code": "dd4c6d1760c7c4d8def71faf31ce04db",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "EDITAL DE PROCESSO SELETIVO Nº 014/2026",
+        "url": null,
+        "pci_link_id": "1704754",
+        "pci_news_code": "dd4c6d1760c7c4d8def71faf31ce04db",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
+    ]
+  },
+  "https://www.pciconcursos.com.br/noticias/prefeitura-de-jaguaribe-ce-abre-concursos-publicos-com-vagas-imediatas-e-cadastro-de-reserva": {
+    "status": "BLOCKED",
+    "checked_at": "2026-09-05T10:52:59-03:00",
+    "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/prefeitura-de-jaguaribe-ce-abre-concursos-publicos-com-vagas-imediatas-e-cadastro-de-reserva",
+        "type": "PCI_HTML",
+        "content_hash": "262a7401b564cc320f3752c5bdbe772f9e4c6fae945de2480d8692f62b15e186",
+        "page_count": 1,
+        "extracted_chars": 9291,
+        "truncated": false,
+        "title": "Prefeitura de Jaguaribe - CE abre concursos públicos com vagas imediatas e cadastro de reserva",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      },
+      {
+        "url": "https://www.jaguaribe.ce.gov.br/",
+        "type": "HTML",
+        "content_hash": "3bd78065fe8a586e461f573fca7f56b5911eef2d06d5360a15c93f91e370e8f2",
+        "page_count": 1,
+        "extracted_chars": 14280,
+        "truncated": false,
+        "title": "Prefeitura de Jaguaribe",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não é um edital ou aviso de seleção."
+      },
+      {
+        "url": "https://jaguaribe.ce.gov.br/processoseletivo",
+        "type": "HTML",
+        "content_hash": "879011ce060202b951715c4ffc11a3e60683258b2de4ca6a5e8a105ce1656760",
+        "page_count": 1,
+        "extracted_chars": 13268,
+        "truncated": false,
+        "title": "Prefeitura de Jaguaribe",
+        "evidence_status": "NONE",
+        "tls_unverified": false,
+        "relevant": true,
+        "relevance_reason": "Documento de seleção docente da instituição: jaguaribe."
+      },
+      {
+        "url": "https://jaguaribe.ce.gov.br/processoseletivo/85",
+        "type": "HTML",
+        "content_hash": "d4c5f7934f8fbea0fe434a47004c24b127b39e8dd158653f25841065a8436f8a",
+        "page_count": 1,
+        "extracted_chars": 3435,
+        "truncated": false,
+        "title": "PROCESSO SELETIVO - SEDUC EDITAL N.º 002/2026 - COMPOSIÇÃO DE BANCO DE PROFESSORES DA EDUCAÇÃO DE JOVENS E ADULTOS (EJA). - /",
+        "evidence_status": "NONE",
+        "tls_unverified": false,
+        "relevant": true,
+        "relevance_reason": "Documento de seleção docente da instituição: jaguaribe."
+      },
+      {
+        "url": "https://jaguaribe.ce.gov.br/processoseletivo/88",
+        "type": "HTML",
+        "content_hash": "d0a0f42c071ac1ac5b6b529d30e7e80230238ad69a25790306d4b0a25ded2d09",
+        "page_count": 1,
+        "extracted_chars": 3591,
+        "truncated": false,
+        "title": "CHAMADA PÚBLICA EDITAL Nº 001/2026 - SELEÇÃO DE PROJETO PARA REALIZAÇÃO DO ESPETÁCULO PAIXÃO DE CRISTO. - 001/2026",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
+      },
+      {
+        "url": "https://jaguaribe.ce.gov.br/processoseletivo/65",
+        "type": "HTML",
+        "content_hash": "5d75bf1e6349ef9f282474c6bf673dca59adadb25ae86ab7d095a0573f4f09c9",
+        "page_count": 1,
+        "extracted_chars": 4969,
+        "truncated": false,
+        "title": "PROCESSO SELETIVO - SAÚDE - EDITAL N.º 002/2025 - /2025",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
+      },
+      {
+        "url": "https://jaguaribe.ce.gov.br/processoseletivo/81",
+        "type": "HTML",
+        "content_hash": "f21f36d214c294b598e9e2a73a8dcd446a3b199e9ce74dc36cac543f88f1ecaa",
+        "page_count": 1,
+        "extracted_chars": 5619,
+        "truncated": false,
+        "title": "PROCESSO SELETIVO - SEDUC EDITAL N.º 001/2026 - COMPOSIÇÃO DE BANCO DE GESTORES ESCOLARES - /",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
+      },
+      {
+        "url": "https://jaguaribe.ce.gov.br/processoseletivo/43",
+        "type": "HTML",
+        "content_hash": "577aa24d57d42a8ede3d306db9b93b3ef685f40d42c3a08b3e905e8cd67ed609",
+        "page_count": 1,
+        "extracted_chars": 4337,
+        "truncated": false,
+        "title": "SEDUC - EDITAL N.º 002/2023 - COMPOSIÇÃO DE BANCO DE PROFESSORES. - 001/2023",
+        "evidence_status": "NONE",
+        "tls_unverified": false,
+        "relevant": true,
+        "relevance_reason": "Documento de seleção docente da instituição: jaguaribe."
+      },
+      {
+        "url": "https://jaguaribe.ce.gov.br/processoseletivo/62",
+        "type": "HTML",
+        "content_hash": "40659ec36b213ab734b3847224f3cb5604080946c3a77f413d87dae2fe36259b",
+        "page_count": 1,
+        "extracted_chars": 4582,
+        "truncated": false,
+        "title": "SEDUC - EDITAL 007/2024 - COMPOSIÇÃO DE BANCO DE PROFESSORES - 007/2024",
+        "evidence_status": "NONE",
+        "tls_unverified": false,
+        "relevant": true,
+        "relevance_reason": "Documento de seleção docente da instituição: jaguaribe."
+      },
+      {
+        "url": "https://jaguaribe.ce.gov.br/processoseletivo/60",
+        "type": "HTML",
+        "content_hash": "f5b2a4e4ce2dd2155bff477b90c99ed162b60dcae4186acf1e012492132ab04a",
+        "page_count": 1,
+        "extracted_chars": 3551,
+        "truncated": false,
+        "title": "CHAMADA PÚBLICA PARA SELEÇÃO E COMPOSIÇÃO DE BANCO PARA PROFESSORES ALFABETIZADORES POPULARES NO ÂMBITO DO PROGRAMA BRASIL ALFABETIZADO - PBA - 006/2024",
+        "evidence_status": "NONE",
+        "tls_unverified": false,
+        "relevant": true,
+        "relevance_reason": "Documento de seleção docente da instituição: jaguaribe."
+      },
+      {
+        "url": "https://jaguaribe.ce.gov.br/processoseletivo/86",
+        "type": "HTML",
+        "content_hash": "e6cb9488faa377bc24a352f61824352f10887b0f19cb8b44894e3fbfe1586419",
+        "page_count": 1,
+        "extracted_chars": 3393,
+        "truncated": false,
+        "title": "CHAMADA PÚBLICA - SEDUC EDITAL Nº 003/2026 - COMPOSIÇÃO DE BANCO DE BOLSISTAS MUNICIPAIS DO PROGRAMA MAIS INFÂNCIA. - /",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
+      },
+      {
+        "url": "https://jaguaribe.ce.gov.br/processoseletivo/87",
+        "type": "HTML",
+        "content_hash": "53c39e5ab04df1e6a9ef2230404c956b9ee73de7d25cce822576cc82eaf4b9aa",
+        "page_count": 1,
+        "extracted_chars": 3164,
+        "truncated": false,
+        "title": "CHAMADA PÚBLICA - SEDUC EDITAL Nº 004/2026 - COMPOSIÇÃO DE BANCO DE BOLSISTAS MUNICIPAIS DO PAIC INTEGRAL. - /",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
+      }
+    ],
+    "reader_version": 5,
+    "applicable": false,
+    "reason": "O PCI lista 4 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
+    "errors": [],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL Nº 001/2026",
+        "url": null,
+        "pci_link_id": "1704761",
+        "pci_news_code": "b10c2ca3d13bf353a82787687d397591",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "EDITAL Nº 002/2026",
+        "url": null,
+        "pci_link_id": "1704760",
+        "pci_news_code": "b10c2ca3d13bf353a82787687d397591",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "EDITAL Nº 003/2026",
+        "url": null,
+        "pci_link_id": "1704759",
+        "pci_news_code": "b10c2ca3d13bf353a82787687d397591",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "EDITAL Nº 004/2026",
+        "url": null,
+        "pci_link_id": "1704758",
+        "pci_news_code": "b10c2ca3d13bf353a82787687d397591",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
+    ]
+  },
+  "https://www.pciconcursos.com.br/noticias/prefeitura-de-acarau-ce-abre-concurso-com-vagas-para-diversos-niveis-de-escolaridade": {
+    "status": "BLOCKED",
+    "checked_at": "2026-09-05T10:52:59-03:00",
+    "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/prefeitura-de-acarau-ce-abre-concurso-com-vagas-para-diversos-niveis-de-escolaridade",
+        "type": "PCI_HTML",
+        "content_hash": "264207d4b8b53bdeedc929e25b94a7ecbd915754edfc1c0f5de40097d8b0b845",
+        "page_count": 1,
+        "extracted_chars": 9726,
+        "truncated": false,
+        "title": "Prefeitura de Acaraú - CE abre concurso com vagas para diversos níveis de escolaridade",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      }
+    ],
+    "reader_version": 5,
+    "applicable": false,
+    "reason": "O PCI lista 1 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
+    "errors": [
+      "https://www.idib.org.br/: HTTPError: 525 Server Error: <none> for url: https://www.idib.org.br/"
+    ],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL Nº 01/2026",
+        "url": null,
+        "pci_link_id": "1704745",
+        "pci_news_code": "c77f0c700a6aa3c8951d195fdd170ec7",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
+    ]
+  },
+  "https://www.pciconcursos.com.br/noticias/prefeitura-de-imbe-rs-abre-processo-seletivo-com-salarios-de-ate-21695": {
+    "status": "BLOCKED",
+    "checked_at": "2026-09-05T10:52:59-03:00",
+    "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/prefeitura-de-imbe-rs-abre-processo-seletivo-com-salarios-de-ate-21695",
+        "type": "PCI_HTML",
+        "content_hash": "cdbf5f92d0bb3002094f02ffadc3f6d5edbea0ae1f6caeb07171755013339f1d",
+        "page_count": 1,
+        "extracted_chars": 8806,
+        "truncated": false,
+        "title": "Prefeitura de Imbé - RS abre processo seletivo com salários de até R$ 21.695,07",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      },
+      {
+        "url": "https://www.imbe.rs.gov.br/",
+        "type": "HTML",
+        "content_hash": "140f9586219354c6f4e78ed119f7a538b544b6433ae072a803dc7e08fcfd8c64",
+        "page_count": 1,
+        "extracted_chars": 6,
+        "truncated": false,
+        "title": "Portal",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não é um edital ou aviso de seleção."
+      }
+    ],
+    "reader_version": 5,
+    "applicable": false,
+    "reason": "O PCI lista 1 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
+    "errors": [],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL Nº 344/2026",
+        "url": null,
+        "pci_link_id": "1704768",
+        "pci_news_code": "f859bb4ca330eda938e9892cab4a7470",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
+    ]
+  },
+  "https://www.pciconcursos.com.br/noticias/prefeitura-de-chapeco-sc-prorroga-as-inscricoes-do-processo-seletivo-para-professores": {
+    "status": "BLOCKED",
+    "checked_at": "2026-09-05T10:52:59-03:00",
+    "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/prefeitura-de-chapeco-sc-prorroga-as-inscricoes-do-processo-seletivo-para-professores",
+        "type": "PCI_HTML",
+        "content_hash": "8d3f64aed14522f4f6015fefe55027b81d0f47dd7ee711b65370fd4bfa45de52",
+        "page_count": 1,
+        "extracted_chars": 12233,
+        "truncated": false,
+        "title": "Prefeitura de Chapecó - SC prorroga as inscrições do processo seletivo para professores",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      },
+      {
+        "url": "https://2026pschapecoprof.fepese.org.br/",
+        "type": "HTML",
+        "content_hash": "44705f8c29181f365edd2c9fdae256aecc0f1afae6ac5912f7f322d7c88dc5ea",
+        "page_count": 1,
+        "extracted_chars": 1229,
+        "truncated": false,
+        "title": "2026 - Município de Chapecó",
+        "evidence_status": "NONE",
+        "tls_unverified": false,
+        "relevant": true,
+        "relevance_reason": "Documento de seleção docente da instituição: chapeco."
+      },
+      {
+        "url": "https://2026pschapecoprof.fepese.org.br/?go=contatos&mn=bff6fb1fff985abf401180316b7558ea&edital=1",
+        "type": "HTML",
+        "content_hash": "83835a7c1e63df974a32829f4ae1a35f84947a9804c2be33004b9974908db3bb",
+        "page_count": 1,
+        "extracted_chars": 914,
+        "truncated": false,
+        "title": "2026 - Município de Chapecó",
+        "evidence_status": "NONE",
+        "tls_unverified": false,
+        "relevant": true,
+        "relevance_reason": "Documento de seleção docente da instituição: chapeco."
+      },
+      {
+        "url": "https://2026pschapecoprof.fepese.org.br/?go=cronograma&mn=625d69d053916d80fff62985adc219cb&edital=1",
+        "type": "HTML",
+        "content_hash": "4b9b2387b627951b8146197a5a3522dbdce098c3591e873dad2f5a9f582204cb",
+        "page_count": 1,
+        "extracted_chars": 3244,
+        "truncated": false,
+        "title": "2026 - Município de Chapecó",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
+      },
+      {
+        "url": "https://2026pschapecoprof.fepese.org.br/?go=edital&mn=1151b3eab3b069d5112ccae1943307c4&edital=1",
+        "type": "HTML",
+        "content_hash": "54606277f32218f0688c062a5bcba7fe1f8df6a57f61ba5b322e745e1a116a55",
+        "page_count": 1,
+        "extracted_chars": 113,
+        "truncated": false,
+        "title": "2026 - Município de Chapecó",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
+      },
+      {
+        "url": "https://2026pschapecoprof.fepese.org.br/?go=faq&mn=da75cd652254fce37e953d7f261f132d&edital=1",
+        "type": "HTML",
+        "content_hash": "8064d56ea3945b4f9f7b8dd59f48dfe239a100714cc09a65d353324690236872",
+        "page_count": 1,
+        "extracted_chars": 6253,
+        "truncated": false,
+        "title": "2026 - Município de Chapecó",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
+      },
+      {
+        "url": "https://2026pschapecoprof.fepese.org.br/?go=home&mn=106a6c241b8797f52e1e77317b96a201&edital=1",
+        "type": "HTML",
+        "content_hash": "36a949c017ef71999a022c51c9579286cdae80d3abea0af89cfbbd2aceb81f92",
+        "page_count": 1,
+        "extracted_chars": 1229,
+        "truncated": false,
+        "title": "2026 - Município de Chapecó",
+        "evidence_status": "NONE",
+        "tls_unverified": false,
+        "relevant": true,
+        "relevance_reason": "Documento de seleção docente da instituição: chapeco."
+      },
+      {
+        "url": "https://2026pschapecoprof.fepese.org.br/inscricao/",
+        "type": "HTML",
+        "content_hash": "af01981ef5a0739d56b4c1f8c6a5ffbfe8d23407eb73fb6d07c750e8053daf22",
+        "page_count": 1,
+        "extracted_chars": 15,
+        "truncated": false,
+        "title": "FEPESE Concurso",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
+      },
+      {
+        "url": "https://2026pschapecoprof.fepese.org.br/?go=legislacao&mn=c6cfe4ce88e6d35690b85536e2299c73&edital=1",
+        "type": "HTML",
+        "content_hash": "9e5b30c6ee404af310657e9eb72d6fdf9883da8f8a33c4b739e3895eb4629621",
+        "page_count": 1,
+        "extracted_chars": 130,
+        "truncated": false,
+        "title": "2026 - Município de Chapecó",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
+      }
+    ],
+    "reader_version": 5,
+    "applicable": false,
+    "reason": "O PCI lista 2 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
+    "errors": [
+      "https://www.chapeco.sc.gov.br/: HTTPError: 403 Client Error: Forbidden for url: https://www.chapeco.sc.gov.br/"
+    ],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL 006/2026",
+        "url": null,
+        "pci_link_id": "1703253",
+        "pci_news_code": "9667cc4bfa6429f7ddcd5be8a0ab96c8",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "TERMO DE RETIFICAÇÃO Nº 01",
+        "url": null,
+        "pci_link_id": "1704739",
+        "pci_news_code": "9667cc4bfa6429f7ddcd5be8a0ab96c8",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
+    ]
+  },
+  "https://www.pciconcursos.com.br/noticias/prefeitura-de-cangucu-rs-abre-concurso-publico-com-salarios-de-ate-7470": {
+    "status": "BLOCKED",
+    "checked_at": "2026-09-05T10:52:59-03:00",
+    "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/prefeitura-de-cangucu-rs-abre-concurso-publico-com-salarios-de-ate-7470",
+        "type": "PCI_HTML",
+        "content_hash": "e11189f3905798da7a901ec111d19965f40c8cf061738ba0bee83f90223343c7",
+        "page_count": 1,
+        "extracted_chars": 10427,
+        "truncated": false,
+        "title": "Prefeitura de Canguçu - RS abre concurso público com salários de até R$ 7.470,46",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      },
+      {
+        "url": "https://www.cangucu.rs.gov.br/",
+        "type": "HTML",
+        "content_hash": "216bd6f0632ce35a5e83175aae3735b61451de9cb8399d4df8459c6cee2c8a76",
+        "page_count": 1,
+        "extracted_chars": 13948,
+        "truncated": false,
+        "title": "Prefeitura Municipal de Canguçu - RS",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
+      },
+      {
+        "url": "https://www.cangucu.rs.gov.br/portal/editais/3",
+        "type": "HTML",
+        "content_hash": "09c649aa06145b477cf1687fdb8f97249e8fb2528970c7202540dc307050ecac",
+        "page_count": 1,
+        "extracted_chars": 29695,
+        "truncated": false,
+        "title": "Prefeitura Municipal de Canguçu - RS - Editais de Concursos Públicos e Outros Processos de Seleção",
+        "evidence_status": "NONE",
+        "tls_unverified": false,
+        "relevant": true,
+        "relevance_reason": "Documento de seleção docente da instituição: cangucu."
+      },
+      {
+        "url": "https://www.cangucu.rs.gov.br/portal/editais/0/3/6384/",
+        "type": "HTML",
+        "content_hash": "b49abc0b61226e018be5dc383edeb36d2472cda2fb1aa537a8d3019ef36c9c4b",
+        "page_count": 1,
+        "extracted_chars": 3049,
+        "truncated": false,
+        "title": "Prefeitura Municipal de Canguçu - RS - PROCESSO SELETIVO PÚBLICO PARA CONTRATAÇÃO DE ESTAGIÁRIOS EDITAL DE ABERTURA N° 033/2026/INQC...",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
+      },
+      {
+        "url": "https://www.cangucu.rs.gov.br/portal/editais/0/3/6426/",
+        "type": "HTML",
+        "content_hash": "2b4cf4057d21c9721eaf1cc13ed9eb88e4df677ebd1ebc4b513f8cc59c32691e",
+        "page_count": 1,
+        "extracted_chars": 3199,
+        "truncated": false,
+        "title": "Prefeitura Municipal de Canguçu - RS - Edital complementar nº 01/2026",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
+      },
+      {
+        "url": "https://www.cangucu.rs.gov.br/portal/editais/0/3/6457/",
+        "type": "HTML",
+        "content_hash": "f6b895b2eaf01991ccfe5c3b3d9b3a1d7e4b7416ef91f0008d8163ecbd9bfa53",
+        "page_count": 1,
+        "extracted_chars": 2696,
+        "truncated": false,
+        "title": "Prefeitura Municipal de Canguçu - RS - EDITAL Nº 001/2026 - EDITAL DE ABERTURA DAS INSCRIÇÕES - CONCURSO PÚBLICO 001/2026",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
+      },
+      {
+        "url": "https://www.cangucu.rs.gov.br/portal/editais/0/3/6368/",
+        "type": "HTML",
+        "content_hash": "7b1850a5c824ad90450f8441f98c66410dbe6aa896e257ceff67ec0e56660456",
+        "page_count": 1,
+        "extracted_chars": 2297,
+        "truncated": false,
+        "title": "Prefeitura Municipal de Canguçu - RS - EDITAL DE CONVOCAÇÃO Nº 159/2026",
+        "evidence_status": "NONE",
+        "tls_unverified": false,
+        "relevant": true,
+        "relevance_reason": "Documento de seleção docente da instituição: cangucu."
+      },
+      {
+        "url": "https://www.cangucu.rs.gov.br/portal/editais/0/3/6435/",
+        "type": "HTML",
+        "content_hash": "23eabac165e38ed9c41c297b17ab5defddd2f9c9e4644275b9320737724da7f2",
+        "page_count": 1,
+        "extracted_chars": 2710,
+        "truncated": false,
+        "title": "Prefeitura Municipal de Canguçu - RS - EDITAL DE CONVOCAÇÃO Nº 181/2026",
+        "evidence_status": "NONE",
+        "tls_unverified": false,
+        "relevant": true,
+        "relevance_reason": "Documento de seleção docente da instituição: cangucu."
+      },
+      {
+        "url": "https://www.cangucu.rs.gov.br/m_pdf.php?pagina=Editais%20de%20Concursos%20P%C3%BAblicos%20e%20Outros%20Processos%20de%20Sele%C3%A7%C3%A3o",
+        "type": "PDF",
+        "content_hash": "a63dc4f8fddbc70c28b714b1afe67050ecfd57d2b8f161ee7c6bc324cd613493",
+        "page_count": 13,
+        "extracted_chars": 27362,
+        "truncated": false,
+        "title": "Prefeitura Municipal de Canguçu - RS - Editais de Concursos Públicos e Outros Processos de Seleção",
+        "evidence_status": "NONE",
+        "tls_unverified": false,
+        "relevant": true,
+        "relevance_reason": "Documento de seleção docente da instituição: cangucu.",
+        "opportunities_count": 0
+      },
+      {
+        "url": "https://www.cangucu.rs.gov.br/portal/editais",
+        "type": "HTML",
+        "content_hash": "a67ee85b29e9c672a4a083ceff2bc8358395aa9bb09de7201fd15f5c44502734",
+        "page_count": 1,
+        "extracted_chars": 1274,
+        "truncated": false,
+        "title": "Prefeitura Municipal de Canguçu - RS - Editais",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
+      },
+      {
+        "url": "https://www.cangucu.rs.gov.br/portal/dados-abertos/concursos/2026",
+        "type": "UNSUPPORTED",
+        "content_hash": "e5019a3780115d1bd8a51a8cd915d98343951b1d6944616c2d5ed9416357d6a0",
+        "content_type": "application/json; charset=utf-8",
+        "evidence_status": "NONE"
+      },
+      {
+        "url": "https://www.cangucu.rs.gov.br/portal/0/galeria-de-videos/52/casamento-pomerano",
+        "type": "HTML",
+        "content_hash": "ffa1ddbd55630b670f71432876e8000a7e52d5136af58e095bdb029b98270a71",
+        "page_count": 1,
+        "extracted_chars": 2476,
+        "truncated": false,
+        "title": "Prefeitura Municipal de Canguçu - RS - Galeria de Vídeos",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento é uma seleção, mas não menciona cargo docente."
+      }
+    ],
+    "reader_version": 5,
+    "applicable": false,
+    "reason": "O PCI lista 1 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
+    "errors": [],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL Nº 001/2026",
+        "url": null,
+        "pci_link_id": "1704731",
+        "pci_news_code": "5cb24a023492b18cef99939c4d91029a",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
+    ]
+  },
+  "https://www.pciconcursos.com.br/noticias/prefeitura-de-cruzeta-rn-abre-tres-concursos-publicos-com-diversas-vagas-e-cadastro-de-reserva": {
+    "status": "BLOCKED",
+    "checked_at": "2026-09-05T10:52:59-03:00",
+    "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/prefeitura-de-cruzeta-rn-abre-tres-concursos-publicos-com-diversas-vagas-e-cadastro-de-reserva",
+        "type": "PCI_HTML",
+        "content_hash": "2e582e8fd4051bb890d0e976e28daa07a5df080965ecb451882e4e3ab73f68e3",
+        "page_count": 1,
+        "extracted_chars": 9018,
+        "truncated": false,
+        "title": "Prefeitura de Cruzeta - RN abre três concursos públicos com diversas vagas e cadastro de reserva",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      },
+      {
+        "url": "https://cruzeta.rn.gov.br/",
+        "type": "HTML",
+        "content_hash": "04d33e58655defb1e6db69e6640dc955f5b0531428eb4b010d1ec5e73730f787",
+        "page_count": 1,
+        "extracted_chars": 36,
+        "truncated": false,
+        "title": "Prefeitura Municipal de Cruzeta — RN",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não é um edital ou aviso de seleção."
+      }
+    ],
+    "reader_version": 5,
+    "applicable": false,
+    "reason": "O PCI lista 3 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
+    "errors": [],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL Nº 01/2026",
+        "url": null,
+        "pci_link_id": "1704742",
+        "pci_news_code": "fdf16a8b22faac882a37238ea6c6efa9",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "EDITAL Nº 02/2026",
+        "url": null,
+        "pci_link_id": "1704743",
+        "pci_news_code": "fdf16a8b22faac882a37238ea6c6efa9",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "EDITAL Nº 03/2026",
+        "url": null,
+        "pci_link_id": "1704744",
+        "pci_news_code": "fdf16a8b22faac882a37238ea6c6efa9",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
+    ]
+  },
+  "https://www.pciconcursos.com.br/noticias/prefeitura-de-itapira-sp-abre-concurso-para-professores-de-diversas-areas": {
+    "status": "BLOCKED",
+    "checked_at": "2026-09-05T10:52:59-03:00",
+    "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/prefeitura-de-itapira-sp-abre-concurso-para-professores-de-diversas-areas",
+        "type": "PCI_HTML",
+        "content_hash": "623774cef1e8cf85294f6f425e9bbc2e6de7c24852f04a2797476e626fd0b72c",
+        "page_count": 1,
+        "extracted_chars": 15292,
+        "truncated": false,
+        "title": "Prefeitura de Itapira - SP abre concurso para professores de diversas áreas",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital."
+      }
+    ],
+    "reader_version": 5,
+    "applicable": false,
+    "reason": "O PCI lista 1 edital(is), mas só libera os PDFs após verificação humana; fontes alternativas também foram tentadas.",
+    "errors": [
+      "https://itapira.sp.gov.br/: HTTPError: 403 Client Error: Forbidden for url: https://itapira.sp.gov.br/"
+    ],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL Nº 02/2026",
+        "url": null,
+        "pci_link_id": "1704741",
+        "pci_news_code": "bf42f404e9ae8c387bfffb87bb63426e",
         "access": "HUMAN_VERIFICATION_REQUIRED"
       }
     ]
