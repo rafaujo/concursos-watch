@@ -68,6 +68,11 @@ def _apply_official_result(
 ) -> bool:
     """Attach audit metadata and reclassify only from scoped official evidence."""
     previous_eligibility = vacancy.get("formal_eligibility")
+    for field in ("registration_start", "registration_end"):
+        if result.get(field):
+            vacancy[field] = result[field]
+    if result.get("registration_end"):
+        vacancy["status"] = compute_status(vacancy, now.date())
     vacancy["official_check_status"] = result.get("status")
     vacancy["official_checked_at"] = result.get("checked_at")
     vacancy["official_check_reason"] = result.get("reason")
@@ -104,6 +109,11 @@ def _apply_official_result(
                 "official_document_url": result.get("document_url"),
             })
         vacancy["official_opportunities"] = analyzed_opportunities
+        document_type = str(result.get("document_type") or "DOCUMENT").replace("_FORM", "")
+        vacancy["requirements_source"] = f"OFFICIAL_{document_type}_MULTI"
+        vacancy["official_evidence_text"] = " ".join(
+            f"{item['area']} {item.get('requirement_text') or ''}" for item in analyzed_opportunities
+        )
         relevant = [item for item in analyzed_opportunities if item["thematic_score"] > 0]
         if relevant:
             best_score = max(item["thematic_score"] for item in relevant)
@@ -127,10 +137,6 @@ def _apply_official_result(
             )[:4])
             vacancy["thematic_reason"] = f"Maior aderência entre as sub-vagas oficiais. Áreas: {areas}."
             vacancy["visual_category"] = visual_category(eligibility, best_score)
-            vacancy["requirements_source"] = "OFFICIAL_PDF_MULTI"
-            vacancy["official_evidence_text"] = " ".join(
-                f"{item['area']} {item.get('requirement_text') or ''}" for item in relevant
-            )
             changed = eligibility != previous_eligibility
             if changed:
                 vacancy["updated_at"] = now.date().isoformat()
@@ -144,6 +150,7 @@ def _apply_official_result(
                 vacancy["change_history"] = history[-20:]
                 vacancy["status"] = compute_status(vacancy, now.date(), is_updated=True)
             return changed
+        return False
 
     if not result.get("applicable"):
         _restore_pci_requirements(vacancy)
@@ -290,7 +297,7 @@ def run(
         reader = OfficialDocumentReader(source.session)
         official_candidates = [
             vacancy for vacancy in by_url.values()
-            if vacancy.get("status") != "CLOSED"
+            if (vacancy.get("status") != "CLOSED" or force_official)
             and vacancy.get("source_url")
             and (
                 force_official

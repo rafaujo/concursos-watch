@@ -77,3 +77,38 @@ def test_discarded_document_reparses_pci_summary_instead_of_using_stale_snapshot
     assert changed is True
     assert vacancy["doctorate_requirement_raw"] is None
     assert vacancy["formal_eligibility"] == "UNKNOWN"
+
+
+def test_html_multi_result_updates_source_and_registration_window():
+    vacancy = {
+        "title": "UFSCar abre concurso com diversas vagas",
+        "position": "Professor Assistente A",
+        "area": "Não identificada",
+        "raw_text": "Edital com várias áreas.",
+        "state": "SP",
+        "formal_eligibility": "UNKNOWN",
+        "thematic_score": 0,
+        "status": "CLOSED",
+        "registration_end": "2026-08-25",
+    }
+    result = {
+        "status": "READ_MULTI", "checked_at": "2026-09-07T08:00:00-03:00",
+        "document_type": "HTML", "content_hash": "html", "confidence": "STRUCTURED",
+        "applicable": False, "reason": "Tabela oficial lida.", "documents": [], "errors": [],
+        "registration_start": "2026-08-21", "registration_end": "2026-09-11",
+        "opportunities": [{
+            "area": "Organizações", "requirement_text": "Doutorado em Administração",
+            "graduation_requirement_raw": None,
+            "postgraduate_requirement_raw": "Doutorado em Administração",
+            "masters_requirement_raw": None,
+            "doctorate_requirement_raw": "Doutorado em Administração",
+            "requirements_complete": True,
+        }],
+    }
+    _apply_official_result(
+        vacancy, result, RuleBasedAnalyzer(),
+        datetime(2026, 9, 7, 8, tzinfo=ZoneInfo("America/Sao_Paulo")),
+    )
+    assert vacancy["requirements_source"] == "OFFICIAL_HTML_MULTI"
+    assert vacancy["registration_end"] == "2026-09-11"
+    assert vacancy["status"] != "CLOSED"

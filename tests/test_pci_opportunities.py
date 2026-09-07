@@ -338,6 +338,18 @@ class TestOfficialRequirementInheritance:
         assert _structured_requirements(row)[0] == "Não informado"
         assert row["_contest_requirement_is_official"] is False
 
+    def test_complete_official_row_distinguishes_absent_from_unknown(self):
+        row = {
+            "_is_subvacancy": True,
+            "requirements_complete": True,
+            "requirements_source": "OFFICIAL_HTML_MULTI",
+            "requirement_text": "Doutorado em Administração",
+            "doctorate_requirement_raw": "Doutorado em Administração",
+        }
+        graduation, post = _structured_requirements(row)
+        assert graduation == "Não consta como requisito mínimo"
+        assert post == "Doutorado em Administração"
+
 
 class TestAreaListNotices:
     """Notices that list teaching areas instead of cargos.
@@ -423,3 +435,9 @@ class TestRequirementCondensing:
         assert condense_requirement(
             "doutorado na área / Doutorado em Ciências Ambientais"
         ) == "Doutorado em Ciências Ambientais"
+
+    def test_capes_program_wording_keeps_the_listed_field(self):
+        assert condense_requirement(
+            "Título de Doutor obtido em Programa de Pós-Graduação registrado em uma das "
+            "seguintes áreas de conhecimento da CAPES: Matemática ou Estatística"
+        ) == "Doutorado em Matemática ou Estatística"

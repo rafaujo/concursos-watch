@@ -23,7 +23,7 @@ RECHECK_CLOSING_WITHIN_DAYS = 10
 # Official-document stage. The crawler follows only a small, scored set of
 # links found on institution/organizer pages and never bypasses CAPTCHA.
 OFFICIAL_CHECK_ENABLED = True
-OFFICIAL_READER_VERSION = 5
+OFFICIAL_READER_VERSION = 6
 # None means every due professor notice is reviewed. The cache still prevents
 # unchanged editais from being downloaded on every daily execution.
 OFFICIAL_MAX_VACANCIES_PER_RUN = None

@@ -90,6 +90,7 @@ def _expanded_rows(vacancies: list[dict[str, Any]]) -> list[dict[str, Any]]:
                     "_parent_title": vacancy.get("title"),
                     "title": opportunity.get("area"),
                     "area": opportunity.get("area"),
+                    "course": opportunity.get("course") or opportunity.get("area"),
                     "formal_eligibility": opportunity.get("formal_eligibility", "UNKNOWN"),
                     "formal_reason": opportunity.get("formal_reason"),
                     "thematic_score": opportunity.get("thematic_score", 0),
@@ -217,6 +218,9 @@ def _structured_requirements(v: dict[str, Any]) -> tuple[str, str]:
     parser corrections without waiting for their next network refresh.
     """
     sources: list[tuple[Any, str | None]] = []
+    complete_requirement_text = bool(
+        v.get("_is_subvacancy") and v.get("requirements_complete") and v.get("requirement_text")
+    )
     if v.get("_is_subvacancy"):
         sources.append((v.get("requirement_text"), _hint_category(v.get("requirement_text"))))
     elif not str(v.get("requirements_source") or "").startswith("OFFICIAL_"):
@@ -225,12 +229,13 @@ def _structured_requirements(v: dict[str, Any]) -> tuple[str, str]:
             (pci_requirements.get("graduation_requirement"), "graduation"),
             (pci_requirements.get("postgraduate_requirement"), "postgraduate"),
         ))
-    sources.extend((
-        (v.get("graduation_requirement_raw") or v.get("graduation_requirement"), "graduation"),
-        (v.get("postgraduate_requirement_raw") or v.get("postgraduate_requirement"), "postgraduate"),
-        (v.get("masters_requirement_raw") or v.get("masters_requirement"), "postgraduate"),
-        (v.get("doctorate_requirement_raw") or v.get("doctorate_requirement"), "postgraduate"),
-    ))
+    if not complete_requirement_text:
+        sources.extend((
+            (v.get("graduation_requirement_raw") or v.get("graduation_requirement"), "graduation"),
+            (v.get("postgraduate_requirement_raw") or v.get("postgraduate_requirement"), "postgraduate"),
+            (v.get("masters_requirement_raw") or v.get("masters_requirement"), "postgraduate"),
+            (v.get("doctorate_requirement_raw") or v.get("doctorate_requirement"), "postgraduate"),
+        ))
     graduation_parts: list[str] = []
     post_parts: list[str] = []
     seen_sources: set[str] = set()
@@ -261,6 +266,16 @@ def _structured_requirements(v: dict[str, Any]) -> tuple[str, str]:
         _joined_for_display(graduation_parts), keep_degree=False
     )
     post = condense_requirement(_joined_for_display(post_parts))
+    complete_official_row = bool(
+        v.get("_is_subvacancy")
+        and v.get("requirements_complete")
+        and str(v.get("requirements_source") or "").startswith("OFFICIAL_")
+    )
+    missing_label = "Não consta como requisito mínimo"
+    if complete_official_row and graduation == "Não informado":
+        graduation = missing_label
+    if complete_official_row and post == "Não informado":
+        post = missing_label
     return (
         _mark_if_area_is_missing(graduation or "Não informado"),
         _mark_if_area_is_missing(post or "Não informado"),
@@ -303,6 +318,10 @@ def _detail_items(v: dict[str, Any]) -> list[tuple[str, str]]:
         details.append(("Inscrições", registration_period))
     if v.get("campus"):
         details.append(("Campus", str(v["campus"])))
+    if v.get("subarea"):
+        details.append(("Subárea", str(v["subarea"])))
+    if v.get("department"):
+        details.append(("Departamento", str(v["department"])))
     if v.get("vacancies_count"):
         count = int(v["vacancies_count"])
         details.append(("Vagas", f"{count} vaga" if count == 1 else f"{count} vagas"))

@@ -72,14 +72,41 @@ def parse_first_date(text: str) -> str | None:
 
 
 def parse_registration_period(text: str) -> tuple[str | None, str | None]:
-    """Prefer dates in sentences that discuss applications/registration."""
+    """Prefer the actual application window over nearby procedural dates.
+
+    PCI frequently puts the registration period and, later in the same notice,
+    deadlines for fee waivers, appeals and application approval.  Combining all
+    sentences that merely contain ``inscri`` made the last of those dates look
+    like the end of registration (UFSCar: 25 August instead of 11 September).
+    A single clean registration sentence is stronger evidence than that union.
+    """
     candidates = re.split(r"(?<=[.!?])\s+|\n+", clean_text(text))
-    relevant = [s for s in candidates if re.search(r"inscri|candidat", normalize_text(s))]
-    dates: list[date] = []
-    for sentence in relevant:
-        dates.extend(d for d in parse_brazilian_dates(sentence) if d not in dates)
-    if not dates:
+    excluded_context = re.compile(
+        r"isen[cç][aã]o|taxa|recurso|impugna[cç][aã]o|deferimento|indeferimento|"
+        r"resultado|homologa[cç][aã]o|retifica[cç][aã]o",
+        re.I,
+    )
+    relevant: list[tuple[int, str, list[date]]] = []
+    for sentence in candidates:
+        normalized = normalize_text(sentence)
+        if not re.search(r"inscri|candidat", normalized):
+            continue
+        parsed = parse_brazilian_dates(sentence)
+        if not parsed:
+            continue
+        score = 0
+        if re.search(r"(?:periodo\s+(?:de|das?)\s+)?inscri[cç][oõ]es", sentence, re.I):
+            score += 5
+        if re.search(r"inscri[cç][oõ]es?\s+(?:ser[aã]o|estar[aã]o|podem|poder[aã]o|dever[aã]o|ocorrer[aã]o|v[aã]o)", sentence, re.I):
+            score += 4
+        if len(parsed) >= 2:
+            score += 4
+        if excluded_context.search(sentence):
+            score -= 10
+        relevant.append((score, sentence, parsed))
+    if not relevant:
         return None, None
+    _, _, dates = max(relevant, key=lambda item: (item[0], len(item[2])))
     if len(dates) == 1:
         return None, dates[0].isoformat()
     return dates[0].isoformat(), dates[-1].isoformat()

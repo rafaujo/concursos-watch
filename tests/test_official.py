@@ -10,6 +10,7 @@ from src.official import (
     assess_document_relevance,
     extract_candidate_links,
     extract_requirement_evidence,
+    extract_structured_html_opportunities,
     extract_structured_opportunities,
     is_excluded_link,
     edital_numbers_for_display,
@@ -18,6 +19,30 @@ from src.official import (
     score_candidate_link,
     should_check_official,
 )
+
+
+def test_official_html_requirements_table_becomes_independent_opportunities():
+    html = b"""
+    <html><head><title>Edital para Professor Assistente</title></head><body>
+      <table>
+        <tr><th>Codigo/cargo/depto/campus</th><th>Vagas</th><th>Area</th>
+            <th>Subarea</th><th>Requisitos Minimos</th><th>Regime de trabalho</th></tr>
+        <tr><td>004/26.01<br>Professor Assistente A<br>Departamento de Producao<br>Sao Carlos</td>
+            <td>1</td><td>Organizacoes</td><td>Trabalho</td>
+            <td>Titulo de Doutor em Administracao</td><td>DE</td></tr>
+        <tr><td>004/26.02<br>Professor Assistente A<br>Departamento de Medicina<br>Sao Carlos</td>
+            <td>2</td><td>Clinica Medica</td><td>Medicina Interna</td>
+            <td>Graduacao em Medicina e Doutorado em Ciencias da Saude</td><td>DE</td></tr>
+      </table>
+    </body></html>
+    """
+    found = extract_structured_html_opportunities(html)
+    assert len(found) == 2
+    assert found[0]["reference"] == "004/26.01"
+    assert found[0]["doctorate_requirement_raw"] == "Titulo de Doutor em Administracao"
+    assert found[0]["requirements_complete"] is True
+    assert found[1]["graduation_requirement_raw"] == "Graduacao em Medicina"
+    assert found[1]["vacancies_count"] == 2
 
 
 def test_pdf_evidence_is_scoped_to_vacancy_area():

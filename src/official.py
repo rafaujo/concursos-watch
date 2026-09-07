@@ -30,6 +30,7 @@ from .parser import (
     extract_pci_document_references,
     extract_requirement_sentences,
     normalize_text,
+    parse_registration_period,
 )
 from .requirements import extract_requirement_fields, split_academic_requirement
 
@@ -378,6 +379,114 @@ def extract_structured_opportunities(pages: Iterable[tuple[int, str]]) -> list[d
     return list(unique.values())
 
 
+def extract_structured_html_opportunities(html_bytes: bytes) -> list[dict[str, Any]]:
+    """Read one row per vacancy from a labelled requirements table.
+
+    This deliberately requires both an area/cargo column and a requirements
+    column.  It is therefore useful for official multi-vacancy pages without
+    turning arbitrary layout tables into positions.  UFSCar's edital is a
+    large HTML document whose first column combines code, cargo, department
+    and campus; that documented shape is handled explicitly here.
+    """
+    soup = BeautifulSoup(html_bytes, "html.parser")
+    opportunities: list[dict[str, Any]] = []
+    for table in soup.select("table"):
+        rows = table.find_all("tr", recursive=False)
+        if not rows:
+            rows = table.select("tr")
+        header_index = None
+        headers: list[str] = []
+        for index, row in enumerate(rows[:5]):
+            candidate = [normalize_text(cell.get_text(" ", strip=True)) for cell in row.find_all(("th", "td"), recursive=False)]
+            joined = " | ".join(candidate)
+            if any(term in joined for term in ("requisito", "escolaridade", "titulacao minima")) and any(
+                term in joined for term in ("area", "cargo", "funcao", "disciplina")
+            ):
+                header_index, headers = index, candidate
+                break
+        if header_index is None:
+            continue
+
+        def column(*terms: str) -> int | None:
+            for i, value in enumerate(headers):
+                if any(term in value for term in terms):
+                    return i
+            return None
+
+        requirement_i = column("requisito", "escolaridade", "titulacao minima", "formacao exigida")
+        area_i = column("area", "disciplina")
+        cargo_i = column("cargo", "funcao")
+        combined_i = next((i for i, value in enumerate(headers) if "codigo" in value and "cargo" in value), None)
+        if requirement_i is None or (area_i is None and cargo_i is None):
+            continue
+        vacancies_i = column("vaga")
+        subarea_i = column("subarea", "sub-area")
+        campus_i = column("campus", "local")
+        workload_i = column("regime", "jornada", "carga horaria")
+        reference_i = column("codigo", "referencia", "subedital")
+
+        for row in rows[header_index + 1:]:
+            cells = row.find_all(("th", "td"), recursive=False)
+            if len(cells) < len(headers):
+                continue
+            values = [clean_text(cell.get_text(" ", strip=True)) for cell in cells]
+            requirement_text = values[requirement_i] if requirement_i < len(values) else ""
+            area = values[area_i] if area_i is not None and area_i < len(values) else ""
+            cargo = values[cargo_i] if cargo_i is not None and cargo_i < len(values) else ""
+            reference = values[reference_i] if reference_i is not None and reference_i < len(values) else None
+            campus = values[campus_i] if campus_i is not None and campus_i < len(values) else None
+            department = None
+            position = cargo or None
+            if combined_i is not None and combined_i < len(cells):
+                parts = [clean_text(item) for item in cells[combined_i].stripped_strings if clean_text(item)]
+                if parts:
+                    reference = parts[0]
+                if len(parts) >= 2:
+                    position = parts[1]
+                if len(parts) >= 3:
+                    department = parts[2]
+                if len(parts) >= 4:
+                    campus = parts[-1]
+            if len(area) < 2 or len(requirement_text) < 3:
+                continue
+            if not re.search(r"\b(?:professor|docente|magisterio)\b", normalize_text(
+                f"{position or ''} {cargo} {soup.title.get_text(' ', strip=True) if soup.title else ''}"
+            )):
+                continue
+            requirements = extract_requirement_fields(f"Requisitos: {requirement_text}")
+            count_match = re.search(r"\d+", values[vacancies_i]) if vacancies_i is not None and vacancies_i < len(values) else None
+            item = {
+                "area": area,
+                "subarea": values[subarea_i] if subarea_i is not None and subarea_i < len(values) else None,
+                "position": position,
+                "department": department,
+                "requirement_text": requirement_text,
+                "graduation_requirement_raw": requirements["graduation_requirement"],
+                "postgraduate_requirement_raw": requirements["postgraduate_requirement"],
+                "masters_requirement_raw": requirements["masters_requirement"],
+                "doctorate_requirement_raw": requirements["doctorate_requirement"],
+                "reference": reference,
+                "campus": campus,
+                "workload": values[workload_i] if workload_i is not None and workload_i < len(values) else None,
+                "vacancies_count": int(count_match.group(0)) if count_match else None,
+                "requirements_complete": True,
+            }
+            opportunities.append(item)
+
+    unique: dict[str, dict[str, Any]] = {}
+    for item in opportunities:
+        key = normalize_text(f"{item.get('reference')}|{item['area']}|{item['requirement_text']}")
+        unique[key] = item
+    return list(unique.values())
+
+
+def is_ufscar_portal_vacancy(vacancy: Mapping[str, Any]) -> bool:
+    context = normalize_text(" ".join(str(vacancy.get(field) or "") for field in (
+        "institution", "title", "official_url", "institution_url",
+    )))
+    return "ufscar" in context or "universidade federal de sao carlos" in context
+
+
 def score_candidate_link(label: str, url: str, vacancy: Mapping[str, Any]) -> int:
     normalized_label = normalize_text(label)
     normalized_url = normalize_text(url)
@@ -555,6 +664,142 @@ class OfficialDocumentReader:
             raise OfficialReadError("Documento oficial vazio")
         return data, response.url, response.headers.get("Content-Type", "").lower(), tls_unverified
 
+    def _fetch_post(self, url: str, form_data: Mapping[str, str]) -> tuple[bytes, str, str]:
+        """Fetch an official document exposed only through a public HTML form."""
+        if not is_public_http_url(url):
+            raise OfficialReadError("URL oficial recusada por validação de segurança")
+        elapsed = time.monotonic() - self._last_request_at
+        if self._last_request_at and elapsed < self.delay:
+            time.sleep(self.delay - elapsed)
+        LOGGER.info("Consultando formulário oficial: %s", url)
+        response = self.session.post(
+            url, data=dict(form_data), timeout=config.REQUEST_TIMEOUT_SECONDS,
+            stream=True, allow_redirects=True,
+        )
+        self._last_request_at = time.monotonic()
+        for item in [*response.history, response]:
+            if not is_public_http_url(item.url):
+                raise OfficialReadError("Redirecionamento oficial recusado por validação de segurança")
+        response.raise_for_status()
+        declared = int(response.headers.get("Content-Length") or 0)
+        if declared > config.OFFICIAL_MAX_DOCUMENT_BYTES:
+            raise OfficialReadError("Documento oficial excede o limite configurado")
+        chunks: list[bytes] = []
+        size = 0
+        for chunk in response.iter_content(chunk_size=65536):
+            if not chunk:
+                continue
+            size += len(chunk)
+            if size > config.OFFICIAL_MAX_DOCUMENT_BYTES:
+                raise OfficialReadError("Documento oficial excede o limite configurado")
+            chunks.append(chunk)
+        data = b"".join(chunks)
+        if not data:
+            raise OfficialReadError("Documento oficial vazio")
+        return data, response.url, response.headers.get("Content-Type", "").lower()
+
+    def _read_ufscar(self, vacancy: Mapping[str, Any], checked_at: datetime) -> dict[str, Any] | None:
+        """Follow UFSCar's POST-only portal to its single HTML edital.
+
+        The public portal represents every useful route as JavaScript that
+        submits a form.  A normal link crawler consequently sees only the home
+        page.  One campus list leads to a detail page, whose ``arquivo`` form
+        exposes the unified edital containing the complete vacancy table.
+        """
+        base = "https://concursos.ufscar.br/"
+        list_url = urljoin(base, "lista.php")
+        detail_url = urljoin(base, "detalhe.php")
+        archive_url = urljoin(base, "arquivo.php")
+        position = normalize_text(str(vacancy.get("position") or ""))
+        preferred_type = "2" if "substitut" in position else "1"
+        types = list(dict.fromkeys((preferred_type, "1", "2", "6")))
+        cargo_id = None
+        list_document = None
+        for type_id in types:
+            for campus_id in ("1", "2", "3", "4", "7"):
+                data, _, _ = self._fetch_post(list_url, {
+                    "status": "1", "tipo": type_id, "campus": campus_id,
+                })
+                soup = BeautifulSoup(data, "html.parser")
+                match = next((
+                    re.search(r"concurso\((\d+)\)", anchor.get("href", ""), re.I)
+                    for anchor in soup.select('a[href*="concurso("]')
+                ), None)
+                if match:
+                    cargo_id = match.group(1)
+                    list_document = data
+                    break
+            if cargo_id:
+                break
+        if not cargo_id:
+            return None
+
+        detail, _, _ = self._fetch_post(detail_url, {"idCargo": cargo_id})
+        detail_soup = BeautifulSoup(detail, "html.parser")
+        archive_match = None
+        for anchor in detail_soup.select("a[href]"):
+            if normalize_text(anchor.get_text(" ", strip=True)) != "edital":
+                continue
+            archive_match = re.search(
+                r"arquivo\(\s*(\d+)\s*,\s*(\d+)\s*\)", anchor.get("href", ""), re.I
+            )
+            if archive_match:
+                break
+        if not archive_match:
+            return None
+
+        edital, _, content_type = self._fetch_post(archive_url, {
+            "idArquivo": archive_match.group(1), "versao": archive_match.group(2),
+        })
+        opportunities = extract_structured_html_opportunities(edital)
+        if len(opportunities) < 2:
+            return None
+        edital_soup = BeautifulSoup(edital, "html.parser")
+        edital_text = clean_text(edital_soup.get_text(" ", strip=True))
+        registration_start, registration_end = parse_registration_period(edital_text)
+        digest = hashlib.sha256(edital).hexdigest()
+        documents = [{
+            "url": base,
+            "type": "HTML_FORM",
+            "content_hash": digest,
+            "content_type": content_type,
+            "page_count": 1,
+            "extracted_chars": len(edital_text),
+            "truncated": False,
+            "title": clean_text(edital_soup.title.get_text(" ", strip=True)) if edital_soup.title else "Edital UFSCar",
+            "relevant": True,
+            "relevance_reason": "Edital único recuperado do formulário público oficial da UFSCar.",
+            "opportunities_count": len(opportunities),
+            "form_reference": f"arquivo {archive_match.group(1)}, versão {archive_match.group(2)}",
+        }]
+        if list_document:
+            documents.insert(0, {
+                "url": list_url, "type": "HTML_FORM_INDEX",
+                "content_hash": hashlib.sha256(list_document).hexdigest(),
+                "relevant": True,
+                "relevance_reason": "Lista oficial de cargos em fase de inscrição.",
+            })
+        return {
+            "status": "READ_MULTI",
+            "checked_at": checked_at.isoformat(timespec="seconds"),
+            "reader_version": config.OFFICIAL_READER_VERSION,
+            "documents": documents,
+            "document_url": None,
+            "document_type": "HTML",
+            "content_hash": digest,
+            "confidence": "STRUCTURED",
+            "applicable": False,
+            "opportunities": opportunities,
+            "registration_start": registration_start,
+            "registration_end": registration_end,
+            "reason": (
+                f"Edital único em HTML lido no portal oficial da UFSCar; "
+                f"{len(opportunities)} sub-vagas extraídas da tabela de requisitos mínimos."
+            ),
+            "errors": [],
+            "pci_protected_documents": [],
+        }
+
     @staticmethod
     def _extract_pdf_pages(data: bytes) -> tuple[list[tuple[int, str]], dict[str, Any]]:
         reader = PdfReader(BytesIO(data), strict=False)
@@ -602,6 +847,15 @@ class OfficialDocumentReader:
         return [(1, text)], title, blocked
 
     def read(self, vacancy: Mapping[str, Any], checked_at: datetime) -> dict[str, Any]:
+        special_errors: list[str] = []
+        if is_ufscar_portal_vacancy(vacancy):
+            try:
+                special = self._read_ufscar(vacancy, checked_at)
+                if special:
+                    return special
+            except Exception as exc:
+                special_errors.append(f"UFSCar portal: {type(exc).__name__}: {exc}")
+                LOGGER.warning("Falha no leitor do portal UFSCar: %s", exc)
         seeds = []
         for document in vacancy.get("pci_documents") or []:
             value = document.get("url")
@@ -634,7 +888,7 @@ class OfficialDocumentReader:
         documents: list[dict[str, Any]] = []
         best: dict[str, Any] | None = None
         best_multi: dict[str, Any] | None = None
-        errors: list[str] = []
+        errors: list[str] = special_errors
         blocked = False
         pci_protected_documents: list[dict[str, Any]] = []
 
@@ -698,6 +952,7 @@ class OfficialDocumentReader:
                         relevant, relevance_reason = False, "Notícia do PCI usada somente para localizar o edital."
                     else:
                         relevant, relevance_reason = assess_document_relevance(pages, vacancy, final_url)
+                    structured = extract_structured_html_opportunities(data) if relevant else []
                     evidence = (
                         extract_requirement_evidence(pages, vacancy, allow_unscoped=False)
                         if relevant else {
@@ -712,7 +967,17 @@ class OfficialDocumentReader:
                         "evidence_status": evidence["confidence"],
                         "tls_unverified": tls_unverified,
                         "relevant": relevant, "relevance_reason": relevance_reason,
+                        "opportunities_count": len(structured),
                     }
+                    if len(structured) > 1 and (
+                        not vacancy.get("area")
+                        or normalize_text(str(vacancy.get("area"))) == "nao identificada"
+                    ):
+                        if best_multi is None or len(structured) > len(best_multi["opportunities"]):
+                            best_multi = {
+                                "document": document, "opportunities": structured,
+                                "reason": "Página oficial multiárea lida; a tabela será exibida como sub-vagas independentes.",
+                            }
                     if not page_blocked and depth < config.OFFICIAL_MAX_DEPTH:
                         links = extract_candidate_links(data, final_url, vacancy)
                         for item in links:
@@ -765,7 +1030,7 @@ class OfficialDocumentReader:
                 "status": "READ_MULTI", "checked_at": checked,
                 "reader_version": config.OFFICIAL_READER_VERSION,
                 "documents": documents, "document_url": best_multi["document"]["url"],
-                "document_type": "PDF", "content_hash": best_multi["document"]["content_hash"],
+                "document_type": best_multi["document"]["type"], "content_hash": best_multi["document"]["content_hash"],
                 "confidence": "STRUCTURED", "applicable": False,
                 "tls_unverified": bool(best_multi["document"].get("tls_unverified")),
                 "opportunities": best_multi["opportunities"],

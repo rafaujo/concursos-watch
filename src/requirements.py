@@ -221,7 +221,14 @@ DEGREE = re.compile(
 CONNECTOR = re.compile(
     r"^\s*(?:plena|curta|completa|integral|lato\s+sensu|stricto\s+sensu|"
     r"com\s+habilita[cç][aã]o)?\s*"
-    r"(?:em|na[s]?\s+[aá]reas?(?:\s+de)?|de|do|da)\s*",
+    r"(?:"
+    r"(?:obtido(?:\s+ou\s+revalidado)?\s+)?em\s+"
+    r"(?:programa\s+de\s+p[oó]s[- ]gradua[cç][aã]o|curso\s+de\s+doutorado)\s+"
+    r"(?:cadastrado|registrado)\s+em\s+(?:uma\s+das\s+)?(?:seguintes\s+)?[aá]reas?"
+    r"(?:\s+b[aá]sicas?)?(?:\s+de\s+conhecimento)?"
+    r"(?:\s+na\s+plataforma\s+Sucupira(?:\s*\(CAPES\))?|\s+de\s+avalia[cç][aã]o\s+da\s+CAPES|\s+da\s+CAPES)?\s*:?|"
+    r"em|na[s]?\s+[aá]reas?(?:\s+de)?|de|do|da"
+    r")\s*",
     re.I,
 )
 STOP = re.compile(
@@ -284,7 +291,19 @@ def condense_requirement(value: str | None, *, keep_degree: bool = True) -> str 
         return None
     parts, seen = [], set()
     consumed = 0
-    matches = list(DEGREE.finditer(value))
+    matches = [
+        match for match in DEGREE.finditer(value)
+        if not (
+            (
+                re.fullmatch(r"p[oó]s[- ]?gradua[cç][aã]o", match.group(1), re.I)
+                and re.search(r"programa\s+de\s*$", value[max(0, match.start() - 28):match.start()], re.I)
+            )
+            or (
+                re.fullmatch(r"doutorado", match.group(1), re.I)
+                and re.search(r"curso\s+de\s*$", value[max(0, match.start() - 20):match.start()], re.I)
+            )
+        )
+    ]
     for index, match in enumerate(matches):
         # "X ou Doutorado em Y" is one requirement with alternatives, not two.
         # A degree already inside the previous item's area is part of it.
@@ -329,6 +348,9 @@ def condense_requirement(value: str | None, *, keep_degree: bool = True) -> str 
             stop = STOP.search(rest)
             area = (rest[:stop.start()] if stop else rest).strip(" .,;:/-–()")
             area = re.sub(r"\s+", " ", area)
+            area = re.sub(
+                r"(?:[,;:]\s*|\s+)(?:e|ou|e/ou)\s*$", "", area, flags=re.I
+            ).strip(" .,;:/-–()")
             if BAD_AREA.match(area):
                 area = ""
             if len(area) > 80:
@@ -354,4 +376,7 @@ def condense_requirement(value: str | None, *, keep_degree: bool = True) -> str 
         # rejected as junk above, so keeping them beats discarding them; only
         # a long value with no degree in it is something we cannot vouch for.
         return value if len(value) <= 90 else None
-    return " · ".join(parts[:3])
+    result = " · ".join(parts[:3])
+    if len(parts) > 3:
+        result += f" (+{len(parts) - 3} alternativas no edital)"
+    return result

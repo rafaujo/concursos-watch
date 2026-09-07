@@ -1,6 +1,12 @@
 from pathlib import Path
 
-from src.parser import extract_requirement_sentences, normalize_text, parse_brazilian_dates, parse_pci_detail
+from src.parser import (
+    extract_requirement_sentences,
+    normalize_text,
+    parse_brazilian_dates,
+    parse_pci_detail,
+    parse_registration_period,
+)
 from src.pci import is_potential_listing, parse_listing
 
 
@@ -16,6 +22,14 @@ def test_brazilian_date_formats_and_ranges():
     assert [item.isoformat() for item in parse_brazilian_dates(text)] == ["2026-08-23", "2026-09-15"]
     range_text = "de 10 de agosto a 2 de setembro de 2026"
     assert [item.isoformat() for item in parse_brazilian_dates(range_text)] == ["2026-08-10", "2026-09-02"]
+
+
+def test_registration_window_outranks_later_fee_waiver_date():
+    text = (
+        "As inscrições serão realizadas de 21 de agosto de 2026 a 11 de setembro de 2026. "
+        "Os candidatos poderão pedir isenção da taxa de inscrição até 25 de agosto de 2026."
+    )
+    assert parse_registration_period(text) == ("2026-08-21", "2026-09-11")
 
 
 def test_professor_doutor_job_title_is_not_a_doctorate_requirement():
