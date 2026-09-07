@@ -10,6 +10,7 @@ from src.official import (
     assess_document_relevance,
     extract_candidate_links,
     extract_requirement_evidence,
+    extract_numbered_requirements_table,
     extract_structured_html_opportunities,
     extract_structured_opportunities,
     is_excluded_link,
@@ -43,6 +44,30 @@ def test_official_html_requirements_table_becomes_independent_opportunities():
     assert found[0]["requirements_complete"] is True
     assert found[1]["graduation_requirement_raw"] == "Graduacao em Medicina"
     assert found[1]["vacancies_count"] == 2
+
+
+def test_numbered_annex_rows_become_independent_opportunities():
+    pages = [(1, """
+    Anexo V ao Edital nº 184/2026-GRE
+    SEQ. AREA REQUISITOS MINIMOS CONTEÚDOS PROGRAMATICOS VAGA CR RT
+    1 CASCAVEL CCBS - Bioestatística
+    Graduação em: Ciências Biológicas
+    Doutorado em: Ciências Ambientais ou Bioestatística
+    1. Estatística descritiva
+    1 20
+    2 CASCAVEL CCBS - Botânica
+    Graduação em: Ciências Biológicas
+    Mestrado em: Botânica ou Ciências Ambientais
+    1. Filo Chlorophyta
+    1 20
+    """)]
+    found = extract_numbered_requirements_table(pages)
+    assert len(found) == 2
+    assert found[0]["area"] == "Bioestatística"
+    assert found[0]["graduation_requirement_raw"] == "Graduação em: Ciências Biológicas"
+    assert "Ciências Ambientais" in found[0]["doctorate_requirement_raw"]
+    assert found[1]["campus"] == "Cascavel"
+    assert found[1]["requirements_complete"] is True
 
 
 def test_pdf_evidence_is_scoped_to_vacancy_area():

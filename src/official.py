@@ -15,6 +15,8 @@ import socket
 import time
 import heapq
 import itertools
+import bisect
+import unicodedata
 from datetime import date, datetime
 from io import BytesIO
 from typing import Any, Iterable, Mapping
@@ -324,13 +326,14 @@ def extract_requirement_evidence(
 
 def extract_structured_opportunities(pages: Iterable[tuple[int, str]]) -> list[dict[str, Any]]:
     """Extract repeated area/requirements table blocks from multi-area editais."""
+    page_list = list(pages)
     opportunities: list[dict[str, Any]] = []
     marker = re.compile(
         r"(?:área|area)\s+de\s+conhecimento\s+ou\s+mat[eé]ria\(s\)\s+",
         re.I,
     )
     end_marker = re.compile(r"tipos?\s+de\s+prova", re.I)
-    for page_number, page_text in pages:
+    for page_number, page_text in page_list:
         matches = list(marker.finditer(page_text))
         for index, match in enumerate(matches):
             block_end = matches[index + 1].start() if index + 1 < len(matches) else len(page_text)
@@ -376,6 +379,94 @@ def extract_structured_opportunities(pages: Iterable[tuple[int, str]]) -> list[d
     for item in opportunities:
         key = normalize_text(f"{item.get('reference')}|{item['area']}|{item['requirement_text']}")
         unique[key] = item
+    if len(unique) > 1:
+        return list(unique.values())
+    numbered = extract_numbered_requirements_table(page_list)
+    return numbered if len(numbered) > len(unique) else list(unique.values())
+
+
+def extract_numbered_requirements_table(pages: Iterable[tuple[int, str]]) -> list[dict[str, Any]]:
+    """Extract numbered campus/area rows from consolidated annex tables.
+
+    UNIOESTE's Anexo V is a 52-page table flattened by PDF extraction.  Its
+    reliable row key is ``sequence + campus``; numbered syllabus items cannot
+    be mistaken for rows because they are not followed by a campus name.
+    """
+    page_list = list(pages)
+    combined_parts: list[str] = []
+    page_starts: list[int] = []
+    page_numbers: list[int] = []
+    cursor = 0
+    for page_number, page_text in page_list:
+        page_text = unicodedata.normalize("NFC", page_text)
+        page_text = "".join(char for char in page_text if unicodedata.category(char) != "Cf")
+        page_starts.append(cursor)
+        page_numbers.append(page_number)
+        combined_parts.append(page_text)
+        cursor += len(page_text) + 2
+    text = "\n\n".join(combined_parts)
+    normalized_head = normalize_text(text[:8000])
+    if not (
+        "requisitos minimos" in normalized_head
+        and "conteudos programaticos" in normalized_head
+        and "anexo v" in normalized_head
+    ):
+        return []
+    campus_pattern = (
+        r"CASCAVEL|FOZ\s+DO\s+IGUA[CÇ]U|FRANCISCO\s+BELTR[AÃ]O|"
+        r"MARECHAL\s+C[AÂ]NDIDO\s+RONDON|TOLEDO"
+    )
+    row_marker = re.compile(
+        rf"(?m)^\s*(?P<seq>\d{{1,3}})\s+(?P<campus>{campus_pattern})\s+",
+        re.I,
+    )
+    matches = list(row_marker.finditer(text))
+    opportunities: list[dict[str, Any]] = []
+    academic_start = re.compile(
+        r"\b(?:gradua[cç][aã]o|licenciatura|bacharelado|curso\s+superior|"
+        r"especializa[cç][aã]o|mestrado|doutorado|t[ií]tulo\s+de\s+(?:mestre|doutor))\b",
+        re.I,
+    )
+    syllabus_start = re.compile(r"(?m)^\s*1\.\s+")
+    for index, match in enumerate(matches):
+        end = matches[index + 1].start() if index + 1 < len(matches) else len(text)
+        block = text[match.end():end]
+        requirement_match = academic_start.search(block)
+        if not requirement_match:
+            continue
+        heading = clean_text(block[: requirement_match.start()]).strip(" .;:-–")
+        requirement_block = block[requirement_match.start():]
+        syllabus = syllabus_start.search(requirement_block)
+        if syllabus:
+            requirement_block = requirement_block[: syllabus.start()]
+        requirement_text = clean_text(requirement_block).strip(" .;:-–")
+        # A page break may leave a bare page number at the edge of the cell.
+        requirement_text = re.sub(r"\s+\d{1,2}\s*$", "", requirement_text).strip()
+        if len(heading) < 2 or len(requirement_text) < 5:
+            continue
+        area = re.sub(r"^[A-ZÀ-Ú]{2,12}\s*[-–]\s*", "", heading).strip()
+        if not area:
+            area = heading
+        requirements = extract_requirement_fields(f"Requisitos: {requirement_text}")
+        absolute_offset = match.start()
+        page_index = max(0, bisect.bisect_right(page_starts, absolute_offset) - 1)
+        opportunities.append({
+            "area": area,
+            "requirement_text": requirement_text,
+            "graduation_requirement_raw": requirements["graduation_requirement"],
+            "postgraduate_requirement_raw": requirements["postgraduate_requirement"],
+            "masters_requirement_raw": requirements["masters_requirement"],
+            "doctorate_requirement_raw": requirements["doctorate_requirement"],
+            "page": page_numbers[page_index] if page_numbers else None,
+            "reference": f"Seq. {int(match.group('seq'))}",
+            "campus": clean_text(match.group("campus")).title(),
+            "vacancies_count": None,
+            "reserve_only": True,
+            "requirements_complete": True,
+        })
+    unique: dict[str, dict[str, Any]] = {}
+    for item in opportunities:
+        unique[normalize_text(f"{item['reference']}|{item['campus']}|{item['area']}")] = item
     return list(unique.values())
 
 
@@ -511,6 +602,10 @@ def score_candidate_link(label: str, url: str, vacancy: Mapping[str, Any]) -> in
         score += 24
     if any(term in combined for term in ("professor", "docente", "magisterio")):
         score += 20
+    # Archive pages often list years of identically labelled selections.  The
+    # active year's entry must outrank lexicographically earlier old URLs.
+    if str(date.today().year) in combined:
+        score += 30
     score += min(30, 6 * sum(token in combined for token in vacancy_context_tokens(vacancy)))
     if any(term in combined for term in config.DEPRIORITIZED_LINK_TERMS):
         # Not disqualifying: a small city hall may announce its edital in a news
@@ -563,7 +658,7 @@ def extract_candidate_links(html_bytes: bytes, base_url: str, vacancy: Mapping[s
         )
     else:
         anchors = soup.select("a[href]")
-    for anchor in anchors:
+    for anchor_order, anchor in enumerate(anchors):
         href = anchor.get("href", "").strip()
         if href.startswith(("#", "javascript:", "mailto:", "tel:")):
             continue
@@ -580,8 +675,14 @@ def extract_candidate_links(html_bytes: bytes, base_url: str, vacancy: Mapping[s
             continue
         current = candidates.get(url)
         if current is None or score > current["score"]:
-            candidates[url] = {"url": url, "label": label, "score": score}
-    return sorted(candidates.values(), key=lambda item: (-item["score"], item["url"]))
+            candidates[url] = {
+                "url": url, "label": label, "score": score,
+                "source_order": current.get("source_order", anchor_order) if current else anchor_order,
+            }
+    # Institution archive pages normally present the newest selection first.
+    # Preserve that source order for equal scores instead of sorting old numeric
+    # URLs ahead of the active process.
+    return sorted(candidates.values(), key=lambda item: (-item["score"], item["source_order"]))
 
 
 def should_check_official(cache_entry: Mapping[str, Any] | None, today: date) -> bool:
@@ -922,6 +1023,7 @@ class OfficialDocumentReader:
                     if len(structured) > 1 and (
                         not vacancy.get("area")
                         or normalize_text(str(vacancy.get("area"))) == "nao identificada"
+                        or len(vacancy.get("pci_opportunities") or []) > 1
                     ):
                         if best_multi is None or len(structured) > len(best_multi["opportunities"]):
                             best_multi = {
@@ -972,6 +1074,7 @@ class OfficialDocumentReader:
                     if len(structured) > 1 and (
                         not vacancy.get("area")
                         or normalize_text(str(vacancy.get("area"))) == "nao identificada"
+                        or len(vacancy.get("pci_opportunities") or []) > 1
                     ):
                         if best_multi is None or len(structured) > len(best_multi["opportunities"]):
                             best_multi = {
@@ -1012,6 +1115,18 @@ class OfficialDocumentReader:
                 LOGGER.warning("Falha na leitura oficial de %s: %s", url, exc)
 
         checked = checked_at.isoformat(timespec="seconds")
+        if best_multi:
+            return {
+                "status": "READ_MULTI", "checked_at": checked,
+                "reader_version": config.OFFICIAL_READER_VERSION,
+                "documents": documents, "document_url": best_multi["document"]["url"],
+                "document_type": best_multi["document"]["type"], "content_hash": best_multi["document"]["content_hash"],
+                "confidence": "STRUCTURED", "applicable": False,
+                "tls_unverified": bool(best_multi["document"].get("tls_unverified")),
+                "opportunities": best_multi["opportunities"],
+                "reason": best_multi["reason"], "errors": errors[:5],
+                "pci_protected_documents": pci_protected_documents,
+            }
         if best:
             return {
                 "status": "READ", "checked_at": checked, "documents": documents,
@@ -1023,18 +1138,6 @@ class OfficialDocumentReader:
                 "tls_unverified": bool(best["document"].get("tls_unverified")),
                 "requirements": best["requirements"], "evidence": best["evidence"],
                 "reason": best["reason"], "errors": errors[:5],
-                "pci_protected_documents": pci_protected_documents,
-            }
-        if best_multi:
-            return {
-                "status": "READ_MULTI", "checked_at": checked,
-                "reader_version": config.OFFICIAL_READER_VERSION,
-                "documents": documents, "document_url": best_multi["document"]["url"],
-                "document_type": best_multi["document"]["type"], "content_hash": best_multi["document"]["content_hash"],
-                "confidence": "STRUCTURED", "applicable": False,
-                "tls_unverified": bool(best_multi["document"].get("tls_unverified")),
-                "opportunities": best_multi["opportunities"],
-                "reason": best_multi["reason"], "errors": errors[:5],
                 "pci_protected_documents": pci_protected_documents,
             }
         if pci_protected_documents:

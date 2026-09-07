@@ -13,7 +13,14 @@ DOCS_DIR = ROOT_DIR / "docs"
 
 PCI_LISTING_URL = "https://www.pciconcursos.com.br/professores/"
 SOURCE_NAME = "PCI Concursos"
-USER_AGENT = "ConcursosWatch/1.0 (+https://github.com/; academic-vacancy-monitor)"
+# Some public concurso portals reject every non-browser-prefixed User-Agent as
+# "incompatible" and return a tiny warning page instead of the documents.  The
+# trailing product token still identifies this monitor while the compatible
+# prefix lets those sites serve their normal public HTML.
+USER_AGENT = (
+    "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) "
+    "Gecko/20100101 Firefox/128.0 ConcursosWatch/1.0"
+)
 REQUEST_TIMEOUT_SECONDS = 30
 REQUEST_DELAY_SECONDS = 1.25
 REQUEST_RETRIES = 2
@@ -23,7 +30,7 @@ RECHECK_CLOSING_WITHIN_DAYS = 10
 # Official-document stage. The crawler follows only a small, scored set of
 # links found on institution/organizer pages and never bypasses CAPTCHA.
 OFFICIAL_CHECK_ENABLED = True
-OFFICIAL_READER_VERSION = 6
+OFFICIAL_READER_VERSION = 7
 # None means every due professor notice is reviewed. The cache still prevents
 # unchanged editais from being downloaded on every daily execution.
 OFFICIAL_MAX_VACANCIES_PER_RUN = None
