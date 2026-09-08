@@ -722,17 +722,45 @@
     "official_failures": 135
   },
   {
-    "run_at": "2026-09-08T12:09:51-03:00",
+    "run_at": "2026-09-07T21:40:57-03:00",
     "discovered": 229,
-    "known": 221,
-    "new": 8,
-    "changed_listings": 11,
-    "processed": 81,
+    "known": 229,
+    "new": 0,
+    "changed_listings": 0,
+    "processed": 0,
     "failures": 0,
-    "relevant_new": 2,
-    "official_processed": 204,
-    "official_read": 60,
-    "official_reclassified": 3,
-    "official_failures": 144
+    "relevant_new": 0,
+    "official_processed": 2,
+    "official_read": 1,
+    "official_reclassified": 1,
+    "official_failures": 1
+  },
+  {
+    "run_at": "2026-09-07T21:43:13-03:00",
+    "discovered": 229,
+    "known": 229,
+    "new": 0,
+    "changed_listings": 0,
+    "processed": 0,
+    "failures": 0,
+    "relevant_new": 0,
+    "official_processed": 1,
+    "official_read": 1,
+    "official_reclassified": 0,
+    "official_failures": 0
+  },
+  {
+    "run_at": "2026-09-07T21:48:21-03:00",
+    "discovered": 229,
+    "known": 229,
+    "new": 0,
+    "changed_listings": 0,
+    "processed": 0,
+    "failures": 0,
+    "relevant_new": 0,
+    "official_processed": 1,
+    "official_read": 1,
+    "official_reclassified": 0,
+    "official_failures": 0
   }
 ]
