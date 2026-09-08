@@ -92,6 +92,25 @@ def parse_registration_period(text: str) -> tuple[str | None, str | None]:
         if not re.search(r"inscri|candidat", normalized):
             continue
         parsed = parse_brazilian_dates(sentence)
+        # A common edital spelling compresses the shared month and year:
+        # "de 12 a 28 de agosto de 2026".  The generic date parser sees only
+        # the second date, so restore the first one while the context is still
+        # known to be the application window.
+        compressed = re.search(
+            r"\b(?:de|entre)\s+(\d{1,2})\s+(?:a|e)\s+(\d{1,2})\s+de\s+"
+            r"(" + "|".join(MONTHS) + r")\s+de\s+(\d{4})\b",
+            normalized,
+        )
+        if compressed:
+            try:
+                month = MONTHS[compressed.group(3)]
+                year = int(compressed.group(4))
+                parsed = [
+                    date(year, month, int(compressed.group(1))),
+                    date(year, month, int(compressed.group(2))),
+                ]
+            except ValueError:
+                pass
         if not parsed:
             continue
         score = 0
