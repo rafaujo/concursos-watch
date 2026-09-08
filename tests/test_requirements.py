@@ -1,5 +1,5 @@
 from src.parser import extract_requirement_sentences
-from src.requirements import graduation_for_display, split_academic_requirement
+from src.requirements import condense_requirement, graduation_for_display, split_academic_requirement
 
 
 def test_program_name_is_not_an_undergraduate_requirement():
@@ -56,3 +56,24 @@ def test_citology_doctorate_stays_whole_in_postgraduate_field():
         "doutorado nas áreas de Ciências Biológicas, Ciências da Saúde, Zootecnia, "
         "Medicina Veterinária, Bioengenharia ou áreas afins"
     )
+
+
+def test_displayed_degree_stops_before_a_separate_professional_requirement():
+    value = (
+        "Doutorado em Letras, Estudos da Linguagem ou Educação, e ▪ 02 anos de "
+        "atuação efetiva em sala de aula da Educação Básica"
+    )
+    assert condense_requirement(value) == (
+        "Doutorado em Letras, Estudos da Linguagem ou Educação"
+    )
+
+
+def test_medical_residency_is_postgraduate_and_stops_before_registry():
+    parts = split_academic_requirement(
+        "Graduação em Medicina; ▪ Residência reconhecida pelo MEC nas áreas de "
+        "Clínica Médica ou Cardiologia; e ▪ Registro no CRM"
+    )
+    assert parts["graduation"] == ["Graduação em Medicina"]
+    assert parts["postgraduate"] == [
+        "Residência reconhecida pelo MEC nas áreas de Clínica Médica ou Cardiologia"
+    ]
