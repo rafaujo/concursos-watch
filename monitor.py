@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import logging
+import re
 import sys
 from datetime import date, datetime
 from typing import Any
@@ -22,6 +23,19 @@ from src.storage import RepositoryState
 
 LOGGER = logging.getLogger("concursos_watch")
 TZ = ZoneInfo("America/Sao_Paulo")
+
+
+def _matches_official_filter(vacancy: dict[str, Any], value: str) -> bool:
+    """Match short acronyms as words, not inside unrelated institution names."""
+    needle = normalize_text(value)
+    context = normalize_text(
+        f"{vacancy.get('institution', '')} {vacancy.get('title', '')}"
+    )
+    if not needle:
+        return True
+    if " " in needle:
+        return needle in context
+    return bool(re.search(rf"\b{re.escape(needle)}\b", context))
 
 
 def _restore_pci_requirements(vacancy: dict[str, Any]) -> None:
@@ -310,12 +324,9 @@ def run(
             vacancy.get("registration_end") or "9999-12-31",
         ))
         if official_match:
-            needle = normalize_text(official_match)
             official_candidates = [
                 vacancy for vacancy in official_candidates
-                if needle in normalize_text(
-                    f"{vacancy.get('institution', '')} {vacancy.get('title', '')}"
-                )
+                if _matches_official_filter(vacancy, official_match)
             ]
         limit = config.OFFICIAL_MAX_VACANCIES_PER_RUN if max_official is None else max_official
         if limit is not None:
