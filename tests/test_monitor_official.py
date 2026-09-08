@@ -2,8 +2,19 @@ from datetime import datetime
 from zoneinfo import ZoneInfo
 
 import config
-from monitor import _apply_official_result
+from monitor import _apply_official_result, _matches_official_filter
 from src.classifier import RuleBasedAnalyzer
+
+
+def test_short_official_filter_matches_acronym_not_name_fragment():
+    assert _matches_official_filter(
+        {"institution": "UEL - Universidade Estadual de Londrina", "title": "PSS docente"},
+        "UEL",
+    )
+    assert not _matches_official_filter(
+        {"institution": "Prefeitura de São Miguel do Araguaia", "title": "Seleção docente"},
+        "UEL",
+    )
 
 
 def test_multi_area_official_result_classifies_each_sub_vacancy_independently():
