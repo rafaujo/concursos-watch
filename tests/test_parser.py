@@ -32,6 +32,14 @@ def test_registration_window_outranks_later_fee_waiver_date():
     assert parse_registration_period(text) == ("2026-08-21", "2026-09-11")
 
 
+def test_registration_window_with_shared_month_and_year():
+    text = (
+        "O período para a realização das inscrições será de 12 a 28 de agosto de 2026. "
+        "Os pedidos de isenção da taxa serão aceitos de 12 a 14 de agosto de 2026."
+    )
+    assert parse_registration_period(text) == ("2026-08-12", "2026-08-28")
+
+
 def test_professor_doutor_job_title_is_not_a_doctorate_requirement():
     requirements = extract_requirement_sentences(
         "Concurso para Professor Doutor no Departamento de Administração. "
