@@ -53,6 +53,15 @@ GENERIC_CONTEXT = {
 # link discovered later, and keep their given order among themselves.
 SEED_PRIORITY = 10_000
 
+# Some institutions remove a selection from their public index as soon as
+# applications close, although the stable detail page and edital remain
+# public.  These source-specific seeds keep already-discovered PCI notices
+# auditable instead of making the crawler guess numeric archive URLs.
+OFFICIAL_SEED_OVERRIDES = {
+    "/noticias/uel-pr-abre-processo-seletivo-para-professores-temporarios-com-diversas-areas-de-atuacao":
+        "https://www.cops.uel.br/v2/download.php?Acesso=YzlmNzU2YTBiMWIzYTM4MDZiM2RmN2FiYWEzZDdkMWE5NTZkZWZhMTg5NzM4MmFhNDEyYjA0NmY1MmJlZmJhNjg1ZjE3Y2Q0ZjJhMTQ4MzU5Y2NlYmQyMDM2MGM4OThmYzMzZTRjZmYxMjI0OTUwYjkxZDgwZTYzODI2ODhlNTNlOWFlZTE2ZmZhMjQ1OWQ5NDJkNWVmNzI1NmQ1OTk3MzU4NjQ1YjMyZmU2MjdjNGFjNjc0NmU4MmU2ZmI4Njhj",
+}
+
 
 class OfficialReadError(RuntimeError):
     pass
@@ -381,8 +390,154 @@ def extract_structured_opportunities(pages: Iterable[tuple[int, str]]) -> list[d
         unique[key] = item
     if len(unique) > 1:
         return list(unique.values())
+    labelled = extract_labelled_area_requirements(page_list)
+    if len(labelled) > len(unique):
+        return labelled
     numbered = extract_numbered_requirements_table(page_list)
     return numbered if len(numbered) > len(unique) else list(unique.values())
+
+
+def extract_labelled_area_requirements(pages: Iterable[tuple[int, str]]) -> list[dict[str, Any]]:
+    """Extract one row per ``Area / Requisito Minimo`` block in an annex.
+
+    UEL's teaching notices use a prose-like labelled table rather than PDF
+    table geometry.  Joining the pages before splitting the blocks matters:
+    an area's heading can be at the bottom of one page while its requirement
+    starts on the next.  The strict set of labels prevents ordinary edital
+    prose and the later syllabus annex from becoming vacancies.
+    """
+    page_list = list(pages)
+    combined_parts: list[str] = []
+    page_starts: list[int] = []
+    page_numbers: list[int] = []
+    cursor = 0
+    for page_number, page_text in page_list:
+        page_text = unicodedata.normalize("NFC", page_text)
+        page_text = "".join(char for char in page_text if unicodedata.category(char) != "Cf")
+        lines = page_text.splitlines()
+        cleaned_lines: list[str] = []
+        for line_index, line in enumerate(lines):
+            normalized_line = normalize_text(line)
+            compact_line = re.sub(r"\s+", "", normalized_line)
+            if line_index < 10 and (
+                "campus universitario:" in normalized_line
+                or compact_line.startswith("londrina")
+            ):
+                continue
+            cleaned_lines.append(line)
+        page_text = "\n".join(cleaned_lines)
+        page_starts.append(cursor)
+        page_numbers.append(page_number)
+        combined_parts.append(page_text)
+        cursor += len(page_text) + 2
+    text = "\n\n".join(combined_parts)
+
+    annex = re.search(r"(?im)^\s*ANEXO\s+I\s*$", text)
+    if not annex:
+        return []
+    annex_start = annex.end()
+    following = re.search(r"(?im)^\s*ANEXO\s+II\b", text[annex_start:])
+    annex_end = annex_start + following.start() if following else len(text)
+    annex_text = text[annex_start:annex_end]
+    normalized_annex = normalize_text(annex_text[:12000])
+    if not all(label in normalized_annex for label in (
+        "requisito minimo", "taxa de inscricao", "forma de selecao",
+    )):
+        return []
+
+    area_marker = re.compile(r"(?im)^\s*[ÁA]rea(?:\s*/\s*sub[áa]rea)?\s*:\s*")
+    markers = list(area_marker.finditer(annex_text))
+    if len(markers) < 2:
+        return []
+    vacancy_label = re.compile(
+        r"(?im)^\s*N(?:[º°o]|[uú]mero)?\s*de\s+Vagas?\s*:\s*"
+    )
+    requirement_label = re.compile(r"(?im)^\s*Requisito\s+M[ií]nimo\s*:\s*")
+    fee_label = re.compile(r"(?im)^\s*Taxa\s+de\s+Inscri[cç][aã]o\s*:\s*")
+    workload_label = re.compile(r"(?im)^\s*Regime\s+de\s+Trabalho\s*:\s*")
+    selection_label = re.compile(r"(?im)^\s*Forma\s+de\s+Sele[cç][aã]o\s*:\s*")
+    department_label = re.compile(r"(?im)^\s*(DEPARTAMENTO\s+DE[^\r\n]+?)\s*$")
+    academic_start = re.compile(
+        r"\b(?:gradua[cç][aã]o|licenciatura|bacharelado|curso\s+superior|"
+        r"especializa[cç][aã]o|mestrado|doutorado|resid[eê]ncia\s+m[eé]dica)\b",
+        re.I,
+    )
+
+    opportunities: list[dict[str, Any]] = []
+    for index, marker in enumerate(markers):
+        end = markers[index + 1].start() if index + 1 < len(markers) else len(annex_text)
+        block = annex_text[marker.end():end]
+        vacancy = vacancy_label.search(block)
+        requirement = requirement_label.search(block)
+        fee = fee_label.search(block)
+        workload = workload_label.search(block)
+        selection = selection_label.search(block)
+        if not vacancy or not fee or not selection:
+            continue
+        fallback_requirement = None
+        if not requirement and workload:
+            fallback_requirement = academic_start.search(block, workload.end(), fee.start())
+        requirement_start = requirement.start() if requirement else (
+            fallback_requirement.start() if fallback_requirement else None
+        )
+        requirement_end = requirement.end() if requirement else requirement_start
+        if requirement_start is None or requirement_end is None:
+            continue
+        if not (vacancy.start() < requirement_start < fee.start() < selection.start()):
+            continue
+
+        area = clean_text(block[:vacancy.start()]).strip(" .;:-\u2013")
+        vacancy_end = workload.start() if workload and workload.start() > vacancy.end() else requirement.start()
+        vacancy_text = clean_text(block[vacancy.end():vacancy_end]).strip(" .;:-\u2013")
+        requirement_text = clean_text(block[requirement_end:fee.start()]).strip(" .;:-\u2013")
+        if len(area) < 2 or len(requirement_text) < 3:
+            continue
+
+        workload_text = None
+        if workload and workload.start() < requirement_start:
+            workload_value = block[workload.end():requirement_start]
+            workload_match = re.search(
+                r"\b\d{1,3}\s*(?:\([^)]+\)\s*)?horas?\s+semanais\b",
+                workload_value,
+                re.I,
+            )
+            workload_text = clean_text(
+                workload_match.group(0) if workload_match else workload_value
+            ).strip(" .;:-\u2013")
+        count_match = re.search(r"\b(\d+)\b", vacancy_text)
+        reserve_only = "cadastro de reserva" in normalize_text(vacancy_text)
+        requirements = extract_requirement_fields(f"Requisitos: {requirement_text}")
+
+        prefix = annex_text[:marker.start()]
+        departments = list(department_label.finditer(prefix))
+        department = clean_text(departments[-1].group(1)) if departments else None
+        absolute_offset = annex_start + marker.start()
+        page_index = max(0, bisect.bisect_right(page_starts, absolute_offset) - 1)
+        reference = "Cadastro de reserva" if reserve_only else None
+        if count_match and not reserve_only:
+            count = int(count_match.group(1))
+            reference = f"{count} vaga" if count == 1 else f"{count} vagas"
+        opportunities.append({
+            "area": area,
+            "requirement_text": requirement_text,
+            "graduation_requirement_raw": requirements["graduation_requirement"],
+            "postgraduate_requirement_raw": requirements["postgraduate_requirement"],
+            "masters_requirement_raw": requirements["masters_requirement"],
+            "doctorate_requirement_raw": requirements["doctorate_requirement"],
+            "page": page_numbers[page_index] if page_numbers else None,
+            "reference": reference,
+            "department": department,
+            "workload": workload_text,
+            "vacancies_count": int(count_match.group(1)) if count_match and not reserve_only else None,
+            "reserve_only": reserve_only,
+            "requirements_complete": True,
+        })
+
+    unique: dict[str, dict[str, Any]] = {}
+    for item in opportunities:
+        key = normalize_text(f"{item.get('department')}|{item['area']}|{item['requirement_text']}")
+        unique[key] = item
+    return list(unique.values())
 
 
 def extract_numbered_requirements_table(pages: Iterable[tuple[int, str]]) -> list[dict[str, Any]]:
@@ -958,6 +1113,10 @@ class OfficialDocumentReader:
                 special_errors.append(f"UFSCar portal: {type(exc).__name__}: {exc}")
                 LOGGER.warning("Falha no leitor do portal UFSCar: %s", exc)
         seeds = []
+        source_path = urlsplit(str(vacancy.get("source_url") or "")).path.rstrip("/")
+        override = OFFICIAL_SEED_OVERRIDES.get(source_path)
+        if override:
+            seeds.append(override)
         for document in vacancy.get("pci_documents") or []:
             value = document.get("url")
             if value and value not in seeds:
@@ -1004,6 +1163,9 @@ class OfficialDocumentReader:
                 is_pdf = data.startswith(b"%PDF-") or "application/pdf" in content_type
                 if is_pdf:
                     pages, metadata = self._extract_pdf_pages(data)
+                    registration_start, registration_end = parse_registration_period(
+                        "\n".join(page_text for _, page_text in pages)
+                    )
                     relevant, relevance_reason = assess_document_relevance(pages, vacancy, final_url)
                     structured = extract_structured_opportunities(pages) if relevant else []
                     evidence = (
@@ -1019,6 +1181,8 @@ class OfficialDocumentReader:
                         "tls_unverified": tls_unverified,
                         "relevant": relevant, "relevance_reason": relevance_reason,
                         "opportunities_count": len(structured),
+                        "registration_start": registration_start,
+                        "registration_end": registration_end,
                     }
                     if len(structured) > 1 and (
                         not vacancy.get("area")
@@ -1032,6 +1196,7 @@ class OfficialDocumentReader:
                             }
                 elif "html" in content_type or data.lstrip().startswith((b"<!DOCTYPE", b"<html", b"<HTML")):
                     pages, title, page_blocked = self._extract_html_page(data)
+                    registration_start, registration_end = parse_registration_period(pages[0][1])
                     blocked = blocked or page_blocked
                     final_host = (urlsplit(final_url).hostname or "").lower()
                     is_pci_news = (
@@ -1070,6 +1235,8 @@ class OfficialDocumentReader:
                         "tls_unverified": tls_unverified,
                         "relevant": relevant, "relevance_reason": relevance_reason,
                         "opportunities_count": len(structured),
+                        "registration_start": registration_start,
+                        "registration_end": registration_end,
                     }
                     if len(structured) > 1 and (
                         not vacancy.get("area")
@@ -1097,6 +1264,12 @@ class OfficialDocumentReader:
                     })
                     continue
                 documents.append(document)
+                if (
+                    override
+                    and canonical_url(final_url) == canonical_url(override)
+                    and len(structured) > 1
+                ):
+                    break
                 if evidence["applicable"]:
                     rank = (
                         {"HIGH": 3, "MEDIUM": 2}.get(evidence["confidence"], 0),
@@ -1124,6 +1297,8 @@ class OfficialDocumentReader:
                 "confidence": "STRUCTURED", "applicable": False,
                 "tls_unverified": bool(best_multi["document"].get("tls_unverified")),
                 "opportunities": best_multi["opportunities"],
+                "registration_start": best_multi["document"].get("registration_start"),
+                "registration_end": best_multi["document"].get("registration_end"),
                 "reason": best_multi["reason"], "errors": errors[:5],
                 "pci_protected_documents": pci_protected_documents,
             }
@@ -1137,6 +1312,8 @@ class OfficialDocumentReader:
                 "confidence": best["confidence"], "applicable": True,
                 "tls_unverified": bool(best["document"].get("tls_unverified")),
                 "requirements": best["requirements"], "evidence": best["evidence"],
+                "registration_start": best["document"].get("registration_start"),
+                "registration_end": best["document"].get("registration_end"),
                 "reason": best["reason"], "errors": errors[:5],
                 "pci_protected_documents": pci_protected_documents,
             }
