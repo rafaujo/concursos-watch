@@ -9,6 +9,7 @@ import config
 from src.official import (
     assess_document_relevance,
     extract_candidate_links,
+    extract_labelled_area_requirements,
     extract_requirement_evidence,
     extract_numbered_requirements_table,
     extract_structured_html_opportunities,
@@ -67,6 +68,49 @@ def test_numbered_annex_rows_become_independent_opportunities():
     assert found[0]["graduation_requirement_raw"] == "Graduação em: Ciências Biológicas"
     assert "Ciências Ambientais" in found[0]["doctorate_requirement_raw"]
     assert found[1]["campus"] == "Cascavel"
+    assert found[1]["requirements_complete"] is True
+
+
+def test_labelled_annex_blocks_cross_pages_and_keep_requirements_separate():
+    pages = [
+        (16, "Instruções gerais do edital."),
+        (17, """
+        ANEXO I
+        DAS ÁREAS DE CONHECIMENTO, REQUISITOS MÍNIMOS, TAXA DE INSCRIÇÃO E FORMA DE SELEÇÃO
+        DEPARTAMENTO DE CIÊNCIAS SOCIAIS
+        Área: Metodologia e Prática de Ensino de Sociologia
+        Nº de Vagas: Cadastro de Reserva
+        Regime de Trabalho: 20 (vinte) horas semanais
+        Requisito Mínimo: Graduação em Ciências Sociais ou Sociologia; e
+        Mestrado em Ciências Sociais, Sociologia ou Educação.
+        Taxa de Inscrição: R$ 87,12
+        Forma de Seleção: Prova Didática e Prova de Títulos.
+        Área/subárea: Medicina/Clínica Médica
+        Nº de Vagas: 1
+        Regime de Trabalho: 40 (quarenta) horas semanais
+        """),
+        (18, """
+        Graduação em Medicina; e
+        Residência Médica em Clínica Médica.
+        Taxa de Inscrição: R$ 140,27
+        Forma de Seleção: Prova Didática e Prova de Títulos.
+        ANEXO II - LISTA DE PONTOS PARA A PROVA DIDÁTICA
+        Área: conteúdo programático que não pode virar vaga
+        """),
+    ]
+    found = extract_labelled_area_requirements(pages)
+    assert len(found) == 2
+    assert found[0]["area"] == "Metodologia e Prática de Ensino de Sociologia"
+    assert found[0]["graduation_requirement_raw"] == "Graduação em Ciências Sociais ou Sociologia"
+    assert found[0]["masters_requirement_raw"] == "Mestrado em Ciências Sociais, Sociologia ou Educação"
+    assert found[0]["department"] == "DEPARTAMENTO DE CIÊNCIAS SOCIAIS"
+    assert found[0]["reserve_only"] is True
+    assert found[1]["area"] == "Medicina/Clínica Médica"
+    assert found[1]["graduation_requirement_raw"] == "Graduação em Medicina"
+    assert found[1]["postgraduate_requirement_raw"] == "Residência Médica em Clínica Médica"
+    assert found[1]["page"] == 17
+    assert found[1]["vacancies_count"] == 1
+    assert found[1]["workload"] == "40 (quarenta) horas semanais"
     assert found[1]["requirements_complete"] is True
 
 
