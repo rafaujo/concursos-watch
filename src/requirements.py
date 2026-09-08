@@ -24,7 +24,7 @@ POSTGRADUATE_MARKER = re.compile(
     r"\bmestrado\b|\bdoutorado\b|\bt[ií]tulo\s+de\s+mestre\b|"
     r"\bt[ií]tulo\s+de\s+doutor\b|\bgrau\s+de\s+mestre\b|\bgrau\s+de\s+doutor\b|"
     r"\bp[oó]s[- ]doutorado\b|"
-    r"\bespecializa[cç][aã]o\b|\bresid[eê]ncia\s+m[eé]dica\b|"
+    r"\bespecializa[cç][aã]o\b|\bresid[eê]ncia(?:\s+m[eé]dica)?\b|"
     r"\bt[ií]tulo\s+de\s+especialista\b|\bp[oó]s[- ]gradua[cç][aã]o\b"
     r")",
     re.I,
@@ -64,6 +64,15 @@ NEXT_SUBJECT = re.compile(
     r"\s+(?:A\s+carga\s+hor[aá]ria|As\s+inscri[cç][oõ]es|A\s+remunera[cç][aã]o|"
     r"O\s+sal[aá]rio|O\s+prazo|O\s+vencimento|A\s+jornada|O\s+contrato|"
     r"A\s+prova|As\s+provas|O\s+edital\s+(?:est[aá]|pode)|A\s+sele[cç][aã]o\s+ser[aá])\b"
+)
+
+NON_ACADEMIC_BULLET = re.compile(
+    r"\s+(?:[,;:]\s*)?(?:e\s+)?[▪•]\s*"
+    r"(?!(?:gradua[cç][aã]o|licenciatura|bacharelado|curso\s+superior|"
+    r"forma[cç][aã]o\s+superior|mestrado|doutorado|especializa[cç][aã]o|"
+    r"resid[eê]ncia|t[ií]tulo\s+de\s+(?:mestre|doutor|especialista)|"
+    r"p[oó]s[- ]gradua[cç][aã]o)\b)",
+    re.I,
 )
 
 # A value that ends in a one or two letter fragment was cut mid-word by an
@@ -143,6 +152,9 @@ def split_academic_requirement(value: Any) -> dict[str, list[str]]:
             flags=re.I,
         ).strip(" .;,:")
         segment = _cut_at_next_subject(segment).strip(" .;,:")
+        bullet = NON_ACADEMIC_BULLET.search(segment)
+        if bullet:
+            segment = segment[:bullet.start()].strip(" .;,:")
         if not segment or looks_like_cargo_list(segment):
             continue
         if TRUNCATED_TAIL.search(segment) and len(segment.split()) > 1:
@@ -215,12 +227,14 @@ def extract_requirement_fields(text: Any) -> dict[str, str | None]:
 DEGREE = re.compile(
     r"\b(gradua[cç][aã]o|licenciatura|bacharelado|curso superior|forma[cç][aã]o superior|"
     r"especializa[cç][aã]o|p[oó]s[- ]?gradua[cç][aã]o|mestrado|doutorado|p[oó]s[- ]doutorado|"
-    r"resid[eê]ncia m[eé]dica|t[ií]tulo de mestre|t[ií]tulo de doutor|grau de mestre|grau de doutor)\b",
+    r"resid[eê]ncia(?: m[eé]dica)?|t[ií]tulo de mestre|t[ií]tulo de doutor|"
+    r"t[ií]tulo de especialista|grau de mestre|grau de doutor)\b",
     re.I,
 )
 CONNECTOR = re.compile(
     r"^\s*(?:plena|curta|completa|integral|lato\s+sensu|stricto\s+sensu|"
     r"com\s+habilita[cç][aã]o)?\s*"
+    r"(?:reconhecid[ao]\s+pelo\s+MEC\s+)?"
     r"(?:"
     r"(?:obtido(?:\s+ou\s+revalidado)?\s+)?em\s+"
     r"(?:programa\s+de\s+p[oó]s[- ]gradua[cç][aã]o|curso\s+de\s+doutorado)\s+"
@@ -232,7 +246,7 @@ CONNECTOR = re.compile(
     re.I,
 )
 STOP = re.compile(
-    r"\s+(?:com|conforme|desde que|sendo|obtido|reconhecid|expedid|na forma|nos termos|"
+    r"\s+(?:(?:e\s+)?[▪•]|com|conforme|desde que|sendo|obtido|reconhecid|expedid|na forma|nos termos|"
     r"h[aá]\s+\d|para\s+o\s+cargo|e\s+registro|R\$|\d{2}h\b|acompanhad|o\s+disposto|§|nos\s+termos|previst|conforme\s+o\s+art)",
     re.I,
 )
@@ -255,8 +269,9 @@ CANON = {
     "especializacao": "Especialização", "pos-graduacao": "Pós-graduação",
     "posgraduacao": "Pós-graduação", "pos graduacao": "Pós-graduação",
     "mestrado": "Mestrado", "doutorado": "Doutorado", "pos-doutorado": "Pós-doutorado",
-    "residencia medica": "Residência médica",
+    "residencia": "Residência", "residencia medica": "Residência médica",
     "titulo de mestre": "Mestrado", "titulo de doutor": "Doutorado",
+    "titulo de especialista": "Título de especialista",
     "grau de mestre": "Mestrado", "grau de doutor": "Doutorado",
 }
 
