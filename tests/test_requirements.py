@@ -2,6 +2,19 @@ from src.parser import extract_requirement_sentences
 from src.requirements import condense_requirement, graduation_for_display, split_academic_requirement
 
 
+def test_livre_docencia_is_kept_as_an_advanced_academic_requirement():
+    parts = split_academic_requirement(
+        "Requisito: título de Livre-Docente outorgado pela USP ou por ela reconhecido"
+    )
+    assert parts["graduation"] == []
+    assert parts["postgraduate"] == [
+        "título de Livre-Docente outorgado pela USP ou por ela reconhecido"
+    ]
+    assert condense_requirement(parts["postgraduate"][0]) == (
+        "Título de Livre-Docente outorgado pela USP ou por ela reconhecido"
+    )
+
+
 def test_program_name_is_not_an_undergraduate_requirement():
     result = extract_requirement_sentences(
         "Professor Visitante no Programa de Pós-Graduação em Engenharia Civil e Ambiental. "

@@ -15,12 +15,22 @@ from src.official import (
     extract_structured_html_opportunities,
     extract_structured_opportunities,
     is_excluded_link,
+    is_usp_portal_vacancy,
     edital_numbers_for_display,
     known_edital_numbers,
     OfficialDocumentReader,
     score_candidate_link,
+    score_usp_portal_row,
     should_check_official,
+    validated_registration_period,
 )
+
+
+def test_contradictory_official_registration_period_is_discarded():
+    assert validated_registration_period("2026-09-09", "2026-09-02") == (None, None)
+    assert validated_registration_period("2026-09-02", "2026-09-09") == (
+        "2026-09-02", "2026-09-09"
+    )
 
 
 def test_official_html_requirements_table_becomes_independent_opportunities():
@@ -45,6 +55,49 @@ def test_official_html_requirements_table_becomes_independent_opportunities():
     assert found[0]["requirements_complete"] is True
     assert found[1]["graduation_requirement_raw"] == "Graduacao em Medicina"
     assert found[1]["vacancies_count"] == 2
+
+
+def test_official_html_requirement_cards_become_independent_opportunities():
+    html = b"""
+    <html><head><title>Edital EBTT - Direito e Letras</title></head><body>
+      <div class="list-group">
+        <div class="list-group-item"><div class="row"><div class="col">
+          <p><span>Direito Civil / Direito Processual Civil</span></p>
+          <div class="alert">Observacoes: dedicacao exclusiva</div>
+          <div class="alert"><div class="field-label">Requisitos:</div>
+            Graduacao em Direito (Bacharelado)
+          </div>
+          <div class="alert"><strong>Remuneracao:</strong> R$ 6.180,86</div>
+        </div></div></div>
+        <div class="list-group-item"><div class="row"><div class="col">
+          <p><span>Lingua Portuguesa / Libras</span></p>
+          <div class="alert"><strong>Requisitos:</strong>
+            Licenciatura em Letras com certificado ProLibras
+          </div>
+          <div class="alert"><strong>Remuneracao:</strong> R$ 6.180,86</div>
+        </div></div></div>
+      </div>
+    </body></html>
+    """
+    found = extract_structured_html_opportunities(html)
+    assert len(found) == 2
+    assert found[0]["area"] == "Direito Civil / Direito Processual Civil"
+    assert found[0]["graduation_requirement_raw"] == "Graduacao em Direito (Bacharelado)"
+    assert found[0]["postgraduate_requirement_raw"] is None
+    assert found[0]["requirements_complete"] is True
+    assert found[1]["area"] == "Lingua Portuguesa / Libras"
+    assert "Licenciatura em Letras" in found[1]["graduation_requirement_raw"]
+
+
+def test_requirement_label_in_unrelated_prose_does_not_create_a_vacancy():
+    html = b"""
+    <html><head><title>Portal institucional</title></head><body>
+      <article><h2>Como solicitar acesso</h2>
+        <p><strong>Requisitos:</strong> apresentar documento de identidade e comprovante.</p>
+      </article>
+    </body></html>
+    """
+    assert extract_structured_html_opportunities(html) == []
 
 
 def test_numbered_annex_rows_become_independent_opportunities():
@@ -147,6 +200,26 @@ def test_multi_area_edital_without_context_stays_ambiguous():
     )
     assert result["applicable"] is False
     assert result["confidence"] == "AMBIGUOUS"
+
+
+def test_navigation_degree_labels_are_not_requirement_evidence():
+    result = extract_requirement_evidence(
+        [(1, "Graduação Pós-graduação Cursos on-line Pesquisa e inovação Bibliotecas Cultura e extensão")],
+        {"area": "Sistemas de Computação", "title": "Professor de Sistemas de Computação"},
+        allow_unscoped=True,
+    )
+    assert result["applicable"] is False
+    assert result["confidence"] == "NONE"
+
+
+def test_course_description_is_not_a_graduation_requirement():
+    result = extract_requirement_evidence(
+        [(1, "A contratação contribuirá com disciplinas do curso de licenciatura em Pedagogia.")],
+        {"area": "Educação Especial", "title": "Professor Doutor"},
+        allow_unscoped=True,
+    )
+    assert result["applicable"] is False
+    assert result["confidence"] == "NONE"
 
 
 def test_aggregated_pci_card_never_combines_many_official_requirements():
@@ -254,6 +327,20 @@ def test_document_relevance_accepts_matching_teaching_area():
     assert "gestao" in reason.lower()
 
 
+def test_known_edital_number_must_appear_in_candidate_document():
+    relevant, reason = assess_document_relevance(
+        [(1, "Portal de concursos para professores. Área: Políticas Públicas e Educação Especial.")],
+        {
+            "area": "Políticas Públicas e Educação Especial",
+            "title": "Professor Doutor na Faculdade de Educação",
+            "official_pci_protected_documents": [{"label": "EDITAL Nº 36/2026"}],
+        },
+        "https://universidade.example/",
+    )
+    assert relevant is False
+    assert "identificador" in reason
+
+
 def test_candidate_links_prioritize_edital_pdf_and_ignore_results():
     html = '''<html><body>
       <a href="/docs/edital-professor-gestao-ambiental.pdf">Edital Professor Gestão Ambiental</a>
@@ -269,6 +356,36 @@ def test_candidate_links_prioritize_edital_pdf_and_ignore_results():
     assert all("contato" not in item["url"] for item in links)
     assert all("twitter.com" not in item["url"] for item in links)
     assert all("formulario-de-recurso" not in item["url"] for item in links)
+
+
+def test_candidate_link_uses_bounded_card_context_to_match_edital_number():
+    html = b'''<html><body>
+      <div class="card"><div class="row align-items-center">
+        <div><h3>Concurso Publico - 600/2026</h3></div>
+        <div><a href="/edital/ver/164">Mais detalhes</a></div>
+      </div></div>
+      <div class="card"><div class="row align-items-center">
+        <div><h3>Concurso Publico - 607/2026</h3></div>
+        <div><a href="/edital/ver/165">Mais detalhes</a></div>
+      </div></div>
+    </body></html>'''
+    vacancy = {
+        "title": "IFMG abre concurso para professores",
+        "area": "Nao identificada",
+        "official_pci_protected_documents": [{"label": "EDITAL N 607/2026"}],
+    }
+    links = extract_candidate_links(html, "https://portal.example/edital", vacancy)
+    assert links[0]["url"] == "https://portal.example/edital/ver/165"
+    assert links[0]["score"] >= links[1]["score"] + 100
+
+
+def test_protected_edital_serial_inherits_notice_year():
+    vacancy = {
+        "publication_date": "2026-08-20",
+        "official_pci_protected_documents": [{"label": "EDITAL Nº 607"}],
+    }
+    assert known_edital_numbers(vacancy) == {"607/26"}
+    assert edital_numbers_for_display(vacancy) == ["607/2026"]
 
 
 def test_pci_candidate_links_use_article_context_and_ignore_recommendations():
@@ -322,6 +439,36 @@ def test_official_cache_ttl_depends_on_status():
     assert should_check_official({**current, "checked_at": "2026-08-20", "status": "AMBIGUOUS"}, today)
     assert should_check_official({**current, "checked_at": "2026-08-20", "status": "ERROR"}, today)
     assert should_check_official({"reader_version": config.OFFICIAL_READER_VERSION - 1, "checked_at": "2026-08-20", "status": "READ"}, today)
+
+
+def test_usp_portal_row_matches_number_and_unit_context():
+    vacancy = {
+        "institution": "USP - Universidade de São Paulo",
+        "title": "Professor Doutor na Faculdade de Educação",
+        "area": "Políticas Públicas e Educação Especial",
+        "registration_end": "2026-10-13",
+        "official_pci_protected_documents": [{"label": "EDITAL Nº 36/2026"}],
+    }
+    right = {
+        "numediccu": "036-2026", "nomset": "Administração Escolar e Economia da Educação",
+        "nomund": "Faculdade de Educação",
+        "inscricao": "De: 14/08/2026 Até 13/10/2026",
+    }
+    wrong = {**right, "numediccu": "035-2026"}
+    assert is_usp_portal_vacancy(vacancy) is True
+    assert score_usp_portal_row(right, vacancy) >= 250
+    assert score_usp_portal_row(wrong, vacancy) == -1
+
+
+def test_dwr_callback_parser_reads_public_portal_objects_and_download_path():
+    objects = '''dwr.engine.remote.handleCallback("1","0",[
+      {numseqpam:"3800",numediccu:"036-2026",nomund:"Faculdade de Educa\\u00E7\\u00E3o",inscrito:null}
+    ]);\n})();'''
+    rows = OfficialDocumentReader._parse_dwr_callback(objects)
+    assert rows[0]["numseqpam"] == "3800"
+    assert rows[0]["nomund"] == "Faculdade de Educação"
+    path = "dwr.engine.remote.handleCallback(\"2\",\"0\",'/gr/dwr/download/abc123');\n})();"
+    assert OfficialDocumentReader._parse_dwr_callback(path) == "/gr/dwr/download/abc123"
 
 
 class TestIncompleteTlsChain:

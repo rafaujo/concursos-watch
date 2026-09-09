@@ -350,6 +350,17 @@ class TestOfficialRequirementInheritance:
         assert graduation == "Não consta como requisito mínimo"
         assert post == "Doutorado em Administração"
 
+    def test_complete_single_official_row_also_distinguishes_absent_from_unknown(self):
+        row = {
+            "requirements_complete": True,
+            "requirements_source": "OFFICIAL_PDF_PORTAL",
+            "requirement_text": "Título de Doutor em Educação",
+            "doctorate_requirement_raw": "Título de Doutor em Educação",
+        }
+        graduation, post = _structured_requirements(row)
+        assert graduation == "Não consta como requisito mínimo"
+        assert post == "Doutorado em Educação"
+
 
 class TestAreaListNotices:
     """Notices that list teaching areas instead of cargos.
