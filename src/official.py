@@ -9,8 +9,11 @@ from __future__ import annotations
 
 import hashlib
 import ipaddress
+import ast
+import json
 import logging
 import re
+import secrets
 import socket
 import time
 import heapq
@@ -20,7 +23,7 @@ import unicodedata
 from datetime import date, datetime
 from io import BytesIO
 from typing import Any, Iterable, Mapping
-from urllib.parse import urljoin, urlsplit, urlunsplit
+from urllib.parse import quote, urljoin, urlsplit, urlunsplit
 
 import requests
 from bs4 import BeautifulSoup
@@ -65,6 +68,24 @@ OFFICIAL_SEED_OVERRIDES = {
 
 class OfficialReadError(RuntimeError):
     pass
+
+
+def validated_registration_period(
+    registration_start: str | None, registration_end: str | None,
+) -> tuple[str | None, str | None]:
+    """Discard contradictory dates instead of replacing trusted PCI dates.
+
+    Institution pages often mix registration dates with publication and event
+    dates. A plausible-looking pair in reverse order is ambiguity, not a new
+    registration period.
+    """
+    if registration_start and registration_end:
+        try:
+            if date.fromisoformat(registration_end) < date.fromisoformat(registration_start):
+                return None, None
+        except ValueError:
+            return None, None
+    return registration_start, registration_end
 
 
 def canonical_url(url: str, base_url: str | None = None) -> str:
@@ -132,7 +153,7 @@ def assess_document_relevance(
         "selecao publica", "teste seletivo", "chamada publica",
     )
     teaching_markers = (
-        "professor", "professora", "docente", "magisterio", "regente de classe",
+        "professor", "professora", "docente", "magisterio", "regente de classe", "ebtt",
     )
     if not any(marker in text for marker in selection_markers):
         return False, "O documento não é um edital ou aviso de seleção."
@@ -146,12 +167,19 @@ def assess_document_relevance(
     shared = identifiers & document_identifiers
     if shared:
         return True, f"Número do edital coincide com o anunciado no PCI: {', '.join(sorted(shared))}."
+    if identifiers:
+        return False, (
+            "O anúncio informa o número do edital, mas esse identificador não "
+            "aparece no documento candidato."
+        )
 
     area = normalize_text(str(vacancy.get("area") or ""))
     if area and area != "nao identificada":
         area_tokens = _tokens(area)
         overlap = sorted(token for token in area_tokens if token in text)
-        if overlap:
+        exact_area = len(area) >= 6 and area in text
+        minimum_overlap = 1 if len(area_tokens) == 1 else 2
+        if exact_area or len(overlap) >= minimum_overlap:
             return True, f"Documento docente associado à área por: {', '.join(overlap[:5])}."
         return False, "O documento docente não menciona a área identificada no anúncio."
 
@@ -183,6 +211,14 @@ EDITAL_IDENTIFIER = re.compile(
 LOOSE_IDENTIFIER = re.compile(r"(\d{1,5})\s*[/.-]\s*(\d{2,4})")
 
 
+def _vacancy_year(vacancy: Mapping[str, Any]) -> str | None:
+    for key in ("publication_date", "registration_start", "registration_end", "first_seen"):
+        match = re.match(r"(20\d{2})", str(vacancy.get(key) or ""))
+        if match:
+            return match.group(1)
+    return None
+
+
 def known_edital_numbers(vacancy: Mapping[str, Any]) -> set[str]:
     """Edital numbers we can state for this vacancy.
 
@@ -200,6 +236,18 @@ def known_edital_numbers(vacancy: Mapping[str, Any]) -> set[str]:
     prose = " ".join(str(vacancy.get(key) or "") for key in ("title", "raw_text", "description"))
     for match in LOOSE_IDENTIFIER.finditer(labels):
         numbers.add(f"{int(match.group(1))}/{match.group(2)[-2:]}")
+    inferred_year = _vacancy_year(vacancy)
+    if inferred_year:
+        for item in (vacancy.get("official_pci_protected_documents") or []):
+            label = str(item.get("label") or "")
+            if LOOSE_IDENTIFIER.search(label):
+                continue
+            serials = [
+                int(value) for value in re.findall(r"\b\d{1,5}\b", label)
+                if not (1900 <= int(value) <= 2100)
+            ]
+            if serials:
+                numbers.add(f"{serials[-1]}/{inferred_year[-2:]}")
     for match in EDITAL_IDENTIFIER.finditer(prose):
         loose = LOOSE_IDENTIFIER.search(match.group(1))
         if loose:
@@ -226,6 +274,14 @@ def edital_numbers_for_display(vacancy: Mapping[str, Any]) -> list[str]:
             year = year if len(year) == 4 else f"20{year}"
             key = f"{int(match.group(1))}/{year[-2:]}"
             shown.setdefault(key, f"{match.group(1)}/{year}")
+    inferred_year = _vacancy_year(vacancy)
+    if inferred_year and not shown:
+        serials = [
+            int(value) for value in re.findall(r"\b\d{1,5}\b", labels)
+            if not (1900 <= int(value) <= 2100)
+        ]
+        if serials:
+            shown[f"{serials[-1]}/{inferred_year[-2:]}"] = f"{serials[-1]}/{inferred_year}"
     return sorted(shown.values())
 
 
@@ -244,9 +300,51 @@ def _requirement_kinds(text: str) -> list[str]:
     return kinds
 
 
+ACADEMIC_REQUIREMENT_PHRASE = re.compile(
+    r"\b(?:graduacao|licenciatura|bacharelado|curso superior|formacao superior|"
+    r"especializacao|pos[- ]?graduacao|mestrado|doutorado|residencia(?: medica)?)"
+    r"(?:\s+(?:plena|completa|em|na area de|nas areas de|de|do|da))\b|"
+    r"\b(?:titulo|grau) de (?:mestre|doutor|especialista|livre[- ]docente)\b|"
+    r"\blivre[- ]docencia\b"
+)
+ACADEMIC_REQUIREMENT_CUE = re.compile(
+    r"\b(?:requisitos?|escolaridade|formacao exigida|titulacao minima|"
+    r"exige-se|exigido|devera possuir|deve possuir|possuir|portador|"
+    r"prova de que possui|para o cargo)\b"
+)
+ACADEMIC_REQUIREMENT_START = re.compile(
+    r"^(?:\W|\d+[.)-])*\s*(?:graduacao|licenciatura|bacharelado|curso superior|"
+    r"formacao superior|especializacao|pos[- ]?graduacao|mestrado|doutorado|"
+    r"residencia(?: medica)?|titulo de (?:mestre|doutor|especialista|livre[- ]docente)|"
+    r"livre[- ]docencia|"
+    r"grau de (?:mestre|doutor))\b"
+)
+
+
+def _looks_like_academic_requirement(text: str) -> bool:
+    """Distinguish a requirement from menus and descriptive academic prose."""
+    normalized = normalize_text(text)
+    if not _requirement_kinds(text):
+        return False
+    if ACADEMIC_REQUIREMENT_CUE.search(normalized):
+        return True
+    if len(normalized) > 600:
+        return False
+    if (
+        ACADEMIC_REQUIREMENT_START.search(normalized)
+        and ACADEMIC_REQUIREMENT_PHRASE.search(normalized)
+    ):
+        return True
+    # Compact rows may put the cargo before its qualification.
+    return bool(
+        re.search(r"\b(?:professor|docente|cargo)\b", normalized)
+        and ACADEMIC_REQUIREMENT_PHRASE.search(normalized)
+    )
+
+
 def _page_segments(text: str) -> list[str]:
     lines = [clean_text(line) for line in text.splitlines() if clean_text(line)]
-    if len(lines) < 4:
+    if len(lines) < 2:
         lines = [clean_text(item) for item in re.split(r"(?<=[.;:])\s+", clean_text(text)) if clean_text(item)]
     return lines
 
@@ -264,9 +362,9 @@ def extract_requirement_evidence(
     for page_number, page_text in pages:
         lines = _page_segments(page_text)
         for index, line in enumerate(lines):
-            kinds = _requirement_kinds(line)
-            if not kinds:
+            if not _looks_like_academic_requirement(line):
                 continue
+            kinds = _requirement_kinds(line)
             start, end = max(0, index - 2), min(len(lines), index + 3)
             excerpt = clean_text(" ".join(lines[start:end]))[:1400]
             key = normalize_text(excerpt)
@@ -625,6 +723,117 @@ def extract_numbered_requirements_table(pages: Iterable[tuple[int, str]]) -> lis
     return list(unique.values())
 
 
+HTML_ACADEMIC_REQUIREMENT = re.compile(
+    r"\b(?:graduacao|licenciatura|bacharelado|curso superior|formacao superior|"
+    r"especializacao|pos[- ]?graduacao|mestrado|doutorado|residencia(?: medica)?|"
+    r"titulo de (?:mestre|doutor|especialista|livre[- ]docente)|"
+    r"livre[- ]docencia|grau de (?:mestre|doutor))\b"
+)
+HTML_REQUIREMENT_LABEL = re.compile(
+    r"^(?:requisitos?|requisitos? minimos?|escolaridade|titulacao minima|formacao exigida)\s*:?$"
+)
+HTML_DETAIL_LABEL = re.compile(
+    r"\b(?:observacoes?|remuneracao|salario|vencimento|jornada|carga horaria|"
+    r"regime de trabalho|numero de vagas|n[ºo] de vagas|inscricoes?)\s*:"
+)
+
+
+def _html_requirement_markers(node: Any) -> list[Any]:
+    markers: list[Any] = []
+    seen: set[int] = set()
+    for value in node.find_all(string=True):
+        if not HTML_REQUIREMENT_LABEL.fullmatch(normalize_text(clean_text(value))):
+            continue
+        tag = value.parent
+        if id(tag) not in seen:
+            markers.append(tag)
+            seen.add(id(tag))
+    return markers
+
+
+def _extract_labelled_html_opportunities(soup: BeautifulSoup) -> list[dict[str, Any]]:
+    """Read repeated vacancy cards whose fields are identified by labels.
+
+    Public-sector portals frequently render each vacancy as a Bootstrap card
+    instead of a table.  The parser relies on semantic labels and academic
+    degree language, not CSS classes or an institution-specific URL.
+    """
+    page_context = normalize_text(clean_text(soup.get_text(" ", strip=True))[:8000])
+    if not re.search(r"\b(?:professor|docente|magisterio|ebtt)\b", page_context):
+        return []
+
+    opportunities: list[dict[str, Any]] = []
+    for marker in _html_requirement_markers(soup):
+        requirement_container = marker.parent
+        while requirement_container and requirement_container.name not in ("body", "html"):
+            container_text = clean_text(requirement_container.get_text(" ", strip=True))
+            if HTML_ACADEMIC_REQUIREMENT.search(normalize_text(container_text)):
+                break
+            requirement_container = requirement_container.parent
+        if not requirement_container or requirement_container.name in ("body", "html"):
+            continue
+
+        requirement_text = clean_text(requirement_container.get_text(" ", strip=True))
+        requirement_text = re.sub(
+            r"^(?:Requisitos?|Requisitos? mínimos?|Escolaridade|Titulação mínima|Formação exigida)\s*:\s*",
+            "", requirement_text, flags=re.I,
+        ).strip(" .;:-–")
+        detail_stop = HTML_DETAIL_LABEL.search(normalize_text(requirement_text))
+        if detail_stop:
+            requirement_text = requirement_text[:detail_stop.start()].strip(" .;:-–")
+        if not HTML_ACADEMIC_REQUIREMENT.search(normalize_text(requirement_text)):
+            continue
+
+        # Grow only while this remains a single-vacancy block.  The next
+        # ancestor normally contains the complete card; an archive/list parent
+        # contains several requirement labels and is deliberately excluded.
+        block = requirement_container
+        ancestor = block.parent
+        while ancestor and ancestor.name not in ("body", "html"):
+            ancestor_text = clean_text(ancestor.get_text(" ", strip=True))
+            if len(ancestor_text) > 5000 or len(_html_requirement_markers(ancestor)) != 1:
+                break
+            block = ancestor
+            ancestor = ancestor.parent
+
+        area = ""
+        for candidate in block.select("h1, h2, h3, h4, h5, h6, p, dt"):
+            if candidate is requirement_container or requirement_container in candidate.parents:
+                continue
+            # Only headings physically before the requirement belong to it.
+            if marker not in list(candidate.find_all_next()):
+                continue
+            value = clean_text(candidate.get_text(" ", strip=True)).strip(" .;:-–")
+            normalized = normalize_text(value)
+            if not (2 <= len(value) <= 350):
+                continue
+            if HTML_REQUIREMENT_LABEL.fullmatch(normalized) or HTML_DETAIL_LABEL.search(normalized):
+                continue
+            if HTML_ACADEMIC_REQUIREMENT.search(normalized):
+                continue
+            area = value
+            break
+        if not area:
+            continue
+
+        requirements = extract_requirement_fields(f"Requisitos: {requirement_text}")
+        if not any(requirements.values()):
+            continue
+        opportunities.append({
+            "area": area,
+            "requirement_text": requirement_text,
+            "graduation_requirement_raw": requirements["graduation_requirement"],
+            "postgraduate_requirement_raw": requirements["postgraduate_requirement"],
+            "masters_requirement_raw": requirements["masters_requirement"],
+            "doctorate_requirement_raw": requirements["doctorate_requirement"],
+            "reference": None,
+            "campus": None,
+            "vacancies_count": None,
+            "requirements_complete": True,
+        })
+    return opportunities
+
+
 def extract_structured_html_opportunities(html_bytes: bytes) -> list[dict[str, Any]]:
     """Read one row per vacancy from a labelled requirements table.
 
@@ -635,7 +844,7 @@ def extract_structured_html_opportunities(html_bytes: bytes) -> list[dict[str, A
     and campus; that documented shape is handled explicitly here.
     """
     soup = BeautifulSoup(html_bytes, "html.parser")
-    opportunities: list[dict[str, Any]] = []
+    opportunities: list[dict[str, Any]] = _extract_labelled_html_opportunities(soup)
     for table in soup.select("table"):
         rows = table.find_all("tr", recursive=False)
         if not rows:
@@ -733,6 +942,57 @@ def is_ufscar_portal_vacancy(vacancy: Mapping[str, Any]) -> bool:
     return "ufscar" in context or "universidade federal de sao carlos" in context
 
 
+def is_usp_portal_vacancy(vacancy: Mapping[str, Any]) -> bool:
+    context = normalize_text(" ".join(str(vacancy.get(field) or "") for field in (
+        "institution", "title", "official_url", "institution_url",
+    )))
+    return bool(
+        re.search(r"\busp\b", context)
+        or "universidade de sao paulo" in context
+        or "uspdigital.usp.br" in context
+    )
+
+
+def score_usp_portal_row(row: Mapping[str, Any], vacancy: Mapping[str, Any]) -> int:
+    """Match a PCI notice to USP Digital without assuming a specific unit."""
+    row_number = normalize_text(str(row.get("numediccu") or ""))
+    row_ids = {
+        f"{int(match.group(1))}/{match.group(2)[-2:]}"
+        for match in LOOSE_IDENTIFIER.finditer(row_number)
+    }
+    expected = known_edital_numbers(vacancy)
+    if expected and not (expected & row_ids):
+        return -1
+    score = 220 if expected & row_ids else 0
+
+    labels = " ".join(
+        str(item.get("label") or "")
+        for item in (vacancy.get("official_pci_protected_documents") or [])
+    )
+    row_match = LOOSE_IDENTIFIER.search(row_number)
+    if row_match:
+        row_serial = int(row_match.group(1))
+        label_serials = {
+            int(value) for value in re.findall(r"\b\d{1,4}\b", labels)
+            if not (1900 <= int(value) <= 2100)
+        }
+        if row_serial in label_serials:
+            score += 90
+
+    row_context = normalize_text(" ".join(str(row.get(field) or "") for field in (
+        "nomset", "nomund", "dsccladctpam", "sglund",
+    )))
+    context = vacancy_context_tokens(vacancy) | _tokens(str(vacancy.get("title") or ""))
+    score += min(80, 10 * sum(token in row_context for token in context))
+    for field in ("registration_start", "registration_end"):
+        value = str(vacancy.get(field) or "")
+        if re.fullmatch(r"\d{4}-\d{2}-\d{2}", value):
+            year, month, day = value.split("-")
+            if f"{day}/{month}/{year}" in str(row.get("inscricao") or ""):
+                score += 35
+    return score
+
+
 def score_candidate_link(label: str, url: str, vacancy: Mapping[str, Any]) -> int:
     normalized_label = normalize_text(label)
     normalized_url = normalize_text(url)
@@ -802,6 +1062,32 @@ def is_excluded_link(url: str, base_host: str = "") -> bool:
     return False
 
 
+def _candidate_link_context(anchor: Any, label: str) -> str:
+    """Return the closest bounded card/row text surrounding a generic link.
+
+    Portals commonly label every archive link ``Mais detalhes`` and put the
+    edital number in a sibling column.  Looking only at ``p``/``li`` loses the
+    identifier; walking bounded ancestors preserves it without absorbing an
+    entire page of unrelated selection numbers.
+    """
+    context = label
+    for ancestor in anchor.parents:
+        if getattr(ancestor, "name", None) in ("body", "html"):
+            break
+        if getattr(ancestor, "name", None) not in ("p", "li", "tr", "div", "article", "section"):
+            continue
+        value = clean_text(ancestor.get_text(" ", strip=True))
+        if len(value) > 900:
+            break
+        if len(value) > len(context):
+            context = value
+        # A compact row/card carrying an edital identifier is sufficient and
+        # avoids climbing into a wrapper that also contains older notices.
+        if LOOSE_IDENTIFIER.search(normalize_text(value)):
+            break
+    return context[:900]
+
+
 def extract_candidate_links(html_bytes: bytes, base_url: str, vacancy: Mapping[str, Any]) -> list[dict[str, Any]]:
     soup = BeautifulSoup(html_bytes, "html.parser")
     candidates: dict[str, dict[str, Any]] = {}
@@ -823,8 +1109,7 @@ def extract_candidate_links(html_bytes: bytes, base_url: str, vacancy: Mapping[s
         if is_excluded_link(url, base_host):
             continue
         label = clean_text(" ".join((anchor.get_text(" ", strip=True), anchor.get("title", ""))))
-        context_node = anchor.find_parent(("p", "li"))
-        context = clean_text(context_node.get_text(" ", strip=True) if context_node else label)[:500]
+        context = _candidate_link_context(anchor, label)
         score = score_candidate_link(f"{label} {context}", url, vacancy)
         if score < 20:
             continue
@@ -864,6 +1149,10 @@ class OfficialDocumentReader:
         self.session = session
         self.delay = config.OFFICIAL_REQUEST_DELAY_SECONDS if delay is None else delay
         self._last_request_at = 0.0
+        self._usp_dwr_session_id: str | None = None
+        self._usp_dwr_page_id = f"{int(time.time() * 1000):x}-{secrets.token_hex(10)}"
+        self._usp_dwr_batch_id = 0
+        self._usp_portal_rows: list[dict[str, Any]] | None = None
 
     def _request(self, url: str) -> tuple[requests.Response, bool]:
         """Fetch with verification; retry unverified only for a missing intermediate.
@@ -954,6 +1243,252 @@ class OfficialDocumentReader:
             raise OfficialReadError("Documento oficial vazio")
         return data, response.url, response.headers.get("Content-Type", "").lower()
 
+    @staticmethod
+    def _parse_dwr_callback(text: str) -> Any:
+        match = re.search(
+            r"handleCallback\([^,]+,[^,]+,(.*?)\);\s*\}\)\(\);",
+            text, re.S,
+        )
+        if not match:
+            error = re.search(r"message:\s*\"([^\"]+)\"", text)
+            raise OfficialReadError(
+                f"Portal USP Digital recusou a consulta: {error.group(1) if error else 'resposta inesperada'}"
+            )
+        payload = match.group(1).strip()
+        if payload.startswith(("'", '"')):
+            return ast.literal_eval(payload)
+        json_payload = re.sub(
+            r"([\{,])([A-Za-z_$][A-Za-z0-9_$]*):",
+            r'\1"\2":', payload,
+        )
+        return json.loads(json_payload)
+
+    def _usp_dwr_post(self, endpoint: str, lines: list[str]) -> Any:
+        url = f"https://uspdigital.usp.br/gr/dwr/call/plaincall/{endpoint}.dwr"
+        if not is_public_http_url(url):
+            raise OfficialReadError("Endpoint USP Digital recusado por validação de segurança")
+        elapsed = time.monotonic() - self._last_request_at
+        if self._last_request_at and elapsed < self.delay:
+            time.sleep(self.delay - elapsed)
+        response = self.session.post(
+            url,
+            data=("\n".join(lines) + "\n").encode("utf-8"),
+            headers={
+                "Content-Type": "text/plain",
+                "Origin": "https://uspdigital.usp.br",
+                "Referer": "https://uspdigital.usp.br/gr/admissao",
+            },
+            timeout=config.REQUEST_TIMEOUT_SECONDS,
+        )
+        self._last_request_at = time.monotonic()
+        response.raise_for_status()
+        if len(response.content) > config.OFFICIAL_MAX_DOCUMENT_BYTES:
+            raise OfficialReadError("Resposta do portal USP excede o limite configurado")
+        return self._parse_dwr_callback(response.text)
+
+    def _ensure_usp_dwr_session(self) -> None:
+        if self._usp_dwr_session_id:
+            return
+        # The public page establishes the application session. DWR then asks
+        # its own public __System endpoint for the anti-CSRF session id.
+        self._fetch("https://uspdigital.usp.br/gr/admissao")
+        self._usp_dwr_batch_id += 1
+        dwr_id = self._usp_dwr_post("__System.generateId", [
+            "callCount=1", "page=%2Fgr%2Fadmissao", "scriptSessionId=",
+            "instanceId=0", "c0-scriptName=__System",
+            "c0-methodName=generateId", "c0-id=0",
+            f"batchId={self._usp_dwr_batch_id}",
+        ])
+        if not isinstance(dwr_id, str) or len(dwr_id) < 20:
+            raise OfficialReadError("USP Digital não forneceu uma sessão pública válida")
+        self._usp_dwr_session_id = dwr_id
+        self.session.cookies.set(
+            "DWRSESSIONID", dwr_id, domain="uspdigital.usp.br", path="/gr"
+        )
+
+    def _usp_dwr_call(self, verb: str, remote_method: str, param: Mapping[str, Any]) -> Any:
+        self._ensure_usp_dwr_session()
+        self._usp_dwr_batch_id += 1
+        lines = [
+            "callCount=1", "page=%2Fgr%2Fadmissao",
+            f"scriptSessionId={self._usp_dwr_session_id}/{self._usp_dwr_page_id}",
+            "instanceId=0", "c0-scriptName=ControlePublicoDWR",
+            f"c0-methodName={verb}", "c0-id=0",
+            f"c0-param0=string:{quote(remote_method, safe='')}",
+        ]
+        references: list[str] = []
+        for index, (key, value) in enumerate(param.items(), start=1):
+            encoded = "null:null" if value is None else f"string:{quote(str(value), safe='')}"
+            lines.append(f"c0-e{index}={encoded}")
+            references.append(f"{quote(str(key), safe='')}:reference:c0-e{index}")
+        object_index = len(param) + 1
+        lines.append(f"c0-e{object_index}=Object_Object:{{{', '.join(references)}}}")
+        lines.append(f"c0-param1=reference:c0-e{object_index}")
+        if verb == "listar":
+            lines.append("c0-param2=Array:[]")
+        lines.append(f"batchId={self._usp_dwr_batch_id}")
+        return self._usp_dwr_post(f"ControlePublicoDWR.{verb}", lines)
+
+    def _usp_rows(self) -> list[dict[str, Any]]:
+        if self._usp_portal_rows is not None:
+            return self._usp_portal_rows
+        rows: dict[str, dict[str, Any]] = {}
+        # Active and recently transitioned selections cover PCI's current
+        # teaching feed. Concluded remains last because it is the largest set.
+        for status in ("I", "B", "A", "T", "F"):
+            found = self._usp_dwr_call("listar", "pubListarPADCONCURSODOCENTE", {
+                "sitcon": status, "cladctpam": None, "codund": None,
+            })
+            if not isinstance(found, list):
+                continue
+            for row in found:
+                if isinstance(row, dict):
+                    key = "|".join(str(row.get(field) or "") for field in (
+                        "codmdupam", "cladctpam", "numseqpam",
+                    ))
+                    rows[key] = row
+        self._usp_portal_rows = list(rows.values())
+        return self._usp_portal_rows
+
+    def _read_usp(self, vacancy: Mapping[str, Any], checked_at: datetime) -> dict[str, Any] | None:
+        scored = sorted(
+            (
+                (score_usp_portal_row(row, vacancy), row)
+                for row in self._usp_rows()
+            ),
+            key=lambda item: item[0], reverse=True,
+        )
+        matches = [row for score, row in scored if score >= 90]
+        expected = known_edital_numbers(vacancy)
+        if expected:
+            matches = [
+                row for row in matches
+                if expected & {
+                    f"{int(item.group(1))}/{item.group(2)[-2:]}"
+                    for item in LOOSE_IDENTIFIER.finditer(str(row.get("numediccu") or ""))
+                }
+            ]
+        # One PCI story can aggregate several editais. Keep one portal row per
+        # matching edital, but never let a fuzzy match fan out indiscriminately.
+        matches = matches[: max(1, min(8, len(expected) or 1))]
+        if not matches:
+            return None
+
+        documents: list[dict[str, Any]] = []
+        opportunities: list[dict[str, Any]] = []
+        best_single: dict[str, Any] | None = None
+        portal_url = "https://uspdigital.usp.br/gr/admissao"
+        for row in matches:
+            publications = self._usp_dwr_call(
+                "listar", "pubListarConcursoPublicacoes", row
+            )
+            if not isinstance(publications, list):
+                continue
+            publications = sorted(
+                (item for item in publications if isinstance(item, dict)),
+                key=lambda item: (
+                    "retificacao" in normalize_text(str(item.get("dsctiparqpam") or "")),
+                    "ingles" in normalize_text(str(item.get("dsctiparqpam") or "")),
+                ),
+            )[:4]
+            row_best: dict[str, Any] | None = None
+            for publication in publications:
+                label = normalize_text(str(publication.get("dsctiparqpam") or ""))
+                if "ingles" in label:
+                    continue
+                download_path = self._usp_dwr_call(
+                    "obterPdf", "pubObterPADCONCURSOARQUIVO", publication
+                )
+                if not isinstance(download_path, str) or not download_path.startswith("/gr/dwr/download/"):
+                    continue
+                data, _, content_type, tls_unverified = self._fetch(
+                    urljoin("https://uspdigital.usp.br", download_path)
+                )
+                if not data.startswith(b"%PDF-") and "application/pdf" not in content_type:
+                    continue
+                pages, metadata = self._extract_pdf_pages(data)
+                row_vacancy = {**vacancy, "area": row.get("nomset") or vacancy.get("area")}
+                relevant, relevance_reason = assess_document_relevance(
+                    pages, row_vacancy, portal_url
+                )
+                evidence = extract_requirement_evidence(
+                    pages, row_vacancy, allow_unscoped=True
+                ) if relevant else {
+                    "applicable": False, "confidence": "IRRELEVANT",
+                    "requirements": {}, "evidence": [], "reason": relevance_reason,
+                }
+                digest = hashlib.sha256(data).hexdigest()
+                document = {
+                    "url": portal_url, "type": "PDF_PORTAL", "content_hash": digest,
+                    **metadata, "evidence_status": evidence["confidence"],
+                    "tls_unverified": tls_unverified, "relevant": relevant,
+                    "relevance_reason": relevance_reason,
+                    "form_reference": (
+                        f"{row.get('numediccu')} — {publication.get('dsctiparqpam')} "
+                        f"({publication.get('dtapubdoc')})"
+                    ),
+                }
+                documents.append(document)
+                if evidence["applicable"]:
+                    rank = (
+                        {"HIGH": 3, "MEDIUM": 2}.get(evidence["confidence"], 0),
+                        0 if "retificacao" in label else 1,
+                        len(evidence["requirements"]),
+                    )
+                    if row_best is None or rank > row_best["rank"]:
+                        row_best = {
+                            "rank": rank, "document": document,
+                            "requirements": evidence["requirements"],
+                            "evidence": evidence["evidence"],
+                            "reason": evidence["reason"],
+                            "confidence": evidence["confidence"],
+                        }
+            if not row_best:
+                continue
+            display_area = str(row.get("nomset") or vacancy.get("area") or "Não identificada")
+            if len(matches) == 1 and vacancy.get("area"):
+                display_area = str(vacancy.get("area"))
+            requirement_text = " ".join(
+                str(item.get("text") or "") for item in row_best["evidence"]
+            )
+            opportunities.append({
+                "area": display_area,
+                "position": row.get("dsccladctpam"),
+                "department": row.get("nomset"),
+                "reference": row.get("numediccu"),
+                "workload": row.get("tipjor"),
+                "requirement_text": requirement_text,
+                **row_best["requirements"],
+                "requirements_complete": not row_best["document"].get("truncated"),
+            })
+            if best_single is None or row_best["rank"] > best_single["rank"]:
+                best_single = row_best
+
+        if len(opportunities) > 1:
+            return {
+                "status": "READ_MULTI", "checked_at": checked_at.isoformat(timespec="seconds"),
+                "reader_version": config.OFFICIAL_READER_VERSION,
+                "documents": documents, "document_url": portal_url,
+                "document_type": "PDF_PORTAL", "content_hash": documents[0]["content_hash"],
+                "confidence": "STRUCTURED", "applicable": False,
+                "opportunities": opportunities,
+                "reason": f"{len(opportunities)} editais correspondentes lidos no portal oficial USP Digital.",
+                "errors": [], "pci_protected_documents": vacancy.get("official_pci_protected_documents") or [],
+            }
+        if best_single and opportunities:
+            return {
+                "status": "READ", "checked_at": checked_at.isoformat(timespec="seconds"),
+                "reader_version": config.OFFICIAL_READER_VERSION,
+                "documents": documents, "document_url": portal_url,
+                "document_type": "PDF_PORTAL", "content_hash": best_single["document"]["content_hash"],
+                "confidence": best_single["confidence"], "applicable": True,
+                "requirements": best_single["requirements"], "evidence": best_single["evidence"],
+                "requirements_complete": opportunities[0]["requirements_complete"],
+                "reason": "Edital correspondente lido no portal oficial USP Digital.",
+                "errors": [], "pci_protected_documents": vacancy.get("official_pci_protected_documents") or [],
+            }
+        return None
+
     def _read_ufscar(self, vacancy: Mapping[str, Any], checked_at: datetime) -> dict[str, Any] | None:
         """Follow UFSCar's POST-only portal to its single HTML edital.
 
@@ -1012,7 +1547,9 @@ class OfficialDocumentReader:
             return None
         edital_soup = BeautifulSoup(edital, "html.parser")
         edital_text = clean_text(edital_soup.get_text(" ", strip=True))
-        registration_start, registration_end = parse_registration_period(edital_text)
+        registration_start, registration_end = validated_registration_period(
+            *parse_registration_period(edital_text)
+        )
         digest = hashlib.sha256(edital).hexdigest()
         documents = [{
             "url": base,
@@ -1104,6 +1641,14 @@ class OfficialDocumentReader:
 
     def read(self, vacancy: Mapping[str, Any], checked_at: datetime) -> dict[str, Any]:
         special_errors: list[str] = []
+        if is_usp_portal_vacancy(vacancy):
+            try:
+                special = self._read_usp(vacancy, checked_at)
+                if special:
+                    return special
+            except Exception as exc:
+                special_errors.append(f"USP Digital: {type(exc).__name__}: {exc}")
+                LOGGER.warning("Falha no leitor do portal USP Digital: %s", exc)
         if is_ufscar_portal_vacancy(vacancy):
             try:
                 special = self._read_ufscar(vacancy, checked_at)
@@ -1163,8 +1708,8 @@ class OfficialDocumentReader:
                 is_pdf = data.startswith(b"%PDF-") or "application/pdf" in content_type
                 if is_pdf:
                     pages, metadata = self._extract_pdf_pages(data)
-                    registration_start, registration_end = parse_registration_period(
-                        "\n".join(page_text for _, page_text in pages)
+                    registration_start, registration_end = validated_registration_period(
+                        *parse_registration_period("\n".join(page_text for _, page_text in pages))
                     )
                     relevant, relevance_reason = assess_document_relevance(pages, vacancy, final_url)
                     structured = extract_structured_opportunities(pages) if relevant else []
@@ -1196,7 +1741,9 @@ class OfficialDocumentReader:
                             }
                 elif "html" in content_type or data.lstrip().startswith((b"<!DOCTYPE", b"<html", b"<HTML")):
                     pages, title, page_blocked = self._extract_html_page(data)
-                    registration_start, registration_end = parse_registration_period(pages[0][1])
+                    registration_start, registration_end = validated_registration_period(
+                        *parse_registration_period(pages[0][1])
+                    )
                     blocked = blocked or page_blocked
                     final_host = (urlsplit(final_url).hostname or "").lower()
                     is_pci_news = (
@@ -1310,6 +1857,7 @@ class OfficialDocumentReader:
                 "document_type": best["document"]["type"],
                 "content_hash": best["document"]["content_hash"],
                 "confidence": best["confidence"], "applicable": True,
+                "requirements_complete": not best["document"].get("truncated", False),
                 "tls_unverified": bool(best["document"].get("tls_unverified")),
                 "requirements": best["requirements"], "evidence": best["evidence"],
                 "registration_start": best["document"].get("registration_start"),

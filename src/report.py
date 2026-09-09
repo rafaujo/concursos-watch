@@ -267,8 +267,7 @@ def _structured_requirements(v: dict[str, Any]) -> tuple[str, str]:
     )
     post = condense_requirement(_joined_for_display(post_parts))
     complete_official_row = bool(
-        v.get("_is_subvacancy")
-        and v.get("requirements_complete")
+        v.get("requirements_complete")
         and str(v.get("requirements_source") or "").startswith("OFFICIAL_")
     )
     missing_label = "Não consta como requisito mínimo"

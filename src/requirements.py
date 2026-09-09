@@ -23,6 +23,7 @@ POSTGRADUATE_MARKER = re.compile(
     r"(?P<postgraduate>"
     r"\bmestrado\b|\bdoutorado\b|\bt[ií]tulo\s+de\s+mestre\b|"
     r"\bt[ií]tulo\s+de\s+doutor\b|\bgrau\s+de\s+mestre\b|\bgrau\s+de\s+doutor\b|"
+    r"\bt[ií]tulo\s+de\s+livre[- ]docente\b|\blivre[- ]doc[eê]ncia\b|"
     r"\bp[oó]s[- ]doutorado\b|"
     r"\bespecializa[cç][aã]o\b|\bresid[eê]ncia(?:\s+m[eé]dica)?\b|"
     r"\bt[ií]tulo\s+de\s+especialista\b|\bp[oó]s[- ]gradua[cç][aã]o\b"
@@ -70,7 +71,8 @@ NON_ACADEMIC_BULLET = re.compile(
     r"\s+(?:[,;:]\s*)?(?:e\s+)?[▪•]\s*"
     r"(?!(?:gradua[cç][aã]o|licenciatura|bacharelado|curso\s+superior|"
     r"forma[cç][aã]o\s+superior|mestrado|doutorado|especializa[cç][aã]o|"
-    r"resid[eê]ncia|t[ií]tulo\s+de\s+(?:mestre|doutor|especialista)|"
+    r"resid[eê]ncia|livre[- ]doc[eê]ncia|"
+    r"t[ií]tulo\s+de\s+(?:mestre|doutor|especialista|livre[- ]docente)|"
     r"p[oó]s[- ]gradua[cç][aã]o)\b)",
     re.I,
 )
@@ -228,7 +230,8 @@ DEGREE = re.compile(
     r"\b(gradua[cç][aã]o|licenciatura|bacharelado|curso superior|forma[cç][aã]o superior|"
     r"especializa[cç][aã]o|p[oó]s[- ]?gradua[cç][aã]o|mestrado|doutorado|p[oó]s[- ]doutorado|"
     r"resid[eê]ncia(?: m[eé]dica)?|t[ií]tulo de mestre|t[ií]tulo de doutor|"
-    r"t[ií]tulo de especialista|grau de mestre|grau de doutor)\b",
+    r"t[ií]tulo de especialista|grau de mestre|grau de doutor|"
+    r"t[ií]tulo de livre[- ]docente|livre[- ]doc[eê]ncia)\b",
     re.I,
 )
 CONNECTOR = re.compile(
@@ -272,6 +275,9 @@ CANON = {
     "residencia": "Residência", "residencia medica": "Residência médica",
     "titulo de mestre": "Mestrado", "titulo de doutor": "Doutorado",
     "titulo de especialista": "Título de especialista",
+    "titulo de livre-docente": "Título de Livre-Docente",
+    "titulo de livre docente": "Título de Livre-Docente",
+    "livre-docencia": "Livre-docência", "livre docencia": "Livre-docência",
     "grau de mestre": "Mestrado", "grau de doutor": "Doutorado",
 }
 
@@ -350,14 +356,21 @@ def condense_requirement(value: str | None, *, keep_degree: bool = True) -> str 
             # that distinguishes it, so this degree's own phrase is kept — up
             # to where the next degree begins, never the whole value.
             phrase = value[match.start():stop_at].strip(" .;,:/-–")
-            stop = STOP.search(phrase)
-            if stop:
-                phrase = phrase[:stop.start()].strip(" .;,:/-–")
+            normalized_degree = normalize_text_simple(match.group(1))
+            if normalized_degree in {"titulo de livre-docente", "titulo de livre docente"}:
+                # Livre-docência is commonly expressed as a credential plus
+                # its issuing/recognition condition, without an ``em <area>``
+                # connector. That condition is part of the requirement.
+                phrase = f"{degree}{value[match.end():stop_at]}".strip(" .;,:/-–")
+            else:
+                stop = STOP.search(phrase)
+                if stop:
+                    phrase = phrase[:stop.start()].strip(" .;,:/-–")
             # Just the degree with nothing added: use the canonical spelling
             # rather than whatever case the source happened to use.
-            if normalize_text_simple(phrase) == normalize_text_simple(match.group(1)):
+            if normalize_text_simple(phrase) == normalized_degree:
                 phrase = degree
-            item = phrase if 0 < len(phrase) <= 60 else degree
+            item = phrase if 0 < len(phrase) <= 120 else degree
         else:
             rest = tail[conn.end():]
             stop = STOP.search(rest)
