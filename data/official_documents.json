@@ -44838,5 +44838,412 @@
         "access": "HUMAN_VERIFICATION_REQUIRED"
       }
     ]
+  },
+  "https://www.pciconcursos.com.br/noticias/unila-pr-abre-processo-seletivo-para-professor-visitante-na-area-de-quimica": {
+    "status": "READ",
+    "checked_at": "2026-09-09T12:08:48-03:00",
+    "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/unila-pr-abre-processo-seletivo-para-professor-visitante-na-area-de-quimica",
+        "type": "PCI_HTML",
+        "content_hash": "fe7d1443def531813320f346f3c5ac10961469b80409c24812043da4dffe28a2",
+        "page_count": 1,
+        "extracted_chars": 7340,
+        "truncated": false,
+        "title": "UNILA - PR abre processo seletivo para Professor Visitante na área de Química",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital.",
+        "opportunities_count": 0,
+        "registration_start": "2026-09-18",
+        "registration_end": "2026-10-18"
+      },
+      {
+        "url": "https://sig.unila.edu.br/sigrh/public/home.jsf",
+        "type": "HTML",
+        "content_hash": "bd7b80d32a1eb8706e5f9fe0473dfd6e96daa48664f369aef288bc04f3c86327",
+        "page_count": 1,
+        "extracted_chars": 15477,
+        "truncated": false,
+        "title": "SIGRH - Sistema Integrado de Gestão de Recursos Humanos",
+        "evidence_status": "NONE",
+        "tls_unverified": false,
+        "relevant": true,
+        "relevance_reason": "Documento docente associado à área por: ciencias, quimica.",
+        "opportunities_count": 0,
+        "registration_start": null,
+        "registration_end": "2026-09-09"
+      },
+      {
+        "url": "https://portal.unila.edu.br/",
+        "type": "HTML",
+        "content_hash": "a82ef20a1f109910f0b85b7f9bd54820082675c4f4a39617e8dec2c090bdb5f2",
+        "page_count": 1,
+        "extracted_chars": 5675,
+        "truncated": false,
+        "title": "Página Inicial UNILA — Universidade Federal da Integração Latino-Americana",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento docente não menciona a área identificada no anúncio.",
+        "opportunities_count": 0,
+        "registration_start": null,
+        "registration_end": null
+      },
+      {
+        "url": "https://portal.unila.edu.br/informes/apoio-a-estudante-em-tcc-8",
+        "type": "HTML",
+        "content_hash": "92e699ec4a42f0d189732f66de181aeca2fcd7d7725b13b59bf859914e2573ec",
+        "page_count": 1,
+        "extracted_chars": 3621,
+        "truncated": false,
+        "title": "Apoio a estudantes em TCC — Universidade Federal da Integração Latino-Americana",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento docente não menciona a área identificada no anúncio.",
+        "opportunities_count": 0,
+        "registration_start": "2026-09-08",
+        "registration_end": "2026-09-11"
+      },
+      {
+        "url": "https://portal.unila.edu.br/informes/lancamento-de-livros-10",
+        "type": "HTML",
+        "content_hash": "dccee051d7d840e21256e7d49cb6d9904e1bebcbeaad1d21f6e2641c4104a830",
+        "page_count": 1,
+        "extracted_chars": 4215,
+        "truncated": false,
+        "title": "Lançamento de livros — Universidade Federal da Integração Latino-Americana",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento docente não menciona a área identificada no anúncio.",
+        "opportunities_count": 0,
+        "registration_start": null,
+        "registration_end": null
+      },
+      {
+        "url": "https://portal.unila.edu.br/concursos",
+        "type": "HTML",
+        "content_hash": "6238b7ac9aeef260897d52cc14d920654f31be090bedeb72f38cf9e78952c6da",
+        "page_count": 1,
+        "extracted_chars": 5893,
+        "truncated": false,
+        "title": "Concursos Públicos — Universidade Federal da Integração Latino-Americana",
+        "evidence_status": "NONE",
+        "tls_unverified": false,
+        "relevant": true,
+        "relevance_reason": "Documento docente associado à área por: ciencias, exatas, quimica, terra.",
+        "opportunities_count": 0,
+        "registration_start": "2026-09-18",
+        "registration_end": "2026-10-18"
+      },
+      {
+        "url": "https://portal.unila.edu.br/concursos/informes-concursos/processo-seletivo-simplificado-professor-a-visitante-area-ciencias-exatas-e-da-terra-quimica-subarea-quimica-geral-e-quimica-analitica",
+        "type": "HTML",
+        "content_hash": "b4c422b576dc604f25d9f56c74b72ebc2ed5a26aa4243eb2ece4a658af0dcad9",
+        "page_count": 1,
+        "extracted_chars": 2775,
+        "truncated": false,
+        "title": "Processo Seletivo Simplificado - Professor(a) Visitante - Área: Ciências Exatas e da Terra/Química; Subárea: Química Geral e Química Analítica. — Universidade Federal da Integração Latino-Americana",
+        "evidence_status": "HIGH",
+        "tls_unverified": false,
+        "relevant": true,
+        "relevance_reason": "Documento docente associado à área por: ciencias, exatas, quimica, terra.",
+        "opportunities_count": 0,
+        "registration_start": "2026-09-18",
+        "registration_end": "2026-10-18"
+      },
+      {
+        "url": "https://portal.unila.edu.br/concursos/informes-concursos/processo-seletivo-simplificado-professor-a-substituto-area-ciencia-da-computacao-subarea-metodologia-e-tecnicas-da-computacao-1",
+        "type": "HTML",
+        "content_hash": "aee34c9010e1038a00b2880b08ab8f1a445a1124c017368da913dc1d5809093e",
+        "page_count": 1,
+        "extracted_chars": 2654,
+        "truncated": false,
+        "title": "Processo Seletivo Simplificado - Professor(a) Substituto -Área: Ciência da Computação; Subárea: Metodologia e Técnicas da Computação — Universidade Federal da Integração Latino-Americana",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento docente não menciona a área identificada no anúncio.",
+        "opportunities_count": 0,
+        "registration_start": "2026-09-08",
+        "registration_end": "2026-10-04"
+      },
+      {
+        "url": "https://portal.unila.edu.br/concursos/informes-concursos/processo-seletivo-simplificado-professor-a-substituto-area-artes-musica-subarea-musica-e-tecnologia",
+        "type": "HTML",
+        "content_hash": "96098deb6fbaa84ebe3d9fe2304df972bca8e89a48e43df7d20bb9060314f1bb",
+        "page_count": 1,
+        "extracted_chars": 2551,
+        "truncated": false,
+        "title": "Processo Seletivo Simplificado - Professor(a) Substituto - Área: Artes/Música; Subárea: Música e Tecnologia — Universidade Federal da Integração Latino-Americana",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento docente não menciona a área identificada no anúncio.",
+        "opportunities_count": 0,
+        "registration_start": "2026-09-04",
+        "registration_end": "2026-10-04"
+      },
+      {
+        "url": "https://portal.unila.edu.br/concursos/informes-concursos/processo-seletivo-simplificado-para-professor-visitante-area-desenvolvimento-rural-e-seguranca-alimentar-subarea-seguranca-alimentar-e-nutricional",
+        "type": "HTML",
+        "content_hash": "8f3db1e40e518ddc9eeed5bba0fc7c6a1e01351d5db219e0e470701655705422",
+        "page_count": 1,
+        "extracted_chars": 3295,
+        "truncated": false,
+        "title": "Processo Seletivo Simplificado para Professor Visitante: Área: Desenvolvimento Rural e Segurança Alimentar Subárea: Segurança Alimentar e Nutricional — Universidade Federal da Integração Latino-Americana",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento docente não menciona a área identificada no anúncio.",
+        "opportunities_count": 0,
+        "registration_start": "2026-09-04",
+        "registration_end": "2026-10-04"
+      },
+      {
+        "url": "https://portal.unila.edu.br/concursos/informes-concursos/concurso-publico-para-professor-efetivo",
+        "type": "HTML",
+        "content_hash": "24b96472d26484daffbebfdda9442353eda0882244b20fc9f55bc149ea4e2039",
+        "page_count": 1,
+        "extracted_chars": 2683,
+        "truncated": false,
+        "title": "Concurso Público para Professor Efetivo - Mediação Cultural — Universidade Federal da Integração Latino-Americana",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento docente não menciona a área identificada no anúncio.",
+        "opportunities_count": 0,
+        "registration_start": null,
+        "registration_end": null
+      },
+      {
+        "url": "https://portal.unila.edu.br/concursos/arquivos/copy4_of_instrucaonormativanordm32026progepe21067.pdf",
+        "type": "PDF",
+        "content_hash": "cc417fa074f787e82487ab64dc088ff143e280d454cb80f7c5bdf98151e80cdb",
+        "page_count": 7,
+        "extracted_chars": 21609,
+        "truncated": false,
+        "title": "Atos Oficiais Unila",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento docente não menciona a área identificada no anúncio.",
+        "opportunities_count": 0,
+        "registration_start": null,
+        "registration_end": null
+      }
+    ],
+    "reader_version": 9,
+    "document_url": "https://portal.unila.edu.br/concursos/informes-concursos/processo-seletivo-simplificado-professor-a-visitante-area-ciencias-exatas-e-da-terra-quimica-subarea-quimica-geral-e-quimica-analitica",
+    "document_type": "HTML",
+    "content_hash": "b4c422b576dc604f25d9f56c74b72ebc2ed5a26aa4243eb2ece4a658af0dcad9",
+    "confidence": "HIGH",
+    "applicable": true,
+    "requirements_complete": true,
+    "tls_unverified": false,
+    "requirements": {
+      "postgraduate_requirement_raw": "Título de doutor no mínimo há 2 (dois) anos: Doutorado em Química e/ou Ciências e áreas afins,com ênfase em Química Analítica",
+      "doctorate_requirement_raw": "Título de doutor no mínimo há 2 (dois) anos: Doutorado em Química e/ou Ciências e áreas afins,com ênfase em Química Analítica"
+    },
+    "evidence": [
+      {
+        "page": 1,
+        "text": "Química Geral e Química Analítica. Titulação Mínima Exigida: Título de doutor no mínimo há 2 (dois) anos: Doutorado em Química e/ou Ciências e áreas afins,com ênfase em Química Analítica. Inscrições:",
+        "kinds": [
+          "doctorate",
+          "postgraduate"
+        ],
+        "context_terms": [
+          "analitica",
+          "ciencias",
+          "geral",
+          "quimica"
+        ],
+        "context_score": 4
+      },
+      {
+        "page": 1,
+        "text": "Titulação Mínima Exigida: Título de doutor no mínimo há 2 (dois) anos: Doutorado em Química e/ou Ciências e áreas afins,com ênfase em Química Analítica. Inscrições: De 18 de setembro a 18 de outubro de 2026.",
+        "kinds": [
+          "doctorate",
+          "postgraduate"
+        ],
+        "context_terms": [
+          "analitica",
+          "ciencias",
+          "quimica"
+        ],
+        "context_score": 3
+      }
+    ],
+    "registration_start": "2026-09-18",
+    "registration_end": "2026-10-18",
+    "reason": "Requisitos associados à área/cargo por termos de contexto.",
+    "errors": [],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL Nº 228/2026",
+        "url": null,
+        "pci_link_id": "1704842",
+        "pci_news_code": "2364adbb6eeeed8166c4642ddcc2ba61",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
+    ]
+  },
+  "https://www.pciconcursos.com.br/noticias/uerj-publica-edital-de-concurso-publico-para-professor-adjunto-de-nefrologia-em-cabo-frio": {
+    "status": "READ",
+    "checked_at": "2026-09-09T12:08:48-03:00",
+    "documents": [
+      {
+        "url": "https://www.pciconcursos.com.br/noticias/uerj-publica-edital-de-concurso-publico-para-professor-adjunto-de-nefrologia-em-cabo-frio",
+        "type": "PCI_HTML",
+        "content_hash": "28d944bd095086d351c79a9204006d6e9a13b4c0405e1bc590006070e85ab9d8",
+        "page_count": 1,
+        "extracted_chars": 6957,
+        "truncated": false,
+        "title": "UERJ publica edital de concurso público para Professor Adjunto de Nefrologia em Cabo Frio",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "Notícia do PCI usada somente para localizar o edital.",
+        "opportunities_count": 0,
+        "registration_start": "2026-09-09",
+        "registration_end": "2026-10-09"
+      },
+      {
+        "url": "https://www.uerj.br/",
+        "type": "HTML",
+        "content_hash": "34de3daeef5ad4ec24e11af5b3c7100efae678be1f4bcbf9490b6c8bf2310c0a",
+        "page_count": 1,
+        "extracted_chars": 3538,
+        "truncated": false,
+        "title": "UERJ - Universidade do Estado do Rio de Janeiro - Universidade do Estado do Rio de Janeiro",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento docente não menciona a área identificada no anúncio.",
+        "opportunities_count": 0,
+        "registration_start": null,
+        "registration_end": null
+      },
+      {
+        "url": "https://www.uerj.br/wp-content/uploads/2019/12/988.pdf",
+        "type": "PDF",
+        "content_hash": "2e9c1d453dd7be986f67aec78268bb9952642b21f47d2602532eef38cff71f14",
+        "page_count": 2,
+        "extracted_chars": 5818,
+        "truncated": false,
+        "title": "988.indd",
+        "evidence_status": "MEDIUM",
+        "tls_unverified": false,
+        "relevant": true,
+        "relevance_reason": "Documento docente associado à área por: ciencias, doutorado.",
+        "opportunities_count": 0,
+        "registration_start": null,
+        "registration_end": "2026-09-28"
+      },
+      {
+        "url": "https://www.uerj.br/wp-content/uploads/2019/09/UERJemQuestao-107_SITE.pdf",
+        "type": "PDF",
+        "content_hash": "a16473e71198d147a03d1b6f02956ce2b7a0f2488c267c2063d316a4b83d7972",
+        "page_count": 27,
+        "extracted_chars": 127982,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não é um edital ou aviso de seleção.",
+        "opportunities_count": 0,
+        "registration_start": null,
+        "registration_end": null
+      },
+      {
+        "url": "https://www.uerj.br/wp-content/uploads/2019/01/informe_uerj95.pdf",
+        "type": "PDF",
+        "content_hash": "9613efabaafc7521d7bbaa604074524d45806570f757644e5763675cd2fb58d6",
+        "page_count": 4,
+        "extracted_chars": 15995,
+        "truncated": false,
+        "title": "",
+        "evidence_status": "NONE",
+        "tls_unverified": false,
+        "relevant": true,
+        "relevance_reason": "Documento docente associado à área por: ciencias, doutorado.",
+        "opportunities_count": 0,
+        "registration_start": null,
+        "registration_end": null
+      },
+      {
+        "url": "https://www.uerj.br/mais-destaques/",
+        "type": "HTML",
+        "content_hash": "68f8f07833e5ac15c03af544ce0d837f2eb37437a0486c5679b13113b8032eca",
+        "page_count": 1,
+        "extracted_chars": 1580,
+        "truncated": false,
+        "title": "Todos os destaques - UERJ - Universidade do Estado do Rio de Janeiro",
+        "evidence_status": "IRRELEVANT",
+        "tls_unverified": false,
+        "relevant": false,
+        "relevance_reason": "O documento não é um edital ou aviso de seleção.",
+        "opportunities_count": 0,
+        "registration_start": null,
+        "registration_end": null
+      }
+    ],
+    "reader_version": 9,
+    "document_url": "https://www.uerj.br/wp-content/uploads/2019/12/988.pdf",
+    "document_type": "PDF",
+    "content_hash": "2e9c1d453dd7be986f67aec78268bb9952642b21f47d2602532eef38cff71f14",
+    "confidence": "MEDIUM",
+    "applicable": true,
+    "requirements_complete": true,
+    "tls_unverified": false,
+    "requirements": {
+      "postgraduate_requirement_raw": "mestrado e o doutorado do Programa de Pós-Graduação em Biologia Humana e Experimental (BHEX)",
+      "masters_requirement_raw": "mestrado e o doutorado do Programa de Pós-Graduação em Biologia Humana e Experimental (BHEX)",
+      "doctorate_requirement_raw": "mestrado e o doutorado do Programa de Pós-Graduação em Biologia Humana e Experimental (BHEX)"
+    },
+    "evidence": [
+      {
+        "page": 2,
+        "text": "QUINTA, DIA 5  BIOLOGIA: termina às 16h o prazo de inscrições para o mestrado e o doutorado do Programa de Pós-Graduação em Biologia Humana e Experimental (BHEX). Os cursos são destinados a médicos, biólogos, biomédicos, nutricionistas,",
+        "kinds": [
+          "masters",
+          "doctorate",
+          "postgraduate"
+        ],
+        "context_terms": [
+          "doutorado"
+        ],
+        "context_score": 1
+      }
+    ],
+    "registration_start": null,
+    "registration_end": "2026-09-28",
+    "reason": "Requisitos associados à área/cargo por termos de contexto.",
+    "errors": [
+      "http://www.cte.uerj.br/radiouerj/: ReadTimeout: HTTPConnectionPool(host='www.cte.uerj.br', port=80): Read timed out. (read timeout=30)",
+      "https://www.radiouerj.com/app: HTTPError: 403 Client Error: Forbidden for url: https://www.radiouerj.com/app"
+    ],
+    "pci_protected_documents": [
+      {
+        "label": "EDITAL - UERJ 238 PROFESSOR ADJUNTO NEFROLOGIA",
+        "url": null,
+        "pci_link_id": "1704837",
+        "pci_news_code": "a39d8b3fefa15653b5c3be8b581723c4",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      },
+      {
+        "label": "RETIFICAÇÃO - REMUNERAÇÃO",
+        "url": null,
+        "pci_link_id": "1704836",
+        "pci_news_code": "a39d8b3fefa15653b5c3be8b581723c4",
+        "access": "HUMAN_VERIFICATION_REQUIRED"
+      }
+    ]
   }
 }

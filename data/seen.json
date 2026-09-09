@@ -362,7 +362,7 @@
     "listing_fingerprint": "abdaf11f196b04c6685564f4271eb90d2e88fe6a3e06d1bf54190c44fb0071c2",
     "last_checked": "2026-09-09T09:24:02-03:00",
     "content_hash": "b9c4421d5163e75f0359f5910eee0203bf091578c5c18750db14fd328424ad2b",
-    "status": "CLOSING_SOON"
+    "status": "UPDATED"
   },
   "https://www.pciconcursos.com.br/noticias/unesp-abre-concurso-para-professor-substituto-na-area-de-tecnologia-de-alimentos-em-sao-jose-do-rio-preto": {
     "id": "60bd3841f078a07a41de",
@@ -1514,7 +1514,7 @@
     "listing_fingerprint": "fab87d92728c07f6106926d57ce4c21550063ae2ba8aa0812ba666e4875f6d2c",
     "last_checked": "2026-09-06T11:13:20-03:00",
     "content_hash": "f621f7d83a00adab6096a3931738f4b5659d7f17631120c2cdae4fad59fd1713",
-    "status": "OPEN"
+    "status": "UPDATED"
   },
   "https://www.pciconcursos.com.br/noticias/ufu-mg-abre-processos-seletivos-para-professores-substitutos-e-visitantes": {
     "id": "4bae00de31581db319ce",
@@ -1835,7 +1835,7 @@
     "listing_fingerprint": "2e60499f417bbc31a86d15ea751a54670ba4e10a65930d19e1a4ee559a897c5b",
     "last_checked": "2026-09-06T11:13:20-03:00",
     "content_hash": "5ad884e9e662dc40c503c2c8e3a2a9403621739d90d87a50d87ee06623a6d2d7",
-    "status": "OPEN"
+    "status": "CLOSED"
   },
   "https://www.pciconcursos.com.br/noticias/utfpr-abre-vaga-para-professor-substituto-de-fisica-geral-em-toledo": {
     "id": "38d308ef800c963314f1",
@@ -4097,7 +4097,7 @@
     "listing_fingerprint": "572fb6f56933bf7f77358775963fc48cbfe06ff8a74a7fcfd2fe8458401af0f1",
     "last_checked": "2026-09-01T12:28:28-03:00",
     "content_hash": "dfcfd89542662b7415de50a2f298304cace58d290813c964f9af12bbe1d4985a",
-    "status": "OPEN"
+    "status": "UPDATED"
   },
   "https://www.pciconcursos.com.br/noticias/uerj-rj-abre-vaga-para-professor-adjunto-de-cardiologia-em-cabo-frio": {
     "id": "d73e9b53fe8e6a9c05ca",
@@ -4111,7 +4111,7 @@
     "listing_fingerprint": "2ad6f1a537d75c076b148a8ce6f19a92a8442bd7bc3728663984257103c87444",
     "last_checked": "2026-09-01T12:28:28-03:00",
     "content_hash": "fcb72ad54d353644f98e20976b8bf8751516d47e94fadc7ebbc874ec1132c5b2",
-    "status": "OPEN"
+    "status": "UPDATED"
   },
   "https://www.pciconcursos.com.br/noticias/uerj-abre-concurso-publico-com-vaga-para-professor-adjunto-de-bioquimica": {
     "id": "462cf2859663b31cdf21",
@@ -4937,7 +4937,7 @@
     "listing_fingerprint": "02b064a87861be122601e45c8766b218fa8a8e6e61817cbf478673a4bc2be59f",
     "last_checked": "2026-09-09T09:24:02-03:00",
     "content_hash": "dc0fac9600cf16e3f29dcab021740af03916229c2c39c374898876c2a1edadb5",
-    "status": "NEW"
+    "status": "CLOSED"
   },
   "https://www.pciconcursos.com.br/noticias/prefeitura-de-fraiburgo-sc-abre-processo-seletivo-para-professor-de-musicalizacao-e-auxiliar-educacional": {
     "id": "9326078a33c58a462ea7",
@@ -5035,6 +5035,34 @@
     "listing_fingerprint": "15cffa626e898d879a80753ea005144d9434ed59b6d43ce769d7374921d394e0",
     "last_checked": "2026-09-09T09:24:02-03:00",
     "content_hash": "3b776e250e50a59bc9e1cbecdedbfd6b9ee9fdee1a98bfa645472bf902520957",
+    "status": "NEW"
+  },
+  "https://www.pciconcursos.com.br/noticias/uerj-publica-edital-de-concurso-publico-para-professor-adjunto-de-nefrologia-em-cabo-frio": {
+    "id": "7f9b13126a9b334ec5f0",
+    "url": "https://www.pciconcursos.com.br/noticias/uerj-publica-edital-de-concurso-publico-para-professor-adjunto-de-nefrologia-em-cabo-frio",
+    "first_seen": "2026-09-09",
+    "processed": true,
+    "potential": true,
+    "last_seen": "2026-09-09",
+    "title": "UERJ publica edital de concurso público para Professor Adjunto de Nefrologia em Cabo Frio",
+    "registration_end": "2026-10-09",
+    "listing_fingerprint": "55f7c4dc1b1639e6021a96e39475da9bc88805520fefdfaa60b79a233a9ae1df",
+    "last_checked": "2026-09-09T12:08:48-03:00",
+    "content_hash": "6e1fd7170d40609bd6b227fdb492a0b5d8de4f851f7d6d72acfad8db7c2c2f51",
+    "status": "NEW"
+  },
+  "https://www.pciconcursos.com.br/noticias/unila-pr-abre-processo-seletivo-para-professor-visitante-na-area-de-quimica": {
+    "id": "b08ff0859fdf231f6849",
+    "url": "https://www.pciconcursos.com.br/noticias/unila-pr-abre-processo-seletivo-para-professor-visitante-na-area-de-quimica",
+    "first_seen": "2026-09-09",
+    "processed": true,
+    "potential": true,
+    "last_seen": "2026-09-09",
+    "title": "UNILA - PR abre processo seletivo para Professor Visitante na área de Química",
+    "registration_end": "2026-10-18",
+    "listing_fingerprint": "8d76703609a731447c5f765259151c10484d1d09d9eae35c902a3745f8198a11",
+    "last_checked": "2026-09-09T12:08:48-03:00",
+    "content_hash": "f66a36a91556bf3ae6ecab2921735d1437dc29859188540e2c97d1d5ef3235a0",
     "status": "NEW"
   }
 }
