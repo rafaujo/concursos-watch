@@ -99,6 +99,9 @@ def _apply_official_result(
     vacancy["official_errors"] = result.get("errors", [])
     vacancy["official_pci_protected_documents"] = result.get("pci_protected_documents", [])
     vacancy["official_tls_unverified"] = bool(result.get("tls_unverified"))
+    vacancy["requirements_complete"] = bool(
+        result.get("applicable") and result.get("requirements_complete")
+    )
 
     if result.get("opportunities"):
         _restore_pci_requirements(vacancy)
