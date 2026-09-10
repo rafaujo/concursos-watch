@@ -255,7 +255,12 @@ def run(
     print("CONCURSOS WATCH")
     print("=" * 60)
     print(f"Run time: {now.strftime('%Y-%m-%d %H:%M %Z')}")
-    discovered = source.discover()
+    # A targeted official refresh operates on the notices already stored in
+    # the repository.  It must not depend on the PCI listing being available:
+    # the purpose of this mode is precisely to repair or re-read one edital.
+    discovered = [] if official_match else source.discover()
+    if official_match:
+        print(f"Targeted official refresh: {official_match} (PCI discovery skipped)")
     known_at_start = sum(item["source_url"] in seen for item in discovered)
     new_at_start = len(discovered) - known_at_start
     changed_listing = 0
