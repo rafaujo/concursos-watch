@@ -577,6 +577,12 @@ def test_official_cache_ttl_depends_on_status():
     assert should_check_official({**current, "checked_at": "2026-08-20", "status": "AMBIGUOUS"}, today)
     assert should_check_official({**current, "checked_at": "2026-08-20", "status": "ERROR"}, today)
     assert should_check_official({"reader_version": config.OFFICIAL_READER_VERSION - 1, "checked_at": "2026-08-20", "status": "READ"}, today)
+    assert should_check_official({
+        **current,
+        "checked_at": "2026-08-23",
+        "status": "BLOCKED",
+        "errors": ["edital.pdf: ChunkedEncodingError: IncompleteRead(820976 bytes read)"],
+    }, today)
 
 
 def test_usp_portal_row_matches_number_and_unit_context():
@@ -671,6 +677,47 @@ class TestIncompleteTlsChain:
         with pytest.raises(requests.exceptions.SSLError):
             reader._fetch("https://universidade.example/edital.pdf")
         assert calls == [True]
+
+
+def test_interrupted_stream_is_downloaded_again_from_the_start(monkeypatch):
+    reader = OfficialDocumentReader(requests.Session(), delay=0)
+    calls = []
+
+    class FlakyResponse:
+        url = "https://universidade.example/edital.pdf"
+        headers = {"Content-Type": "application/pdf", "Content-Length": "8"}
+        history = []
+
+        def __init__(self, interrupted):
+            self.interrupted = interrupted
+
+        def raise_for_status(self):
+            return None
+
+        def iter_content(self, chunk_size=0):
+            if self.interrupted:
+                yield b"parcial"
+                raise requests.exceptions.ChunkedEncodingError("download interrompido")
+            yield b"completo"
+
+        def close(self):
+            return None
+
+    def fake_get(url, **kwargs):
+        calls.append(url)
+        return FlakyResponse(interrupted=len(calls) == 1)
+
+    monkeypatch.setattr(reader.session, "get", fake_get)
+    monkeypatch.setattr("src.official.is_public_http_url", lambda url: True)
+
+    data, url, content_type, tls_unverified = reader._fetch(
+        "https://universidade.example/edital.pdf"
+    )
+
+    assert data == b"completo"
+    assert calls == [url, url]
+    assert content_type == "application/pdf"
+    assert tls_unverified is False
 
 
 def test_frontier_explores_the_best_link_before_weaker_ones(monkeypatch):
