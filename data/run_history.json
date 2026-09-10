@@ -888,5 +888,19 @@
     "official_read": 1,
     "official_reclassified": 0,
     "official_failures": 0
+  },
+  {
+    "run_at": "2026-09-10T17:20:55-03:00",
+    "discovered": 0,
+    "known": 0,
+    "new": 0,
+    "changed_listings": 0,
+    "processed": 0,
+    "failures": 0,
+    "relevant_new": 0,
+    "official_processed": 0,
+    "official_read": 0,
+    "official_reclassified": 0,
+    "official_failures": 0
   }
 ]
