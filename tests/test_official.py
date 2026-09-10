@@ -8,7 +8,9 @@ import config
 
 from src.official import (
     assess_document_relevance,
+    extract_candidate_profile_table,
     extract_candidate_links,
+    extract_cargo_requirement_blocks,
     extract_labelled_area_requirements,
     extract_requirement_evidence,
     extract_numbered_requirements_table,
@@ -19,6 +21,7 @@ from src.official import (
     edital_numbers_for_display,
     known_edital_numbers,
     OfficialDocumentReader,
+    portal_seed_urls,
     score_candidate_link,
     score_usp_portal_row,
     should_check_official,
@@ -55,6 +58,49 @@ def test_official_html_requirements_table_becomes_independent_opportunities():
     assert found[0]["requirements_complete"] is True
     assert found[1]["graduation_requirement_raw"] == "Graduacao em Medicina"
     assert found[1]["vacancies_count"] == 2
+
+
+def test_official_html_table_accepts_a_short_visual_row():
+    """SEI pages may omit empty reserved-vacancy cells from one row."""
+    html = b"""
+    <html><head><title>Edital de abertura</title></head><body>
+      <p>Processo seletivo para Professor do Magisterio Federal Substituto.</p>
+      <table>
+        <tr><th>Area / Subarea</th><th>VG</th><th>PCD</th><th>PP</th>
+            <th>CH</th><th>Turno</th><th>Requisito</th><th>Taxa</th></tr>
+        <tr><td>Biodiversidade</td><td>1</td><td>-</td><td>-</td><td>40h</td><td>N</td>
+            <td>Graduacao em Ciencias Biologicas com pos-graduacao em Biodiversidade.</td>
+            <td>R$ 99,00</td></tr>
+        <tr><td>Ciencias Agrarias/Bioquimica</td><td>1</td><td>40h</td><td>M/T</td>
+            <td>Graduacao em Agronomia com pos-graduacao em Ciencias Agrarias.</td>
+            <td>R$ 99,00</td></tr>
+      </table>
+    </body></html>
+    """
+    found = extract_structured_html_opportunities(html)
+    assert len(found) == 2
+    assert found[1]["area"] == "Ciencias Agrarias/Bioquimica"
+    assert found[1]["graduation_requirement_raw"] == "Graduacao em Agronomia"
+    assert found[1]["postgraduate_requirement_raw"] == "pos-graduacao em Ciencias Agrarias"
+
+
+def test_official_html_accepts_habilitacoes_and_especialidade_columns():
+    html = b"""
+    <html><head><title>Edital 76/2026</title></head><body>
+      <p>Processo seletivo para professores.</p>
+      <table><tr><th>Cargo e item</th><th>Especialidade</th>
+        <th>Habilitacoes aceitas</th><th>Vagas</th></tr>
+        <tr><td>PROFESSOR - EDUCACAO INFANTIL</td><td>Educacao Infantil</td>
+          <td>Formacao em Educacao Escolar Quilombola; Graduacao em Pedagogia</td><td>1</td></tr>
+        <tr><td>PROFESSOR - SERIES INICIAIS</td><td>Series Iniciais</td>
+          <td>Formacao em Educacao Escolar Quilombola; Graduacao em Pedagogia</td><td>1</td></tr>
+      </table>
+    </body></html>
+    """
+    found = extract_structured_html_opportunities(html)
+    assert [item["area"] for item in found] == ["Educacao Infantil", "Series Iniciais"]
+    assert all(item["graduation_requirement_raw"] == "Graduacao em Pedagogia" for item in found)
+    assert all(item["vacancies_count"] == 1 for item in found)
 
 
 def test_official_html_requirement_cards_become_independent_opportunities():
@@ -122,6 +168,81 @@ def test_numbered_annex_rows_become_independent_opportunities():
     assert "Ciências Ambientais" in found[0]["doctorate_requirement_raw"]
     assert found[1]["campus"] == "Cascavel"
     assert found[1]["requirements_complete"] is True
+
+
+def test_cargo_requirement_blocks_become_teaching_opportunities():
+    pages = [(41, """
+    CARGO: PROFESSOR II - MATEMATICA
+    REQUISITOS: graduacao de nivel superior em Licenciatura em Matematica no momento da posse.
+    ATRIBUICOES: planejar e ministrar aulas.
+    CARGO: AGENTE ADMINISTRATIVO
+    REQUISITOS: Ensino Medio completo.
+    ATRIBUICOES: executar rotinas administrativas.
+    CARGO: PROFESSOR II - CIENCIAS
+    REQUISITOS: Licenciatura em Ciencias Biologicas ou Licenciatura em Ciencias.
+    ATRIBUICOES: planejar e ministrar aulas.
+    """)]
+    found = extract_cargo_requirement_blocks(pages)
+    assert [item["area"] for item in found] == [
+        "PROFESSOR II - MATEMATICA", "PROFESSOR II - CIENCIAS",
+    ]
+    assert found[0]["graduation_requirement_raw"].startswith("graduacao de nivel superior")
+    assert found[1]["postgraduate_requirement_raw"] is None
+
+
+def test_candidate_profile_table_keeps_each_area_and_profile_together():
+    page = "\n".join([
+        " " * 98 + "QUANT.",
+        "Nº    DEP. OU UNID.            ÁREA DE                     PERFIL DO CANDIDATO*                      DE",
+        " " * 46 + "GRADUAÇÃO EM LICENCIATURA EM",
+        "     DEPARTAMENTO               TÓPICOS               PEDAGOGIA COM DOUTORADO EM",
+        "01    DE EDUCAÇÃO           ESPECÍFICOS DE        EDUCAÇÃO OU SOCIOLOGIA                              01",
+        "        (DED/SEDE)            EDUCAÇÃO",
+        " " * 46 + "GRADUAÇÃO EM AGRONOMIA OU",
+        "     DEPARTAMENTO             PLANTAS              ENGENHARIA AGRONÔMICA COM",
+        "02   DE AGRONOMIA         ALIMENTÍCIAS           DOUTORADO EM PRODUÇÃO VEGETAL                       01",
+        "      (DEPA/SEDE)",
+        "*Exigência de comprovação dos títulos na posse.",
+    ])
+    found = extract_candidate_profile_table([(4, page)])
+    assert len(found) == 2
+    assert found[0]["reference"] == "1"
+    assert found[0]["area"] == "TÓPICOS ESPECÍFICOS DE EDUCAÇÃO"
+    assert found[0]["graduation_requirement_raw"] == "GRADUAÇÃO EM LICENCIATURA EM PEDAGOGIA"
+    assert "DOUTORADO EM EDUCAÇÃO OU SOCIOLOGIA" in found[0]["postgraduate_requirement_raw"]
+    assert found[1]["area"] == "PLANTAS ALIMENTÍCIAS"
+    assert "AGRONOMIA" in found[1]["graduation_requirement_raw"]
+    assert "PRODUÇÃO VEGETAL" in found[1]["doctorate_requirement_raw"]
+
+
+def test_ocr_split_ensino_superior_is_still_a_graduation_requirement():
+    result = extract_requirement_evidence(
+        [(3, "Possuir a escolaridade exigida, no caso, Ensi no Superior em "
+             "Licenciatura Plena em Educacao Fisica.")],
+        {"area": "Educacao Fisica", "title": "Professor de Educacao Fisica"},
+        allow_unscoped=True,
+    )
+    assert result["applicable"] is True
+    assert result["requirements"]["graduation_requirement_raw"] == (
+        "Ensi no Superior em Licenciatura Plena em Educacao Fisica"
+    )
+    assert "postgraduate_requirement_raw" not in result["requirements"]
+
+
+def test_requirement_cue_outranks_a_title_scoring_table_for_same_area():
+    pages = [(3, """
+      Doutorado na area de Educacao Fisica 30 pontos.
+      Mestrado na area de Educacao Fisica 25 pontos.
+      Possuir a escolaridade exigida, no caso, Ensino Superior em
+      Licenciatura Plena em Educacao Fisica.
+    """)]
+    result = extract_requirement_evidence(
+        pages,
+        {"area": "Educacao Fisica", "title": "Professor de Educacao Fisica"},
+        allow_unscoped=True,
+    )
+    assert result["requirements"]["graduation_requirement_raw"].startswith("Ensino Superior")
+    assert "postgraduate_requirement_raw" not in result["requirements"]
 
 
 def test_labelled_annex_blocks_cross_pages_and_keep_requirements_separate():
@@ -386,6 +507,23 @@ def test_protected_edital_serial_inherits_notice_year():
     }
     assert known_edital_numbers(vacancy) == {"607/26"}
     assert edital_numbers_for_display(vacancy) == ["607/2026"]
+
+
+def test_future_ufrpe_and_utfpr_notices_get_stable_portal_seeds():
+    assert portal_seed_urls({
+        "institution": "UFRPE - Universidade Federal Rural de Pernambuco",
+        "title": "Concurso para professor",
+    }) == ["https://progepe.ufrpe.br/"]
+    utfpr = portal_seed_urls({
+        "institution": "UTFPR - Universidade Tecnológica Federal do Paraná",
+        "title": "Professor substituto em Biodiversidade",
+        "area": "Biodiversidade",
+        "publication_date": "2026-09-02",
+        "official_pci_protected_documents": [{"label": "EDITAL Nº 002/2026"}],
+    })
+    assert utfpr == [
+        "https://www.utfpr.edu.br/search?SearchableText=002%2F2026%20Biodiversidade"
+    ]
 
 
 def test_pci_candidate_links_use_article_context_and_ignore_recommendations():

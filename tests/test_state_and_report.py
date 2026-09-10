@@ -53,7 +53,7 @@ def test_report_is_responsive_and_escapes_content(tmp_path):
     assert "UFPR &lt;Campus&gt;" in page
     assert "Somente abertas" in page
     assert "Triagem, não decisão jurídica" in page
-    assert "Todas as vagas por concurso" in page
+    assert "Vagas agrupadas por universidade ou instituição" in page
     assert "Vaga ou área" in page
     assert "Requisito de graduação" in page
     assert "Requisito de pós-graduação" in page
@@ -70,6 +70,8 @@ def test_report_is_responsive_and_escapes_content(tmp_path):
     assert '<input id="open-only" type="checkbox">' in page
     assert '<dt>Inscrições</dt><dd>01/09/2026 a 15/09/2026</dd>' in page
     assert page.count('class="contest-group"') == 1
+    assert page.count('class="institution-group"') == 1
+    assert page.count('class="row-source"') == 1
     assert page.count('class="contest-table"') == 1
 
 
@@ -149,9 +151,32 @@ def test_report_groups_different_contests_in_separate_tables(tmp_path):
     generate_report(contests, output, datetime(2026, 8, 23, 8, 17, tzinfo=ZoneInfo("America/Sao_Paulo")))
     page = output.read_text(encoding="utf-8")
     assert page.count('class="contest-group"') == 2
+    assert page.count('class="institution-group"') == 2
     assert page.count('class="contest-table"') == 2
     assert page.count('class="vacancy-card vacancy-row') == 2
     assert "2 vaga(s) em 2 concurso(s)" in page
+
+
+def test_report_groups_same_institution_and_links_every_vacancy_to_pci(tmp_path):
+    output = tmp_path / "docs" / "index.html"
+    shared_pci = "https://example.test/pci-noticia"
+    contests = [{
+        "source_url": shared_pci,
+        "institution": "UFPR",
+        "state": "PR",
+        "title": f"Concurso nº {index}",
+        "area": area,
+        "status": "OPEN",
+        "formal_eligibility": "UNKNOWN",
+        "thematic_score": 20,
+    } for index, area in enumerate(("Administração", "Gestão Ambiental"), start=1)]
+    generate_report(contests, output, datetime(2026, 8, 23, 8, 17, tzinfo=ZoneInfo("America/Sao_Paulo")))
+    page = output.read_text(encoding="utf-8")
+    assert page.count('class="institution-group"') == 1
+    assert page.count('class="contest-group"') == 2
+    assert "2 concursos · 2 vagas" in page
+    assert page.count('class="row-source"') == 2
+    assert page.count(f'href="{shared_pci}"') == 4
 
 
 def test_report_splits_unila_requirements_and_moves_common_details_below_title(tmp_path):
