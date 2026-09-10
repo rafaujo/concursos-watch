@@ -216,3 +216,46 @@ def test_report_splits_unila_requirements_and_moves_common_details_below_title(t
     assert '<div role="cell" class="list-cell details-cell" data-label="Detalhes específicos"><span class="no-specific-details">Nenhum detalhe específico</span>' in page
     assert page.count("<dt>Inscrições</dt>") == 1
     assert "Titulação Mínima Exigida" not in page
+
+
+def test_complete_official_row_keeps_structured_graduation_when_full_sentence_is_ambiguous(tmp_path):
+    output = tmp_path / "docs" / "index.html"
+    vacancy = {
+        "source_url": "https://example.test/ufrpe-fitossanidade",
+        "institution": "UFRPE - Universidade Federal Rural de Pernambuco",
+        "state": "PE",
+        "title": "Concurso para Professor do Magistério Superior",
+        "position": "Professor do Magistério Superior",
+        "status": "OPEN",
+        "formal_eligibility": "UNKNOWN",
+        "official_check_status": "READ_MULTI",
+        "requirements_source": "OFFICIAL_PDF_MULTI",
+        "official_opportunities": [{
+            "area": "FITOSSANIDADE",
+            "requirements_complete": True,
+            "requirement_text": (
+                "GRADUAÇÃO EM AGRONOMIA OU ENGENHARIA AGRONÔMICA OU CIÊNCIAS BIOLÓGICAS "
+                "OU ENGENHARIA AGRÍCOLA E AMBIENTAL COM DOUTORADO EM AGRONOMIA OU "
+                "FITOPATOLOGIA OU FITOSSANIDADE OU PRODUÇÃO VEGETAL OU PROTEÇÃO DE PLANTAS"
+            ),
+            "graduation_requirement_raw": (
+                "GRADUAÇÃO EM AGRONOMIA OU ENGENHARIA AGRONÔMICA OU CIÊNCIAS BIOLÓGICAS "
+                "OU ENGENHARIA AGRÍCOLA E AMBIENTAL"
+            ),
+            "postgraduate_requirement_raw": (
+                "DOUTORADO EM AGRONOMIA OU FITOPATOLOGIA OU FITOSSANIDADE OU PRODUÇÃO "
+                "VEGETAL OU PROTEÇÃO DE PLANTAS"
+            ),
+            "doctorate_requirement_raw": (
+                "DOUTORADO EM AGRONOMIA OU FITOPATOLOGIA OU FITOSSANIDADE OU PRODUÇÃO "
+                "VEGETAL OU PROTEÇÃO DE PLANTAS"
+            ),
+        }],
+    }
+
+    generate_report([vacancy], output, datetime(2026, 9, 10, 17, 11, tzinfo=ZoneInfo("America/Sao_Paulo")))
+    page = output.read_text(encoding="utf-8")
+
+    assert 'data-course="FITOSSANIDADE"' in page
+    assert "AGRONOMIA OU ENGENHARIA AGRONÔMICA OU CIÊNCIAS BIOLÓGICAS" in page
+    assert 'data-label="Requisito de graduação"><p>Não informado</p>' not in page
