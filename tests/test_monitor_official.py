@@ -123,3 +123,47 @@ def test_html_multi_result_updates_source_and_registration_window():
     assert vacancy["requirements_source"] == "OFFICIAL_HTML_MULTI"
     assert vacancy["registration_end"] == "2026-09-11"
     assert vacancy["status"] != "CLOSED"
+
+
+def test_old_official_date_does_not_replace_current_pci_registration_window():
+    vacancy = {
+        "title": "UFRPE abre concurso com vagas para professores",
+        "position": "Professor do Magistério Superior",
+        "institution": "UFRPE - Universidade Federal Rural de Pernambuco",
+        "raw_text": (
+            "As inscrições deverão ser feitas de 14 de setembro de 2026 a "
+            "13 de outubro de 2026 pelo site da UFRPE."
+        ),
+        "registration_start": "2026-09-14",
+        "registration_end": "2026-10-13",
+        "status": "OPEN",
+        "formal_eligibility": "UNKNOWN",
+        "thematic_score": 0,
+    }
+    result = {
+        "status": "READ_MULTI", "checked_at": "2026-09-10T13:02:00-03:00",
+        "document_type": "PDF", "content_hash": "pdf", "confidence": "STRUCTURED",
+        "applicable": False, "reason": "Tabela oficial lida.", "documents": [], "errors": [],
+        # An unrelated 2025 procedural date found in the edital.
+        "registration_start": None, "registration_end": "2025-06-03",
+        "opportunities": [{
+            "area": "História Antiga e Medieval",
+            "requirement_text": "Licenciatura em História. Doutorado em História.",
+            "graduation_requirement_raw": "Licenciatura em História",
+            "postgraduate_requirement_raw": "Doutorado em História",
+            "masters_requirement_raw": None,
+            "doctorate_requirement_raw": "Doutorado em História",
+            "requirements_complete": True,
+        }],
+    }
+
+    _apply_official_result(
+        vacancy, result, RuleBasedAnalyzer(),
+        datetime(2026, 9, 10, 13, 2, tzinfo=ZoneInfo("America/Sao_Paulo")),
+    )
+
+    assert vacancy["registration_start"] == "2026-09-14"
+    assert vacancy["registration_end"] == "2026-10-13"
+    assert vacancy["status"] != "CLOSED"
+    assert vacancy["official_check_status"] == "READ_MULTI"
+    assert vacancy["official_opportunities"][0]["graduation_requirement_raw"] == "Licenciatura em História"
