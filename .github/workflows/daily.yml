@@ -10,6 +10,14 @@ on:
         description: "Publicar os dados já gerados sem executar o crawler"
         type: boolean
         default: false
+      force_official:
+        description: "Ignorar o cache dos editais selecionados"
+        type: boolean
+        default: false
+      official_match:
+        description: "Filtrar leitura oficial por instituição ou título"
+        type: string
+        default: ""
 
 concurrency:
   group: concursos-watch-${{ inputs.publish_existing && 'publish' || 'daily' }}
@@ -38,7 +46,18 @@ jobs:
 
       - name: Atualizar dados e página
         if: ${{ !inputs.publish_existing }}
-        run: python monitor.py
+        env:
+          FORCE_OFFICIAL: ${{ inputs.force_official || false }}
+          OFFICIAL_MATCH: ${{ inputs.official_match || '' }}
+        run: |
+          args=()
+          if [[ "$FORCE_OFFICIAL" == "true" ]]; then
+            args+=(--force-official)
+          fi
+          if [[ -n "$OFFICIAL_MATCH" ]]; then
+            args+=(--official-match "$OFFICIAL_MATCH")
+          fi
+          python monitor.py "${args[@]}"
 
       - name: Executar testes
         run: python -m pytest
