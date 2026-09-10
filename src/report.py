@@ -229,13 +229,17 @@ def _structured_requirements(v: dict[str, Any]) -> tuple[str, str]:
             (pci_requirements.get("graduation_requirement"), "graduation"),
             (pci_requirements.get("postgraduate_requirement"), "postgraduate"),
         ))
-    if not complete_requirement_text:
-        sources.extend((
-            (v.get("graduation_requirement_raw") or v.get("graduation_requirement"), "graduation"),
-            (v.get("postgraduate_requirement_raw") or v.get("postgraduate_requirement"), "postgraduate"),
-            (v.get("masters_requirement_raw") or v.get("masters_requirement"), "postgraduate"),
-            (v.get("doctorate_requirement_raw") or v.get("doctorate_requirement"), "postgraduate"),
-        ))
+    # Keep the already-separated fields even when the row also carries the
+    # complete requirement sentence.  The complete sentence is useful context,
+    # but conjunction-heavy edital wording can defeat a second split at render
+    # time (for example UFRPE/Fitossanidade).  The structured fields came from
+    # the table reader and are the stronger source for the two display columns.
+    sources.extend((
+        (v.get("graduation_requirement_raw") or v.get("graduation_requirement"), "graduation"),
+        (v.get("postgraduate_requirement_raw") or v.get("postgraduate_requirement"), "postgraduate"),
+        (v.get("masters_requirement_raw") or v.get("masters_requirement"), "postgraduate"),
+        (v.get("doctorate_requirement_raw") or v.get("doctorate_requirement"), "postgraduate"),
+    ))
     graduation_parts: list[str] = []
     post_parts: list[str] = []
     seen_sources: set[str] = set()
@@ -262,14 +266,22 @@ def _structured_requirements(v: dict[str, Any]) -> tuple[str, str]:
     # not the paragraph it came from. Anything the condenser refuses was not a
     # requirement to begin with — a site menu, a salary table — and showing
     # nothing is better than showing that.
-    graduation = condense_requirement(
-        _joined_for_display(graduation_parts), keep_degree=False
-    )
+    graduation_joined = _joined_for_display(graduation_parts)
+    graduation = condense_requirement(graduation_joined, keep_degree=False)
     post = condense_requirement(_joined_for_display(post_parts))
     complete_official_row = bool(
         v.get("requirements_complete")
         and str(v.get("requirements_source") or "").startswith("OFFICIAL_")
     )
+    if complete_official_row and graduation is None and graduation_parts:
+        # ``condense_requirement`` intentionally rejects long phrases without
+        # an explicit degree word.  Here those phrases are not arbitrary prose:
+        # they are the graduation field already isolated from an official
+        # vacancy table. Keep a compact version instead of turning evidence
+        # such as four alternative degrees into “Não informado”.
+        graduation = graduation_joined
+        if len(graduation) > 180:
+            graduation = graduation[:180].rsplit(" ", 1)[0] + "…"
     missing_label = "Não consta como requisito mínimo"
     if complete_official_row and graduation == "Não informado":
         graduation = missing_label
