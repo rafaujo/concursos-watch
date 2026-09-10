@@ -1,6 +1,7 @@
 (() => {
   const cards = [...document.querySelectorAll('.vacancy-card')];
   const contests = [...document.querySelectorAll('.contest-group')];
+  const institutionGroups = [...document.querySelectorAll('.institution-group')];
   const controls = {
     search: document.querySelector('#search'), state: document.querySelector('#state'),
     institution: document.querySelector('#institution'),
@@ -40,8 +41,14 @@
       contest.hidden = !show;
       if (show) visibleContests += 1;
     });
+    let visibleInstitutions = 0;
+    institutionGroups.forEach(group => {
+      const show = Boolean(group.querySelector('.contest-group:not([hidden])'));
+      group.hidden = !show;
+      if (show) visibleInstitutions += 1;
+    });
     controls.scoreValue.value = controls.score.value;
-    controls.count.textContent = `${visible} vaga(s) em ${visibleContests} concurso(s)`;
+    controls.count.textContent = `${visible} vaga(s) em ${visibleContests} concurso(s) · ${visibleInstitutions} instituição(ões)`;
   }
 
   ['state', 'institution', 'institutionType', 'course', 'eligibility', 'openOnly', 'newOnly']
