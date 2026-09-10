@@ -301,7 +301,7 @@ def _requirement_kinds(text: str) -> list[str]:
 
 
 ACADEMIC_REQUIREMENT_PHRASE = re.compile(
-    r"\b(?:graduacao|licenciatura|bacharelado|curso superior|formacao superior|"
+    r"\b(?:graduacao|licenciatura|bacharelado|curso superior|ensi\s*no superior|formacao superior|"
     r"especializacao|pos[- ]?graduacao|mestrado|doutorado|residencia(?: medica)?)"
     r"(?:\s+(?:plena|completa|em|na area de|nas areas de|de|do|da))\b|"
     r"\b(?:titulo|grau) de (?:mestre|doutor|especialista|livre[- ]docente)\b|"
@@ -314,7 +314,7 @@ ACADEMIC_REQUIREMENT_CUE = re.compile(
 )
 ACADEMIC_REQUIREMENT_START = re.compile(
     r"^(?:\W|\d+[.)-])*\s*(?:graduacao|licenciatura|bacharelado|curso superior|"
-    r"formacao superior|especializacao|pos[- ]?graduacao|mestrado|doutorado|"
+    r"ensi\s*no superior|formacao superior|especializacao|pos[- ]?graduacao|mestrado|doutorado|"
     r"residencia(?: medica)?|titulo de (?:mestre|doutor|especialista|livre[- ]docente)|"
     r"livre[- ]docencia|"
     r"grau de (?:mestre|doutor))\b"
@@ -365,7 +365,9 @@ def extract_requirement_evidence(
             if not _looks_like_academic_requirement(line):
                 continue
             kinds = _requirement_kinds(line)
-            start, end = max(0, index - 2), min(len(lines), index + 3)
+            line_has_cue = bool(ACADEMIC_REQUIREMENT_CUE.search(normalize_text(line)))
+            start = index if line_has_cue else max(0, index - 2)
+            end = min(len(lines), index + 3)
             excerpt = clean_text(" ".join(lines[start:end]))[:1400]
             key = normalize_text(excerpt)
             if not key or key in seen:
@@ -379,6 +381,7 @@ def extract_requirement_evidence(
                 "kinds": _requirement_kinds(excerpt),
                 "context_terms": overlap,
                 "context_score": len(overlap),
+                "requirement_cue": line_has_cue,
             })
 
     if not candidates:
@@ -399,6 +402,9 @@ def extract_requirement_evidence(
     maximum = max(item["context_score"] for item in candidates)
     if maximum > 0:
         selected = [item for item in candidates if item["context_score"] >= max(1, maximum - 1)]
+        cued = [item for item in selected if item["requirement_cue"]]
+        if cued:
+            selected = cued
         confidence = "HIGH" if maximum >= 2 else "MEDIUM"
         reason = "Requisitos associados à área/cargo por termos de contexto."
     elif allow_unscoped and len(candidates) <= 3:
@@ -492,7 +498,203 @@ def extract_structured_opportunities(pages: Iterable[tuple[int, str]]) -> list[d
     if len(labelled) > len(unique):
         return labelled
     numbered = extract_numbered_requirements_table(page_list)
-    return numbered if len(numbered) > len(unique) else list(unique.values())
+    cargo_blocks = extract_cargo_requirement_blocks(page_list)
+    profile_table = extract_candidate_profile_table(page_list)
+    choices = (list(unique.values()), labelled, numbered, cargo_blocks, profile_table)
+    return max(choices, key=len)
+
+
+def extract_cargo_requirement_blocks(
+    pages: Iterable[tuple[int, str]],
+) -> list[dict[str, Any]]:
+    """Read municipal annexes written as ``CARGO``/``REQUISITOS`` blocks.
+
+    This layout is common in gazettes and organiser PDFs. Requiring an
+    explicit teaching cargo, both labels, and an academic degree keeps job
+    descriptions and generic eligibility clauses out of the vacancy list.
+    """
+    page_list = list(pages)
+    page_starts: list[int] = []
+    page_numbers: list[int] = []
+    combined: list[str] = []
+    cursor = 0
+    for page_number, page_text in page_list:
+        page_starts.append(cursor)
+        page_numbers.append(page_number)
+        combined.append(page_text)
+        cursor += len(page_text) + 2
+    text = "\n\n".join(combined)
+    cargo_marker = re.compile(r"(?im)^\s*CARGO\s*:\s*([^\r\n]+)")
+    requirement_marker = re.compile(r"(?im)^\s*REQUISITOS?\s*:\s*")
+    duties_marker = re.compile(r"(?im)^\s*ATRIBUI[CÇ][OÕ]ES\s*:\s*")
+    markers = list(cargo_marker.finditer(text))
+    opportunities: list[dict[str, Any]] = []
+    for index, marker in enumerate(markers):
+        cargo = clean_text(marker.group(1)).strip(" .;:-–")
+        if not re.search(r"\b(?:professor|professora|docente|magist[eé]rio|regente)\b", cargo, re.I):
+            continue
+        end = markers[index + 1].start() if index + 1 < len(markers) else len(text)
+        block = text[marker.end():end]
+        requirement = requirement_marker.search(block)
+        if not requirement:
+            continue
+        duties = duties_marker.search(block, requirement.end())
+        requirement_text = clean_text(
+            block[requirement.end():duties.start() if duties else len(block)]
+        ).strip(" .;:-–")
+        fields = extract_requirement_fields(f"Requisitos: {requirement_text}")
+        if not any(fields.values()):
+            continue
+        absolute_offset = marker.start()
+        page_index = max(0, bisect.bisect_right(page_starts, absolute_offset) - 1)
+        opportunities.append({
+            "area": cargo,
+            "position": cargo,
+            "requirement_text": requirement_text,
+            "graduation_requirement_raw": fields["graduation_requirement"],
+            "postgraduate_requirement_raw": fields["postgraduate_requirement"],
+            "masters_requirement_raw": fields["masters_requirement"],
+            "doctorate_requirement_raw": fields["doctorate_requirement"],
+            "page": page_numbers[page_index] if page_numbers else None,
+            "reference": None,
+            "vacancies_count": None,
+            "requirements_complete": True,
+        })
+    unique: dict[str, dict[str, Any]] = {}
+    for item in opportunities:
+        unique[normalize_text(f"{item['area']}|{item['requirement_text']}")] = item
+    return list(unique.values())
+
+
+def extract_candidate_profile_table(
+    pages: Iterable[tuple[int, str]],
+) -> list[dict[str, Any]]:
+    """Read fixed-width tables with ``Área`` and ``Perfil do candidato``.
+
+    Some university PDFs have no ``Requisito`` column; the qualification is
+    instead named ``Perfil do candidato``. PyPDF's layout extraction keeps
+    the column offsets, including rows that continue on the following page.
+    """
+    current: dict[str, Any] | None = None
+    rows: list[dict[str, Any]] = []
+    columns: tuple[int, int, int] | None = None
+    pending_quantity_col: int | None = None
+
+    def finish() -> None:
+        nonlocal current
+        if not current:
+            return
+        area = clean_text(" ".join(current["area"])).strip(" .;:-–")
+        requirement_text = clean_text(" ".join(current["requirement"])).strip(" .;:-–")
+        fields = extract_requirement_fields(f"Requisitos: {requirement_text}")
+        if len(area) >= 2 and any(fields.values()):
+            rows.append({
+                "area": area,
+                "department": clean_text(" ".join(current["department"])) or None,
+                "requirement_text": requirement_text,
+                "graduation_requirement_raw": fields["graduation_requirement"],
+                "postgraduate_requirement_raw": fields["postgraduate_requirement"],
+                "masters_requirement_raw": fields["masters_requirement"],
+                "doctorate_requirement_raw": fields["doctorate_requirement"],
+                "page": current["page"],
+                "reference": current["sequence"],
+                "vacancies_count": None,
+                "requirements_complete": True,
+            })
+        current = None
+
+    for page_number, page_text in pages:
+        for line in page_text.splitlines():
+            normalized = normalize_text(line)
+            if "quant" in normalized and len(line) - len(line.lstrip()) > 20:
+                pending_quantity_col = max(0, line.upper().find("QUANT"))
+            if ("area de" in normalized or "rea de" in normalized) and "perfil do candidato" in normalized:
+                # ``normalize_text`` collapses whitespace, so its character
+                # positions cannot delimit fixed-width columns. Locate the
+                # ASCII parts in the original line instead (it also survives
+                # PDFs whose accented initial A was decoded as U+FFFD).
+                raw_upper = line.upper()
+                area_ascii = raw_upper.find("REA DE")
+                area_label_col = max(0, area_ascii - 1) if area_ascii >= 1 else -1
+                profile_label_col = raw_upper.find("PERFIL DO CANDIDATO")
+                department_label = re.search(r"DEP\.?\s+OU\s+UNID", raw_upper)
+                # Headings are centred inside their cells. Column boundaries
+                # are therefore the midpoints between adjacent headings, not
+                # the first letters of the headings themselves.
+                area_col = (
+                    (department_label.end() + area_label_col) // 2
+                    if department_label and area_label_col > department_label.end()
+                    else area_label_col
+                )
+                area_label_end = area_ascii + len("REA DE") if area_ascii >= 0 else area_label_col
+                profile_col = (
+                    (area_label_end + profile_label_col) // 2 - 2
+                    if area_label_end < profile_label_col
+                    else profile_label_col
+                )
+                quantity_col = pending_quantity_col or raw_upper.find("QUANT", profile_label_col + 1)
+                if 0 < area_col < profile_col:
+                    columns = (
+                        area_col, profile_col,
+                        quantity_col if quantity_col > profile_col else max(len(line) - 5, profile_col + 30),
+                    )
+                pending_quantity_col = None
+                continue
+            if not columns:
+                continue
+            if line.lstrip().startswith("*"):
+                finish()
+                columns = None
+                continue
+            if re.match(r"^\s*\d+\.\s+[A-ZÀ-Ú]", line):
+                finish()
+                columns = None
+                continue
+            row_start = re.match(r"^\s*(\d{1,3})\s{2,}", line)
+            area_col, profile_col, quantity_col = columns
+            padded = line.ljust(quantity_col)
+            requirement = padded[profile_col:quantity_col].strip()
+            if row_start:
+                requirement = re.sub(r"\s+\d{1,3}\s*$", "", requirement).strip()
+            requirement_start = normalize_text(requirement)
+            starts_graduation = bool(re.match(
+                r"^(?:graduacao|bacharelado|licenciatura|tecnologo|curso superior|"
+                r"ensino superior|formacao superior)\b",
+                requirement_start,
+            ))
+            if starts_graduation and current and current["sequence"] is not None:
+                finish()
+            if starts_graduation and not current:
+                current = {
+                    "sequence": None, "page": page_number,
+                    "department": [], "area": [], "requirement": [],
+                }
+            if row_start and current and current["sequence"] is not None:
+                finish()
+            if row_start and not current:
+                current = {
+                    "sequence": None, "page": page_number,
+                    "department": [], "area": [], "requirement": [],
+                }
+            if row_start:
+                current["sequence"] = str(int(row_start.group(1)))
+            if not current:
+                continue
+            department_start = row_start.end() if row_start else 0
+            department = padded[department_start:area_col].strip()
+            area = padded[area_col:profile_col].strip()
+            if department:
+                current["department"].append(department)
+            if area:
+                current["area"].append(area)
+            if requirement:
+                current["requirement"].append(requirement)
+    finish()
+    unique: dict[str, dict[str, Any]] = {}
+    for item in rows:
+        key = normalize_text(f"{item['reference']}|{item['area']}|{item['requirement_text']}")
+        unique[key] = item
+    return list(unique.values())
 
 
 def extract_labelled_area_requirements(pages: Iterable[tuple[int, str]]) -> list[dict[str, Any]]:
@@ -724,7 +926,7 @@ def extract_numbered_requirements_table(pages: Iterable[tuple[int, str]]) -> lis
 
 
 HTML_ACADEMIC_REQUIREMENT = re.compile(
-    r"\b(?:graduacao|licenciatura|bacharelado|curso superior|formacao superior|"
+    r"\b(?:graduacao|licenciatura|bacharelado|curso superior|ensi\s*no superior|formacao superior|"
     r"especializacao|pos[- ]?graduacao|mestrado|doutorado|residencia(?: medica)?|"
     r"titulo de (?:mestre|doutor|especialista|livre[- ]docente)|"
     r"livre[- ]docencia|grau de (?:mestre|doutor))\b"
@@ -844,6 +1046,7 @@ def extract_structured_html_opportunities(html_bytes: bytes) -> list[dict[str, A
     and campus; that documented shape is handled explicitly here.
     """
     soup = BeautifulSoup(html_bytes, "html.parser")
+    page_context = normalize_text(clean_text(soup.get_text(" ", strip=True))[:8000])
     opportunities: list[dict[str, Any]] = _extract_labelled_html_opportunities(soup)
     for table in soup.select("table"):
         rows = table.find_all("tr", recursive=False)
@@ -854,7 +1057,9 @@ def extract_structured_html_opportunities(html_bytes: bytes) -> list[dict[str, A
         for index, row in enumerate(rows[:5]):
             candidate = [normalize_text(cell.get_text(" ", strip=True)) for cell in row.find_all(("th", "td"), recursive=False)]
             joined = " | ".join(candidate)
-            if any(term in joined for term in ("requisito", "escolaridade", "titulacao minima")) and any(
+            if any(term in joined for term in (
+                "requisito", "escolaridade", "titulacao minima", "habilita",
+            )) and any(
                 term in joined for term in ("area", "cargo", "funcao", "disciplina")
             ):
                 header_index, headers = index, candidate
@@ -868,8 +1073,10 @@ def extract_structured_html_opportunities(html_bytes: bytes) -> list[dict[str, A
                     return i
             return None
 
-        requirement_i = column("requisito", "escolaridade", "titulacao minima", "formacao exigida")
-        area_i = column("area", "disciplina")
+        requirement_i = column(
+            "requisito", "escolaridade", "titulacao minima", "formacao exigida", "habilita",
+        )
+        area_i = column("area", "disciplina", "especialidade")
         cargo_i = column("cargo", "funcao")
         combined_i = next((i for i, value in enumerate(headers) if "codigo" in value and "cargo" in value), None)
         if requirement_i is None or (area_i is None and cargo_i is None):
@@ -882,14 +1089,26 @@ def extract_structured_html_opportunities(html_bytes: bytes) -> list[dict[str, A
 
         for row in rows[header_index + 1:]:
             cells = row.find_all(("th", "td"), recursive=False)
-            if len(cells) < len(headers):
+            if not cells:
                 continue
             values = [clean_text(cell.get_text(" ", strip=True)) for cell in cells]
-            requirement_text = values[requirement_i] if requirement_i < len(values) else ""
+            aligned = len(cells) >= len(headers)
+            actual_requirement_i = requirement_i if aligned else next(
+                (
+                    i for i, value in enumerate(values)
+                    if HTML_ACADEMIC_REQUIREMENT.search(normalize_text(value))
+                ),
+                None,
+            )
+            requirement_text = (
+                values[actual_requirement_i]
+                if actual_requirement_i is not None and actual_requirement_i < len(values)
+                else ""
+            )
             area = values[area_i] if area_i is not None and area_i < len(values) else ""
-            cargo = values[cargo_i] if cargo_i is not None and cargo_i < len(values) else ""
-            reference = values[reference_i] if reference_i is not None and reference_i < len(values) else None
-            campus = values[campus_i] if campus_i is not None and campus_i < len(values) else None
+            cargo = values[cargo_i] if aligned and cargo_i is not None and cargo_i < len(values) else ""
+            reference = values[reference_i] if aligned and reference_i is not None and reference_i < len(values) else None
+            campus = values[campus_i] if aligned and campus_i is not None and campus_i < len(values) else None
             department = None
             position = cargo or None
             if combined_i is not None and combined_i < len(cells):
@@ -904,15 +1123,16 @@ def extract_structured_html_opportunities(html_bytes: bytes) -> list[dict[str, A
                     campus = parts[-1]
             if len(area) < 2 or len(requirement_text) < 3:
                 continue
-            if not re.search(r"\b(?:professor|docente|magisterio)\b", normalize_text(
+            row_context = normalize_text(
                 f"{position or ''} {cargo} {soup.title.get_text(' ', strip=True) if soup.title else ''}"
-            )):
+            )
+            if not re.search(r"\b(?:professor|docente|magisterio)\b", f"{row_context} {page_context}"):
                 continue
             requirements = extract_requirement_fields(f"Requisitos: {requirement_text}")
             count_match = re.search(r"\d+", values[vacancies_i]) if vacancies_i is not None and vacancies_i < len(values) else None
             item = {
                 "area": area,
-                "subarea": values[subarea_i] if subarea_i is not None and subarea_i < len(values) else None,
+                "subarea": values[subarea_i] if aligned and subarea_i is not None and subarea_i < len(values) else None,
                 "position": position,
                 "department": department,
                 "requirement_text": requirement_text,
@@ -922,7 +1142,7 @@ def extract_structured_html_opportunities(html_bytes: bytes) -> list[dict[str, A
                 "doctorate_requirement_raw": requirements["doctorate_requirement"],
                 "reference": reference,
                 "campus": campus,
-                "workload": values[workload_i] if workload_i is not None and workload_i < len(values) else None,
+                "workload": values[workload_i] if aligned and workload_i is not None and workload_i < len(values) else None,
                 "vacancies_count": int(count_match.group(0)) if count_match else None,
                 "requirements_complete": True,
             }
@@ -951,6 +1171,28 @@ def is_usp_portal_vacancy(vacancy: Mapping[str, Any]) -> bool:
         or "universidade de sao paulo" in context
         or "uspdigital.usp.br" in context
     )
+
+
+def portal_seed_urls(vacancy: Mapping[str, Any]) -> list[str]:
+    """Add stable personnel/search portals that cover future notices too."""
+    context = normalize_text(" ".join(str(vacancy.get(field) or "") for field in (
+        "institution", "title", "official_url", "institution_url",
+    )))
+    seeds: list[str] = []
+    if "ufrpe" in context or "universidade federal rural de pernambuco" in context:
+        seeds.append("https://progepe.ufrpe.br/")
+    if "utfpr" in context or "universidade tecnologica federal do parana" in context:
+        numbers = edital_numbers_for_display(vacancy)
+        query_parts = [numbers[0]] if numbers else []
+        area = str(vacancy.get("area") or "")
+        if area and normalize_text(area) != "nao identificada":
+            query_parts.append(area)
+        if query_parts:
+            seeds.append(
+                "https://www.utfpr.edu.br/search?SearchableText="
+                + quote(" ".join(query_parts), safe="")
+            )
+    return seeds
 
 
 def score_usp_portal_row(row: Mapping[str, Any], vacancy: Mapping[str, Any]) -> int:
@@ -1270,18 +1512,27 @@ class OfficialDocumentReader:
         elapsed = time.monotonic() - self._last_request_at
         if self._last_request_at and elapsed < self.delay:
             time.sleep(self.delay - elapsed)
-        response = self.session.post(
-            url,
-            data=("\n".join(lines) + "\n").encode("utf-8"),
-            headers={
-                "Content-Type": "text/plain",
-                "Origin": "https://uspdigital.usp.br",
-                "Referer": "https://uspdigital.usp.br/gr/admissao",
-            },
-            timeout=config.REQUEST_TIMEOUT_SECONDS,
-        )
+        response = None
+        for attempt in range(2):
+            try:
+                response = self.session.post(
+                    url,
+                    data=("\n".join(lines) + "\n").encode("utf-8"),
+                    headers={
+                        "Content-Type": "text/plain",
+                        "Origin": "https://uspdigital.usp.br",
+                        "Referer": "https://uspdigital.usp.br/gr/admissao",
+                    },
+                    timeout=config.REQUEST_TIMEOUT_SECONDS,
+                )
+                response.raise_for_status()
+                break
+            except requests.RequestException:
+                if attempt:
+                    raise
+                time.sleep(0.8)
+        assert response is not None
         self._last_request_at = time.monotonic()
-        response.raise_for_status()
         if len(response.content) > config.OFFICIAL_MAX_DOCUMENT_BYTES:
             raise OfficialReadError("Resposta do portal USP excede o limite configurado")
         return self._parse_dwr_callback(response.text)
@@ -1607,7 +1858,10 @@ class OfficialDocumentReader:
         truncated = page_count > config.OFFICIAL_MAX_PDF_PAGES
         for number, page in enumerate(reader.pages[: config.OFFICIAL_MAX_PDF_PAGES], start=1):
             try:
-                text = page.extract_text() or ""
+                try:
+                    text = page.extract_text(extraction_mode="layout") or ""
+                except TypeError:
+                    text = page.extract_text() or ""
             except Exception as exc:
                 LOGGER.warning("Falha ao extrair página %s do PDF: %s", number, exc)
                 text = ""
@@ -1666,7 +1920,14 @@ class OfficialDocumentReader:
             value = document.get("url")
             if value and value not in seeds:
                 seeds.append(str(value))
-        for field in ("source_url", "official_url", "institution_url"):
+        for field in ("source_url",):
+            value = vacancy.get(field)
+            if value and value not in seeds:
+                seeds.append(str(value))
+        for value in portal_seed_urls(vacancy):
+            if value not in seeds:
+                seeds.append(value)
+        for field in ("official_url", "institution_url"):
             value = vacancy.get(field)
             if value and value not in seeds:
                 seeds.append(str(value))

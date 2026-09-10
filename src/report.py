@@ -391,9 +391,16 @@ def _row(v: dict[str, Any], common_detail_labels: set[str] | None = None) -> str
         if details else '<span class="no-specific-details">Nenhum detalhe específico</span>'
     )
     post_lines = "".join(f"<span>{_escape(line)}</span>" for line in post.split(" / "))
+    pci_link = ""
+    if v.get("source_url"):
+        pci_link = (
+            f'<a class="row-source" href="{_escape(v.get("source_url"))}" '
+            f'target="_blank" rel="noopener" aria-label="Ver esta vaga no PCI: '
+            f'{_escape(vacancy_name)}">Ver no PCI</a>'
+        )
 
     return f'''<article role="row" class="vacancy-card vacancy-row eligibility-{_escape(eligibility).lower()}" data-state="{_escape(v.get("state"), '')}" data-institution="{_escape(v.get("institution"), '')}" data-eligibility="{_escape(eligibility)}" data-score="{score}" data-open="{str(is_open).lower()}" data-new="{str(is_new).lower()}" data-course="{_escape(v.get("course"), '')}" data-institution-type="{_escape(institution_type(v))}" data-search="{_escape(search, '')}">
-      <div role="cell" class="list-cell vacancy-cell" data-label="Vaga ou área"><strong>{_escape(vacancy_name)}</strong><span class="vacancy-context">{_escape(vacancy_context)}</span><div class="row-badges"><span class="eligibility-badge">{_escape(ELIGIBILITY_LABELS.get(eligibility, eligibility))}</span><span>Aderência {score}/100</span></div></div>
+      <div role="cell" class="list-cell vacancy-cell" data-label="Vaga ou área"><strong>{_escape(vacancy_name)}</strong><span class="vacancy-context">{_escape(vacancy_context)}</span>{pci_link}<div class="row-badges"><span class="eligibility-badge">{_escape(ELIGIBILITY_LABELS.get(eligibility, eligibility))}</span><span>Aderência {score}/100</span></div></div>
       <div role="cell" class="list-cell requirement-cell" data-label="Requisito de graduação"><p>{_escape(graduation)}</p></div>
       <div role="cell" class="list-cell requirement-cell post-cell" data-label="Requisito de pós-graduação"><p>{post_lines}</p><small>{_escape(source_note)}</small></div>
       <div role="cell" class="list-cell details-cell" data-label="Detalhes específicos">{details_content}<details class="row-details"><summary>Análise</summary><p>{_escape(analysis)}</p></details></div>
@@ -441,13 +448,39 @@ def _contest_section(vacancy: dict[str, Any], index: int) -> str:
     table_rows = "".join(_row(row, common_detail_labels) for row in rows)
     row_label = "vaga listada" if len(rows) == 1 else "vagas listadas"
     return f'''<section class="contest-group" aria-labelledby="{contest_id}">
-      <header class="contest-header"><div class="contest-title"><p>{_escape(vacancy.get("institution"))}</p><h3 id="{contest_id}">{_escape(vacancy.get("title"))}</h3><span>{len(rows)} {row_label} neste concurso · {_escape(reading_note)}</span></div><nav>{' '.join(links)}</nav></header>
+      <header class="contest-header"><div class="contest-title"><h4 id="{contest_id}">{_escape(vacancy.get("title"))}</h4><span>{len(rows)} {row_label} neste concurso · {_escape(reading_note)}</span></div><nav>{' '.join(links)}</nav></header>
       <dl class="contest-meta">{meta_html}</dl>
       {common_block}
       <div class="contest-table" role="table" aria-label="Vagas e requisitos de {_escape(vacancy.get('title'))}">
         <div class="list-header" role="row"><div role="columnheader">Vaga ou área</div><div role="columnheader">Requisito de graduação</div><div role="columnheader">Requisito de pós-graduação</div><div role="columnheader">Detalhes específicos</div></div>{table_rows}
       </div>
     </section>'''
+
+
+def _institution_sections(vacancies: list[dict[str, Any]]) -> str:
+    """Group contests by institution while preserving their ranked order."""
+    grouped: dict[str, list[dict[str, Any]]] = {}
+    for vacancy in vacancies:
+        institution = str(vacancy.get("institution") or "Instituição não informada")
+        grouped.setdefault(institution, []).append(vacancy)
+
+    sections: list[str] = []
+    contest_index = 1
+    for institution_index, (institution, contests) in enumerate(grouped.items(), start=1):
+        contest_sections: list[str] = []
+        vacancy_count = 0
+        for contest in contests:
+            contest_sections.append(_contest_section(contest, contest_index))
+            vacancy_count += len(_expanded_rows([contest]))
+            contest_index += 1
+        contest_label = "concurso" if len(contests) == 1 else "concursos"
+        vacancy_label = "vaga" if vacancy_count == 1 else "vagas"
+        institution_id = f"institution-{institution_index}"
+        sections.append(f'''<section class="institution-group" aria-labelledby="{institution_id}">
+          <header class="institution-header"><div><p>Universidade ou instituição</p><h3 id="{institution_id}">{_escape(institution)}</h3></div><span>{len(contests)} {contest_label} · {vacancy_count} {vacancy_label}</span></header>
+          <div class="institution-contests">{"".join(contest_sections)}</div>
+        </section>''')
+    return "".join(sections)
 
 
 def normalize_for_report(value: str) -> str:
@@ -474,7 +507,7 @@ def generate_report(vacancies: list[dict[str, Any]], output_path: Path, generate
         key=lambda value: normalize_for_report(value),
     )
     sections = (
-        "".join(_contest_section(vacancy, index) for index, vacancy in enumerate(visible, start=1))
+        _institution_sections(visible)
         if rows else '<div class="empty">Nenhuma vaga relevante registrada ainda. Execute o monitor para atualizar o radar.</div>'
     )
     options_state = "".join(f'<option value="{_escape(s)}">{_escape(s)}</option>' for s in states)
@@ -487,12 +520,12 @@ def generate_report(vacancies: list[dict[str, Any]], output_path: Path, generate
     document = f'''<!doctype html>
 <html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Radar automático de concursos acadêmicos"><title>Concursos Watch</title>
-<link rel="stylesheet" href="assets/style.css?v=9"></head><body data-profile="{profile_json}">
+<link rel="stylesheet" href="assets/style.css?v=10"></head><body data-profile="{profile_json}">
 <header class="hero"><div class="hero-inner"><p class="eyebrow">CONCURSOS WATCH</p><h1>Radar de Concursos Acadêmicos</h1><p class="intro">Oportunidades docentes públicas organizadas por concurso, edital, vaga e requisitos de formação.</p>
 <div class="summary"><div><strong>{generated_at.strftime('%d/%m/%Y %H:%M')}</strong><span>Última atualização (BRT)</span></div><div><strong>{open_count}</strong><span>Vagas abertas listadas</span></div><div><strong>{new_count}</strong><span>Novas hoje</span></div><div><strong>PCI</strong><span>Fonte monitorada</span></div></div></div></header>
 <main><aside class="notice"><strong>Triagem, não decisão jurídica.</strong> “Elegível” não substitui a decisão da instituição sobre equivalência de títulos. <span class="official-count">Editais oficiais lidos com evidência aplicável: {official_read_count}.</span></aside>
 <section class="filters" aria-label="Filtros"><label>Buscar<input id="search" type="search" placeholder="Área, cidade, instituição…"></label><label>Estado<select id="state"><option value="">Todos</option>{options_state}</select></label><label>Instituição<select id="institution"><option value="">Todas</option>{options_inst}</select></label><label>Tipo<select id="institution-type"><option value="">Todas</option><option value="SUPERIOR" selected>Universidades e IFs</option><option value="BASICA">Prefeituras e estados</option><option value="INDEFINIDA">Indefinida</option></select></label><label>Curso<select id="course"><option value="">Todos</option>{options_course}</select></label><label>Elegibilidade<select id="eligibility"><option value="">Todas</option><option>YES</option><option>UNCERTAIN</option><option>UNKNOWN</option><option>NO</option></select></label><label>Aderência mínima<input id="score" type="range" min="0" max="100" value="0"><output id="score-value">0</output></label><label class="check"><input id="open-only" type="checkbox"> Somente abertas</label><label class="check"><input id="new-only" type="checkbox"> Somente novas</label><button id="clear" type="button">Limpar filtros</button></section>
-<div class="results-heading"><h2>Todas as vagas por concurso</h2><span id="result-count">{len(rows)} vaga(s) em {len(visible)} concurso(s)</span></div><div id="cards" class="contest-list">{sections}</div>
-</main><footer>Gerado automaticamente · Fonte de descoberta: <a href="{config.PCI_LISTING_URL}">PCI Concursos</a> · Consulte sempre o edital oficial.</footer><script src="assets/app.js?v=9"></script></body></html>'''
+<div class="results-heading"><h2>Vagas agrupadas por universidade ou instituição</h2><span id="result-count">{len(rows)} vaga(s) em {len(visible)} concurso(s) · {len(institutions)} instituição(ões)</span></div><div id="cards" class="contest-list">{sections}</div>
+</main><footer>Gerado automaticamente · Fonte de descoberta: <a href="{config.PCI_LISTING_URL}">PCI Concursos</a> · Consulte sempre o edital oficial.</footer><script src="assets/app.js?v=10"></script></body></html>'''
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(document, encoding="utf-8", newline="\n")

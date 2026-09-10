@@ -14,6 +14,7 @@ GRADUATION_MARKER = re.compile(
     r"\bbacharelado\b|"
     r"\blicenciatura\b|"
     r"\bcurso\s+superior\b|"
+    r"\bensi\s*no\s+superior\b|"
     r"\bforma[cç][aã]o\s+superior\b"
     r")",
     re.I,
@@ -69,7 +70,7 @@ NEXT_SUBJECT = re.compile(
 
 NON_ACADEMIC_BULLET = re.compile(
     r"\s+(?:[,;:]\s*)?(?:e\s+)?[▪•]\s*"
-    r"(?!(?:gradua[cç][aã]o|licenciatura|bacharelado|curso\s+superior|"
+    r"(?!(?:gradua[cç][aã]o|licenciatura|bacharelado|curso\s+superior|ensi\s*no\s+superior|"
     r"forma[cç][aã]o\s+superior|mestrado|doutorado|especializa[cç][aã]o|"
     r"resid[eê]ncia|livre[- ]doc[eê]ncia|"
     r"t[ií]tulo\s+de\s+(?:mestre|doutor|especialista|livre[- ]docente)|"
@@ -183,7 +184,7 @@ def graduation_for_display(value: str) -> str:
     """Drop only the leading degree label; preserve modalities and alternatives."""
     stripped = re.sub(
         r"^(?:(?<!p[oó]s[- ])gradua[cç][aã]o|graduad[oa]s?|bacharelado|licenciatura|"
-        r"curso\s+superior|forma[cç][aã]o\s+superior)\s*"
+        r"curso\s+superior|ensi\s*no\s+superior|forma[cç][aã]o\s+superior)\s*"
         r"(?:(?:com\s+habilita[cç][aã]o\s+)?(?:em|nas?\s+[aá]reas?\s+de|na\s+[aá]rea\s+de)\s*)?",
         "",
         value,
@@ -227,7 +228,7 @@ def extract_requirement_fields(text: Any) -> dict[str, str | None]:
 
 
 DEGREE = re.compile(
-    r"\b(gradua[cç][aã]o|licenciatura|bacharelado|curso superior|forma[cç][aã]o superior|"
+    r"\b(gradua[cç][aã]o|licenciatura|bacharelado|curso superior|ensi\s*no superior|forma[cç][aã]o superior|"
     r"especializa[cç][aã]o|p[oó]s[- ]?gradua[cç][aã]o|mestrado|doutorado|p[oó]s[- ]doutorado|"
     r"resid[eê]ncia(?: m[eé]dica)?|t[ií]tulo de mestre|t[ií]tulo de doutor|"
     r"t[ií]tulo de especialista|grau de mestre|grau de doutor|"
@@ -268,7 +269,8 @@ TABLE = re.compile(r"R\$\s*[\d.]+,\d{2}.*\b\d+\b|\b\d{2}h\b\s+\d")
 
 CANON = {
     "graduacao": "Graduação", "licenciatura": "Licenciatura", "bacharelado": "Bacharelado",
-    "curso superior": "Graduação", "formacao superior": "Graduação",
+    "curso superior": "Graduação", "ensino superior": "Graduação", "ensi no superior": "Graduação",
+    "formacao superior": "Graduação",
     "especializacao": "Especialização", "pos-graduacao": "Pós-graduação",
     "posgraduacao": "Pós-graduação", "pos graduacao": "Pós-graduação",
     "mestrado": "Mestrado", "doutorado": "Doutorado", "pos-doutorado": "Pós-doutorado",
