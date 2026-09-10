@@ -1372,6 +1372,12 @@ def should_check_official(cache_entry: Mapping[str, Any] | None, today: date) ->
         return True
     if cache_entry.get("reader_version") != config.OFFICIAL_READER_VERSION:
         return True
+    # A truncated response is a transport failure, not a durable negative
+    # result. Retry it on the next run even when the normal blocked-entry TTL
+    # has not elapsed.
+    errors = " ".join(str(error) for error in cache_entry.get("errors", []))
+    if "IncompleteRead" in errors or "ChunkedEncodingError" in errors:
+        return True
     checked = cache_entry.get("checked_at")
     try:
         age = (today - date.fromisoformat(str(checked)[:10])).days
@@ -1428,28 +1434,37 @@ class OfficialDocumentReader:
         if self._last_request_at and elapsed < self.delay:
             time.sleep(self.delay - elapsed)
         LOGGER.info("Consultando fonte oficial: %s", url)
-        response, tls_unverified = self._request(url)
-        self._last_request_at = time.monotonic()
-        for item in [*response.history, response]:
-            if not is_public_http_url(item.url):
-                raise OfficialReadError("Redirecionamento oficial recusado por validação de segurança")
-        response.raise_for_status()
-        declared = int(response.headers.get("Content-Length") or 0)
-        if declared > config.OFFICIAL_MAX_DOCUMENT_BYTES:
-            raise OfficialReadError("Documento oficial excede o limite configurado")
-        chunks: list[bytes] = []
-        size = 0
-        for chunk in response.iter_content(chunk_size=65536):
-            if not chunk:
-                continue
-            size += len(chunk)
-            if size > config.OFFICIAL_MAX_DOCUMENT_BYTES:
+        for attempt in range(2):
+            response, tls_unverified = self._request(url)
+            self._last_request_at = time.monotonic()
+            for item in [*response.history, response]:
+                if not is_public_http_url(item.url):
+                    raise OfficialReadError("Redirecionamento oficial recusado por validação de segurança")
+            response.raise_for_status()
+            declared = int(response.headers.get("Content-Length") or 0)
+            if declared > config.OFFICIAL_MAX_DOCUMENT_BYTES:
                 raise OfficialReadError("Documento oficial excede o limite configurado")
-            chunks.append(chunk)
-        data = b"".join(chunks)
-        if not data:
-            raise OfficialReadError("Documento oficial vazio")
-        return data, response.url, response.headers.get("Content-Type", "").lower(), tls_unverified
+            chunks: list[bytes] = []
+            size = 0
+            try:
+                for chunk in response.iter_content(chunk_size=65536):
+                    if not chunk:
+                        continue
+                    size += len(chunk)
+                    if size > config.OFFICIAL_MAX_DOCUMENT_BYTES:
+                        raise OfficialReadError("Documento oficial excede o limite configurado")
+                    chunks.append(chunk)
+            except (requests.exceptions.ChunkedEncodingError, requests.exceptions.ConnectionError):
+                response.close()
+                if attempt:
+                    raise
+                LOGGER.warning("Download oficial interrompido em %s; repetindo do início", url)
+                continue
+            data = b"".join(chunks)
+            if not data:
+                raise OfficialReadError("Documento oficial vazio")
+            return data, response.url, response.headers.get("Content-Type", "").lower(), tls_unverified
+        raise OfficialReadError("Documento oficial não pôde ser baixado por completo")
 
     def _fetch_post(self, url: str, form_data: Mapping[str, str]) -> tuple[bytes, str, str]:
         """Fetch an official document exposed only through a public HTML form."""
