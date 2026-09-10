@@ -7,6 +7,7 @@ import requests
 import config
 
 from src.official import (
+    OFFICIAL_SEED_OVERRIDES,
     assess_document_relevance,
     extract_candidate_profile_table,
     extract_candidate_links,
@@ -511,6 +512,9 @@ def test_protected_edital_serial_inherits_notice_year():
 
 
 def test_future_ufrpe_and_utfpr_notices_get_stable_portal_seeds():
+    assert OFFICIAL_SEED_OVERRIDES[
+        "/noticias/ufrpe-abre-concurso-com-vagas-para-professores-do-magisterio-superior"
+    ].endswith("Edital%2021_2026%20-%20Concurso%20docente.docx.pdf")
     assert portal_seed_urls({
         "institution": "UFRPE - Universidade Federal Rural de Pernambuco",
         "title": "Concurso para professor",
