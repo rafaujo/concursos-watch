@@ -42833,7 +42833,7 @@
   },
   "https://www.pciconcursos.com.br/noticias/ufrpe-abre-concurso-com-vagas-para-professores-do-magisterio-superior": {
     "status": "READ_MULTI",
-    "checked_at": "2026-09-10T13:02:33-03:00",
+    "checked_at": "2026-09-10T17:11:54-03:00",
     "reader_version": 10,
     "documents": [
       {
@@ -42847,7 +42847,7 @@
         "evidence_status": "AMBIGUOUS",
         "tls_unverified": true,
         "relevant": true,
-        "relevance_reason": "Número do edital coincide com o anunciado no PCI: 21/26.",
+        "relevance_reason": "Documento de seleção docente da instituição: pernambuco, rural, ufrpe.",
         "opportunities_count": 14,
         "registration_start": null,
         "registration_end": "2025-06-03"
