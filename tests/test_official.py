@@ -22,6 +22,7 @@ from src.official import (
     known_edital_numbers,
     OfficialDocumentReader,
     portal_seed_urls,
+    retryable_error_urls,
     score_candidate_link,
     score_usp_portal_row,
     should_check_official,
@@ -583,6 +584,20 @@ def test_official_cache_ttl_depends_on_status():
         "status": "BLOCKED",
         "errors": ["edital.pdf: ChunkedEncodingError: IncompleteRead(820976 bytes read)"],
     }, today)
+
+
+def test_retryable_error_urls_recovers_the_failed_document_url():
+    cache_entry = {
+        "errors": [
+            "https://universidade.example/editais/edital.pdf: ChunkedEncodingError: "
+            "('Connection broken: IncompleteRead(100 bytes read)',)",
+            "https://universidade.example/: ReadTimeout: timeout",
+        ]
+    }
+
+    assert retryable_error_urls(cache_entry) == [
+        "https://universidade.example/editais/edital.pdf"
+    ]
 
 
 def test_usp_portal_row_matches_number_and_unit_context():
