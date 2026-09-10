@@ -362,7 +362,7 @@
     "listing_fingerprint": "abdaf11f196b04c6685564f4271eb90d2e88fe6a3e06d1bf54190c44fb0071c2",
     "last_checked": "2026-09-10T08:42:13-03:00",
     "content_hash": "b9c4421d5163e75f0359f5910eee0203bf091578c5c18750db14fd328424ad2b",
-    "status": "CLOSING_SOON"
+    "status": "UPDATED"
   },
   "https://www.pciconcursos.com.br/noticias/unesp-abre-concurso-para-professor-substituto-na-area-de-tecnologia-de-alimentos-em-sao-jose-do-rio-preto": {
     "id": "60bd3841f078a07a41de",
@@ -3677,7 +3677,7 @@
     "listing_fingerprint": "1c5968a02964ea4f539503078976be9846a5688c63004deb73787e190e55aec9",
     "last_checked": "2026-08-29T17:31:56-03:00",
     "content_hash": "ce08737fd3a0ef097549f2661731143d86d739a49fb5e5ae7e1fe4b010d12211",
-    "status": "OPEN"
+    "status": "UPDATED"
   },
   "https://www.pciconcursos.com.br/noticias/prefeitura-de-belo-jardim-pe-abre-concurso-publico-com-vagas-para-diversas-secretarias": {
     "id": "bf47122c274903499a04",
@@ -4545,7 +4545,7 @@
     "listing_fingerprint": "e67170131a40ae4f485227566319eb5828a47934338e3efdc85fa2ab0ded091d",
     "last_checked": "2026-09-04T11:59:33-03:00",
     "content_hash": "95d0ff8baf21aa97dab25e411fe67be014ca7c0eff9e5508611a0351739c115e",
-    "status": "OPEN"
+    "status": "UPDATED"
   },
   "https://www.pciconcursos.com.br/noticias/prefeitura-de-paraguacu-mg-abre-selecao-para-professores-de-portugues-e-educacao-fisica": {
     "id": "8a7e0fad016fb22463aa",
@@ -4867,7 +4867,7 @@
     "listing_fingerprint": "24ad5a8e4b51cea94b803502d5edfcb149820f7584dbafb90b2626f55a480423",
     "last_checked": "2026-09-09T09:24:02-03:00",
     "content_hash": "6f5f71c6fad15087c4aa48555b6bc7b00fa80f5943025326a6663c9de7a6d9ce",
-    "status": "OPEN"
+    "status": "CLOSED"
   },
   "https://www.pciconcursos.com.br/noticias/prefeitura-de-barao-rs-abre-concurso-para-fiscal-e-professores": {
     "id": "82862df43969890f29e5",
@@ -5077,7 +5077,7 @@
     "listing_fingerprint": "655ddf0772aaae83aa8abfb9d6c70753f20430f2a4716428a2f0da85d86646cf",
     "last_checked": "2026-09-10T08:42:13-03:00",
     "content_hash": "c5092225096224c6b96921cf8c8cd73d3279657416749907d60eeb5679813af5",
-    "status": "NEW"
+    "status": "UPDATED"
   },
   "https://www.pciconcursos.com.br/noticias/prefeitura-de-cajamar-sp-abre-selecao-para-cadastro-de-reserva-de-professores": {
     "id": "bdc73f3f8c60e3ccc3fb",
@@ -5147,6 +5147,104 @@
     "listing_fingerprint": "73f3ec37e27129d5baea95a869f3683c5fbb532023caa115f29d0aba06286697",
     "last_checked": "2026-09-10T08:42:13-03:00",
     "content_hash": "1cfd7e58cf7931b6c33498f37d62c3fa9a441a1ecfd4d13d72a952957ef32f82",
+    "status": "NEW"
+  },
+  "https://www.pciconcursos.com.br/noticias/prefeitura-de-santa-rosa-de-viterbo-sp-abre-selecao-para-professores-e-auxiliares-de-educacao": {
+    "id": "b6c32faad5369cc5bdbd",
+    "url": "https://www.pciconcursos.com.br/noticias/prefeitura-de-santa-rosa-de-viterbo-sp-abre-selecao-para-professores-e-auxiliares-de-educacao",
+    "first_seen": "2026-09-10",
+    "processed": true,
+    "potential": true,
+    "last_seen": "2026-09-10",
+    "title": "Prefeitura de Santa Rosa de Viterbo - SP abre seleção para Professores e Auxiliares de Educação",
+    "registration_end": "2026-10-05",
+    "listing_fingerprint": "1a0b1e2858c256bd6217180f781bea3a52065a7529ed83e2ccd6032ba3df9421",
+    "last_checked": "2026-09-10T12:00:13-03:00",
+    "content_hash": "dc43a58b7a89cd83c4dc4f8d5db4eefc5e03a9a0a1c25df1ab040f5d1132bce1",
+    "status": "NEW"
+  },
+  "https://www.pciconcursos.com.br/noticias/prefeitura-de-alvinopolis-mg-publica-edital-de-concurso-publico-com-salarios-de-ate-17954": {
+    "id": "3f63121237c295430230",
+    "url": "https://www.pciconcursos.com.br/noticias/prefeitura-de-alvinopolis-mg-publica-edital-de-concurso-publico-com-salarios-de-ate-17954",
+    "first_seen": "2026-09-10",
+    "processed": true,
+    "potential": true,
+    "last_seen": "2026-09-10",
+    "title": "Prefeitura de Alvinópolis - MG publica edital de concurso público com salários de até R$ 17.954,23",
+    "registration_end": "2026-12-15",
+    "listing_fingerprint": "cd621c37e8ba8b444e8bffe047d8ed4ccb07cc6ec53b81a59b6054269ecbac93",
+    "last_checked": "2026-09-10T12:00:13-03:00",
+    "content_hash": "d9e6624de6782d9c85596ee7c34266b87edec2c545c530e6d49ebd16ba68e3b5",
+    "status": "NEW"
+  },
+  "https://www.pciconcursos.com.br/noticias/prefeitura-de-anchieta-es-abre-concurso-publico-para-professores": {
+    "id": "01fa3f7f5c4a741707a0",
+    "url": "https://www.pciconcursos.com.br/noticias/prefeitura-de-anchieta-es-abre-concurso-publico-para-professores",
+    "first_seen": "2026-09-10",
+    "processed": true,
+    "potential": true,
+    "last_seen": "2026-09-10",
+    "title": "Prefeitura de Anchieta - ES abre concurso público para professores",
+    "registration_end": "2026-10-07",
+    "listing_fingerprint": "5c8152e2edb201db4e1c580aa7a658ebfcd45936d7abc19623cb271922dafcca",
+    "last_checked": "2026-09-10T12:00:13-03:00",
+    "content_hash": "4192ca5aedcef7713e5c46fd6bb14db0e1181949cd72ea1b953eff6b9d4f9b02",
+    "status": "NEW"
+  },
+  "https://www.pciconcursos.com.br/noticias/prefeitura-de-eneas-marques-pr-abre-processo-seletivo-com-salarios-de-ate-5986": {
+    "id": "1d215188947921d6484d",
+    "url": "https://www.pciconcursos.com.br/noticias/prefeitura-de-eneas-marques-pr-abre-processo-seletivo-com-salarios-de-ate-5986",
+    "first_seen": "2026-09-10",
+    "processed": true,
+    "potential": true,
+    "last_seen": "2026-09-10",
+    "title": "Prefeitura de Enéas Marques - PR abre processo seletivo com salários de até R$ 5.986,32",
+    "registration_end": "2026-09-28",
+    "listing_fingerprint": "2cb05dcb4b71d484f6ac627534cc279a4487a626881e3d6686546a26ae5724d0",
+    "last_checked": "2026-09-10T12:00:13-03:00",
+    "content_hash": "905b39aed007d723bde40dc6030e3871a98a197d31eb7d99e6b034e3d166c2d5",
+    "status": "NEW"
+  },
+  "https://www.pciconcursos.com.br/noticias/prefeitura-de-sao-joaquim-sc-abre-concurso-publico-com-vagas-imediatas-e-cadastro-de-reserva": {
+    "id": "b9bfa725540edc6a72b4",
+    "url": "https://www.pciconcursos.com.br/noticias/prefeitura-de-sao-joaquim-sc-abre-concurso-publico-com-vagas-imediatas-e-cadastro-de-reserva",
+    "first_seen": "2026-09-10",
+    "processed": true,
+    "potential": true,
+    "last_seen": "2026-09-10",
+    "title": "Prefeitura de São Joaquim - SC abre concurso público com vagas imediatas e cadastro de reserva",
+    "registration_end": "2026-10-18",
+    "listing_fingerprint": "a6e5cf7af69da36caf82fc90946d7b6fde918873dd00e55a0d6e91c5b3324061",
+    "last_checked": "2026-09-10T12:00:13-03:00",
+    "content_hash": "0b6ad5703315a175f9548803ec7f7b85fa0787e318d382de10dc7d1e440933f9",
+    "status": "NEW"
+  },
+  "https://www.pciconcursos.com.br/noticias/prefeitura-de-brasilandia-ms-abre-processo-seletivo-para-formacao-de-cadastro-de-reserva-em-diversos-cargos": {
+    "id": "2c57993835a9829fe741",
+    "url": "https://www.pciconcursos.com.br/noticias/prefeitura-de-brasilandia-ms-abre-processo-seletivo-para-formacao-de-cadastro-de-reserva-em-diversos-cargos",
+    "first_seen": "2026-09-10",
+    "processed": true,
+    "potential": true,
+    "last_seen": "2026-09-10",
+    "title": "Prefeitura de Brasilândia - MS abre processo seletivo para formação de cadastro de reserva em diversos cargos",
+    "registration_end": "2026-09-17",
+    "listing_fingerprint": "8b230b4c8cde5d2a8cc2e4b916f2827d011a790e6cc9b26b65bc916bb3595267",
+    "last_checked": "2026-09-10T12:00:13-03:00",
+    "content_hash": "f4b90aaa0979472b66a55b480c4878d9e8b6bb87eb321e31cf910d121abf1f12",
+    "status": "NEW"
+  },
+  "https://www.pciconcursos.com.br/noticias/prefeitura-de-poranga-ce-publica-editais-de-concursos-publicos-com-salarios-de-ate-4750": {
+    "id": "305883f48a593761c277",
+    "url": "https://www.pciconcursos.com.br/noticias/prefeitura-de-poranga-ce-publica-editais-de-concursos-publicos-com-salarios-de-ate-4750",
+    "first_seen": "2026-09-10",
+    "processed": true,
+    "potential": true,
+    "last_seen": "2026-09-10",
+    "title": "Prefeitura de Poranga - CE publica editais de concursos públicos com salários de até R$ 4.750,00",
+    "registration_end": "2026-09-28",
+    "listing_fingerprint": "ad419b39be213c35092d14d44631dd5d4a87d4a7995592df09a30d2c6df0793e",
+    "last_checked": "2026-09-10T12:00:13-03:00",
+    "content_hash": "dda1f6170fc8d08afa15a8a15ec8f44ef40c10e9167ed7515aa5df492bae5890",
     "status": "NEW"
   }
 }
