@@ -63,6 +63,8 @@ SEED_PRIORITY = 10_000
 OFFICIAL_SEED_OVERRIDES = {
     "/noticias/uel-pr-abre-processo-seletivo-para-professores-temporarios-com-diversas-areas-de-atuacao":
         "https://www.cops.uel.br/v2/download.php?Acesso=YzlmNzU2YTBiMWIzYTM4MDZiM2RmN2FiYWEzZDdkMWE5NTZkZWZhMTg5NzM4MmFhNDEyYjA0NmY1MmJlZmJhNjg1ZjE3Y2Q0ZjJhMTQ4MzU5Y2NlYmQyMDM2MGM4OThmYzMzZTRjZmYxMjI0OTUwYjkxZDgwZTYzODI2ODhlNTNlOWFlZTE2ZmZhMjQ1OWQ5NDJkNWVmNzI1NmQ1OTk3MzU4NjQ1YjMyZmU2MjdjNGFjNjc0NmU4MmU2ZmI4Njhj",
+    "/noticias/ufrpe-abre-concurso-com-vagas-para-professores-do-magisterio-superior":
+        "https://progepe.ufrpe.br/sites/default/files/2026-09/%5BNOVO%20EDITAL%5D%20Edital%2021_2026%20-%20Concurso%20docente.docx.pdf",
 }
 
 
