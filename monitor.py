@@ -14,7 +14,7 @@ from zoneinfo import ZoneInfo
 import config
 from src.classifier import RuleBasedAnalyzer, visual_category
 from src.monitoring import compute_status, detect_changes, iso_now, should_recheck
-from src.official import OfficialDocumentReader, should_check_official
+from src.official import OfficialDocumentReader, retryable_error_urls, should_check_official
 from src.parser import extract_requirement_sentences, normalize_text
 from src.pci import PCIConcursosSource, is_potential_listing
 from src.report import generate_report
@@ -338,7 +338,18 @@ def run(
         for index, vacancy in enumerate(official_candidates, start=1):
             print(f"Reading official source {index}/{len(official_candidates)}: {vacancy['institution']}")
             try:
-                result = reader.read(vacancy, now)
+                previous = official_cache.get(vacancy["source_url"])
+                retry_urls = retryable_error_urls(previous)
+                read_vacancy = {**vacancy, "official_retry_urls": retry_urls}
+                result = reader.read(read_vacancy, now)
+                if retry_urls and result.get("status") not in ("READ", "READ_MULTI"):
+                    prior_errors = [
+                        str(error) for error in (previous or {}).get("errors", [])
+                        if any(url in str(error) for url in retry_urls)
+                    ]
+                    result["errors"] = list(dict.fromkeys([
+                        *(result.get("errors") or []), *prior_errors,
+                    ]))[:5]
                 official_cache[vacancy["source_url"]] = result
                 official_processed += 1
                 official_read += result.get("status") in ("READ", "READ_MULTI")
