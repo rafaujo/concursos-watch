@@ -14,8 +14,13 @@ from zoneinfo import ZoneInfo
 import config
 from src.classifier import RuleBasedAnalyzer, visual_category
 from src.monitoring import compute_status, detect_changes, iso_now, should_recheck
-from src.official import OfficialDocumentReader, retryable_error_urls, should_check_official
-from src.parser import extract_requirement_sentences, normalize_text
+from src.official import (
+    OfficialDocumentReader,
+    retryable_error_urls,
+    should_check_official,
+    validated_registration_period,
+)
+from src.parser import extract_requirement_sentences, normalize_text, parse_registration_period
 from src.pci import PCIConcursosSource, is_potential_listing
 from src.report import generate_report
 from src.storage import RepositoryState
@@ -82,10 +87,29 @@ def _apply_official_result(
 ) -> bool:
     """Attach audit metadata and reclassify only from scoped official evidence."""
     previous_eligibility = vacancy.get("formal_eligibility")
-    for field in ("registration_start", "registration_end"):
-        if result.get(field):
-            vacancy[field] = result[field]
-    if result.get("registration_end"):
+
+    # An edital contains many procedural dates.  A reader can occasionally
+    # identify an old appeal or committee deadline as the application closing
+    # date.  Compare partial official dates with the application window already
+    # stated by the PCI notice; if the combined period runs backwards, keep (or
+    # restore) the PCI dates instead of making a current vacancy disappear.
+    pci_start, pci_end = parse_registration_period(str(vacancy.get("raw_text") or ""))
+    known_start = pci_start or vacancy.get("registration_start")
+    known_end = pci_end or vacancy.get("registration_end")
+    candidate_start = result.get("registration_start") or known_start
+    candidate_end = result.get("registration_end") or known_end
+    valid_start, valid_end = validated_registration_period(candidate_start, candidate_end)
+    official_period_is_valid = (valid_start, valid_end) != (None, None)
+    if official_period_is_valid:
+        for field in ("registration_start", "registration_end"):
+            if result.get(field):
+                vacancy[field] = result[field]
+    else:
+        if pci_start:
+            vacancy["registration_start"] = pci_start
+        if pci_end:
+            vacancy["registration_end"] = pci_end
+    if result.get("registration_end") or (not official_period_is_valid and pci_end):
         vacancy["status"] = compute_status(vacancy, now.date())
     vacancy["official_check_status"] = result.get("status")
     vacancy["official_checked_at"] = result.get("checked_at")
