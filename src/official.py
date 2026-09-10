@@ -1367,6 +1367,19 @@ def extract_candidate_links(html_bytes: bytes, base_url: str, vacancy: Mapping[s
     return sorted(candidates.values(), key=lambda item: (-item["score"], item["source_order"]))
 
 
+def retryable_error_urls(cache_entry: Mapping[str, Any] | None) -> list[str]:
+    """Recover document URLs from transient download errors in the cache."""
+    urls: list[str] = []
+    for error in (cache_entry or {}).get("errors", []):
+        text = str(error)
+        if "IncompleteRead" not in text and "ChunkedEncodingError" not in text:
+            continue
+        match = re.match(r"^(https?://.+?):\s+[A-Za-z0-9_.]*(?:Error|Exception):", text)
+        if match and match.group(1) not in urls:
+            urls.append(match.group(1))
+    return urls
+
+
 def should_check_official(cache_entry: Mapping[str, Any] | None, today: date) -> bool:
     if not cache_entry:
         return True
@@ -1931,6 +1944,9 @@ class OfficialDocumentReader:
         override = OFFICIAL_SEED_OVERRIDES.get(source_path)
         if override:
             seeds.append(override)
+        for value in vacancy.get("official_retry_urls") or []:
+            if value and value not in seeds:
+                seeds.append(str(value))
         for document in vacancy.get("pci_documents") or []:
             value = document.get("url")
             if value and value not in seeds:
