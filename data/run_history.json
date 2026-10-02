@@ -1196,5 +1196,19 @@
     "official_read": 4,
     "official_reclassified": 0,
     "official_failures": 218
+  },
+  {
+    "run_at": "2026-10-02T13:40:16-03:00",
+    "discovered": 260,
+    "known": 251,
+    "new": 9,
+    "changed_listings": 3,
+    "processed": 99,
+    "failures": 0,
+    "relevant_new": 2,
+    "official_processed": 226,
+    "official_read": 3,
+    "official_reclassified": 0,
+    "official_failures": 223
   }
 ]
